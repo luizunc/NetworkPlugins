@@ -1,0 +1,11 @@
+title: 'Setar grupo para {player}'
+# Caso você queira botar o número de rows deixe 'false' caso queira que ele
+# adicione uma row cada 7 roles que você botar deixe 'true'
+rows_auto: true
+# Apenas se 'rows_auto' tiver 'false'
+rows: 3
+roles:
+  master:
+    icon: 'WOOL:3 : 1 : nome>{role} : desc>&7Setar o cargo de {player}\n&7para {role}' # O icone que será mostrado no menu.
+    prefix: '§6[Master] ' # Utilize a mesma prefix do mcore ele vai comparar com a prefix do mcore e assim pegar a role do mCore use '§' em vez de '&'
+    cmd: 'lp user {player} parent set master' # Comando para setar o Grupo.

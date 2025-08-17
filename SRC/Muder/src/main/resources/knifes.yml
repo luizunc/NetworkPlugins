@@ -1,0 +1,10 @@
+anvil:
+ # ID único, não utilize IDs repetidos.
+ id: 1
+ coins: 1000.0
+ cash: 25
+ rarity: COMUM
+ permission: ''
+ name: 'Espada de Ouro'
+ # O 'icon' também é o item que irá ser utilizado na Faca Arremessável
+ icon: 'GOLD_SWORD : 1 : esconder>tudo'

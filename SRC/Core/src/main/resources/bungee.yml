@@ -1,0 +1,11 @@
+# ========================================
+# CONFIGURAÇÃO DO PLUGIN BUNGEE
+# ========================================
+
+# Informações do plugin
+author: LuizOtimizador
+name: ${project.artifactId}
+version: ${project.version}
+
+# Classe principal do plugin
+main: ${main-bungee}

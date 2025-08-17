@@ -1,0 +1,10 @@
+minhoca:
+  # ID único, não utilize IDs repetidos.
+  id: 1
+  coins: 1000.0
+  cash: 25
+  rarity: COMUM
+  permission: ''
+  name: 'Minhoca'
+  texture: 'YTc5MWEzZjFlOWUwYTM5OTE1YTc2NTM5NGI0ZmE4NDlhY2IzZTZhOWMyY2ZhODhhNWE5Y2RjYTZhMzY4ZTdmZSJ9fX0='
+  icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTc5MWEzZjFlOWUwYTM5OTE1YTc2NTM5NGI0ZmE4NDlhY2IzZTZhOWMyY2ZhODhhNWE5Y2RjYTZhMzY4ZTdmZSJ9fX0='

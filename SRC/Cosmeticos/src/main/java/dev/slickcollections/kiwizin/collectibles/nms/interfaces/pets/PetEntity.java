@@ -1,0 +1,14 @@
+package dev.slickcollections.kiwizin.collectibles.nms.interfaces.pets;
+
+import org.bukkit.entity.Entity;
+
+public interface PetEntity {
+  
+  void setPetCustomName(String customName);
+  
+  void kill();
+  
+  boolean isRiding();
+  
+  Entity getBukkitEntity();
+}

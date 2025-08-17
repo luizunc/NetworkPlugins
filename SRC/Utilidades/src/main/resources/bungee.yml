@@ -1,0 +1,6 @@
+author: kiwizin
+name: kUtils
+version: 1.0
+depend: [mCore]
+
+main: tk.kiwicollections.kiwizin.utils.bungee.Bungee

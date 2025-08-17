@@ -1,0 +1,49 @@
+# ========================================
+# CONFIGURAÇÕES GERAIS E UTILITÁRIOS
+# ========================================
+
+# Configurações gerais do plugin
+cash: true
+bungeecord: false
+queue: true
+
+# ========================================
+# CONFIGURAÇÕES DO COMANDO /FAKE
+# ========================================
+
+fake:
+  # Cargos que podem ser utilizados com o /fake
+  # As roles vão de acordo com as do servidor spigot em que o jogador está conectado
+  # No bungeecord só é utilizado para restringir os cargos que podem ser utilizados pelo comando direto
+  role:
+    - 'Membro'
+    - 'VIP'
+    - 'MVP'
+    - 'MVP+'
+  
+  # Nomes aleatórios para o /fake
+  randoms:
+    - 'pottershot'
+    - 'ismykiss'
+    - 'overdead'
+    - 'traveler'
+  
+  # Mensagem de kick ao aplicar o /fake
+  kick-apply: '&c&lREDE SLICK\n \n&aSeu nick foi modificado\n&aEntre novamente no servidor para que faça efeito.'
+  
+  # Mensagem de kick ao remover o /fake
+  kick-remove: '&c&lREDE SLICK\n \n&aSeu nick foi resetado\n&aEntre novamente no servidor para que faça efeito.'
+
+# ========================================
+# CONFIGURAÇÕES DO SISTEMA DE PARTY
+# ========================================
+
+party:
+  # Tamanho da party por permissão
+  # (_) é igual a (.)
+  # Tamanho padrão: 3
+  size:
+    role_master: 20
+    role_youtuber: 15
+    role_mvpplus: 10
+    role_mvp: 5

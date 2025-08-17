@@ -1,0 +1,92 @@
+# ========================================
+# CONFIGURAÇÃO DE CARGOS E PERMISSÕES
+# ========================================
+
+# Definição dos cargos disponíveis no servidor
+roles:
+  
+  # ========================================
+  # CARGOS ADMINISTRATIVOS
+  # ========================================
+  
+  # Cargo Master (Dono)
+  master:
+    name: '&6Master'
+    prefix: '&6[Master] '
+    permission: 'role.master'
+    # Sempre visível no lobby
+    alwaysvisible: true
+  
+  # Cargo Gerente
+  gerente:
+    name: '&4Gerente'
+    prefix: '&4[Gerente] '
+    permission: 'role.gerente'
+    # Sempre visível no lobby
+    alwaysvisible: true
+  
+  # Cargo Admin
+  admin:
+    name: '&cAdmin'
+    prefix: '&c[Admin] '
+    permission: 'role.admin'
+    alwaysvisible: true
+  
+  # Cargo Moderador
+  moderador:
+    name: '&2Moderador'
+    prefix: '&2[Moderador] '
+    permission: 'role.moderador'
+    alwaysvisible: true
+  
+  # Cargo Ajudante
+  ajudante:
+    name: '&eAjudante'
+    prefix: '&e[Ajudante] '
+    permission: 'role.ajudante'
+    alwaysvisible: true
+  
+  # ========================================
+  # CARGOS ESPECIAIS
+  # ========================================
+  
+  # Cargo YouTuber
+  youtuber:
+    name: '&cYouTuber'
+    prefix: '&c[YouTuber] '
+    permission: 'role.youtuber'
+    alwaysvisible: true
+  
+  # ========================================
+  # CARGOS VIP
+  # ========================================
+  
+  # Cargo MVP+
+  mvpplus:
+    name: '&bMVP&6+'
+    prefix: '&b[MVP&6+&b] '
+    permission: 'role.mvpplus'
+  
+  # Cargo MVP
+  mvp:
+    name: '&6MVP'
+    prefix: '&6[MVP] '
+    permission: 'role.mvp'
+  
+  # Cargo VIP
+  vip:
+    name: '&eVIP'
+    prefix: '&e[VIP] '
+    permission: 'role.vip'
+  
+  # ========================================
+  # CARGO PADRÃO
+  # ========================================
+  
+  # Cargo Membro (padrão)
+  membro:
+    name: '&7Membro'
+    prefix: '&7'
+    permission: ''
+    # Não enviar avisos ao entrar no lobby
+    broadcast: false

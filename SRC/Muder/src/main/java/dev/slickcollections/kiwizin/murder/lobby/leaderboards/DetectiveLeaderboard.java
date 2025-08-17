@@ -1,0 +1,34 @@
+package dev.slickcollections.kiwizin.murder.lobby.leaderboards;
+
+import dev.slickcollections.kiwizin.database.Database;
+import org.bukkit.Location;
+import dev.slickcollections.kiwizin.murder.Language;
+import dev.slickcollections.kiwizin.murder.lobby.Leaderboard;
+
+import java.util.List;
+
+public class DetectiveLeaderboard extends Leaderboard {
+
+  public DetectiveLeaderboard(Location location, String id) {
+    super(location, id);
+  }
+
+  @Override
+  public String getType() {
+    return "detetive";
+  }
+
+  @Override
+  public List<String[]> getSplitted() {
+    List<String[]> list = Database.getInstance().getLeaderBoard("kCoreMurder", "cldetectivewins");
+    while (list.size() < 10) {
+      list.add(new String[] {Language.lobby$leaderboard$empty, "0"});
+    }
+    return list;
+  }
+
+  @Override
+  public List<String> getHologramLines() {
+    return Language.lobby$leaderboard$wins_as_detective$hologram;
+  }
+}
