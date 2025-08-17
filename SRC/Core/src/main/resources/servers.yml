@@ -1,39 +1,17 @@
-# ========================================
-# CONFIGURAÇÃO DO MENU DE SERVIDORES
-# ========================================
-
-# Configurações gerais do menu
 title: 'Modos de Jogo'
 rows: 3
 
-# Slots que não redirecionam mesmo com servidores
-# Útil para quando você já está em um servidor do minigame
 disabled-slots: 
   - 10
 
-# Configuração dos itens do menu
 items:
-  
-  # ========================================
-  # LOBBY PRINCIPAL
-  # ========================================
   
   lobby:
     slot: 10
     icon: 'BOOKSHELF : 1 : nome>&6Lobby Principal : desc>&e► Clique para conectar!'
-    
-    # Quantidade máxima de jogadores por lobby
     max-players: 50
-    
-    # Servidores para requisitar os dados
-    # Formato: IP:PORTA ; BungeeServerName
-    # BungeeServerName = nome do servidor na config.yml do bungeecord
     servernames:
       - '127.0.0.1:25565 ; lobby'
-  
-  # ========================================
-  # SKY WARS
-  # ========================================
   
   skywars:
     slot: 12
@@ -42,10 +20,6 @@ items:
     servernames:
       - '127.0.0.1:25566 ; skywars'
   
-  # ========================================
-  # THE BRIDGE
-  # ========================================
-  
   thebridge:
     slot: 13
     icon: 'STAINED_CLAY:11 : 1 : nome>&aThe Bridge : desc>&8Sobrevivência\n \n  &7Prepare-se para balancear muito bem sua defesa\n  &7com seu ataque! Neste minigame você deve ser o\n  &7mais rápido para alcançar a base do seu inimigo\n  &7e marcar um ponto antes dele!\n \n  &7▪ &f1v1\n  &7▪ &f2v2\n \n&e► Clique para conectar!\n&7{players} jogando.'
@@ -53,20 +27,12 @@ items:
     servernames:
       - '127.0.0.1:25567 ; thebridge'
   
-  # ========================================
-  # MURDER
-  # ========================================
-  
   murder:
     slot: 14
     icon: 'BOW : 1 : nome>&aMurder : desc>&8Sobrevivência em Equipe\n \n  &71 Detetive, 1 Assassino e vários inocentes.\n  &7Será você capaz de vencer nesse jogo\n  &7de traição e assassinato?\n \n  &7▪ &fClássico\n \n&e► Clique para conectar!\n&7{players} jogando.'
     max-players: 50
     servernames:
       - '127.0.0.1:25568 ; murder'
-  
-  # ========================================
-  # BED WARS
-  # ========================================
   
   bedwars:
     slot: 15

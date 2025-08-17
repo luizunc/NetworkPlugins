@@ -1,16 +1,9 @@
-# ========================================
-# CONFIGURAÇÃO DO PLUGIN BUKKIT
-# ========================================
-
-# Informações do plugin
 author: LuizOtimizador
 name: Core
 version: 0.1
 
-# Dependências obrigatórias
 depend: 
   - ProtocolLib
   - PlaceholderAPI
 
-# Classe principal do plugin
 main: minecraft.core.bukkit.Core

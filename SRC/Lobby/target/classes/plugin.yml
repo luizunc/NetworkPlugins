@@ -1,0 +1,6 @@
+# Informações do plugin
+name: Lobby
+version: 0.1
+author: LuizOtimizador
+main: minecraft.lobby.Main
+depend: [Core]

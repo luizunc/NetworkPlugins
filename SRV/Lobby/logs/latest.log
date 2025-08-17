@@ -1,142 +1,801 @@
-[02:58:59] [Server thread/INFO]: Starting minecraft server version 1.8.8
-[02:58:59] [Server thread/INFO]: Loading properties
-[02:58:59] [Server thread/INFO]: Default game type: SURVIVAL
-[02:58:59] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-21fe707-741a1bd (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT)
-[02:58:59] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[02:58:59] [Server thread/INFO]: Using 4 threads for Netty based IO
-[02:58:59] [Server thread/INFO]: Debug logging is disabled
-[02:58:59] [Server thread/INFO]: Generating keypair
-[02:58:59] [Server thread/INFO]: Starting Minecraft server on *:25565
-[02:58:59] [Server thread/INFO]: Using default channel type
-[02:58:59] [Server thread/INFO]: Set PluginClassLoader as parallel capable
-[02:58:59] [Server thread/INFO]: [PlaceholderAPI] Loading PlaceholderAPI v2.10.5
-[02:58:59] [Server thread/INFO]: [ProtocolLib] Loading ProtocolLib v4.5.0
-[02:58:59] [Server thread/INFO]: [0;32;1m[Core] Loading Core v0.1[m
-[02:58:59] [Server thread/INFO]: [ProtocolLib] Enabling ProtocolLib v4.5.0
-[02:58:59] [Server thread/INFO]: [ProtocolLib] Started structure compiler thread.
-[02:58:59] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
-[02:58:59] [Server thread/INFO]: Preparing level "world"
-[02:58:59] [Server thread/INFO]: -------- World Settings For [world] --------
-[02:58:59] [Server thread/INFO]: Item Despawn Rate: 6000
-[02:58:59] [Server thread/INFO]: Item Merge Radius: 2.5
-[02:58:59] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[02:58:59] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[02:58:59] [Server thread/INFO]: Chunks to Grow per Tick: 650
-[02:58:59] [Server thread/INFO]: Clear tick list: false
-[02:58:59] [Server thread/INFO]: Experience Merge Radius: 3.0
-[02:58:59] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[02:58:59] [Server thread/INFO]: View Distance: 10
-[02:58:59] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[02:58:59] [Server thread/INFO]: Max Entity Collisions: 8
-[02:58:59] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Cane Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Melon Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[02:58:59] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[02:58:59] [Server thread/INFO]: Mob Spawn Range: 4
-[02:58:59] [Server thread/INFO]: Anti X-Ray: true
-[02:58:59] [Server thread/INFO]: 	Engine Mode: 1
-[02:58:59] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
-[02:58:59] [Server thread/INFO]: 	Replace Blocks: [1, 5]
-[02:58:59] [Server thread/INFO]: Random Lighting Updates: false
-[02:58:59] [Server thread/INFO]: Max TNT Explosions: 100
-[02:58:59] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[02:58:59] [Server thread/INFO]: Structure Info Saving: true
-[02:58:59] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[02:58:59] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[02:58:59] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[02:58:59] [Server thread/INFO]: Sending up to 10 chunks per packet
-[02:59:00] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[02:59:00] [Server thread/INFO]: Item Despawn Rate: 6000
-[02:59:00] [Server thread/INFO]: Item Merge Radius: 2.5
-[02:59:00] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[02:59:00] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[02:59:00] [Server thread/INFO]: Chunks to Grow per Tick: 650
-[02:59:00] [Server thread/INFO]: Clear tick list: false
-[02:59:00] [Server thread/INFO]: Experience Merge Radius: 3.0
-[02:59:00] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[02:59:00] [Server thread/INFO]: View Distance: 10
-[02:59:00] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[02:59:00] [Server thread/INFO]: Max Entity Collisions: 8
-[02:59:00] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Cane Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Melon Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[02:59:00] [Server thread/INFO]: Mob Spawn Range: 4
-[02:59:00] [Server thread/INFO]: Anti X-Ray: true
-[02:59:00] [Server thread/INFO]: 	Engine Mode: 1
-[02:59:00] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
-[02:59:00] [Server thread/INFO]: 	Replace Blocks: [1, 5]
-[02:59:00] [Server thread/INFO]: Random Lighting Updates: false
-[02:59:00] [Server thread/INFO]: Max TNT Explosions: 100
-[02:59:00] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[02:59:00] [Server thread/INFO]: Structure Info Saving: true
-[02:59:00] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[02:59:00] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[02:59:00] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[02:59:00] [Server thread/INFO]: Sending up to 10 chunks per packet
-[02:59:00] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[02:59:00] [Server thread/INFO]: Item Despawn Rate: 6000
-[02:59:00] [Server thread/INFO]: Item Merge Radius: 2.5
-[02:59:00] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[02:59:00] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[02:59:00] [Server thread/INFO]: Chunks to Grow per Tick: 650
-[02:59:00] [Server thread/INFO]: Clear tick list: false
-[02:59:00] [Server thread/INFO]: Experience Merge Radius: 3.0
-[02:59:00] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[02:59:00] [Server thread/INFO]: View Distance: 10
-[02:59:00] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[02:59:00] [Server thread/INFO]: Max Entity Collisions: 8
-[02:59:00] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Cane Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Melon Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[02:59:00] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[02:59:00] [Server thread/INFO]: Mob Spawn Range: 4
-[02:59:00] [Server thread/INFO]: Anti X-Ray: true
-[02:59:00] [Server thread/INFO]: 	Engine Mode: 1
-[02:59:00] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
-[02:59:00] [Server thread/INFO]: 	Replace Blocks: [1, 5]
-[02:59:00] [Server thread/INFO]: Random Lighting Updates: false
-[02:59:00] [Server thread/INFO]: Max TNT Explosions: 100
-[02:59:00] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[02:59:00] [Server thread/INFO]: Structure Info Saving: true
-[02:59:00] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[02:59:00] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[02:59:00] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[02:59:00] [Server thread/INFO]: Sending up to 10 chunks per packet
-[02:59:00] [Server thread/INFO]: Preparing start region for level 0 (Seed: 7699544325176255604)
-[02:59:00] [Server thread/INFO]: Preparing start region for level 1 (Seed: 7699544325176255604)
-[02:59:00] [Server thread/INFO]: Preparing start region for level 2 (Seed: 7699544325176255604)
-[02:59:00] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.10.5
-[02:59:00] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
-[02:59:00] [Server thread/INFO]: [0;32;1m[Core] Enabling Core v0.1[m
-[02:59:00] [Server thread/INFO]: [0;32;1m[Core] Conectado ao MySQL![m
-[02:59:01] [Server thread/INFO]: [0;32;1m[Core] O plugin foi ativado.[m
-[02:59:01] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[02:59:01] [Server thread/INFO]: Done (1,248s)! For help, type "help" or "?"
-[02:59:01] [Server thread/INFO]: [0;32;1m[Core] UPDATER: Procurando updates...[m
-[02:59:01] [Server thread/INFO]: [0;31;1m[Core] UPDATER: Nao foi possivel buscar updates.[m
-[02:59:01] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
-[02:59:01] [Craft Scheduler Thread - 1/INFO]: [PlaceholderAPI] 153 placeholder expansions are available on the cloud.
-[02:59:01] [Server thread/INFO]: [PlaceholderAPI] An update for PlaceholderAPI (v2.11.6) is available at:
-[02:59:01] [Server thread/INFO]: [PlaceholderAPI] https://www.spigotmc.org/resources/placeholderapi.6245/
-[02:59:02] [User Authenticator #1/INFO]: UUID of player hxwu is afad6cf0-5354-4df3-ae32-fe2b90e70234
-[02:59:02] [Server thread/INFO]: hxwu[/127.0.0.1:51933] logged in with entity id 246 at ([world]-347.74168757448984, 71.0, 370.4703182021505)
-[02:59:09] [Server thread/INFO]: hxwu issued server command: /deop
-[02:59:10] [Server thread/INFO]: hxwu issued server command: /deop hxwu
-[02:59:10] [Server thread/INFO]: [hxwu: De-opped hxwu]
-[02:59:12] [Server thread/INFO]: hxwu issued server command: /fake
+[13:21:45] [Server thread/INFO]: Starting minecraft server version 1.8.8
+[13:21:45] [Server thread/INFO]: Loading properties
+[13:21:45] [Server thread/INFO]: Default game type: SURVIVAL
+[13:21:45] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-21fe707-741a1bd (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT)
+[13:21:45] [Server thread/INFO]: Debug logging is disabled
+[13:21:45] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[13:21:45] [Server thread/INFO]: Using 4 threads for Netty based IO
+[13:21:45] [Server thread/INFO]: Generating keypair
+[13:21:45] [Server thread/INFO]: Starting Minecraft server on *:25565
+[13:21:45] [Server thread/INFO]: Using default channel type
+[13:21:45] [Server thread/INFO]: Set PluginClassLoader as parallel capable
+[13:21:45] [Server thread/INFO]: [PlaceholderAPI] Loading PlaceholderAPI v2.10.5
+[13:21:45] [Server thread/INFO]: [ProtocolLib] Loading ProtocolLib v4.5.0
+[13:21:46] [Server thread/INFO]: [0;32;1m[Core] Loading Core v0.1[m
+[13:21:46] [Server thread/INFO]: [0;32;1m[Lobby] Loading Lobby v0.1[m
+[13:21:46] [Server thread/INFO]: [ProtocolLib] Enabling ProtocolLib v4.5.0
+[13:21:46] [Server thread/INFO]: [ProtocolLib] Started structure compiler thread.
+[13:21:46] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[13:21:46] [Server thread/INFO]: Preparing level "world"
+[13:21:46] [Server thread/INFO]: -------- World Settings For [world] --------
+[13:21:46] [Server thread/INFO]: Item Merge Radius: 2.5
+[13:21:46] [Server thread/INFO]: Item Despawn Rate: 6000
+[13:21:46] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[13:21:46] [Server thread/INFO]: View Distance: 10
+[13:21:46] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[13:21:46] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[13:21:46] [Server thread/INFO]: Clear tick list: false
+[13:21:46] [Server thread/INFO]: Experience Merge Radius: 3.0
+[13:21:46] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[13:21:46] [Server thread/INFO]: Mob Spawn Range: 4
+[13:21:46] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Cane Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Melon Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Anti X-Ray: true
+[13:21:46] [Server thread/INFO]: 	Engine Mode: 1
+[13:21:46] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[13:21:46] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[13:21:46] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[13:21:46] [Server thread/INFO]: Structure Info Saving: true
+[13:21:46] [Server thread/INFO]: Max TNT Explosions: 100
+[13:21:46] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[13:21:46] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[13:21:46] [Server thread/INFO]: Random Lighting Updates: false
+[13:21:46] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[13:21:46] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[13:21:46] [Server thread/INFO]: Sending up to 10 chunks per packet
+[13:21:46] [Server thread/INFO]: Max Entity Collisions: 8
+[13:21:46] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[13:21:46] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[13:21:46] [Server thread/INFO]: Item Merge Radius: 2.5
+[13:21:46] [Server thread/INFO]: Item Despawn Rate: 6000
+[13:21:46] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[13:21:46] [Server thread/INFO]: View Distance: 10
+[13:21:46] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[13:21:46] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[13:21:46] [Server thread/INFO]: Clear tick list: false
+[13:21:46] [Server thread/INFO]: Experience Merge Radius: 3.0
+[13:21:46] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[13:21:46] [Server thread/INFO]: Mob Spawn Range: 4
+[13:21:46] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Cane Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Melon Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Anti X-Ray: true
+[13:21:46] [Server thread/INFO]: 	Engine Mode: 1
+[13:21:46] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[13:21:46] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[13:21:46] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[13:21:46] [Server thread/INFO]: Structure Info Saving: true
+[13:21:46] [Server thread/INFO]: Max TNT Explosions: 100
+[13:21:46] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[13:21:46] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[13:21:46] [Server thread/INFO]: Random Lighting Updates: false
+[13:21:46] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[13:21:46] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[13:21:46] [Server thread/INFO]: Sending up to 10 chunks per packet
+[13:21:46] [Server thread/INFO]: Max Entity Collisions: 8
+[13:21:46] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[13:21:46] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[13:21:46] [Server thread/INFO]: Item Merge Radius: 2.5
+[13:21:46] [Server thread/INFO]: Item Despawn Rate: 6000
+[13:21:46] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[13:21:46] [Server thread/INFO]: View Distance: 10
+[13:21:46] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[13:21:46] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[13:21:46] [Server thread/INFO]: Clear tick list: false
+[13:21:46] [Server thread/INFO]: Experience Merge Radius: 3.0
+[13:21:46] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[13:21:46] [Server thread/INFO]: Mob Spawn Range: 4
+[13:21:46] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Cane Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Melon Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[13:21:46] [Server thread/INFO]: Anti X-Ray: true
+[13:21:46] [Server thread/INFO]: 	Engine Mode: 1
+[13:21:46] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[13:21:46] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[13:21:46] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[13:21:46] [Server thread/INFO]: Structure Info Saving: true
+[13:21:46] [Server thread/INFO]: Max TNT Explosions: 100
+[13:21:46] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[13:21:46] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[13:21:46] [Server thread/INFO]: Random Lighting Updates: false
+[13:21:46] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[13:21:46] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[13:21:46] [Server thread/INFO]: Sending up to 10 chunks per packet
+[13:21:46] [Server thread/INFO]: Max Entity Collisions: 8
+[13:21:46] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[13:21:46] [Server thread/INFO]: Preparing start region for level 0 (Seed: 7699544325176255604)
+[13:21:46] [Server thread/INFO]: Preparing start region for level 1 (Seed: 7699544325176255604)
+[13:21:46] [Server thread/INFO]: Preparing start region for level 2 (Seed: 7699544325176255604)
+[13:21:47] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.10.5
+[13:21:47] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
+[13:21:47] [Server thread/INFO]: [0;32;1m[Core] Enabling Core v0.1[m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Core] Conectado ao MySQL![m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Core] O plugin foi ativado com sucesso.[m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Lobby] Enabling Lobby v0.1[m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Lobby] O plugin foi ativado.[m
+[13:21:47] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[13:21:47] [Server thread/INFO]: Done (1,384s)! For help, type "help" or "?"
+[13:21:47] [Server thread/INFO]: [0;33;1m[Lobby] ENTRIES: A entry bedwars (entries.yml) possui uma key invalida.[m
+[13:21:47] [Server thread/INFO]: [0;33;1m[Lobby] ENTRIES: A entry murder (entries.yml) possui uma key invalida.[m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Lobby] LANGUAGE: A config [0;33;22mlanguage.yml [0;32;1mfoi modificada ou criada.[m
+[13:21:47] [Server thread/INFO]: [0;33;1m[Lobby] ENTRIES: A entry skywars (entries.yml) possui uma key invalida.[m
+[13:21:47] [Server thread/INFO]: [0;32;1m[Core] UPDATER: Procurando updates...[m
+[13:21:47] [Server thread/INFO]: [0;31;1m[Core] UPDATER: Nao foi possivel buscar updates.[m
+[13:21:47] [Server thread/INFO]: [0;33;1m[Lobby] ENTRIES: A entry thebridge (entries.yml) possui uma key invalida.[m
+[13:21:47] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
+[13:21:48] [Craft Scheduler Thread - 1/INFO]: [PlaceholderAPI] 153 placeholder expansions are available on the cloud.
+[13:21:48] [Server thread/INFO]: [PlaceholderAPI] An update for PlaceholderAPI (v2.11.6) is available at:
+[13:21:48] [Server thread/INFO]: [PlaceholderAPI] https://www.spigotmc.org/resources/placeholderapi.6245/
+[13:21:53] [User Authenticator #1/INFO]: UUID of player hxwu is afad6cf0-5354-4df3-ae32-fe2b90e70234
+[13:21:53] [Server thread/INFO]: hxwu[/127.0.0.1:51012] logged in with entity id 224 at ([world]-223.0, 64.0, 373.0)
+[13:22:06] [Server thread/INFO]: hxwu issued server command: /day
+[13:22:09] [Server thread/INFO]: hxwu issued server command: /time set day
+[13:22:09] [Server thread/INFO]: [hxwu: Set the time to 1000]
+[13:22:44] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:45] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:46] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:49] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerInteractManager.interact(PlayerInteractManager.java:463) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:759) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 17 more
+[13:22:50] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:50] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:717) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:52) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:50] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:50] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:50] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:51] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:51] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:51] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:22:51] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to Core v0.1
+org.bukkit.event.EventException: null
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:228) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:195) [server.jar:git-Spigot-21fe707-741a1bd]
+	at org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:191) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:1200) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:18) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PacketPlayInArmAnimation.a(PacketPlayInArmAnimation.java:1) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_462]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_462]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [server.jar:git-Spigot-21fe707-741a1bd]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [server.jar:git-Spigot-21fe707-741a1bd]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_462]
+Caused by: java.lang.NullPointerException
+	at minecraft.core.bukkit.menus.MenuServers.<init>(MenuServers.java:20) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarActionType$3.execute(HotbarActionType.java:39) ~[?:?]
+	at minecraft.core.core.player.hotbar.HotbarAction.execute(HotbarAction.java:22) ~[?:?]
+	at minecraft.core.bukkit.listeners.Listeners.onPlayerInteract(Listeners.java:207) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_462]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_462]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[server.jar:git-Spigot-21fe707-741a1bd]
+	... 18 more
+[13:23:38] [Server thread/INFO]: hxwu issued server command: /kl
+[13:23:54] [Server thread/INFO]: hxwu issued server command: //sphere

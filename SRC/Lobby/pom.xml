@@ -2,14 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dev.slickcollections.kiwizin.lobby</groupId>
-    <artifactId>kLobby</artifactId>
-    <version>1.2</version>
+    <groupId>minecraft.lobby</groupId>
+    <artifactId>Lobby</artifactId>
+    <version>0.1</version>
 
+    <!-- Propriedades -->
     <properties>
-        <main>dev.slickcollections.kiwizin.lobby.Main</main>
+        <main>minecraft.lobby.Main</main>
+
+        <lib.dir>C:\Users\Luiz\Desktop\fabrica\LIBS</lib.dir>
 
         <protocollib.version>4.5.0</protocollib.version>
         <placeholder-api.version>2.10.5</placeholder-api.version>
@@ -20,58 +24,69 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <!-- Repositórios -->
     <repositories>
         <repository>
             <id>nms-repo</id>
             <url>https://repo.codemc.org/repository/nms/</url>
         </repository>
-        <!-- ProtocolLib -->
         <repository>
             <id>dmulloy2-repo</id>
             <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
         </repository>
-        <!-- PlaceHolderAPI -->
         <repository>
             <id>placeholderapi</id>
             <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
     </repositories>
 
+    <!-- Dependências -->
     <dependencies>
         <dependency>
-            <groupId>dev.slickcollections.kiwizin</groupId>
-            <artifactId>kCore</artifactId>
+            <groupId>minecraft.core</groupId>
+            <artifactId>Core</artifactId>
             <version>latest</version>
             <scope>system</scope>
-            <systemPath>~/kCore.jar</systemPath>
+            <systemPath>${lib.dir}/Core.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>${protocollib.version}</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${lib.dir}/ProtocolLib.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>${placeholder-api.version}</version>
+            <scope>system</scope>
+            <systemPath>${lib.dir}/PlaceholderAPI-2.10.5.jar</systemPath>
         </dependency>
     </dependencies>
 
+    <!-- Build -->
     <build>
+        <finalName>Lobby</finalName>
         <defaultGoal>clean install</defaultGoal>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <plugins>
+            <!-- Shade plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -83,7 +98,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <!-- ~/ -->
                             <artifactSet>
                                 <excludes>
                                     <exclude>org.spigotmc:*</exclude>
@@ -106,4 +120,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

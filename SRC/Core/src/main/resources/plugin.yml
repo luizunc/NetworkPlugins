@@ -1,16 +1,9 @@
-# ========================================
-# CONFIGURAÇÃO DO PLUGIN BUKKIT
-# ========================================
-
-# Informações do plugin
 author: LuizOtimizador
-name: ${project.artifactId}
-version: ${project.version}
+name: Core
+version: 0.1
 
-# Dependências obrigatórias
 depend: 
   - ProtocolLib
   - PlaceholderAPI
 
-# Classe principal do plugin
 main: ${main-bukkit}
