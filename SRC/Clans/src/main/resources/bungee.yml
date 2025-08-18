@@ -1,6 +1,0 @@
-author: EsinaKiwi
-name: ${project.artifactId}
-version: ${project.version}
-depend: [kCore]
-
-main: dev.slickcollections.kiwizin.clans.bungee.Bungee

@@ -1,9 +1,0 @@
-author: LuizOtimizador
-name: Core
-version: 0.1
-
-depend: 
-  - ProtocolLib
-  - PlaceholderAPI
-
-main: minecraft.core.bukkit.Core
