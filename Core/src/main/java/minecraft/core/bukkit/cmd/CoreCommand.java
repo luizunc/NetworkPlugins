@@ -1,12 +1,25 @@
 package minecraft.core.bukkit.cmd;
 
 import minecraft.core.bukkit.Core;
-import minecraft.core.core.database.Database;
-import minecraft.core.core.utils.SlickUpdater;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Comando principal do sistema Core.
+ * Mostra informações básicas sobre o plugin.
+ * 
+ * @author Luiz
+ * @version 1.0
+ */
 public class CoreCommand extends Commands {
+
+    // Constantes
+    private static final String PERMISSION_ADMIN = "core.admin";
+    
+    // Mensagens
+    private static final String MSG_VERSION = "§6Core §bv%s §7Criado por §6Luiz§7.";
+    private static final String MSG_PLAYERS_ONLY = "§cApenas jogadores podem utilizar este comando.";
+    private static final String MSG_ADMIN_INFO = "§6§l[CORE]\n§7Versão: §bv%s\n§7Autor: §6Luiz";
 
     public CoreCommand() {
         super("core", "c");
@@ -14,39 +27,22 @@ public class CoreCommand extends Commands {
 
     @Override
     public void perform(CommandSender sender, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-                    if (!player.hasPermission("core.admin")) {
-          player.sendMessage("§6Core §bv" + Core.getInstance().getDescription().getVersion() + " §7Criado por §6Kiwizin§7.");
-                return;
-            }
-
-            if (args.length == 0) {
-                player.sendMessage(" \n§6/c atualizar §f- §7Atualizar o Core.\n§6/c converter §f- §7Converter seu Banco de Dados.\n ");
-                return;
-            }
-
-            String action = args[0];
-            if (action.equalsIgnoreCase("atualizar")) {
-                if (SlickUpdater.UPDATER != null) {
-                    if (!SlickUpdater.UPDATER.canDownload) {
-                        player.sendMessage(
-                                " \n§6§l[CORE]\n \n§aA atualização já está baixada, ela será aplicada na próxima reinicialização do servidor. Caso deseje aplicá-la agora, utilize o comando /stop.\n ");
-                        return;
-                    }
-                    SlickUpdater.UPDATER.canDownload = false;
-                    SlickUpdater.UPDATER.downloadUpdate(player);
-                } else {
-                    player.sendMessage("§aO plugin já se encontra em sua última versão.");
-                }
-            } else if (action.equalsIgnoreCase("converter")) {
-                player.sendMessage("§fBanco de Dados: " + Database.getInstance().getClass().getSimpleName().replace("Database", ""));
-                Database.getInstance().convertDatabase(player);
-            } else {
-                player.sendMessage(" \n§6/c atualizar §f- §7Atualizar o Core.\n§6/c converter §f- §7Converter seu Banco de Dados.\n ");
-            }
-        } else {
-            sender.sendMessage("§cApenas jogadores podem utilizar este comando.");
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(MSG_PLAYERS_ONLY);
+            return;
         }
+
+        Player player = (Player) sender;
+        
+        // Verifica permissão de administrador
+        if (!player.hasPermission(PERMISSION_ADMIN)) {
+            player.sendMessage(String.format(MSG_VERSION, 
+                Core.getInstance().getDescription().getVersion()));
+            return;
+        }
+
+        // Mostra informações para administradores
+        String version = Core.getInstance().getDescription().getVersion();
+        player.sendMessage(String.format(MSG_ADMIN_INFO, version));
     }
 }

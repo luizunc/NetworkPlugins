@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  * Classe abstrata que define a interface para diferentes tipos de banco de dados.
- * Suporta MySQL, MariaDB, HikariCP e MongoDB.
+ * Suporta MySQL, MariaDB e HikariCP.
  */
 public abstract class Database {
   
@@ -29,7 +29,7 @@ public abstract class Database {
   /**
    * Configura o banco de dados baseado no tipo especificado.
    * 
-   * @param type Tipo do banco de dados (mysql, mongodb)
+   * @param type Tipo do banco de dados (mysql)
    * @param mysqlHost Host do MySQL
    * @param mysqlPort Porta do MySQL
    * @param mysqlDbname Nome do banco MySQL
@@ -40,14 +40,13 @@ public abstract class Database {
    * @param mongoURL URL do MongoDB
    */
   public static void setupDatabase(String type, String mysqlHost, String mysqlPort, String mysqlDbname, 
-                                  String mysqlUsername, String mysqlPassword, boolean hikari, boolean mariadb,
-                                  String mongoURL) {
+                                  String mysqlUsername, String mysqlPassword, boolean hikari, boolean mariadb) {
     if (type == null) {
       throw new IllegalArgumentException("Tipo de banco de dados não pode ser nulo");
     }
     
     instance = createDatabaseInstance(type, mysqlHost, mysqlPort, mysqlDbname, mysqlUsername, 
-                                    mysqlPassword, hikari, mariadb, mongoURL);
+                                    mysqlPassword, hikari, mariadb);
     
     // Configura limpeza automática do cache de roles
     scheduleRoleCacheCleanup();
@@ -69,12 +68,8 @@ public abstract class Database {
    */
   private static Database createDatabaseInstance(String type, String mysqlHost, String mysqlPort, 
                                                 String mysqlDbname, String mysqlUsername, String mysqlPassword, 
-                                                boolean hikari, boolean mariadb, String mongoURL) {
-    if ("mongodb".equalsIgnoreCase(type)) {
-      return new MongoDBDatabase(mongoURL);
-    } else {
-      return createSQLDatabase(mysqlHost, mysqlPort, mysqlDbname, mysqlUsername, mysqlPassword, hikari, mariadb);
-    }
+                                                boolean hikari, boolean mariadb) {
+    return createSQLDatabase(mysqlHost, mysqlPort, mysqlDbname, mysqlUsername, mysqlPassword, hikari, mariadb);
   }
   
   /**

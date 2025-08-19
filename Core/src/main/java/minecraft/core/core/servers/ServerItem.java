@@ -3,17 +3,16 @@ package minecraft.core.core.servers;
 import minecraft.core.bukkit.Core;
 import minecraft.core.core.player.Profile;
 import minecraft.core.bukkit.plugin.config.KConfig;
-import minecraft.core.bukkit.config.ServersConfig;
+import minecraft.core.bukkit.config.Servers;
 import minecraft.core.core.servers.balancer.BaseBalancer;
 import minecraft.core.core.servers.balancer.Server;
 import minecraft.core.core.servers.balancer.type.LeastConnection;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 
 public class ServerItem {
   
-  public static final KConfig CONFIG = ServersConfig.getConfig();
+  public static final KConfig CONFIG = Servers.getConfig();
   public static final List<Integer> DISABLED_SLOTS = new ArrayList<>();
   public static final Map<String, Integer> SERVER_COUNT = new HashMap<>();
   private static final List<ServerItem> SERVERS = new ArrayList<>();

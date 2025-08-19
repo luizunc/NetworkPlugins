@@ -29,10 +29,10 @@ public final class HotbarConfig {
     private static final String CMD_LOBBIES = "LOBBY>lobbies";
     
     // Ícones dos itens
-    private static final String ICON_BUSSOLA = "COMPASS : 1 : nome>&eMinigames : desc>&7Sabemos que é uma difícil escolha...";
-    private static final String ICON_PERFIL = "%perfil%SKULL_ITEM:3 : 1 : nome>&eMeu Perfil : desc>&7Clique para ver suas\n&7informações pessoais!";
-    private static final String ICON_JOGADORES = "INK_SACK:%Core_status_jogadores_inksack% : 1 : nome>&fJogadores: %Core_status_jogadores_nome% : desc>&7Clique para que os jogadores\n&7desapareçam!";
-    private static final String ICON_LOBBIES = "NETHER_STAR : 1 : nome>&eLobbies : desc>&7Clique para selecionar um lobby!";
+    private static final String ICON_BUSSOLA = "COMPASS : 1 : nome>&aServidores";
+    private static final String ICON_PERFIL = "%perfil%SKULL_ITEM:3 : 1 : nome>&aPerfil";
+    private static final String ICON_JOGADORES = "INK_SACK:%Core_status_jogadores_inksack% : 1 : nome>&fJogadores: %Core_status_jogadores_nome%";
+    private static final String ICON_LOBBIES = "WATCH : 1 : nome>&aLobbies";
     
     private static final Map<String, HotbarItem> LOBBY_ITEMS = createLobbyItems();
     

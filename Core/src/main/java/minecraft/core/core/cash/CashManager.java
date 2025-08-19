@@ -1,6 +1,6 @@
 package minecraft.core.core.cash;
 
-import minecraft.core.bukkit.Core;
+import minecraft.core.bukkit.plugin.config.UtilsConfig;
 import minecraft.core.core.player.Profile;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import org.bukkit.entity.Player;
@@ -11,12 +11,8 @@ public class CashManager {
   private static final KConfig CONFIG;
   
   static {
-    CONFIG = Core.getInstance().getConfig("utils");
-    if (!CONFIG.contains("cash")) {
-      CONFIG.set("cash", true);
-    }
-    
-    CASH = CONFIG.getBoolean("cash");
+    CONFIG = UtilsConfig.getConfig();
+    CASH = CONFIG.getBoolean("cash.enabled", true);
   }
   
   public static void addCash(Profile profile, long amount) throws CashException {

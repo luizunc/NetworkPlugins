@@ -16,7 +16,10 @@ import minecraft.core.bukkit.plugin.config.UtilsConfig;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
@@ -236,13 +239,46 @@ public class Bungee extends Plugin {
    * @return true se está disponível
    */
   public static boolean isUsable(String name) {
+    return checkNicknameAvailability(name) == null;
+  }
+  
+  /**
+   * Verifica a disponibilidade de um nickname para fake.
+   * 
+   * @param name Nome a ser verificado
+   * @return Mensagem de erro ou null se disponível
+   */
+  public static String checkNicknameAvailability(String name) {
     if (name == null || name.trim().isEmpty()) {
-      return false;
+      return "§cO nickname não está disponível para uso.";
     }
     
-    return !fakeNames.containsKey(name) && 
-           !fakeNames.containsValue(name) && 
-           getInstance().getProxy().getPlayer(name) == null;
+    // Verifica se já está sendo usado por outro fake
+    if (fakeNames.containsKey(name) || fakeNames.containsValue(name)) {
+      return "§cO nickname não está disponível para uso.";
+    }
+    
+    // Verifica se está online no servidor
+    if (getInstance().getProxy().getPlayer(name) != null) {
+      return "§cO nickname não está disponível para uso.";
+    }
+    
+    // Verifica se está registrado no servidor
+    if (Database.getInstance().exists(name) != null) {
+      return "§cO nickname não está disponível para uso.";
+    }
+    
+    // Verifica se existe como conta real do Minecraft
+    try {
+      String uuid = minecraft.core.core.libraries.profile.Mojang.getUUID(name);
+      if (uuid != null) {
+        return "§cO nickname não está disponível para uso.";
+      }
+    } catch (Exception e) {
+      // Se erro na API, considera como não existente (permite usar)
+    }
+    
+    return null; // Nickname disponível
   }
   
   /**
@@ -264,7 +300,7 @@ public class Bungee extends Plugin {
       synchronized (Bungee.class) {
         if (randoms == null) {
           try {
-            randoms = getInstance().getConfig().getStringList("fake.randoms");
+            randoms = new ArrayList<>();
           } catch (Exception e) {
             getInstance().getLogger().log(Level.WARNING, "Erro ao carregar nomes aleatórios", e);
             randoms = new ArrayList<>();
@@ -374,7 +410,7 @@ public class Bungee extends Plugin {
         copyFile(getResourceAsStream("bungee.yml"), bungeeFile);
       }
       
-      // Carregar utils.yml da classe interna
+      // Carregar configurações utils da classe interna
       this.utils = UtilsConfig.getConfig().getConfiguration();
       
     } catch (Exception e) {
@@ -399,9 +435,8 @@ public class Bungee extends Plugin {
         config.getString("database.mysql.usuario"),
         config.getString("database.mysql.senha"),
         config.getBoolean("database.mysql.hikari", false),
-        config.getBoolean("database.mysql.mariadb", false),
-        config.getString("database.mongodb.url", "")
-    );
+                config.getBoolean("database.mysql.mariadb", false)
+      );
   }
   
   /**
@@ -411,18 +446,6 @@ public class Bungee extends Plugin {
     if (utils == null) {
       this.getLogger().warning("Configuração utils não encontrada");
       return;
-    }
-    
-    try {
-      // Converter role único para lista se necessário
-      if (utils.get("fake.role") instanceof String) {
-        String roleString = utils.getString("fake.role");
-        utils.set("fake.role", Arrays.asList(roleString));
-        YamlConfiguration.getProvider(YamlConfiguration.class)
-            .save(utils, new File("plugins/Core/utils.yml"));
-      }
-    } catch (IOException e) {
-      this.getLogger().log(Level.WARNING, "Erro ao configurar roles", e);
     }
     
     // Criar role padrão se não houver nenhum

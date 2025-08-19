@@ -5,7 +5,6 @@ minecraft\core\core\libraries\menu\UpdatableMenu$1.class
 minecraft\core\core\player\role\Role.class
 org\json\simple\JSONAware.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticlePacket$PacketSendingException.class
-minecraft\core\bukkit\config\RolesConfig.class
 minecraft\core\core\reflection\MinecraftReflection.class
 minecraft\core\bukkit\achievements\types\SkyWarsAchievement$TitleReward.class
 minecraft\core\core\player\scoreboard\VirtualTeam.class
@@ -26,6 +25,7 @@ minecraft\core\core\servers\balancer\LoadBalancer.class
 minecraft\core\core\nms\v1_8_R3\utils\PlayerlistTrackerEntry.class
 minecraft\core\bukkit\listeners\PluginMessageListener.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticleColor.class
+minecraft\core\bukkit\config\Rank$RoleConfig.class
 org\json\simple\JSONValue.class
 minecraft\core\bukkit\BukkitParty.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.class
@@ -57,6 +57,7 @@ minecraft\core\core\database\tables\BedWarsTable.class
 minecraft\core\bukkit\plugin\config\FileUtils.class
 minecraft\core\core\party\Party.class
 minecraft\core\core\libraries\menu\UpdatablePagedMenu.class
+minecraft\core\bukkit\config\Servers$ServerConfig.class
 minecraft\core\bukkit\achievements\types\SkyWarsAchievement.class
 minecraft\core\core\nms\v1_8_R3\entity\EntityArmorStand.class
 minecraft\core\bukkit\cmd\CoreCommand.class
@@ -99,7 +100,6 @@ minecraft\core\core\libraries\profile\InvalidMojangException.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticlePacket$PacketInstantiationException.class
 minecraft\core\core\servers\balancer\Server.class
 minecraft\core\bukkit\cmd\CashCommand.class
-minecraft\core\bukkit\config\PluginConfig.class
 minecraft\core\core\servers\ServerPing.class
 minecraft\core\core\database\MongoDBDatabase.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityStatus.class
@@ -162,7 +162,6 @@ org\json\simple\JSONObject.class
 minecraft\core\core\nms\v1_8_R3\utils\PlayerNavigation$1.class
 minecraft\core\core\cash\CashException.class
 minecraft\core\core\libraries\npclib\npc\skin\SkinnableEntity.class
-minecraft\core\bukkit\config\MainConfig.class
 minecraft\core\bukkit\plugin\config\KWriter$YamlEntryInfo.class
 minecraft\core\core\player\hotbar\HotbarActionType$3.class
 minecraft\core\core\database\exception\ProfileLoadException.class
@@ -186,6 +185,7 @@ minecraft\core\core\libraries\npclib\npc\skin\SkinUpdateTracker$1.class
 minecraft\core\bukkit\plugin\logger\KLogger$MLevel.class
 minecraft\core\core\database\data\container\AchievementsContainer.class
 minecraft\core\bukkit\achievements\Achievement.class
+minecraft\core\bukkit\config\Servers.class
 minecraft\core\core\utils\BukkitUtils.class
 org\json\simple\parser\Yytoken.class
 minecraft\core\bukkit\plugin\config\KWriter$YamlEntry.class
@@ -232,6 +232,7 @@ minecraft\core\core\libraries\profile\api\MineToolsAPI.class
 minecraft\core\core\nms\v1_8_R3\entity\EntityItem$CraftItem.class
 minecraft\core\core\utils\SlickUpdater.class
 org\json\simple\ItemList.class
+minecraft\core\bukkit\config\Plugin.class
 minecraft\core\core\player\scoreboard\KScoreboard.class
 minecraft\core\core\libraries\menu\PlayerMenu.class
 minecraft\core\core\nms\v1_8_R3\entity\EntityStand.class
@@ -239,6 +240,7 @@ minecraft\core\core\party\PartyPlayer.class
 minecraft\core\core\database\data\container\PreferencesContainer.class
 minecraft\core\core\libraries\holograms\api\TouchHandler.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityDestroy.class
+minecraft\core\bukkit\config\Main.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticleVersionException.class
 minecraft\core\core\utils\particles\ReflectionUtils$PackageType.class
 minecraft\core\core\nms\v1_8_R3\network\EmptyNetworkManager$1.class
@@ -255,8 +257,8 @@ minecraft\core\core\nms\v1_8_R3\network\EmptyChannel.class
 minecraft\core\core\libraries\npclib\api\npc\NPCAnimation.class
 minecraft\core\core\libraries\npclib\NPCLibrary.class
 minecraft\core\bukkit\plugin\KPlugin.class
+minecraft\core\bukkit\config\Rank.class
 minecraft\core\core\reflection\Accessors.class
-minecraft\core\bukkit\config\ServersConfig.class
 minecraft\core\core\nms\v1_8_R3\entity\EntityStand$CraftStand.class
 minecraft\core\core\utils\particles\ParticleEffect$BlockData.class
 minecraft\core\core\utils\particles\ReflectionUtils$DataType.class

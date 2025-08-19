@@ -102,7 +102,7 @@ public class BukkitUtils {
    * customizadas.</li>
    * <li>paginas>Linha1 pagina1\nLinha2 pagina1{pular}Linha1 pagina2\nLinha2 pagina2 - Seta as páginas
    * do livro. (Utilize {pular} para pular para outra página)</li>
-   * <li>autor>&6Kiwizin - Seta o autor do livro.</li>
+   * <li>autor>&6Luiz - Seta o autor do livro.</li>
    * <li>titulo>&6Core - Seta o título do livro.</li>
    * <li>efeito>{@link PotionEffectType}:nivel(começa do 0):ticks(20ticks =
    * 1segundo)\nINVISIBILITY:0:600 - Adiciona efeitos em poções.</li>

@@ -1,5 +1,6 @@
 package minecraft.core.bukkit;
 
+import minecraft.core.bukkit.plugin.config.UtilsConfig;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import org.bukkit.entity.Player;
 
@@ -12,19 +13,14 @@ public class BukkitPartySizer {
   private static final Map<String, Integer> SIZES;
   
   static {
-    CONFIG = Core.getInstance().getConfig("utils");
-    if (!CONFIG.contains("party")) {
-      CONFIG.createSection("party.size");
-      CONFIG.set("party.size.role_master", 20);
-      CONFIG.set("party.size.role_youtuber", 15);
-      CONFIG.set("party.size.role_mvpplus", 10);
-      CONFIG.set("party.size.role_mvp", 5);
-    }
+    CONFIG = UtilsConfig.getConfig();
     
     SIZES = new LinkedHashMap<>();
-    for (String key : CONFIG.getSection("party.size").getKeys(false)) {
-      SIZES.put(key.replace("_", "."), CONFIG.getInt("party.size." + key));
-    }
+    // Tamanhos padrão baseados em permissões
+    SIZES.put("role.master", 20);
+    SIZES.put("role.youtuber", 15);
+    SIZES.put("role.mvpplus", 10);
+    SIZES.put("role.mvp", 5);
   }
   
   public static int getPartySize(Player player) {

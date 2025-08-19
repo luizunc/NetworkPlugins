@@ -7,36 +7,82 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.util.List;
 
+/**
+ * Comando para listar jogadores com nicknames falsos.
+ * Mostra todos os jogadores que estão usando fake no servidor.
+ * 
+ * @author Luiz
+ * @version 1.0
+ */
 public class FakeListCommand extends Commands {
-  
-  public FakeListCommand() {
-    super("fakel");
-  }
-  
-  @Override
-  public void perform(CommandSender sender, String[] args) {
-    if (!(sender instanceof ProxiedPlayer)) {
-      sender.sendMessage(TextComponent.fromLegacyText("§cApenas jogadores podem utilizar este comando."));
-      return;
-    }
+
+    // Constantes
+    private static final String PERMISSION_FAKELIST = "core.cmd.fakelist";
     
-    ProxiedPlayer player = (ProxiedPlayer) sender;
-            if (!player.hasPermission("core.cmd.fakelist")) {
-      player.sendMessage(TextComponent.fromLegacyText("§cVocê não possui permissão para utilizar este comando."));
-      return;
+    // Mensagens
+    private static final String MSG_PLAYERS_ONLY = "§cApenas jogadores podem utilizar este comando.";
+    private static final String MSG_NO_PERMISSION = "§cVocê não possui permissão para utilizar este comando.";
+    private static final String MSG_HEADER = " \n§eLista de nicknames falsos:\n \n";
+    private static final String MSG_FOOTER = "\n ";
+    private static final String MSG_NO_FAKES = "§cNão há nenhum usuário utilizando um nickname falso.";
+    private static final String MSG_FAKE_FORMAT = "§c%s §fé na verdade §a%s";
+
+    public FakeListCommand() {
+        super("fakel");
     }
-    
-    List<String> nicked = Bungee.listNicked();
-    StringBuilder sb = new StringBuilder();
-    for (int index = 0; index < nicked.size(); index++) {
-      sb.append("§c").append(Bungee.getFake(nicked.get(index))).append(" §fé na verdade ").append("§a").append(nicked.get(index)).append(index + 1 == nicked.size() ? "" : "\n");
+
+    @Override
+    public void perform(CommandSender sender, String[] args) {
+        // Verifica se é um jogador
+        if (!(sender instanceof ProxiedPlayer)) {
+            sender.sendMessage(TextComponent.fromLegacyText(MSG_PLAYERS_ONLY));
+            return;
+        }
+        
+        ProxiedPlayer player = (ProxiedPlayer) sender;
+        
+        // Verifica permissão
+        if (!player.hasPermission(PERMISSION_FAKELIST)) {
+            player.sendMessage(TextComponent.fromLegacyText(MSG_NO_PERMISSION));
+            return;
+        }
+        
+        // Obtém e exibe a lista de fakes
+        displayFakeList(player);
     }
-    
-    nicked.clear();
-    if (sb.length() == 0) {
-      sb.append("§cNão há nenhum usuário utilizando um nickname falso.");
+
+    /**
+     * Exibe a lista de jogadores com nicknames falsos.
+     * 
+     * @param player Jogador que solicitou a lista
+     */
+    private void displayFakeList(ProxiedPlayer player) {
+        List<String> nicked = Bungee.listNicked();
+        StringBuilder sb = new StringBuilder();
+        
+        // Constrói a lista de fakes
+        for (int index = 0; index < nicked.size(); index++) {
+            String realName = nicked.get(index);
+            String fakeName = Bungee.getFake(realName);
+            
+            sb.append(String.format(MSG_FAKE_FORMAT, fakeName, realName));
+            
+            // Adiciona quebra de linha se não for o último
+            if (index + 1 < nicked.size()) {
+                sb.append("\n");
+            }
+        }
+        
+        // Limpa a lista para liberar memória
+        nicked.clear();
+        
+        // Verifica se há fakes para exibir
+        if (sb.length() == 0) {
+            sb.append(MSG_NO_FAKES);
+        }
+        
+        // Envia a mensagem formatada
+        String finalMessage = MSG_HEADER + sb.toString() + MSG_FOOTER;
+        player.sendMessage(TextComponent.fromLegacyText(finalMessage));
     }
-    
-    player.sendMessage(TextComponent.fromLegacyText(" \n§eLista de nicknames falsos:\n \n" + sb + "\n "));
-  }
 }

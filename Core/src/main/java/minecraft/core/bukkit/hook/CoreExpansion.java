@@ -1,5 +1,6 @@
 package minecraft.core.bukkit.hook;
 
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import minecraft.core.bukkit.Core;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.Profile;
@@ -7,10 +8,7 @@ import minecraft.core.core.player.enums.PlayerVisibility;
 import minecraft.core.core.player.role.Role;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.utils.StringUtils;
-import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
-
-import java.text.SimpleDateFormat;
 
 @SuppressWarnings("all")
 public class CoreExpansion extends PlaceholderExpansion {
@@ -24,7 +22,7 @@ public class CoreExpansion extends PlaceholderExpansion {
   
   @Override
   public String getAuthor() {
-    return "Kiwizin";
+    return "Luiz";
   }
   
   @Override

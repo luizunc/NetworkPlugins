@@ -1,7 +1,3 @@
-# ========================================
-# CONFIGURAÇÃO PRINCIPAL DO PLUGIN
-# ========================================
-
 # Configurações do banco de dados
 database:
   # Tipos de bancos de dados disponíveis: MongoDB, MySQL

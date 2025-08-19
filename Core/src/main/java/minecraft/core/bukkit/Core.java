@@ -7,7 +7,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import minecraft.core.bukkit.achievements.Achievement;
 import minecraft.core.bukkit.cmd.Commands;
-import minecraft.core.bukkit.config.RolesConfig;
+import minecraft.core.bukkit.config.Rank;
 import minecraft.core.bukkit.hook.CoreExpansion;
 import minecraft.core.bukkit.hook.protocollib.FakeAdapter;
 import minecraft.core.bukkit.hook.protocollib.HologramAdapter;
@@ -26,7 +26,7 @@ import minecraft.core.core.player.fake.FakeManager;
 import minecraft.core.core.player.role.Role;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.titles.Title;
-import minecraft.core.core.utils.SlickUpdater;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -45,10 +45,10 @@ import java.util.logging.Level;
  * Classe principal do plugin Core para Bukkit/Spigot.
  * Gerencia o sistema completo de perfis, jogos, banco de dados e funcionalidades do servidor.
  * 
- * Copyright (c) 2020-2021 SliceCollections
- * Uma edição de um plugin chamado mCore.
- * Criador: https://github.com/maxteer
- * Source Code (mCore): https://github.com/slicecollections/mCore
+ * Copyright (c) 2025 Luiz(eduzp)
+ * Fork baseada nos KPlugins.
+ * Criador: https://github.com/luizunc
+ * Open Source: https://github.com/luizunc/NetworkPlugins
  */
 @SuppressWarnings("unchecked")
 public class Core extends KPlugin {
@@ -160,7 +160,6 @@ public class Core extends KPlugin {
       setupCommandsAndListeners();
       setupProtocolLib();
       setupPluginChannels();
-      scheduleUpdater();
       
       validInit = true;
       this.getLogger().info("O plugin foi ativado com sucesso.");
@@ -248,8 +247,7 @@ public class Core extends KPlugin {
           config.getString("database.mysql.usuario"),
           config.getString("database.mysql.senha"),
           config.getBoolean("database.mysql.hikari", false),
-          config.getBoolean("database.mysql.mariadb", false),
-          config.getString("database.mongodb.url")
+          config.getBoolean("database.mysql.mariadb", false)
       );
       this.getLogger().info("Banco de dados configurado com sucesso.");
     } catch (Exception e) {
@@ -318,12 +316,7 @@ public class Core extends KPlugin {
     }
   }
   
-  /**
-   * Agenda o atualizador do sistema.
-   */
-  private void scheduleUpdater() {
-    Bukkit.getScheduler().scheduleSyncDelayedTask(this, () -> new SlickUpdater(this, 2).run());
-  }
+
   
   /**
    * Salva os perfis dos jogadores online.
@@ -407,7 +400,7 @@ public class Core extends KPlugin {
   private void setupRoles() {
     if (Role.listRoles().isEmpty()) {
       try {
-        KConfig rolesConfig = RolesConfig.getConfig();
+        KConfig rolesConfig = Rank.getConfig();
         if (rolesConfig.contains("roles")) {
                   for (String roleName : rolesConfig.getConfigurationSection("roles").getKeys(false)) {
           String name = rolesConfig.getString("roles." + roleName + ".name");

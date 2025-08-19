@@ -13,7 +13,7 @@ import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.FieldAccessor;
 import minecraft.core.core.titles.TitleManager;
-import minecraft.core.core.utils.SlickUpdater;
+
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumSound;
 import net.md_5.bungee.api.ChatColor;
@@ -96,56 +96,10 @@ public class Listeners implements Listener {
 
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerJoin(PlayerJoinEvent evt) {
-    Player player = evt.getPlayer();
-            if (player.hasPermission("core.admin")) {
-      showUpdateNotification(player);
-    }
+    // Evento de join do jogador
   }
   
-  /**
-   * Mostra notificação de atualização para administradores.
-   * 
-   * @param player Jogador administrador
-   */
-  private void showUpdateNotification(Player player) {
-    if (SlickUpdater.UPDATER != null && SlickUpdater.UPDATER.canDownload) {
-      TextComponent component = createUpdateMessage();
-      player.spigot().sendMessage(component);
-      EnumSound.LEVEL_UP.play(player, 1.0F, 1.0F);
-    }
-  }
-  
-  /**
-   * Cria a mensagem de atualização com componentes interativos.
-   * 
-   * @return TextComponent com a mensagem de atualização
-   */
-  private TextComponent createUpdateMessage() {
-    TextComponent component = new TextComponent("");
-    
-    // Adiciona texto inicial
-    for (BaseComponent comp : TextComponent.fromLegacyText(
-        "\n §6§lATUALIZAÇÃO \n \n §7Foi encontrado um update novo do §6Core §f(" + 
-        SlickUpdater.getVersion(2) + ")§7, para atualizar basta clicar ")) {
-      component.addExtra(comp);
-    }
-    
-    // Adiciona botão clicável
-    TextComponent click = new TextComponent("AQUI");
-    click.setColor(ChatColor.GREEN);
-    click.setBold(true);
-    click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/kc atualizar"));
-    click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
-        TextComponent.fromLegacyText("§7Clique aqui para atualizar o Core.")));
-    component.addExtra(click);
-    
-    // Adiciona texto final
-    for (BaseComponent comp : TextComponent.fromLegacyText("§7.\n ")) {
-      component.addExtra(comp);
-    }
-    
-    return component;
-  }
+
   
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerQuit(PlayerQuitEvent evt) {

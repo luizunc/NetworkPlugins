@@ -1,12 +1,10 @@
 package minecraft.core.core.titles;
 
-import com.mongodb.client.MongoCursor;
 import minecraft.core.core.database.Database;
-import minecraft.core.core.database.MongoDBDatabase;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
-import org.bson.Document;
+
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -42,17 +40,7 @@ public class Title {
     TITLES.add(new Title("bww", "§6Anjo Sonolento", "&8Pode ser desbloqueado através do\n&8Desafio \"Protetor de Camas\"&8."));
     TITLES.add(new Title("bwp", "§4Pesadelo", "&8Pode ser desbloqueado através do\n&8Desafio \"Freddy Krueger\"&8."));
     
-    if (Database.getInstance() instanceof MongoDBDatabase) {
-      MongoDBDatabase database = ((MongoDBDatabase) Database.getInstance());
-      
-      MongoCursor<Document> titles = database.getDatabase().getCollection("CoreTitles").find().cursor();
-      while (titles.hasNext()) {
-        Document title = titles.next();
-        TITLES.add(new Title(title.getString("_id"), title.getString("name"), title.getString("description")));
-      }
-      
-      titles.close();
-    }
+
   }
   
   public static Title getById(String id) {

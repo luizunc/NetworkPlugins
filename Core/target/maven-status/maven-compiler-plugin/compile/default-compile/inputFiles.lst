@@ -17,10 +17,10 @@ C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\cmd\C
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\cmd\CoreCommand.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\cmd\FakeCommand.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\cmd\PartyCommand.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\MainConfig.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\PluginConfig.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\RolesConfig.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\ServersConfig.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\Main.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\Plugin.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\Rank.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\config\Servers.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\Core.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\hook\CoreExpansion.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bukkit\hook\FriendsHook.java

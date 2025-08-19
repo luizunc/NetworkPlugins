@@ -1,7 +1,3 @@
-# ========================================
-# CONFIGURAÇÃO DO PLUGIN BUKKIT
-# ========================================
-
 # Informações do plugin
 author: LuizOtimizador
 name: ${project.artifactId}

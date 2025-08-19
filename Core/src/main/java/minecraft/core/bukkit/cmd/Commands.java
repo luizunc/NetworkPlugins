@@ -15,10 +15,16 @@ import java.util.logging.Level;
 /**
  * Classe abstrata base para comandos do sistema Core.
  * Fornece funcionalidades comuns de registro e execução de comandos.
+ * 
+ * @author Luiz
+ * @version 1.0
  */
 public abstract class Commands extends Command {
 
+    // Constantes
     private static final String COMMAND_PREFIX = "core";
+    private static final String ERROR_REGISTER = "Erro ao registrar comando: ";
+    private static final String ERROR_EXECUTE = "Erro ao executar comando ";
 
     /**
      * Construtor que registra o comando automaticamente.
@@ -40,7 +46,11 @@ public abstract class Commands extends Command {
             SimpleCommandMap commandMap = getCommandMap();
             commandMap.register(this.getName(), COMMAND_PREFIX, this);
         } catch (ReflectiveOperationException ex) {
-            Core.getInstance().getLogger().log(Level.SEVERE, "Erro ao registrar comando: " + this.getName(), ex);
+            Core.getInstance().getLogger().log(
+                Level.SEVERE, 
+                ERROR_REGISTER + this.getName(), 
+                ex
+            );
         }
     }
 
@@ -51,7 +61,10 @@ public abstract class Commands extends Command {
      * @throws ReflectiveOperationException Se houver erro na reflection
      */
     private SimpleCommandMap getCommandMap() throws ReflectiveOperationException {
-        Method getCommandMapMethod = Bukkit.getServer().getClass().getDeclaredMethod("getCommandMap");
+        Method getCommandMapMethod = Bukkit.getServer()
+            .getClass()
+            .getDeclaredMethod("getCommandMap");
+        
         return (SimpleCommandMap) getCommandMapMethod.invoke(Bukkit.getServer());
     }
 
@@ -107,8 +120,11 @@ public abstract class Commands extends Command {
             this.perform(sender, commandLabel, args);
             return true;
         } catch (Exception e) {
-            Core.getInstance().getLogger().log(Level.WARNING, 
-                "Erro ao executar comando " + this.getName() + " para " + sender.getName(), e);
+            Core.getInstance().getLogger().log(
+                Level.WARNING, 
+                ERROR_EXECUTE + this.getName() + " para " + sender.getName(), 
+                e
+            );
             return false;
         }
     }
