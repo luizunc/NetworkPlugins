@@ -495,6 +495,11 @@ public class Profile {
       updateMonthlyStats(table);
       this.getDataContainer(table, key).addLong(amount);
     }
+    
+    // Atualiza o título se as estatísticas modificadas são relevantes para títulos
+    if (table.equals("skywars") || table.equals("bedwars")) {
+      TitleManager.updatePlayerTitle(this);
+    }
   }
   
   /**

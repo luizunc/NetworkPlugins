@@ -1,7 +1,7 @@
 package minecraft.core.bukkit.menus.profile;
 
 import minecraft.core.bukkit.Core;
-import minecraft.core.core.libraries.menu.PagedPlayerMenu;
+import minecraft.core.core.libraries.menu.UpdatablePlayerMenu;
 import minecraft.core.bukkit.menus.MenuProfile;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.titles.Title;
@@ -28,13 +28,12 @@ import java.util.Map;
  * @author Luiz
  * @version 1.0
  */
-public class MenuTitles extends PagedPlayerMenu {
+public class MenuTitles extends UpdatablePlayerMenu {
   
   // Constantes
   private static final String MENU_TITLE = "Títulos";
   private static final int MENU_ROWS = 5;
-  private static final int SLOT_PREVIOUS_PAGE = 36;
-  private static final int SLOT_NEXT_PAGE = 44;
+  private static final int UPDATE_INTERVAL = 20; // 1 segundo
   private static final int SLOT_VOLTAR = 40;
   
   // Slots disponíveis para títulos
@@ -42,6 +41,7 @@ public class MenuTitles extends PagedPlayerMenu {
   
   // Mapa de itens para títulos
   private Map<ItemStack, Title> titles = new HashMap<>();
+  private Profile profile;
   
   /**
    * Construtor do menu de títulos.
@@ -50,38 +50,25 @@ public class MenuTitles extends PagedPlayerMenu {
    */
   public MenuTitles(Profile profile) {
     super(profile.getPlayer(), MENU_TITLE, MENU_ROWS);
+    this.profile = profile;
     
-    setupMenu(profile);
+    setupMenu();
   }
   
   /**
    * Configura o menu inicial.
-   * 
-   * @param profile Perfil do jogador
    */
-  private void setupMenu(Profile profile) {
-    setupPagination();
-    setupItems(profile);
-    register(Core.getInstance());
+  private void setupMenu() {
+    setupItems();
+    setItem(SLOT_VOLTAR, createVoltarItem());
+    register(Core.getInstance(), UPDATE_INTERVAL);
     open();
   }
   
   /**
-   * Configura a paginação do menu.
-   */
-  private void setupPagination() {
-    previousPage = SLOT_PREVIOUS_PAGE;
-    nextPage = SLOT_NEXT_PAGE;
-    onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25);
-    removeSlotsWith(createVoltarItem(), SLOT_VOLTAR);
-  }
-  
-  /**
    * Configura os itens do menu.
-   * 
-   * @param profile Perfil do jogador
    */
-  private void setupItems(Profile profile) {
+  private void setupItems() {
     List<ItemStack> items = new ArrayList<>();
     List<ItemStack> sub = new ArrayList<>();
     
@@ -97,7 +84,15 @@ public class MenuTitles extends PagedPlayerMenu {
     }
     
     items.addAll(sub);
-    setItems(items);
+    
+    // Adiciona os itens aos slots disponíveis
+    int slotIndex = 0;
+    for (ItemStack item : items) {
+      if (slotIndex < TITLE_SLOTS.length) {
+        setItem(TITLE_SLOTS[slotIndex], item);
+        slotIndex++;
+      }
+    }
     
     // Limpa as listas
     sub.clear();
@@ -120,7 +115,7 @@ public class MenuTitles extends PagedPlayerMenu {
    */
   @EventHandler
   public void onInventoryClick(InventoryClickEvent evt) {
-    if (!evt.getInventory().equals(getCurrentInventory()) || !evt.getWhoClicked().equals(player)) {
+    if (!evt.getInventory().equals(getInventory()) || !evt.getWhoClicked().equals(player)) {
       return;
     }
     
@@ -132,7 +127,7 @@ public class MenuTitles extends PagedPlayerMenu {
       return;
     }
     
-    if (evt.getClickedInventory() == null || !evt.getClickedInventory().equals(getCurrentInventory())) {
+    if (evt.getClickedInventory() == null || !evt.getClickedInventory().equals(getInventory())) {
       return;
     }
     
@@ -153,16 +148,6 @@ public class MenuTitles extends PagedPlayerMenu {
    */
   private void handleItemClick(int slot, ItemStack item, Profile profile) {
     switch (slot) {
-      case SLOT_PREVIOUS_PAGE:
-        EnumSound.CLICK.play(player, 0.5F, 2.0F);
-        openPrevious();
-        break;
-        
-      case SLOT_NEXT_PAGE:
-        EnumSound.CLICK.play(player, 0.5F, 2.0F);
-        openNext();
-        break;
-        
       case SLOT_VOLTAR:
         EnumSound.CLICK.play(player, 0.5F, 2.0F);
         new MenuProfile(profile);
@@ -186,7 +171,19 @@ public class MenuTitles extends PagedPlayerMenu {
       return;
     }
     
+    // Verifica se o jogador tem rank Iron ou superior
+    boolean hasIronPlus = hasIronOrHigherRank(profile);
+    
     if (!title.has(profile)) {
+      // Se tem rank Iron+ e não possui o título, dá o título
+      if (hasIronPlus && !profile.getTitlesContainer().has(title)) {
+        title.give(profile);
+        EnumSound.ITEM_PICKUP.play(player, 0.5F, 2.0F);
+        player.sendMessage("§aVocê obteve o título: " + title.getTitle());
+        new MenuTitles(profile);
+        return;
+      }
+      
       EnumSound.ENDERMAN_TELEPORT.play(player, 0.5F, 1.0F);
       return;
     }
@@ -208,11 +205,65 @@ public class MenuTitles extends PagedPlayerMenu {
   }
   
   /**
+   * Verifica se o jogador tem rank Iron ou superior.
+   * 
+   * @param profile Perfil do jogador
+   * @return true se tem rank Iron ou superior
+   */
+  private boolean hasIronOrHigherRank(Profile profile) {
+    if (profile.getPlayer() == null) {
+      return false;
+    }
+    
+    // Ranks em ordem (do mais baixo para o mais alto)
+    String[] rankOrder = {"membro", "iron", "gold", "emerald", "creator", "builder", "staff", "trial", "mod", "admin"};
+    
+    // Obtém o rank atual do jogador
+    minecraft.core.core.player.role.Rank currentRank = minecraft.core.core.player.role.Rank.getPlayerRank(profile.getPlayer(), true);
+    String currentRankName = minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName()).toLowerCase();
+    
+    // Encontra a posição do rank atual
+    int currentRankIndex = -1;
+    for (int i = 0; i < rankOrder.length; i++) {
+      if (rankOrder[i].equals(currentRankName)) {
+        currentRankIndex = i;
+        break;
+      }
+    }
+    
+    // Se não encontrou o rank, assume que é membro (mais baixo)
+    if (currentRankIndex == -1) {
+      currentRankIndex = 0; // membro
+    }
+    
+    // Encontra a posição do rank Iron
+    int ironRankIndex = -1;
+    for (int i = 0; i < rankOrder.length; i++) {
+      if (rankOrder[i].equals("iron")) {
+        ironRankIndex = i;
+        break;
+      }
+    }
+    
+    // Retorna true se o rank atual é igual ou superior ao Iron
+    return currentRankIndex >= ironRankIndex;
+  }
+  
+  /**
+   * Atualiza os itens do menu.
+   */
+  @Override
+  public void update() {
+    setupItems();
+  }
+  
+  /**
    * Cancela o registro de eventos.
    */
   public void cancel() {
     titles.clear();
     titles = null;
+    super.cancel();
     HandlerList.unregisterAll(this);
   }
   
@@ -235,7 +286,7 @@ public class MenuTitles extends PagedPlayerMenu {
    */
   @EventHandler
   public void onInventoryClose(InventoryCloseEvent evt) {
-    if (evt.getPlayer().equals(player) && evt.getInventory().equals(getCurrentInventory())) {
+    if (evt.getPlayer().equals(player) && evt.getInventory().equals(getInventory())) {
       cancel();
     }
   }

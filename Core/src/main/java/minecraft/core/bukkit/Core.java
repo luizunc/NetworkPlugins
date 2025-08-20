@@ -25,6 +25,7 @@ import minecraft.core.core.player.fake.FakeManager;
 import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.titles.Title;
+import minecraft.core.core.titles.TitleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -156,6 +157,7 @@ public class Core extends KPlugin {
       setupCommandsAndListeners();
       setupProtocolLib();
       setupPluginChannels();
+      setupTitleUpdater();
       
       validInit = true;
       this.getLogger().info("O plugin foi ativado com sucesso.");
@@ -268,6 +270,11 @@ public class Core extends KPlugin {
     Title.setupTitles();
     ServerItem.setupServers();
     Achievement.setupAchievements();
+    
+    // Agenda atualização periódica dos títulos
+    Bukkit.getScheduler().runTaskTimer(this, () -> {
+      TitleManager.updateAllTitles();
+    }, 20L, 20L); // Atualiza a cada segundo
   }
   
   /**
@@ -309,6 +316,15 @@ public class Core extends KPlugin {
     } catch (Exception e) {
       this.getLogger().log(Level.WARNING, "Erro ao configurar canais de plugin", e);
     }
+  }
+  
+  /**
+   * Configura o sistema de atualização automática dos títulos.
+   * Agora cada TitleController tem seu próprio scheduler para melhor performance.
+   */
+  private void setupTitleUpdater() {
+    // Sistema de atualização movido para TitleController individual
+    // Cada título agora atualiza sua posição independentemente
   }
   
 

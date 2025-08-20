@@ -36,7 +36,7 @@ public class CoreTable extends DataTable {
     Map<String, DataContainer> defaultValues = new LinkedHashMap<>();
     defaultValues.put("cash", new DataContainer(0L));
             defaultValues.put("rank", new DataContainer("Membro"));
-    defaultValues.put("preferences", new DataContainer("{\"pv\": 0, \"pm\": 0, \"bg\": 0, \"pl\": 0}"));
+    defaultValues.put("preferences", new DataContainer("{\"pv\": 0, \"pm\": 0, \"bg\": 0, \"pl\": 0, \"ss\": 0}"));
     defaultValues.put("titles", new DataContainer("[]"));
     defaultValues.put("achievements", new DataContainer("[]"));
     defaultValues.put("selected", new DataContainer("{\"title\": \"0\", \"icon\": \"0\"}"));

@@ -86,6 +86,7 @@ public abstract class Commands extends Command {
     private static void registerBasicCommands() {
         new CoreCommand();
         new CoinsCommand();
+        new StatsCommand();
     }
 
     /**

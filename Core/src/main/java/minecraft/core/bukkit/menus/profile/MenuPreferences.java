@@ -9,6 +9,7 @@ import minecraft.core.core.player.enums.BloodAndGore;
 import minecraft.core.core.player.enums.PlayerVisibility;
 import minecraft.core.core.player.enums.PrivateMessages;
 import minecraft.core.core.player.enums.ProtectionLobby;
+import minecraft.core.core.player.enums.ShowStatistics;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumSound;
@@ -34,14 +35,16 @@ public class MenuPreferences extends PlayerMenu {
   private static final int MENU_ROWS = 5;
   
   // Slots dos itens
-  private static final int SLOT_JOGADORES_INFO = 11;
-  private static final int SLOT_JOGADORES_TOGGLE = 20;
-  private static final int SLOT_MSG_PRIVADAS_INFO = 12;
-  private static final int SLOT_MSG_PRIVADAS_TOGGLE = 21;
-  private static final int SLOT_VIOLENCIA_INFO = 14;
-  private static final int SLOT_VIOLENCIA_TOGGLE = 23;
-  private static final int SLOT_PROTECAO_INFO = 15;
-  private static final int SLOT_PROTECAO_TOGGLE = 24;
+  private static final int SLOT_JOGADORES_INFO = 10;
+  private static final int SLOT_JOGADORES_TOGGLE = 19;
+  private static final int SLOT_MSG_PRIVADAS_INFO = 11;
+  private static final int SLOT_MSG_PRIVADAS_TOGGLE = 20;
+  private static final int SLOT_VIOLENCIA_INFO = 12;
+  private static final int SLOT_VIOLENCIA_TOGGLE = 21;
+  private static final int SLOT_PROTECAO_INFO = 14;
+  private static final int SLOT_PROTECAO_TOGGLE = 23;
+  private static final int SLOT_ESTATISTICAS_INFO = 15;
+  private static final int SLOT_ESTATISTICAS_TOGGLE = 24;
   private static final int SLOT_VOLTAR = 40;
   
   /**
@@ -80,6 +83,10 @@ public class MenuPreferences extends PlayerMenu {
     // Proteção Lobby
     setItem(SLOT_PROTECAO_INFO, createProtecaoInfoItem());
     setItem(SLOT_PROTECAO_TOGGLE, createToggleItem(pc.getProtectionLobby()));
+    
+    // Estatísticas
+    setItem(SLOT_ESTATISTICAS_INFO, createEstatisticasInfoItem());
+    setItem(SLOT_ESTATISTICAS_TOGGLE, createToggleItem(pc.getShowStatistics()));
     
     // Voltar
     setItem(SLOT_VOLTAR, createVoltarItem());
@@ -130,6 +137,17 @@ public class MenuPreferences extends PlayerMenu {
   }
   
   /**
+   * Cria o item de informação sobre estatísticas.
+   * 
+   * @return ItemStack do item
+   */
+  private ItemStack createEstatisticasInfoItem() {
+    return BukkitUtils.deserializeItemStack(
+        "HOPPER : 1 : nome>&aMostrar Estatísticas : desc>&7Ative ou desative se outros jogadores\n" +
+        "&7podem ver suas estatísticas com /stats.");
+  }
+  
+  /**
    * Cria um item de toggle genérico.
    * 
    * @param enumValue Enum com informações do toggle
@@ -155,6 +173,10 @@ public class MenuPreferences extends PlayerMenu {
       ProtectionLobby pl = (ProtectionLobby) enumValue;
       displayName = pl.getName();
       inkSack = pl.getInkSack();
+    } else if (enumValue instanceof ShowStatistics) {
+      ShowStatistics ss = (ShowStatistics) enumValue;
+      displayName = ss.getName();
+      inkSack = ss.getInkSack();
     }
     
     return BukkitUtils.deserializeItemStack(
@@ -216,6 +238,7 @@ public class MenuPreferences extends PlayerMenu {
       case SLOT_MSG_PRIVADAS_INFO:
       case SLOT_VIOLENCIA_INFO:
       case SLOT_PROTECAO_INFO:
+      case SLOT_ESTATISTICAS_INFO:
         EnumSound.CLICK.play(player, 0.5F, 2.0F);
         break;
         
@@ -243,6 +266,12 @@ public class MenuPreferences extends PlayerMenu {
       case SLOT_PROTECAO_TOGGLE:
         EnumSound.ITEM_PICKUP.play(player, 0.5F, 2.0F);
         profile.getPreferencesContainer().changeProtectionLobby();
+        new MenuPreferences(profile);
+        break;
+        
+      case SLOT_ESTATISTICAS_TOGGLE:
+        EnumSound.ITEM_PICKUP.play(player, 0.5F, 2.0F);
+        profile.getPreferencesContainer().changeShowStatistics();
         new MenuPreferences(profile);
         break;
         

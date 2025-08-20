@@ -27,12 +27,15 @@ import org.bukkit.Material;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Bat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.spigotmc.WatchdogThread;
 
@@ -343,7 +346,7 @@ public class Listeners implements Listener {
   
   // Eventos de interação
   
-  @EventHandler
+  @EventHandler(priority = EventPriority.HIGHEST)
   public void onPlayerInteract(PlayerInteractEvent evt) {
     handlePlayerInteract(evt);
   }
@@ -362,22 +365,28 @@ public class Listeners implements Listener {
     }
     
     ItemStack item = player.getItemInHand();
-    if (evt.getAction().name().contains("CLICK") && item != null && item.hasItemMeta()) {
+    
+    // Aceita tanto cliques com botão esquerdo quanto direito
+    if ((evt.getAction() == Action.RIGHT_CLICK_AIR || evt.getAction() == Action.RIGHT_CLICK_BLOCK || 
+         evt.getAction() == Action.LEFT_CLICK_AIR || evt.getAction() == Action.LEFT_CLICK_BLOCK) && 
+        item != null && item.hasItemMeta()) {
       HotbarButton button = profile.getHotbar().compareButton(player, item);
       if (button != null) {
         evt.setCancelled(true);
         button.getAction().execute(profile);
+        return; // Retorna imediatamente para evitar processamento adicional
       }
     }
   }
   
   @EventHandler(priority = EventPriority.HIGHEST)
   public void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent evt) {
-    if (evt.getRightClicked() instanceof ArmorStand) {
-      if (evt.getPlayer().getGameMode() == GameMode.ADVENTURE) {
-        evt.setCancelled(true);
-      }
-    }
+    // Não cancela mais interações com ArmorStands, pois agora eles seguem o jogador
+  }
+  
+  @EventHandler(priority = EventPriority.HIGHEST)
+  public void onPlayerInteractEntity(PlayerInteractEntityEvent evt) {
+    // Não cancela mais interações com ArmorStands, pois agora eles seguem o jogador
   }
   
   @EventHandler(priority = EventPriority.LOWEST)
@@ -405,6 +414,7 @@ public class Listeners implements Listener {
       return;
     }
     
+    // Aceita tanto cliques com botão esquerdo quanto direito no inventário
     if (evt.getClickedInventory() != null && evt.getClickedInventory().equals(player.getInventory())) {
       HotbarButton button = profile.getHotbar().compareButton(player, item);
       if (button != null) {

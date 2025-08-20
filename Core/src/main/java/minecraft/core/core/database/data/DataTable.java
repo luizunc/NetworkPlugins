@@ -18,9 +18,6 @@ public abstract class DataTable {
     TABLES.add(new CoreTable());
     TABLES.add(new SkyWarsTable());
     TABLES.add(new BedWarsTable());
-    // TABLES.add(new BuildBattleTable()); // Removido - Build Battle não é mais suportado
-    // TABLES.add(new TheBridgeTable()); // Removido - The Bridge não é mais suportado
-    // TABLES.add(new MurderTable()); // Removido - Murder não é mais suportado
   }
   
   public static void registerTable(DataTable table) {

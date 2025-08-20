@@ -58,6 +58,11 @@ public class TitleManager {
     TitleController controller = this.getTitleController(profile);
     if (controller != null) {
       controller.enable();
+      // Atualiza o título com as estatísticas mais recentes
+      Title title = profile.getSelectedContainer().getTitle();
+      if (title != null) {
+        controller.setName(title.getProcessedTitle(profile));
+      }
     } else {
       Title title = profile.getSelectedContainer().getTitle();
       if (title != null && !this.controllers.containsKey(profile.getName())) {
@@ -112,13 +117,13 @@ public class TitleManager {
   public void onSelectTitle(Profile profile, Title title) {
     TitleController controller = this.getTitleController(profile);
     if (controller == null) {
-      controller = new TitleController(profile.getPlayer(), title.getTitle());
+      controller = new TitleController(profile.getPlayer(), title.getProcessedTitle(profile));
       controller.enable();
       this.controllers.put(profile.getName(), controller);
       return;
     }
     
-    controller.setName(title.getTitle());
+    controller.setName(title.getProcessedTitle(profile));
   }
   
   public void onDeselectTitle(Profile profile) {
@@ -132,5 +137,44 @@ public class TitleManager {
   
   public TitleController getTitleController(Profile profile) {
     return this.controllers.get(profile.getName());
+  }
+  
+  /**
+   * Atualiza todos os títulos com as estatísticas mais recentes.
+   */
+  public static void updateAllTitles() {
+    TITLE_MANAGER.controllers.forEach((playerName, controller) -> {
+      Profile profile = Profile.getProfile(playerName);
+      if (profile != null && profile.getPlayer() != null) {
+        Title title = profile.getSelectedContainer().getTitle();
+        if (title != null) {
+          controller.setName(title.getProcessedTitle(profile));
+        }
+      }
+    });
+  }
+  
+  /**
+   * Atualiza o título de um jogador específico.
+   * 
+   * @param profile Perfil do jogador
+   */
+  public static void updatePlayerTitle(Profile profile) {
+    TITLE_MANAGER.onUpdatePlayerTitle(profile);
+  }
+  
+  /**
+   * Atualiza o título de um jogador específico.
+   * 
+   * @param profile Perfil do jogador
+   */
+  public void onUpdatePlayerTitle(Profile profile) {
+    TitleController controller = this.getTitleController(profile);
+    if (controller != null) {
+      Title title = profile.getSelectedContainer().getTitle();
+      if (title != null) {
+        controller.setName(title.getProcessedTitle(profile));
+      }
+    }
   }
 }

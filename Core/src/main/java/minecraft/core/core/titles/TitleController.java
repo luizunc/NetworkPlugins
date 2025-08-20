@@ -142,4 +142,13 @@ public class TitleController {
   public Player getOwner() {
     return this.owner;
   }
+  
+  /**
+   * Obtém o nome atual do título.
+   * 
+   * @return Nome atual do título
+   */
+  public String getCurrentName() {
+    return this.watcher.getString(2);
+  }
 }
