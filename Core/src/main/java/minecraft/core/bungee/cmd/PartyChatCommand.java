@@ -2,7 +2,7 @@ package minecraft.core.bungee.cmd;
 
 import minecraft.core.bungee.party.BungeeParty;
 import minecraft.core.bungee.party.BungeePartyManager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -62,7 +62,7 @@ public class PartyChatCommand extends Commands {
      * @param args Argumentos contendo a mensagem
      */
     private void sendPartyMessage(BungeeParty party, ProxiedPlayer player, String[] args) {
-        String playerPrefix = Role.getPrefixed(player.getName());
+        String playerPrefix = Rank.getPrefixed(player.getName());
         String message = StringUtils.join(args, " ");
         String formattedMessage = String.format(MSG_PARTY_CHAT, playerPrefix, message);
         

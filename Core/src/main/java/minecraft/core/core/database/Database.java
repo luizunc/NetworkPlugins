@@ -3,7 +3,7 @@ package minecraft.core.core.database;
 import minecraft.core.Manager;
 import minecraft.core.bukkit.Core;
 import minecraft.core.bungee.Bungee;
-import minecraft.core.core.database.cache.RoleCache;
+import minecraft.core.core.database.cache.RankCache;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.database.exception.ProfileLoadException;
 
@@ -37,7 +37,6 @@ public abstract class Database {
    * @param mysqlPassword Senha do MySQL
    * @param hikari Se deve usar HikariCP
    * @param mariadb Se deve usar MariaDB
-   * @param mongoURL URL do MongoDB
    */
   public static void setupDatabase(String type, String mysqlHost, String mysqlPort, String mysqlDbname, 
                                   String mysqlUsername, String mysqlPassword, boolean hikari, boolean mariadb) {
@@ -48,8 +47,8 @@ public abstract class Database {
     instance = createDatabaseInstance(type, mysqlHost, mysqlPort, mysqlDbname, mysqlUsername, 
                                     mysqlPassword, hikari, mariadb);
     
-    // Configura limpeza automática do cache de roles
-    scheduleRoleCacheCleanup();
+            // Configura limpeza automática do cache de ranks
+        scheduleRankCacheCleanup();
   }
   
   /**
@@ -63,7 +62,6 @@ public abstract class Database {
    * @param mysqlPassword Senha do MySQL
    * @param hikari Se deve usar HikariCP
    * @param mariadb Se deve usar MariaDB
-   * @param mongoURL URL do MongoDB
    * @return Instância do banco de dados
    */
   private static Database createDatabaseInstance(String type, String mysqlHost, String mysqlPort, 
@@ -94,14 +92,14 @@ public abstract class Database {
   }
   
   /**
-   * Agenda a limpeza automática do cache de roles.
+   * Agenda a limpeza automática do cache de ranks.
    */
-  private static void scheduleRoleCacheCleanup() {
+  private static void scheduleRankCacheCleanup() {
     Timer timer = new Timer();
     long initialDelay = TimeUnit.SECONDS.toMillis(60);
     long period = TimeUnit.SECONDS.toMillis(60);
     
-    timer.scheduleAtFixedRate(RoleCache.clearCache(), initialDelay, period);
+    timer.scheduleAtFixedRate(RankCache.clearCache(), initialDelay, period);
   }
   
   /**

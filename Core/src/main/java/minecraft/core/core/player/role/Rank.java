@@ -2,7 +2,7 @@ package minecraft.core.core.player.role;
 
 import minecraft.core.Manager;
 import minecraft.core.core.database.Database;
-import minecraft.core.core.database.cache.RoleCache;
+import minecraft.core.core.database.cache.RankCache;
 import minecraft.core.core.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Representa um role (cargo) no sistema Core.
+ * Representa um rank (cargo) no sistema Core.
  * Gerencia permissões, prefixos e configurações de visibilidade dos jogadores.
  */
-public final class Role {
+public final class Rank {
   
-  // Cache estático de roles
-  private static final List<Role> ROLES = new ArrayList<>();
+  // Cache estático de ranks
+  private static final List<Rank> RANKS = new ArrayList<>();
   
-  // Dados do role
+  // Dados do rank
   private final int id;
   private final String name;
   private final String prefix;
@@ -27,19 +27,19 @@ public final class Role {
   private final boolean broadcast;
   
   /**
-   * Construtor que cria um novo role.
+   * Construtor que cria um novo rank.
    * 
-   * @param name Nome do role
-   * @param prefix Prefixo do role
-   * @param permission Permissão do role
-   * @param alwaysVisible Se o role é sempre visível
-   * @param broadcast Se o role pode fazer broadcast
+   * @param name Nome do rank
+   * @param prefix Prefixo do rank
+   * @param permission Permissão do rank
+   * @param alwaysVisible Se o rank é sempre visível
+   * @param broadcast Se o rank pode fazer broadcast
    */
-  public Role(String name, String prefix, String permission, boolean alwaysVisible, boolean broadcast) {
-    this.id = ROLES.size();
-    this.name = StringUtils.formatColors(Objects.requireNonNull(name, "Nome do role não pode ser nulo"));
-    this.prefix = StringUtils.formatColors(Objects.requireNonNull(prefix, "Prefixo do role não pode ser nulo"));
-    this.permission = Objects.requireNonNull(permission, "Permissão do role não pode ser nulo");
+  public Rank(String name, String prefix, String permission, boolean alwaysVisible, boolean broadcast) {
+    this.id = RANKS.size();
+    this.name = StringUtils.formatColors(Objects.requireNonNull(name, "Nome do rank não pode ser nulo"));
+    this.prefix = StringUtils.formatColors(Objects.requireNonNull(prefix, "Prefixo do rank não pode ser nulo"));
+    this.permission = Objects.requireNonNull(permission, "Permissão do rank não pode ser nulo");
     this.alwaysVisible = alwaysVisible;
     this.broadcast = broadcast;
   }
@@ -124,8 +124,8 @@ public final class Role {
    * @return Nome com tag
    */
   private static String getFakeTaggedName(String name, boolean onlyColor) {
-    Role fakeRole = Manager.getFakeRole(name);
-    String prefix = fakeRole.getPrefix();
+    Rank fakeRank = Manager.getFakeRank(name);
+    String prefix = fakeRank.getPrefix();
     
     if (onlyColor) {
       prefix = StringUtils.getLastColor(prefix);
@@ -143,8 +143,8 @@ public final class Role {
    * @return Nome com tag
    */
   private static String getOnlinePlayerTaggedName(String name, Object target, boolean onlyColor) {
-    Role role = getPlayerRole(target, true);
-    String prefix = role.getPrefix();
+    Rank rank = getPlayerRank(target, true);
+    String prefix = rank.getPrefix();
     
     if (onlyColor) {
       prefix = StringUtils.getLastColor(prefix);
@@ -162,7 +162,7 @@ public final class Role {
    * @return Nome com tag
    */
   private static String getOfflinePlayerTaggedName(String name, boolean onlyColor, boolean removeFake) {
-    String rankAndName = RoleCache.isPresent(name) ? RoleCache.get(name) : Database.getInstance().getRankAndName(name);
+    String rankAndName = RankCache.isPresent(name) ? RankCache.get(name) : Database.getInstance().getRankAndName(name);
     
     if (rankAndName == null) {
       return "&7" + name;
@@ -173,11 +173,11 @@ public final class Role {
       return "&7" + name;
     }
     
-    String roleName = parts[0];
+    String rankName = parts[0];
     String playerName = parts[1];
     
-    Role role = getRoleByName(roleName);
-    String prefix = role.getPrefix();
+    Rank rank = getRankByName(rankName);
+    String prefix = rank.getPrefix();
     
     if (onlyColor) {
       prefix = StringUtils.getLastColor(prefix);
@@ -191,95 +191,95 @@ public final class Role {
     return prefix + playerName;
   }
   
-  // Métodos estáticos para buscar roles
+  // Métodos estáticos para buscar ranks
   
   /**
-   * Obtém um role pelo nome.
+   * Obtém um rank pelo nome.
    * 
-   * @param name Nome do role
-   * @return Role encontrado ou o último role se não encontrar
+   * @param name Nome do rank
+   * @return Rank encontrado ou o último rank se não encontrar
    */
-  public static Role getRoleByName(String name) {
-    if (name == null || ROLES.isEmpty()) {
-      return getLastRole();
+  public static Rank getRankByName(String name) {
+    if (name == null || RANKS.isEmpty()) {
+      return getLastRank();
     }
     
     String strippedName = StringUtils.stripColors(name);
-    return ROLES.stream()
-        .filter(role -> StringUtils.stripColors(role.getName()).equalsIgnoreCase(strippedName))
+    return RANKS.stream()
+        .filter(rank -> StringUtils.stripColors(rank.getName()).equalsIgnoreCase(strippedName))
         .findFirst()
-        .orElseGet(Role::getLastRole);
+        .orElseGet(Rank::getLastRank);
   }
   
   /**
-   * Obtém um role pela permissão.
+   * Obtém um rank pela permissão.
    * 
-   * @param permission Permissão do role
-   * @return Role encontrado ou null se não encontrar
+   * @param permission Permissão do rank
+   * @return Rank encontrado ou null se não encontrar
    */
-  public static Role getRoleByPermission(String permission) {
+  public static Rank getRankByPermission(String permission) {
     if (permission == null) {
       return null;
     }
     
-    return ROLES.stream()
-        .filter(role -> role.getPermission().equals(permission))
+    return RANKS.stream()
+        .filter(rank -> rank.getPermission().equals(permission))
         .findFirst()
         .orElse(null);
   }
   
   /**
-   * Obtém o role de um jogador.
+   * Obtém o rank de um jogador.
    * 
    * @param player Objeto do jogador
-   * @return Role do jogador
+   * @return Rank do jogador
    */
-  public static Role getPlayerRole(Object player) {
-    return getPlayerRole(player, false);
+  public static Rank getPlayerRank(Object player) {
+    return getPlayerRank(player, false);
   }
   
   /**
-   * Obtém o role de um jogador.
+   * Obtém o rank de um jogador.
    * 
    * @param player Objeto do jogador
    * @param removeFake Se deve remover fake
-   * @return Role do jogador
+   * @return Rank do jogador
    */
-  public static Role getPlayerRole(Object player, boolean removeFake) {
+  public static Rank getPlayerRank(Object player, boolean removeFake) {
     if (player == null) {
-      return getLastRole();
+      return getLastRank();
     }
     
     String playerName = Manager.getName(player);
     
     // Verifica se é um fake
     if (!removeFake && Manager.isFake(playerName)) {
-      return Manager.getFakeRole(playerName);
+      return Manager.getFakeRank(playerName);
     }
     
-    // Busca o role com permissão
-    return ROLES.stream()
-        .filter(role -> role.has(player))
-        .findFirst()
-        .orElseGet(Role::getLastRole);
+    // Busca o rank mais alto com permissão (menor ID = mais alto)
+    return RANKS.stream()
+        .filter(rank -> rank.has(player))
+        .min((r1, r2) -> Integer.compare(r1.getId(), r2.getId()))
+        .orElseGet(Rank::getLastRank);
   }
   
   /**
-   * Obtém o último role da lista (role padrão).
+   * Obtém o último rank da lista (rank padrão).
    * 
-   * @return Último role
+   * @return Último rank
    */
-  public static Role getLastRole() {
-    return ROLES.isEmpty() ? null : ROLES.get(ROLES.size() - 1);
+  public static Rank getLastRank() {
+    return RANKS.isEmpty() ? null : RANKS.get(RANKS.size() - 1);
   }
   
   /**
-   * Obtém todos os roles.
+   * Obtém todos os ranks.
    * 
-   * @return Lista de roles
+   * @return Lista de ranks
    */
-  public static List<Role> listRoles() {
-    return ROLES;
+  public static List<Rank> listRanks() {
+    return RANKS;
   }
   
   // Getters
@@ -301,9 +301,9 @@ public final class Role {
   }
   
   /**
-   * Verifica se este é o role padrão.
+   * Verifica se este é o rank padrão.
    * 
-   * @return true se for o role padrão
+   * @return true se for o rank padrão
    */
   public boolean isDefault() {
     return this.permission.isEmpty();
@@ -318,12 +318,24 @@ public final class Role {
   }
   
   /**
-   * Verifica se um jogador tem este role.
+   * Verifica se um jogador tem este rank.
    * 
    * @param player Objeto do jogador
-   * @return true se o jogador tem este role
+   * @return true se o jogador tem este rank
    */
   public boolean has(Object player) {
-    return this.isDefault() || Manager.hasPermission(player, this.permission);
+    if (this.isDefault()) {
+      return true;
+    }
+    
+    // Verifica se é um jogador OP (tem todas as permissões)
+    if (player instanceof org.bukkit.entity.Player) {
+      org.bukkit.entity.Player bukkitPlayer = (org.bukkit.entity.Player) player;
+      if (bukkitPlayer.isOp()) {
+        return true;
+      }
+    }
+    
+    return Manager.hasPermission(player, this.permission);
   }
 }

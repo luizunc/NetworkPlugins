@@ -1,15 +1,15 @@
 package minecraft.lobby.listeners.player;
 
 import minecraft.core.bukkit.Core;
+import minecraft.core.core.nms.NMS;
+import minecraft.core.core.player.Profile;
+import minecraft.core.core.player.hotbar.Hotbar;
+import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.titles.TitleManager;
 import minecraft.lobby.Language;
 import minecraft.lobby.Main;
 import minecraft.lobby.hook.LCoreHook;
 import minecraft.lobby.utils.tagger.TagUtils;
-import minecraft.core.core.nms.NMS;
-import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.hotbar.Hotbar;
-import minecraft.core.core.player.role.Role;
-import minecraft.core.core.titles.TitleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,8 +34,8 @@ public class PlayerJoinListener implements Listener {
     
     Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
       TagUtils.setTag(evt.getPlayer());
-      if (Role.getPlayerRole(player).isBroadcast()) {
-        String broadcast = Language.lobby$broadcast.replace("{player}", Role.getPrefixed(player.getName()));
+      if (Rank.getPlayerRank(player).isBroadcast()) {
+        String broadcast = Language.lobby$broadcast.replace("{player}", Rank.getPrefixed(player.getName()));
         Profile.listProfiles().forEach(pf -> {
           if (!pf.playingGame()) {
             Player players = pf.getPlayer();

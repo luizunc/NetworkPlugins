@@ -2,7 +2,7 @@ package minecraft.core.bukkit.cmd;
 
 import minecraft.core.core.cash.CashException;
 import minecraft.core.core.cash.CashManager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -104,7 +104,7 @@ public class CashCommand extends Commands {
 
         String playerName = args[1];
         String formattedAmount = StringUtils.formatNumber(amount);
-        String coloredPlayerName = Role.getColored(playerName);
+        String coloredPlayerName = Rank.getColored(playerName);
 
         try {
             switch (action.toLowerCase()) {

@@ -5,14 +5,14 @@ import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-public class RoleCache {
+public class RankCache {
   
   private static final Map<String, Object[]> CACHE = new ConcurrentHashMap<>();
   
-  public static void setCache(String playerName, String role, String realName) {
+  public static void setCache(String playerName, String rank, String realName) {
     Object[] array = new Object[3];
     array[0] = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(30);
-    array[1] = role;
+    array[1] = rank;
     array[2] = realName;
     CACHE.put(playerName.toLowerCase(), array);
   }

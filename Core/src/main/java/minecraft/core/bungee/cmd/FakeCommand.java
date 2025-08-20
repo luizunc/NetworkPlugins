@@ -2,7 +2,7 @@ package minecraft.core.bungee.cmd;
 
 import minecraft.core.Manager;
 import minecraft.core.bungee.Bungee;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

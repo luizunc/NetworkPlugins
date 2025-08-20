@@ -3,7 +3,7 @@ package minecraft.core.bungee.cmd;
 import minecraft.core.Manager;
 import minecraft.core.bungee.party.BungeeParty;
 import minecraft.core.bungee.party.BungeePartyManager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -110,7 +110,7 @@ public class PartyCommand extends Commands {
       }
       
       party.join(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê entrou na Party de " + Role.getPrefixed(target) + "§a!\n "));
+      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê entrou na Party de " + Rank.getPrefixed(target) + "§a!\n "));
     } else if (action.equalsIgnoreCase("aceitar")) {
       if (args.length == 1) {
         player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party aceitar [jogador]"));
@@ -147,7 +147,7 @@ public class PartyCommand extends Commands {
       }
       
       party.join(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê entrou na Party de " + Role.getPrefixed(target) + "§a!\n "));
+      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê entrou na Party de " + Rank.getPrefixed(target) + "§a!\n "));
     } else if (action.equalsIgnoreCase("ajuda")) {
       player.sendMessage(TextComponent.fromLegacyText(
           " \n§6/p [mensagem] §f- §7Comunicar-se com os membros.\n§6/party abrir §f- §7Tornar a party pública.\n§6/party fechar §f- §7Tornar a party privada.\n§6/party entrar [jogador] §f- §7Entrar em uma party pública.\n§6/party aceitar [jogador] §f- §7Aceitar uma solicitação.\n§6/party ajuda §f- §7Mostrar essa mensagem de ajuda.\n§6/party convidar [jogador] §f- §7Convidar um jogador.\n§6/party deletar §f- §7Deletar a party.\n§6/party expulsar [jogador] §f- §7Expulsar um membro.\n§6/party info §f- §7Informações da sua Party.\n§6/party negar [jogador] §f- §7Negar uma solicitação.\n§6/party sair §f- §7Sair da Party.\n§6/party transferir [jogador] §f- §7Transferir a Party para outro membro.\n "));
@@ -177,7 +177,7 @@ public class PartyCommand extends Commands {
         return;
       }
       
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §adeletou a Party!\n ", true);
+      party.broadcast(" \n" + Rank.getPrefixed(player.getName()) + " §adeletou a Party!\n ", true);
       party.delete();
       player.sendMessage(TextComponent.fromLegacyText("§aVocê deletou a Party."));
     } else if (action.equalsIgnoreCase("expulsar")) {
@@ -205,7 +205,7 @@ public class PartyCommand extends Commands {
       
       target = party.getName(target);
       party.kick(target);
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §aexpulsou " + Role.getPrefixed(target) + " §ada Party!\n ");
+      party.broadcast(" \n" + Rank.getPrefixed(player.getName()) + " §aexpulsou " + Rank.getPrefixed(target) + " §ada Party!\n ");
     } else if (action.equalsIgnoreCase("info")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
@@ -215,7 +215,7 @@ public class PartyCommand extends Commands {
       
       List<String> members = party.listMembers().stream().filter(pp -> pp.getRole() != LEADER).map(pp -> (pp.isOnline() ? "§a" : "§c") + pp.getName()).collect(Collectors.toList());
       player.sendMessage(TextComponent.fromLegacyText(
-          " \n§6Líder: " + Role.getPrefixed(party.getLeader()) + "\n§6Pública: " + (party.isOpen() ? "§aSim" : "§cNão") + "\n§6Limite de Membros: §f" + party.listMembers()
+          " \n§6Líder: " + Rank.getPrefixed(party.getLeader()) + "\n§6Pública: " + (party.isOpen() ? "§aSim" : "§cNão") + "\n§6Limite de Membros: §f" + party.listMembers()
               .size() + "/" + party.getSlots() + "\n§6Membros: " + StringUtils.join(members, "§7, ") + "\n "));
     } else if (action.equalsIgnoreCase("negar")) {
       if (args.length == 1) {
@@ -248,7 +248,7 @@ public class PartyCommand extends Commands {
       }
       
       party.reject(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê negou o convite de Party de " + Role.getPrefixed(target) + "§a!\n "));
+      player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê negou o convite de Party de " + Rank.getPrefixed(target) + "§a!\n "));
     } else if (action.equalsIgnoreCase("sair")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
@@ -283,7 +283,7 @@ public class PartyCommand extends Commands {
       
       target = party.getName(target);
       party.transfer(target);
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §atransferiu a liderança da Party para " + Role.getPrefixed(target) + "§a!\n ");
+      party.broadcast(" \n" + Rank.getPrefixed(player.getName()) + " §atransferiu a liderança da Party para " + Rank.getPrefixed(target) + "§a!\n ");
     } else {
       if (action.equalsIgnoreCase("convidar")) {
         if (args.length == 1) {
@@ -333,7 +333,7 @@ public class PartyCommand extends Commands {
       
       party.invite(target);
       player.sendMessage(
-          TextComponent.fromLegacyText(" \n" + Role.getPrefixed(action) + " §afoi convidado para a Party. Ele tem 60 segundos para aceitar ou negar esta solicitação.\n "));
+          TextComponent.fromLegacyText(" \n" + Rank.getPrefixed(action) + " §afoi convidado para a Party. Ele tem 60 segundos para aceitar ou negar esta solicitação.\n "));
     }
   }
 }

@@ -2,7 +2,7 @@ package minecraft.lobby.utils.tagger;
 
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -18,11 +18,11 @@ public class TagUtils {
   // - API
   
   public static void setTag(Player player) {
-    Role role = Role.getPlayerRole(player);
+    Rank role = Rank.getPlayerRank(player);
     String suffix = "";
     Profile profile = Profile.getProfile(player.getName());
     if (profile != null) {
-              DataContainer container = profile.getDataContainer("CoreProfile", "clan");
+              DataContainer container = profile.getDataContainer("account", "clan");
       if (container != null) {
         suffix = " " + container.getAsString().replace(" ", "");
         if (suffix.contains("§8")) {

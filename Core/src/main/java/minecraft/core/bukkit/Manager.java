@@ -3,7 +3,7 @@ package minecraft.core;
 import minecraft.core.bungee.Bungee;
 import minecraft.core.core.libraries.profile.Mojang;
 import minecraft.core.core.player.fake.FakeManager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.MethodAccessor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -32,7 +32,7 @@ public class Manager {
   private static volatile MethodAccessor IS_FAKE;
   private static volatile MethodAccessor GET_CURRENT;
   private static volatile MethodAccessor GET_FAKE;
-  private static volatile MethodAccessor GET_FAKE_ROLE;
+      private static volatile MethodAccessor GET_FAKE_RANK;
   
   // Logger
   private static final Logger LOGGER = Logger.getLogger(Manager.class.getName());
@@ -80,7 +80,7 @@ public class Manager {
     IS_FAKE = Accessors.getMethod(bungeeMain, "isFake", String.class);
     GET_CURRENT = Accessors.getMethod(bungeeMain, "getCurrent", String.class);
     GET_FAKE = Accessors.getMethod(bungeeMain, "getFake", String.class);
-    GET_FAKE_ROLE = Accessors.getMethod(bungeeMain, "getRole", String.class);
+            GET_FAKE_RANK = Accessors.getMethod(bungeeMain, "getRank", String.class);
   }
   
   /**
@@ -101,7 +101,7 @@ public class Manager {
     IS_FAKE = Accessors.getMethod(fakeManager, "isFake", String.class);
     GET_CURRENT = Accessors.getMethod(fakeManager, "getCurrent", String.class);
     GET_FAKE = Accessors.getMethod(fakeManager, "getFake", String.class);
-    GET_FAKE_ROLE = Accessors.getMethod(fakeManager, "getRole", String.class);
+            GET_FAKE_RANK = Accessors.getMethod(fakeManager, "getRank", String.class);
   }
   
   /**
@@ -265,20 +265,20 @@ public class Manager {
   }
   
   /**
-   * Obtém o role fake de um jogador
+   * Obtém o rank fake de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Role fake ou null se não houver
+   * @return Rank fake ou null se não houver
    */
-  public static Role getFakeRole(String playerName) {
+  public static Rank getFakeRank(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return null;
     }
     
     try {
-      return (Role) GET_FAKE_ROLE.invoke(null, playerName);
+      return (Rank) GET_FAKE_RANK.invoke(null, playerName);
     } catch (Exception e) {
-      LOGGER.log(Level.WARNING, "Erro ao obter role fake do jogador " + playerName, e);
+      LOGGER.log(Level.WARNING, "Erro ao obter rank fake do jogador " + playerName, e);
       return null;
     }
   }

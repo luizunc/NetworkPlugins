@@ -7,7 +7,6 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import minecraft.core.bukkit.achievements.Achievement;
 import minecraft.core.bukkit.cmd.Commands;
-import minecraft.core.bukkit.config.Rank;
 import minecraft.core.bukkit.hook.CoreExpansion;
 import minecraft.core.bukkit.hook.protocollib.FakeAdapter;
 import minecraft.core.bukkit.hook.protocollib.HologramAdapter;
@@ -23,18 +22,15 @@ import minecraft.core.core.libraries.npclib.NPCLibrary;
 import minecraft.core.core.nms.NMS;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.fake.FakeManager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.titles.Title;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
@@ -178,7 +174,6 @@ public class Core extends KPlugin {
         Database.getInstance().close();
       }
       
-      processUpdate();
       this.getLogger().info("O plugin foi desativado com sucesso.");
       
     } catch (Exception e) {
@@ -268,7 +263,7 @@ public class Core extends KPlugin {
    * Configura os sistemas principais.
    */
   private void setupSystems() {
-    setupRoles();
+            setupRanks();
     FakeManager.setupFake();
     Title.setupTitles();
     ServerItem.setupServers();
@@ -378,46 +373,46 @@ public class Core extends KPlugin {
   }
   
   /**
-   * Processa atualização do plugin se existir.
+   * Configura os ranks padrão do sistema.
    */
-  private void processUpdate() {
-    File updateFile = new File("plugins/Core/update", "Core.jar");
-    if (updateFile.exists()) {
+  private void setupRanks() {
+    if (Rank.listRanks().isEmpty()) {
       try {
-        this.getFileUtils().deleteFile(new File("plugins/Core.jar"));
-        this.getFileUtils().copyFile(new FileInputStream(updateFile), new File("plugins/Core.jar"));
-        this.getFileUtils().deleteFile(updateFile.getParentFile());
-        this.getLogger().info("Update do Core aplicada com sucesso.");
-      } catch (Exception e) {
-        this.getLogger().log(Level.SEVERE, "Erro ao processar atualização", e);
-      }
-    }
-  }
-  
-  /**
-   * Configura os roles padrão do sistema.
-   */
-  private void setupRoles() {
-    if (Role.listRoles().isEmpty()) {
-      try {
-        KConfig rolesConfig = Rank.getConfig();
-        if (rolesConfig.contains("roles")) {
-                  for (String roleName : rolesConfig.getConfigurationSection("roles").getKeys(false)) {
-          String name = rolesConfig.getString("roles." + roleName + ".name");
-          if (name == null) name = "&7Membro";
-          String prefix = rolesConfig.getString("roles." + roleName + ".prefix");
-          if (prefix == null) prefix = "&7";
-          String permission = rolesConfig.getString("roles." + roleName + ".permission");
-          if (permission == null) permission = "";
-          boolean alwaysVisible = rolesConfig.getBoolean("roles." + roleName + ".alwaysvisible", false);
-          boolean broadcast = rolesConfig.getBoolean("roles." + roleName + ".broadcast", true);
+        // Carregar ranks da configuração interna na ordem correta (do mais alto para o mais baixo)
+        String[] rankOrder = {"admin", "mod", "trial", "staff", "builder", "creator", "emerald", "gold", "iron", "membro"};
+        
+        for (String key : rankOrder) {
+          minecraft.core.bukkit.config.Rank.rankConfig rankConfig = minecraft.core.bukkit.config.Rank.getrank(key);
+          if (rankConfig != null) {
+            // Define broadcast = true apenas para ranks a partir do Iron
+            boolean shouldBroadcast = key.equals("iron") || 
+                                     key.equals("gold") || 
+                                     key.equals("emerald") || 
+                                     key.equals("creator") || 
+                                     key.equals("builder") || 
+                                     key.equals("staff") || 
+                                     key.equals("trial") || 
+                                     key.equals("mod") || 
+                                     key.equals("admin");
             
-            Role.listRoles().add(new Role(name, prefix, permission, alwaysVisible, broadcast));
+            Rank.listRanks().add(
+              new Rank(
+                rankConfig.getName(),
+                rankConfig.getPrefix(), 
+                rankConfig.getPermission(),
+                rankConfig.isAlwaysVisible(),
+                shouldBroadcast
+              )
+            );
           }
         }
+        
+        this.getLogger().info("Ranks carregados da configuração interna: " + 
+          Rank.listRanks().size() + " ranks configurados.");
       } catch (Exception e) {
-        this.getLogger().log(Level.WARNING, "Erro ao carregar roles internos, usando padrão", e);
-        Role.listRoles().add(new Role("&7Membro", "&7", "", false, false));
+        this.getLogger().log(Level.WARNING, "Erro ao carregar ranks da configuração, usando padrão", e);
+        // Fallback para rank básico
+        Rank.listRanks().add(new Rank("&7Membro", "&7", "", false, false));
       }
     }
   }

@@ -1,6 +1,6 @@
 # Configurações do banco de dados
 database:
-  # Tipos de bancos de dados disponíveis: MongoDB, MySQL
+  # Tipo de banco de dados: MySQL
   tipo: 'MySQL'
   
   # Configurações do MySQL
@@ -17,10 +17,3 @@ database:
     nome: 'server'
     usuario: 'root'
     senha: ''
-  
-  # Configurações do MongoDB
-  mongodb:
-    # URL de acesso ao MongoDB
-    # Formato: mongodb://usuario:senha@host:porta/database
-    # Documentação: https://docs.mongodb.com/manual/reference/connection-string/
-    url: ''

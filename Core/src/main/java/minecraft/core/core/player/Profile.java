@@ -11,7 +11,7 @@ import minecraft.core.core.game.GameTeam;
 import minecraft.core.bukkit.hook.FriendsHook;
 import minecraft.core.core.player.enums.PlayerVisibility;
 import minecraft.core.core.player.hotbar.Hotbar;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.player.scoreboard.KScoreboard;
 import minecraft.core.core.titles.TitleManager;
 import minecraft.core.core.utils.BukkitUtils;
@@ -55,7 +55,7 @@ public class Profile {
   public Profile(String name) throws ProfileLoadException {
     this.name = Objects.requireNonNull(name, "Nome do jogador não pode ser nulo");
     this.tableMap = Database.getInstance().load(name);
-    this.getDataContainer("CoreProfile", "lastlogin").set(System.currentTimeMillis());
+    this.getDataContainer("account", "lastlogin").set(System.currentTimeMillis());
   }
   
   /**
@@ -229,8 +229,8 @@ public class Profile {
     player.teleport(Core.getLobby());
           player.setAllowFlight(player.hasPermission("core.fly"));
     
-    Role playerRole = Role.getPlayerRole(player, true);
-          this.getDataContainer("CoreProfile", "role").set(StringUtils.stripColors(playerRole.getName()));
+            Rank playerRank = Rank.getPlayerRank(player, true);
+        this.getDataContainer("account", "rank").set(StringUtils.stripColors(playerRank.getName()));
   }
   
   /**
@@ -313,7 +313,7 @@ public class Profile {
   private void updatePlayerVisibility(Player viewer, Player target, Profile viewerProfile, Profile targetProfile, 
                                      boolean isFriend, boolean isBlacklisted) {
     boolean shouldShow = (viewerProfile.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS ||
-                         Role.getPlayerRole(target).isAlwaysVisible() || isFriend) && !isBlacklisted;
+                         Rank.getPlayerRank(target).isAlwaysVisible() || isFriend) && !isBlacklisted;
     
     if (shouldShow) {
       if (!viewer.canSee(target)) {
@@ -574,22 +574,22 @@ public class Profile {
   // Containers específicos
   
   public minecraft.core.core.database.data.container.PreferencesContainer getPreferencesContainer() {
-    return this.getAbstractContainer("CoreProfile", "preferences", 
+    return this.getAbstractContainer("account", "preferences", 
         minecraft.core.core.database.data.container.PreferencesContainer.class);
   }
   
   public minecraft.core.core.database.data.container.TitlesContainer getTitlesContainer() {
-    return this.getAbstractContainer("CoreProfile", "titles", 
+    return this.getAbstractContainer("account", "titles", 
         minecraft.core.core.database.data.container.TitlesContainer.class);
   }
   
   public minecraft.core.core.database.data.container.AchievementsContainer getAchievementsContainer() {
-    return this.getAbstractContainer("CoreProfile", "achievements", 
+    return this.getAbstractContainer("account", "achievements", 
         minecraft.core.core.database.data.container.AchievementsContainer.class);
   }
   
   public minecraft.core.core.database.data.container.SelectedContainer getSelectedContainer() {
-    return this.getAbstractContainer("CoreProfile", "selected", 
+    return this.getAbstractContainer("account", "selected", 
         minecraft.core.core.database.data.container.SelectedContainer.class);
   }
   

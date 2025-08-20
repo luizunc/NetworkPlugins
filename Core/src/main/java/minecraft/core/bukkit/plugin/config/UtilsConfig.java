@@ -23,7 +23,7 @@ public class UtilsConfig {
         "  \n" +
         "fake:\n" +
         "  enabled: true\n" +
-        "  role:\n" +
+        "  rank:\n" +
         "    - \"&7Membro\"\n" +
         "  \n" +
         "party:\n" +
@@ -56,9 +56,9 @@ public class UtilsConfig {
         "  format:\n" +
         "    prefix: \"&7[&bParty&7] \"\n" +
         "    chat: \"&7[&bParty&7] &f{player}: &7{message}\"\n" +
-        "    list: \"&7- &f{player} &7({role})\"\n" +
+        "    list: \"&7- &f{player} &7({rank})\"\n" +
         "    \n" +
-        "  roles:\n" +
+        "  ranks:\n" +
         "    leader: \"&cLíder\"\n" +
         "    member: \"&7Membro\"";
     

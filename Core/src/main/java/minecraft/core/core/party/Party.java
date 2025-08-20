@@ -1,7 +1,7 @@
 package minecraft.core.core.party;
 
 import minecraft.core.Manager;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -47,7 +47,7 @@ protected List<minecraft.core.core.party.PartyPlayer> members;
   }
   
   public void invite(Object target) {
-    String leader = Role.getPrefixed(this.getLeader());
+            String leader = Rank.getPrefixed(this.getLeader());
     this.invitesMap.put(Manager.getName(target).toLowerCase(), System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(MINUTES_UNTIL_EXPIRE_INVITE));
     BaseComponent component = new TextComponent("");
     for (BaseComponent components : TextComponent.fromLegacyText(" \n" + leader + " §aconvidou você para a Party dele!\n§7Você pode ")) {
@@ -77,11 +77,11 @@ protected List<minecraft.core.core.party.PartyPlayer> members;
   
   public void reject(String member) {
     this.invitesMap.remove(member.toLowerCase());
-    this.leader.sendMessage(" \n" + Role.getPrefixed(member) + " §anegou seu convite de Party!\n ");
+            this.leader.sendMessage(" \n" + Rank.getPrefixed(member) + " §anegou seu convite de Party!\n ");
   }
   
   public void join(String member) {
-    this.broadcast(" \n" + Role.getPrefixed(member) + " §aentrou na Party!\n ");
+            this.broadcast(" \n" + Rank.getPrefixed(member) + " §aentrou na Party!\n ");
     this.members.add(new minecraft.core.core.party.PartyPlayer(member, MEMBER));
     this.invitesMap.remove(member.toLowerCase());
   }
@@ -94,7 +94,7 @@ protected List<minecraft.core.core.party.PartyPlayer> members;
       return;
     }
     
-    String prefixed = Role.getPrefixed(member);
+            String prefixed = Rank.getPrefixed(member);
     if (leader.equals(member)) {
       this.leader = this.members.get(0);
       this.leader.setRole(LEADER);
@@ -105,7 +105,7 @@ protected List<minecraft.core.core.party.PartyPlayer> members;
   
   public void kick(String member) {
     this.members.stream().filter(pp -> pp.getName().equalsIgnoreCase(member)).findFirst().ifPresent(pp -> {
-      pp.sendMessage(" \n" + Role.getPrefixed(this.getLeader()) + " §aexpulsou você da Party!\n ");
+              pp.sendMessage(" \n" + Rank.getPrefixed(this.getLeader()) + " §aexpulsou você da Party!\n ");
       this.members.removeIf(pap -> pap.equals(pp));
     });
   }

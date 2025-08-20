@@ -2,7 +2,6 @@ minecraft\core\bungee\cmd\FakeCommand.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticleProperty.class
 minecraft\core\core\libraries\npclib\npc\skin\TabListRemover$1.class
 minecraft\core\core\libraries\menu\UpdatableMenu$1.class
-minecraft\core\core\player\role\Role.class
 org\json\simple\JSONAware.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticlePacket$PacketSendingException.class
 minecraft\core\core\reflection\MinecraftReflection.class
@@ -10,7 +9,6 @@ minecraft\core\bukkit\achievements\types\SkyWarsAchievement$TitleReward.class
 minecraft\core\core\player\scoreboard\VirtualTeam.class
 minecraft\core\core\libraries\npclib\api\metadata\SimpleMetadataStore.class
 minecraft\core\bukkit\plugin\config\KWriter.class
-minecraft\core\core\database\conversor\MongoDBConversor.class
 minecraft\core\core\nms\v1_8_R3\utils\controllers\PlayerControllerMove.class
 minecraft\core\core\libraries\npclib\npc\skin\SkinPacketTracker$PlayerListener.class
 minecraft\core\core\nms\interfaces\INMS.class
@@ -25,7 +23,6 @@ minecraft\core\core\servers\balancer\LoadBalancer.class
 minecraft\core\core\nms\v1_8_R3\utils\PlayerlistTrackerEntry.class
 minecraft\core\bukkit\listeners\PluginMessageListener.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticleColor.class
-minecraft\core\bukkit\config\Rank$RoleConfig.class
 org\json\simple\JSONValue.class
 minecraft\core\bukkit\BukkitParty.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.class
@@ -35,7 +32,6 @@ minecraft\core\bukkit\hook\protocollib\HologramAdapter.class
 minecraft\core\core\utils\particles\ParticleEffect$NoteColor.class
 minecraft\core\core\player\scoreboard\scroller\ScoreboardScroller.class
 minecraft\core\core\utils\particles\ParticleEffect$OrdinaryColor.class
-minecraft\core\core\database\cache\RoleCache.class
 minecraft\core\bukkit\achievements\types\BedWarsAchievement$CoinsReward.class
 minecraft\core\core\nms\v1_8_R3\network\EmptyNetHandler.class
 minecraft\core\bukkit\cmd\PartyCommand.class
@@ -50,7 +46,6 @@ minecraft\core\Manager.class
 com\comphenix\packetwrapper\AbstractPacket.class
 minecraft\core\core\database\tables\CoreTable.class
 minecraft\core\bukkit\achievements\types\BedWarsAchievement$BedWarsReward.class
-minecraft\core\core\database\conversor\MongoDBConversor$1.class
 minecraft\core\core\libraries\holograms\HologramListeners.class
 minecraft\core\bungee\cmd\FakeResetCommand.class
 minecraft\core\core\database\tables\BedWarsTable.class
@@ -76,6 +71,7 @@ minecraft\core\core\libraries\npclib\NPCListeners$1.class
 minecraft\core\core\libraries\menu\Menu.class
 minecraft\core\core\libraries\menu\UpdatablePagedMenu$1.class
 minecraft\core\core\player\hotbar\Hotbar.class
+minecraft\core\core\database\cache\RankCache$1.class
 minecraft\core\bukkit\plugin\config\UtilsConfig.class
 minecraft\core\core\libraries\npclib\api\event\NPCDespawnEvent.class
 minecraft\core\core\player\Profile.class
@@ -101,7 +97,6 @@ minecraft\core\core\utils\particles\ParticleEffect$ParticlePacket$PacketInstanti
 minecraft\core\core\servers\balancer\Server.class
 minecraft\core\bukkit\cmd\CashCommand.class
 minecraft\core\core\servers\ServerPing.class
-minecraft\core\core\database\MongoDBDatabase.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityStatus.class
 minecraft\core\core\reflection\acessors\FieldAccessor.class
 minecraft\core\core\player\hotbar\HotbarActionType$2.class
@@ -178,7 +173,6 @@ minecraft\core\core\libraries\npclib\api\event\NPCRightClickEvent.class
 minecraft\core\core\player\hotbar\HotbarAction.class
 minecraft\core\core\libraries\npclib\npc\skin\TabListRemover$PlayerEntry.class
 minecraft\core\core\nms\v1_8_R3\utils\pathfinding\PlayerPathfinderAbstract.class
-minecraft\core\core\database\cache\RoleCache$1.class
 minecraft\core\core\libraries\npclib\npc\ai\NPCHolder.class
 minecraft\core\bukkit\cmd\CoinsCommand.class
 minecraft\core\core\libraries\npclib\npc\skin\SkinUpdateTracker$1.class
@@ -223,6 +217,7 @@ minecraft\core\core\libraries\npclib\npc\skin\SkinPacketTracker.class
 minecraft\core\core\servers\balancer\type\MostConnection.class
 minecraft\core\core\reflection\acessors\MethodAccessor.class
 minecraft\core\core\libraries\npclib\npc\AbstractEntityController.class
+minecraft\core\bukkit\config\Rank$rankConfig.class
 minecraft\core\core\utils\particles\ParticleEffect$ParticleColorException.class
 minecraft\core\core\player\enums\PlayerVisibility.class
 minecraft\core\bungee\config\BungeeConfig.class
@@ -267,6 +262,8 @@ minecraft\core\core\nms\v1_8_R3\entity\EntitySlime.class
 minecraft\core\core\libraries\menu\UpdatableMenu.class
 minecraft\core\core\libraries\npclib\trait\NPCTrait.class
 minecraft\core\bukkit\achievements\types\BedWarsAchievement$TitleReward.class
+minecraft\core\core\player\role\Rank.class
 minecraft\core\bukkit\plugin\config\KConfig.class
 minecraft\core\core\libraries\npclib\api\event\NPCNeedsRespawnEvent.class
 minecraft\core\core\player\hotbar\HotbarButton.class
+minecraft\core\core\database\cache\RankCache.class

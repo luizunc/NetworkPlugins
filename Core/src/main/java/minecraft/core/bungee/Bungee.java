@@ -5,7 +5,7 @@ import com.google.common.io.ByteStreams;
 import minecraft.core.bungee.cmd.Commands;
 import minecraft.core.bungee.listener.Listeners;
 import minecraft.core.core.database.Database;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -43,16 +43,16 @@ public class Bungee extends Plugin {
   // Instância singleton
   private static volatile Bungee instance;
   
-  // Maps thread-safe para fake names, roles e skins
-  private static final Map<String, String> fakeNames = new ConcurrentHashMap<>();
-  private static final Map<String, Role> fakeRoles = new ConcurrentHashMap<>();
+      // Maps thread-safe para fake names, ranks e skins
+    private static final Map<String, String> fakeNames = new ConcurrentHashMap<>();
+    private static final Map<String, Rank> fakeRanks = new ConcurrentHashMap<>();
   private static final Map<String, String> fakeSkins = new ConcurrentHashMap<>();
   
   // Cache de nomes aleatórios
   private static volatile List<String> randoms;
   
   // Configurações internas
-  private static final List<String> FAKE_ROLES_LIST = Arrays.asList("Membro", "VIP", "MVP");
+      private static final List<String> FAKE_RANKS_LIST = Arrays.asList("Membro", "VIP", "MVP");
   private static final String KICK_APPLY_MESSAGE = "§cVocê foi desconectado para aplicar o fake.";
   private static final String KICK_REMOVE_MESSAGE = "§cVocê foi desconectado para remover o fake.";
   
@@ -136,7 +136,7 @@ public class Bungee extends Plugin {
       
       String playerName = player.getName();
       fakeNames.put(playerName, fakeName);
-      fakeRoles.put(playerName, Role.getRoleByName(role));
+              fakeRanks.put(playerName, Rank.getRankByName(role));
       fakeSkins.put(playerName, skin);
       
     } catch (Exception e) {
@@ -159,7 +159,7 @@ public class Bungee extends Plugin {
       
       String playerName = player.getName();
       fakeNames.remove(playerName);
-      fakeRoles.remove(playerName);
+              fakeRanks.remove(playerName);
       fakeSkins.remove(playerName);
       
     } catch (Exception e) {
@@ -199,11 +199,11 @@ public class Bungee extends Plugin {
    * @param playerName Nome do jogador
    * @return Role fake ou role padrão
    */
-  public static Role getRole(String playerName) {
+      public static Rank getRank(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
-      return Role.getLastRole();
+              return Rank.getLastRank();
     }
-    return fakeRoles.getOrDefault(playerName, Role.getLastRole());
+            return fakeRanks.getOrDefault(playerName, Rank.getLastRank());
   }
   
   /**
@@ -322,7 +322,7 @@ public class Bungee extends Plugin {
       return false;
     }
     
-    return FAKE_ROLES_LIST.stream().anyMatch(role -> role.equalsIgnoreCase(roleName));
+            return FAKE_RANKS_LIST.stream().anyMatch(rank -> rank.equalsIgnoreCase(roleName));
   }
   
   /**
@@ -449,8 +449,9 @@ public class Bungee extends Plugin {
     }
     
     // Criar role padrão se não houver nenhum
-    if (Role.listRoles().isEmpty()) {
-      Role.listRoles().add(new Role("&7Membro", "&7", "", false, false));
+    if (Rank.listRanks().isEmpty()) {
+      // Define broadcast = false para o rank Membro (padrão)
+      Rank.listRanks().add(new Rank("&7Membro", "&7", "", false, false));
     }
   }
   

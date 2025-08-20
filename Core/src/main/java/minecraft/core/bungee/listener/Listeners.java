@@ -88,7 +88,7 @@ public class Listeners implements Listener {
       out.writeUTF("FAKE");
       out.writeUTF(player.getName());
       out.writeUTF(Bungee.getFake(player.getName()));
-      out.writeUTF(StringUtils.stripColors(Bungee.getRole(player.getName()).getName()));
+      out.writeUTF(StringUtils.stripColors(Bungee.getRank(player.getName()).getName()));
       out.writeUTF(skin);
               evt.getServer().sendData("Core", out.toByteArray());
       

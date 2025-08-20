@@ -3,7 +3,7 @@ package minecraft.lobby.listeners.player;
 import minecraft.core.core.game.Game;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.lobby.Language;
 import org.bukkit.Bukkit;
@@ -56,7 +56,7 @@ public class AsyncPlayerChatListener implements Listener {
       flood.put(player.getName(), System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(3));
     }
     
-    Role role = Role.getPlayerRole(player);
+    Rank role = Rank.getPlayerRank(player);
           if (player.hasPermission("lobby.chat.color")) {
       evt.setMessage(StringUtils.formatColors(evt.getMessage()));
     }
@@ -64,7 +64,7 @@ public class AsyncPlayerChatListener implements Listener {
     Profile profile = Profile.getProfile(player.getName());
     Game<?> game = profile.getGame();
     String suffix = "";
-            DataContainer container = profile.getDataContainer("CoreProfile", "clan");
+            DataContainer container = profile.getDataContainer("account", "clan");
     if (container != null) {
       suffix = container.getAsString().replace(" ", "") + " ";
       if (suffix.contains("§8")) {

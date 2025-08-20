@@ -24,52 +24,56 @@ public class SkyWarsAchievement extends Achievement {
   
   public static void setupAchievements() {
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(100), "1k1", "Assassino (Solo)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6100 Coins", 50, "1v1kills"));
+        new SkyWarsAchievement(new CoinsReward(100), "1k1", "Assasino (Solo)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6100 Coins",
+            50, "solokills"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(500), "1k2", "Assassino Mestre (Solo)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6500 Coins", 250,
-            "1v1kills"));
+        new SkyWarsAchievement(new CoinsReward(500), "1k2", "Assasino Mestre (Solo)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6500 Coins",
+            250, "solokills"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(250), "1w1", "Vitorioso (Solo)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 50, "1v1wins"));
+        new SkyWarsAchievement(new CoinsReward(250), "1w1", "Vitorioso (Solo)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins",
+            50, "solowins"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(1000), "1w2", "Vitorioso Mestre (Solo)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &61.000 Coins", 200,
-            "1v1wins"));
+        new SkyWarsAchievement(new CoinsReward(1000), "1w2", "Vitorioso Mestre (Solo)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &61.000 Coins",
+            200, "solowins"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(100), "1p1", "Assistente (Solo)", "&7Consiga um total de %reach%\n&7assistências para receber:\n \n &8• &6100 Coins", 50,
-            "1v1assists"));
+        new SkyWarsAchievement(new CoinsReward(250), "1a1", "Assistente (Solo)", "&7Dê assistência em um total de %reach%\n&7abates para receber:\n \n &8• &6250 Coins",
+            100, "soloassists"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(500), "1p2", "Assistente Mestre (Solo)", "&7Consiga um total de %reach%\n&7assistências para receber:\n \n &8• &6500 Coins", 250,
-            "1v1assists"));
+        new SkyWarsAchievement(new CoinsReward(1000), "1a2", "Assistente Mestre (Solo)", "&7Dê assistência em um total de %reach%\n&7abates para receber:\n \n &8• &61.000 Coins",
+            500, "soloassists"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(250), "1g1", "Persistente (Solo)", "&7Jogue um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 250, "1v1games"));
+        new SkyWarsAchievement(new CoinsReward(250), "1g1", "Persistente (Solo)", "&7Jogue um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 250, "sologames"));
     
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(100), "2k1", "Assassino (Dupla)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6100 Coins", 50, "2v2kills"));
+        new SkyWarsAchievement(new CoinsReward(100), "2k1", "Assasino (Duplas)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6100 Coins",
+            50, "duokills"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(500), "2k2", "Assassino Mestre (Dupla)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6500 Coins", 250,
-            "2v2kills"));
+        new SkyWarsAchievement(new CoinsReward(500), "2k2", "Assasino Mestre (Duplas)", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &6500 Coins",
+            250, "duokills"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(250), "2w1", "Vitorioso (Dupla)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 50, "2v2wins"));
+        new SkyWarsAchievement(new CoinsReward(250), "2w1", "Vitorioso (Duplas)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins",
+            50, "duowins"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(1000), "2w2", "Vitorioso Mestre (Dupla)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &61.000 Coins", 200,
-            "2v2wins"));
+        new SkyWarsAchievement(new CoinsReward(1000), "2w2", "Vitorioso Mestre (Duplas)", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &61.000 Coins",
+            200, "duowins"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(100), "2p1", "Assistente (Dupla)", "&7Consiga um total de %reach%\n&7assistências para receber:\n \n &8• &6100 Coins", 50,
-            "2v2assists"));
+        new SkyWarsAchievement(new CoinsReward(250), "2a1", "Assistente (Duplas)", "&7Dê assistência em um total de %reach%\n&7abates para receber:\n \n &8• &6250 Coins",
+            100, "duoassists"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(500), "2p2", "Assistente Mestre (Dupla)", "&7Consiga um total de %reach%\n&7assistências para receber:\n \n &8• &6500 Coins", 250,
-            "2v2assists"));
+        new SkyWarsAchievement(new CoinsReward(1000), "2a2", "Assistente Mestre (Duplas)", "&7Dê assistência em um total de %reach%\n&7abates para receber:\n \n &8• &61.000 Coins",
+            500, "duoassists"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new CoinsReward(250), "2g1", "Persistente (Dupla)", "&7Jogue um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 250, "2v2games"));
+        new SkyWarsAchievement(new CoinsReward(250), "2g1", "Persistente (Duplas)", "&7Jogue um total de %reach%\n&7partidas para receber:\n \n &8• &6250 Coins", 250, "duogames"));
     
     Achievement.addAchievement(
-        new SkyWarsAchievement(new TitleReward("swk"), "tk", "Traidor Celestial", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &fTítulo: &cAnjo da Morte", 500,
-            "1v1kills", "2v2kills"));
+        new SkyWarsAchievement(new CoinsReward(1000), "tk", "Assasino Total", "&7Abata um total de %reach%\n&7jogadores para receber:\n \n &8• &61.000 Coins",
+            500, "solokills", "duokills"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new TitleReward("sww"), "tw", "Destrono Celestial", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &fTítulo: &bRei Celestial", 400,
-            "1v1wins", "2v2wins"));
+        new SkyWarsAchievement(new CoinsReward(2000), "tw", "Vitorioso Total", "&7Vença um total de %reach%\n&7partidas para receber:\n \n &8• &62.000 Coins",
+            500, "solowins", "duowins"));
     Achievement.addAchievement(
-        new SkyWarsAchievement(new TitleReward("swa"), "tp", "Anjo Guardião", "&7Consiga um total de %reach%\n&7assistências para receber:\n \n &8• &fTítulo: &6Companheiro de Asas",
-            500, "1v1assists", "2v2assists"));
+        new SkyWarsAchievement(new CoinsReward(1000), "ta", "Assistente Total", "&7Dê assistência em um total de %reach%\n&7abates para receber:\n \n &8• &61.000 Coins",
+            500, "soloassists", "duoassists"));
   }
   
   @Override
@@ -79,11 +83,11 @@ public class SkyWarsAchievement extends Achievement {
   
   @Override
   protected boolean check(Profile profile) {
-    return profile.getStats("CoreSkyWars", this.stats) >= this.reach;
+    return profile.getStats("skywars", this.stats) >= this.reach;
   }
   
   public ItemStack getIcon(Profile profile) {
-    long current = profile.getStats("CoreSkyWars", this.stats);
+    long current = profile.getStats("skywars", this.stats);
     if (current > this.reach) {
       current = this.reach;
     }
@@ -107,7 +111,7 @@ public class SkyWarsAchievement extends Achievement {
     
     @Override
     public void give(Profile profile) {
-      profile.getDataContainer("CoreSkyWars", "coins").addDouble(this.amount);
+      profile.getDataContainer("skywars", "coins").addDouble(this.amount);
     }
   }
   

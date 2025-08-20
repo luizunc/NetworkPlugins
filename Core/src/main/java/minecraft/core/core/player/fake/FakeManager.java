@@ -6,7 +6,7 @@ import minecraft.core.bukkit.Core;
 import minecraft.core.bukkit.plugin.config.UtilsConfig;
 import minecraft.core.core.database.Database;
 import minecraft.core.core.libraries.profile.Mojang;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
@@ -36,32 +36,32 @@ public class FakeManager {
   private static final Pattern REAL_PATTERN = Pattern.compile("(?i)corefakereal:\\w*"), NOT_CHANGE_PATTERN = Pattern.compile("(?i)corenotchange:\\w*");
   
   // Configurações internas
-  private static final List<String> FAKE_ROLES_LIST = Arrays.asList("Membro", "VIP", "MVP");
+      private static final List<String> FAKE_RANKS_LIST = Arrays.asList("Membro", "VIP", "MVP");
   private static final String KICK_APPLY_MESSAGE = "§cVocê foi desconectado para aplicar o fake.";
   private static final String KICK_REMOVE_MESSAGE = "§cVocê foi desconectado para remover o fake.";
   
   public static Map<String, String> fakeNames = new HashMap<>();
-  public static Map<String, Role> fakeRoles = new HashMap<>();
+      public static Map<String, Rank> fakeRanks = new HashMap<>();
   public static Map<String, String> fakeSkins = new HashMap<>();
   
-  private static TextComponent FAKE_ROLES;
+      private static TextComponent FAKE_RANKS;
   private static TextComponent FAKE_SKINS;
   
   private static List<String> randoms;
   private static Boolean bungeeSide;
   
   public static void setupFake() {
-    FAKE_ROLES = new TextComponent("");
+            FAKE_RANKS = new TextComponent("");
     for (BaseComponent component : TextComponent.fromLegacyText("§5§lALTERAR NICKNAME\n \n§0Escolha o cargo que gostaria de utilizar enquanto está disfarçado:\n ")) {
-      FAKE_ROLES.addExtra(component);
+      FAKE_RANKS.addExtra(component);
     }
-    for (String roleName : FAKE_ROLES_LIST) {
-      Role role = Role.getRoleByName(roleName);
-      if (role != null) {
-        TextComponent component = new TextComponent("\n §0▪ " + role.getName());
-        component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Seu nickname será exibido como '" + role.getPrefix() + "Nickname'§7.")));
+            for (String roleName : FAKE_RANKS_LIST) {
+              Rank rank = Rank.getRankByName(roleName);
+        if (rank != null) {
+            TextComponent component = new TextComponent("\n §0▪ " + rank.getName());
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Seu nickname será exibido como '" + rank.getPrefix() + "Nickname'§7.")));
         component.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake " + roleName));
-        FAKE_ROLES.addExtra(component);
+        FAKE_RANKS.addExtra(component);
       }
     }
     FAKE_SKINS = new TextComponent("");
@@ -88,7 +88,7 @@ public class FakeManager {
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
     book.setItemMeta(meta);
-    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_ROLES)));
+            book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_RANKS)));
     BukkitUtils.openBook(player, book);
   }
   
@@ -107,7 +107,7 @@ public class FakeManager {
       player.kickPlayer(KICK_APPLY_MESSAGE);
     }
     fakeNames.put(player.getName(), fakeName);
-    fakeRoles.put(player.getName(), Role.getRoleByName(role));
+            fakeRanks.put(player.getName(), Rank.getRankByName(role));
     fakeSkins.put(player.getName(), skin);
   }
   
@@ -116,7 +116,7 @@ public class FakeManager {
       player.kickPlayer(KICK_REMOVE_MESSAGE);
     }
     fakeNames.remove(player.getName());
-    fakeRoles.remove(player.getName());
+            fakeRanks.remove(player.getName());
     fakeSkins.remove(player.getName());
   }
   
@@ -128,8 +128,8 @@ public class FakeManager {
     return fakeNames.get(playerName);
   }
   
-  public static Role getRole(String playerName) {
-    return fakeRoles.getOrDefault(playerName, Role.getLastRole());
+      public static Rank getRank(String playerName) {
+            return fakeRanks.getOrDefault(playerName, Rank.getLastRank());
   }
   
   public static String getSkin(String playerName) {
@@ -198,7 +198,7 @@ public class FakeManager {
   }
   
   public static boolean isFakeRole(String roleName) {
-    return FAKE_ROLES_LIST.stream().anyMatch(role -> role.equalsIgnoreCase(roleName));
+            return FAKE_RANKS_LIST.stream().anyMatch(rank -> rank.equalsIgnoreCase(roleName));
   }
   
   public static boolean isBungeeSide() {

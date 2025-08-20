@@ -1,8 +1,6 @@
 package minecraft.lobby;
 
 import minecraft.core.bukkit.plugin.logger.KLogger;
-import minecraft.core.core.utils.StringUtils;
-import org.bukkit.Bukkit;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +35,7 @@ public final class Language {
                     "§a§lHYPE MC", "§a§lHYPE MC", "§a§lHYPE MC", "§a§lHYPE MC");
     
     public static final List<String> scoreboards$lobby = Arrays
-            .asList("", "  Grupo: §a%Core_role%", "  Cash: §b%Core_cash%", "", "  Jogadores: §a%Core_online%",
+            .asList("", "  Grupo: §a%Core_rank%", "  Cash: §b%Core_cash%", "", "  Jogadores: §a%Core_online%",
                     "", "  §7www.hypemc.com", "");
     
     // Configurações do chat

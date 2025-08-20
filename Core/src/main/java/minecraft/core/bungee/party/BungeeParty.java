@@ -5,7 +5,7 @@ import com.google.common.io.ByteStreams;
 import minecraft.core.Manager;
 import minecraft.core.core.party.Party;
 import minecraft.core.core.party.PartyPlayer;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -63,9 +63,9 @@ public class BungeeParty extends Party {
       this.sendData("newLeader", this.members.get(0).getName());
       this.leader = this.members.get(0);
       this.leader.setRole(LEADER);
-      this.broadcast(" \n" + Role.getPrefixed(this.leader.getName()) + " §ase tornou o novo Líder da Party!\n ");
+              this.broadcast(" \n" + Rank.getPrefixed(this.leader.getName()) + " §ase tornou o novo Líder da Party!\n ");
     }
-    this.broadcast(" \n" + Role.getPrefixed(member) + " §asaiu da Party!\n ");
+            this.broadcast(" \n" + Rank.getPrefixed(member) + " §asaiu da Party!\n ");
   }
   
   @Override
@@ -113,7 +113,7 @@ public class BungeeParty extends Party {
     }
     
     if (serverInfo != null) {
-      String leader = Role.getPrefixed(this.getLeader());
+              String leader = Rank.getPrefixed(this.getLeader());
       ServerInfo finalServerInfo = serverInfo;
       members.forEach(member -> {
         ProxiedPlayer player = (ProxiedPlayer) Manager.getPlayer(member);

@@ -17,10 +17,10 @@ public class BukkitPartySizer {
     
     SIZES = new LinkedHashMap<>();
     // Tamanhos padrão baseados em permissões
-    SIZES.put("role.master", 20);
-    SIZES.put("role.youtuber", 15);
-    SIZES.put("role.mvpplus", 10);
-    SIZES.put("role.mvp", 5);
+            SIZES.put("rank.master", 20);
+        SIZES.put("rank.youtuber", 15);
+        SIZES.put("rank.mvpplus", 10);
+        SIZES.put("rank.mvp", 5);
   }
   
   public static int getPartySize(Player player) {

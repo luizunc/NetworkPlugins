@@ -4,7 +4,7 @@ import minecraft.core.bukkit.Core;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.bukkit.menus.profile.*;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumSound;
@@ -73,12 +73,12 @@ public class MenuProfile extends PlayerMenu {
    * @return ItemStack do item
    */
   private ItemStack createInformacoesItem(Profile profile) {
-    String roleName = Role.getRoleByName(profile.getDataContainer("CoreProfile", "role").getAsString()).getName();
-    String cash = StringUtils.formatNumber(profile.getStats("CoreProfile", "cash"));
-    String created = SDF.format(profile.getDataContainer("CoreProfile", "created").getAsLong());
-    String lastLogin = SDF.format(profile.getDataContainer("CoreProfile", "lastlogin").getAsLong());
+            String rankName = Rank.getRankByName(profile.getDataContainer("account", "rank").getAsString()).getName();
+    String cash = StringUtils.formatNumber(profile.getStats("account", "cash"));
+    String created = SDF.format(profile.getDataContainer("account", "created").getAsLong());
+    String lastLogin = SDF.format(profile.getDataContainer("account", "lastlogin").getAsLong());
     
-    String desc = "&fRank: " + roleName + "\n" +
+            String desc = "&fRank: " + rankName + "\n" +
                   "&fCash: &b" + cash + "\n" +
                   " \n" +
                   "&fCadastrado: &7" + created + "\n" +

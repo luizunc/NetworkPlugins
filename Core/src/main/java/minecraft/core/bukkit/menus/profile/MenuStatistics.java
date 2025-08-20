@@ -62,11 +62,11 @@ public class MenuStatistics extends PlayerMenu {
    */
   private ItemStack createSkyWarsItem() {
     String desc = "&eSolo:\n" +
-                  " &8▪ &fAbates: &7%Core_SkyWars_1v1kills%\n" +
-                  " &8▪ &fMortes: &7%Core_SkyWars_1v1deaths%\n" +
-                  " &8▪ &fVitórias: &7%Core_SkyWars_1v1wins%\n" +
-                  " &8▪ &fPartidas: &7%Core_SkyWars_1v1games%\n" +
-                  " &8▪ &fAssistências: &7%Core_SkyWars_1v1assists%\n" +
+                  " &8▪ &fAbates: &7%Core_SkyWars_solokills%\n" +
+                  " &8▪ &fMortes: &7%Core_SkyWars_solodeaths%\n" +
+                  " &8▪ &fVitórias: &7%Core_SkyWars_solowins%\n" +
+                  " &8▪ &fPartidas: &7%Core_SkyWars_sologames%\n" +
+                  " &8▪ &fAssistências: &7%Core_SkyWars_soloassists%\n" +
                   " \n" +
                   "&eRanked:\n" +
                   " &8▪ &fAbates: &7%Core_SkyWars_rankedkills%\n" +

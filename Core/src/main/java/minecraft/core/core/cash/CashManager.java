@@ -20,7 +20,7 @@ public class CashManager {
       throw new CashException("O usuário precisa estar conectado para alterar o cash");
     }
     
-          profile.setStats("CoreProfile", profile.getStats("CoreProfile", "cash") + amount, "cash");
+          profile.setStats("account", profile.getStats("account", "cash") + amount, "cash");
   }
   
   public static void addCash(Player player, long amount) throws CashException {
@@ -36,7 +36,7 @@ public class CashManager {
       throw new CashException("O usuário precisa estar conectado para alterar o cash");
     }
     
-          profile.setStats("CoreProfile", profile.getStats("CoreProfile", "cash") - amount, "cash");
+          profile.setStats("account", profile.getStats("account", "cash") - amount, "cash");
   }
   
   public static void removeCash(Player player, long amount) throws CashException {
@@ -52,7 +52,7 @@ public class CashManager {
       throw new CashException("O usuário precisa estar conectado para alterar o cash");
     }
     
-          profile.setStats("CoreProfile", amount, "cash");
+          profile.setStats("account", amount, "cash");
   }
   
   public static void setCash(Player player, long amount) throws CashException {
@@ -66,7 +66,7 @@ public class CashManager {
   public static long getCash(Profile profile) {
     long cash = 0L;
     if (profile != null) {
-      cash = profile.getStats("CoreProfile", "cash");
+      cash = profile.getStats("account", "cash");
     }
     
     return cash;

@@ -4,11 +4,11 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import minecraft.core.bukkit.Core;
 import minecraft.core.Manager;
-import minecraft.core.core.database.cache.RoleCache;
+import minecraft.core.core.database.cache.RankCache;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.database.data.DataTable;
 import minecraft.core.core.database.exception.ProfileLoadException;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -64,11 +64,11 @@ public class HikariDatabase extends Database {
   
   @Override
   public String getRankAndName(String player) {
-          try (CachedRowSet rs = query("SELECT `name`, `role` FROM `CoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
-      if (rs != null) {
-        String result = rs.getString("role") + " : " + rs.getString("name");
-        RoleCache.setCache(player, rs.getString("role"), rs.getString("name"));
-        return result;
+                  try (CachedRowSet rs = query("SELECT `name`, `rank` FROM `account` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
+            if (rs != null) {
+                String result = rs.getString("rank") + " : " + rs.getString("name");
+                RankCache.setCache(player, rs.getString("rank"), rs.getString("name"));
+                return result;
       }
     } catch (SQLException ignored) {
     }
@@ -78,7 +78,7 @@ public class HikariDatabase extends Database {
   @Override
   public boolean getPreference(String player, String id, boolean def) {
     boolean preference = true;
-          try (CachedRowSet rs = query("SELECT `preferences` FROM `CoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
+          try (CachedRowSet rs = query("SELECT `preferences` FROM `account` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
       if (rs != null) {
         preference = ((JSONObject) new JSONParser().parse(rs.getString("preferences"))).get(id).equals(0L);
       }
@@ -106,7 +106,7 @@ public class HikariDatabase extends Database {
           for (String column : columns) {
             count += rs.getLong(column);
           }
-          result.add(new String[]{Role.getColored(rs.getString("name"), true), StringUtils.formatNumber(count)});
+                      result.add(new String[]{Rank.getColored(rs.getString("name"), true), StringUtils.formatNumber(count)});
         }
       }
     } catch (SQLException ignore) {
@@ -192,7 +192,7 @@ public class HikariDatabase extends Database {
   @Override
   public String exists(String name) {
     try {
-      return this.query("SELECT `name` FROM `CoreProfile` WHERE LOWER(`name`) = ?", name.toLowerCase()).getString("name");
+      return this.query("SELECT `name` FROM `account` WHERE LOWER(`name`) = ?", name.toLowerCase()).getString("name");
     } catch (Exception ex) {
       return null;
     }

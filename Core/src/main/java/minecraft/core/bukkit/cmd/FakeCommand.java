@@ -20,7 +20,7 @@ public class FakeCommand extends Commands {
     // Constantes
     private static final String PERMISSION_FAKE = "core.cmd.fake";
     private static final String PERMISSION_FAKELIST = "core.cmd.fakelist";
-    private static final String DEFAULT_ROLE = "Membro";
+    private static final String DEFAULT_RANK = "Membro";
     
     // Labels dos comandos
     private static final String LABEL_FAKE = "fake";
@@ -119,9 +119,9 @@ public class FakeCommand extends Commands {
         }
 
         // Aplica o fake
-        String finalRoleName = DEFAULT_ROLE;
+        String finalRankName = DEFAULT_RANK;
         String finalSkin = Manager.getSkin(fakeName, "value") + ":" + Manager.getSkin(fakeName, "signature");
-        FakeManager.applyFake(player, fakeName, finalRoleName, finalSkin);
+        FakeManager.applyFake(player, fakeName, finalRankName, finalSkin);
     }
 
     /**

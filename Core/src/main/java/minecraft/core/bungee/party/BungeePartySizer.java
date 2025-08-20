@@ -17,10 +17,10 @@ public class BungeePartySizer {
     CONFIG = Bungee.getInstance().getConfig();
     if (!CONFIG.contains("party")) {
       CONFIG.set("party.size", new HashMap<>());
-      CONFIG.set("party.size.role_master", 20);
-      CONFIG.set("party.size.role_youtuber", 15);
-      CONFIG.set("party.size.role_mvpplus", 10);
-      CONFIG.set("party.size.role_mvp", 5);
+              CONFIG.set("party.size.rank_master", 20);
+        CONFIG.set("party.size.rank_youtuber", 15);
+        CONFIG.set("party.size.rank_mvpplus", 10);
+        CONFIG.set("party.size.rank_mvp", 5);
     }
     
     SIZES = new LinkedHashMap<>();

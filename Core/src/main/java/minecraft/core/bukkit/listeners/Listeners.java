@@ -8,7 +8,7 @@ import minecraft.core.core.player.enums.PrivateMessages;
 import minecraft.core.core.player.enums.ProtectionLobby;
 import minecraft.core.core.player.fake.FakeManager;
 import minecraft.core.core.player.hotbar.HotbarButton;
-import minecraft.core.core.player.role.Role;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.FieldAccessor;
@@ -96,7 +96,7 @@ public class Listeners implements Listener {
 
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerJoin(PlayerJoinEvent evt) {
-    // Evento de join do jogador
+    // Evento de join do jogador - mensagem laranja já é enviada automaticamente
   }
   
 
@@ -166,7 +166,7 @@ public class Listeners implements Listener {
   private void cleanupPlayerData(Player player) {
     String playerName = player.getName();
     FakeManager.fakeNames.remove(playerName);
-    FakeManager.fakeRoles.remove(playerName);
+    FakeManager.fakeRanks.remove(playerName);
     FakeManager.fakeSkins.remove(playerName);
     DELAY_PLAYERS.remove(playerName);
     PROTECTION_LOBBY.remove(playerName.toLowerCase());
@@ -193,9 +193,9 @@ public class Listeners implements Listener {
     String format = String.format(evt.getFormat(), player.getName(), evt.getMessage());
     
     String currentName = Manager.getCurrent(player.getName());
-    Role role = Role.getPlayerRole(player);
+            Rank rank = Rank.getPlayerRank(player);
     
-    TextComponent component = createChatComponent(format, currentName, role);
+            TextComponent component = createChatComponent(format, currentName, rank);
     
     evt.setCancelled(true);
     evt.getRecipients().forEach(recipient -> {
@@ -213,14 +213,14 @@ public class Listeners implements Listener {
    * @param role Role do jogador
    * @return TextComponent formatado
    */
-  private TextComponent createChatComponent(String format, String playerName, Role role) {
+      private TextComponent createChatComponent(String format, String playerName, Rank rank) {
     TextComponent component = new TextComponent("");
     
     for (BaseComponent comp : TextComponent.fromLegacyText(format)) {
       comp.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tell " + playerName + " "));
       comp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-          TextComponent.fromLegacyText(StringUtils.getLastColor(role.getPrefix()) + playerName + 
-              "\n§fGrupo: " + role.getName() + "\n \n§eClique para enviar uma mensagem privada.")));
+                  TextComponent.fromLegacyText(StringUtils.getLastColor(rank.getPrefix()) + playerName +
+            "\n§fGrupo: " + rank.getName() + "\n \n§eClique para enviar uma mensagem privada.")));
       component.addExtra(comp);
     }
     

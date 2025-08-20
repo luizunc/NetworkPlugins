@@ -57,8 +57,7 @@ C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bungee\party
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\bungee\party\BungeePartySizer.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\cash\CashException.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\cash\CashManager.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\cache\RoleCache.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\conversor\MongoDBConversor.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\cache\RankCache.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\data\container\AchievementsContainer.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\data\container\PreferencesContainer.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\data\container\SelectedContainer.java
@@ -70,7 +69,6 @@ C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\databas
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\Database.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\exception\ProfileLoadException.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\HikariDatabase.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\MongoDBDatabase.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\MySQLDatabase.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\tables\BedWarsTable.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\database\tables\CoreTable.java
@@ -165,7 +163,7 @@ C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\hotbar\HotbarActionType.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\hotbar\HotbarButton.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\Profile.java
-C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\role\Role.java
+C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\role\Rank.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\scoreboard\KScoreboard.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\scoreboard\scroller\ScoreboardScroller.java
 C:\Users\Luiz\Desktop\fabrica\SRC\Core\src\main\java\minecraft\core\core\player\scoreboard\VirtualTeam.java

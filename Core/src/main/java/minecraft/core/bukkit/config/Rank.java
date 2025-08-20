@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Configuração interna do roles.yml
+ * Configuração interna do rank.yml
  * Contém as configurações de cargos e permissões
  * 
  * @author Luiz
@@ -20,83 +20,83 @@ import java.util.Map;
 public class Rank {
     
     // Configurações dos cargos
-    private static final Map<String, RoleConfig> ROLES = new HashMap<>();
+    private static final Map<String, rankConfig> rank = new HashMap<>();
     
     static {
-        // Cargo Master
-        ROLES.put("master", new RoleConfig(
-            "&6Master",
-            "&6[Master] ",
-            "role.master",
-            true
-        ));
-        
-        // Cargo Gerente
-        ROLES.put("gerente", new RoleConfig(
-            "&4Gerente",
-            "&4[Gerente] ",
-            "role.gerente",
-            true
-        ));
-        
-        // Cargo Admin
-        ROLES.put("admin", new RoleConfig(
-            "&cAdmin",
-            "&c[Admin] ",
-            "role.admin",
+        //
+        rank.put("admin", new rankConfig(
+            "&4Admin",
+            "&4&lADMIN &4",
+            "rank.admin",
             true
         ));
         
         // Cargo Moderador
-        ROLES.put("moderador", new RoleConfig(
-            "&2Moderador",
-            "&2[Moderador] ",
-            "role.moderador",
+        rank.put("mod", new rankConfig(
+            "&5Mod",
+            "&5&lMOD &5",
+            "rank.mod",
             true
         ));
         
-        // Cargo Ajudante
-        ROLES.put("ajudante", new RoleConfig(
-            "&eAjudante",
-            "&e[Ajudante] ",
-            "role.ajudante",
+        // Cargo Trial
+        rank.put("trial", new rankConfig(
+            "&cAdmin",
+            "&5&lTRIAL &5",
+            "rank.trial",
             true
         ));
         
-        // Cargo YouTuber
-        ROLES.put("youtuber", new RoleConfig(
-            "&cYouTuber",
-            "&c[YouTuber] ",
-            "role.youtuber",
+        // Cargo Staff
+        rank.put("staff", new rankConfig(
+            "&9Staff",
+            "&9&lSTAFF &9",
+            "rank.staff",
             true
         ));
         
-        // Cargo MVP+
-        ROLES.put("mvpplus", new RoleConfig(
-            "&bMVP&6+",
-            "&b[MVP&6+&b] ",
-            "role.mvpplus",
+        // Cargo Builder
+        rank.put("builder", new rankConfig(
+            "&3Builder",
+            "&3&lBUILDER &3",
+            "rank.builder",
+            true
+        ));
+        
+        // Cargo Creator
+        rank.put("creator", new rankConfig(
+            "&bCreator",
+            "&b&lCREATOR &b",
+            "rank.creator",
+            true
+        ));
+        
+        // Cargo Emerald
+        rank.put("emerald", new rankConfig(
+            "&2Emerald",
+            "&2&lEMERALD &2",
+            "rank.emerald",
             false
         ));
         
-        // Cargo MVP
-        ROLES.put("mvp", new RoleConfig(
-            "&6MVP",
-            "&6[MVP] ",
-            "role.mvp",
+        // Cargo Gold
+        rank.put("gold", new rankConfig(
+            "&6Gold",
+            "&6&lGOLD &6",
+            "rank.gold",
             false
         ));
         
-        // Cargo VIP
-        ROLES.put("vip", new RoleConfig(
-            "&eVIP",
-            "&e[VIP] ",
-            "role.vip",
+        // Cargo Iron
+        rank.put("iron", new rankConfig(
+            "&fIron",
+            "&f&lIRON &f",
+            "rank.iron",
             false
         ));
         
         // Cargo Membro
-        ROLES.put("membro", new RoleConfig(
+        rank.put("membro", new rankConfig(
             "&7Membro",
             "&7",
             "",
@@ -107,13 +107,13 @@ public class Rank {
     /**
      * Classe interna para configuração de cargo.
      */
-    public static class RoleConfig {
+    public static class rankConfig {
         private final String name;
         private final String prefix;
         private final String permission;
         private final boolean alwaysVisible;
         
-        public RoleConfig(String name, String prefix, String permission, boolean alwaysVisible) {
+        public rankConfig(String name, String prefix, String permission, boolean alwaysVisible) {
             this.name = name;
             this.prefix = prefix;
             this.permission = permission;
@@ -140,11 +140,11 @@ public class Rank {
     /**
      * Obtém a configuração de um cargo específico.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return Configuração do cargo ou null se não existir
      */
-    public static RoleConfig getRole(String roleName) {
-        return ROLES.get(roleName);
+    public static rankConfig getrank(String rankName) {
+        return rank.get(rankName);
     }
     
     /**
@@ -152,68 +152,68 @@ public class Rank {
      * 
      * @return Mapa com todos os cargos
      */
-    public static Map<String, RoleConfig> getAllRoles() {
-        return new HashMap<>(ROLES);
+    public static Map<String, rankConfig> getAllrank() {
+        return new HashMap<>(rank);
     }
     
     /**
      * Verifica se um cargo existe.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return true se o cargo existe
      */
-    public static boolean hasRole(String roleName) {
-        return ROLES.containsKey(roleName);
+    public static boolean hasrank(String rankName) {
+        return rank.containsKey(rankName);
     }
     
     /**
      * Obtém o nome de um cargo.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return Nome formatado do cargo ou null se não existir
      */
-    public static String getRoleName(String roleName) {
-        RoleConfig role = ROLES.get(roleName);
-        return role != null ? role.getName() : null;
+    public static String getrankName(String rankName) {
+        rankConfig rankConfig = rank.get(rankName);
+        return rankConfig != null ? rankConfig.getName() : null;
     }
     
     /**
      * Obtém o prefixo de um cargo.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return Prefixo do cargo ou null se não existir
      */
-    public static String getRolePrefix(String roleName) {
-        RoleConfig role = ROLES.get(roleName);
-        return role != null ? role.getPrefix() : null;
+    public static String getrankPrefix(String rankName) {
+        rankConfig rankConfig = rank.get(rankName);
+        return rankConfig != null ? rankConfig.getPrefix() : null;
     }
     
     /**
      * Obtém a permissão de um cargo.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return Permissão do cargo ou null se não existir
      */
-    public static String getRolePermission(String roleName) {
-        RoleConfig role = ROLES.get(roleName);
-        return role != null ? role.getPermission() : null;
+    public static String getrankPermission(String rankName) {
+        rankConfig rankConfig = rank.get(rankName);
+        return rankConfig != null ? rankConfig.getPermission() : null;
     }
     
     /**
      * Verifica se um cargo é sempre visível.
      * 
-     * @param roleName Nome do cargo
+     * @param rankName Nome do cargo
      * @return true se o cargo é sempre visível
      */
-    public static boolean isRoleAlwaysVisible(String roleName) {
-        RoleConfig role = ROLES.get(roleName);
-        return role != null && role.isAlwaysVisible();
+    public static boolean isrankAlwaysVisible(String rankName) {
+        rankConfig rankConfig = rank.get(rankName);
+        return rankConfig != null && rankConfig.isAlwaysVisible();
     }
     
     /**
-     * Obtém a configuração do roles.yml como KConfig (método de compatibilidade).
+     * Obtém a configuração do rank.yml como KConfig (método de compatibilidade).
      * 
-     * @return KConfig com as configurações dos roles
+     * @return KConfig com as configurações dos rank
      */
     public static KConfig getConfig() {
         try {
@@ -222,7 +222,7 @@ public class Rank {
             FileConfiguration config = YamlConfiguration.loadConfiguration(inputStream);
             return new KConfig(config);
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao carregar roles.yml interno", e);
+            throw new RuntimeException("Erro ao carregar rank.yml interno", e);
         }
     }
     
@@ -233,18 +233,18 @@ public class Rank {
      */
     private static String convertToYaml() {
         StringBuilder yaml = new StringBuilder();
-        yaml.append("roles:\n");
+        yaml.append("rank:\n");
         
-        for (Map.Entry<String, RoleConfig> entry : ROLES.entrySet()) {
-            String roleName = entry.getKey();
-            RoleConfig role = entry.getValue();
+        for (Map.Entry<String, rankConfig> entry : rank.entrySet()) {
+            String rankName = entry.getKey();
+            rankConfig rankConfig = entry.getValue();
             
             yaml.append("  \n");
-            yaml.append("  ").append(roleName).append(":\n");
-            yaml.append("    name: '").append(role.getName()).append("'\n");
-            yaml.append("    prefix: '").append(role.getPrefix()).append("'\n");
-            yaml.append("    permission: '").append(role.getPermission()).append("'\n");
-            yaml.append("    alwaysvisible: ").append(role.isAlwaysVisible()).append("\n");
+            yaml.append("  ").append(rankName).append(":\n");
+            yaml.append("    name: '").append(rankConfig.getName()).append("'\n");
+            yaml.append("    prefix: '").append(rankConfig.getPrefix()).append("'\n");
+            yaml.append("    permission: '").append(rankConfig.getPermission()).append("'\n");
+            yaml.append("    alwaysvisible: ").append(rankConfig.isAlwaysVisible()).append("\n");
         }
         
         return yaml.toString();
@@ -253,7 +253,7 @@ public class Rank {
     /**
      * Obtém o conteúdo YAML como string (método de compatibilidade).
      * 
-     * @return String com o conteúdo do roles.yml
+     * @return String com o conteúdo do rank.yml
      */
     public static String getYamlContent() {
         return convertToYaml();
