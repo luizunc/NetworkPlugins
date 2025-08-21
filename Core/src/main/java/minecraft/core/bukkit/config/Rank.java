@@ -23,9 +23,9 @@ public class Rank {
     private static final Map<String, rankConfig> rank = new HashMap<>();
     
     static {
-        //
+        // Cargo Admin
         rank.put("admin", new rankConfig(
-            "&4Admin",
+            "&4ADMIN",
             "&4&lADMIN &4",
             "rank.admin",
             true
@@ -33,7 +33,7 @@ public class Rank {
         
         // Cargo Moderador
         rank.put("mod", new rankConfig(
-            "&5Mod",
+            "&5MOD",
             "&5&lMOD &5",
             "rank.mod",
             true
@@ -41,7 +41,7 @@ public class Rank {
         
         // Cargo Trial
         rank.put("trial", new rankConfig(
-            "&cAdmin",
+            "&5TRIAL",
             "&5&lTRIAL &5",
             "rank.trial",
             true
@@ -49,7 +49,7 @@ public class Rank {
         
         // Cargo Staff
         rank.put("staff", new rankConfig(
-            "&9Staff",
+            "&9STAFF",
             "&9&lSTAFF &9",
             "rank.staff",
             true
@@ -57,7 +57,7 @@ public class Rank {
         
         // Cargo Builder
         rank.put("builder", new rankConfig(
-            "&3Builder",
+            "&3BUILDER",
             "&3&lBUILDER &3",
             "rank.builder",
             true
@@ -65,7 +65,7 @@ public class Rank {
         
         // Cargo Creator
         rank.put("creator", new rankConfig(
-            "&bCreator",
+            "&bCREATOR",
             "&b&lCREATOR &b",
             "rank.creator",
             true
@@ -73,7 +73,7 @@ public class Rank {
         
         // Cargo Emerald
         rank.put("emerald", new rankConfig(
-            "&2Emerald",
+            "&2EMERALD",
             "&2&lEMERALD &2",
             "rank.emerald",
             false
@@ -81,7 +81,7 @@ public class Rank {
         
         // Cargo Gold
         rank.put("gold", new rankConfig(
-            "&6Gold",
+            "&6GOLD",
             "&6&lGOLD &6",
             "rank.gold",
             false
@@ -89,7 +89,7 @@ public class Rank {
         
         // Cargo Iron
         rank.put("iron", new rankConfig(
-            "&fIron",
+            "&fIRON",
             "&f&lIRON &f",
             "rank.iron",
             false

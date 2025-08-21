@@ -2,7 +2,7 @@ package minecraft.core.bukkit.listeners;
 
 import minecraft.core.Manager;
 import minecraft.core.bukkit.Core;
-import minecraft.core.bukkit.animation.EntryAnimationManager;
+import minecraft.core.bukkit.menus.profile.premium.animacoes.EntryAnimationManager;
 import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.database.exception.ProfileLoadException;
 import minecraft.core.core.player.Profile;
@@ -117,6 +117,9 @@ public class Listeners implements Listener {
    * @param player Jogador que saiu
    */
   private void handlePlayerQuit(Player player) {
+    // Cancela a animação de entrada se estiver ativa
+    EntryAnimationManager.cancelPlayerAnimation(player);
+    
     Profile profile = Profile.unloadProfile(player.getName());
     if (profile != null) {
       handleProfileCleanup(profile);

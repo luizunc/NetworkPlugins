@@ -258,11 +258,9 @@ public class MenuAnimacoes extends UpdatablePlayerMenu {
      if (isSelected) {
        // Deseleciona a animação
        deselectAnimation(profile, animationId);
-       player.sendMessage("§cAnimação de chegada deselecionada!");
      } else {
        // Seleciona a animação
        selectAnimation(profile, animationId);
-       player.sendMessage("§aAnimação de chegada selecionada: " + animationName);
      }
      
      new MenuAnimacoes(profile);
