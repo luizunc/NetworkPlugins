@@ -1,7 +1,9 @@
 package minecraft.core.bukkit.listeners;
 
-import minecraft.core.bukkit.Core;
 import minecraft.core.Manager;
+import minecraft.core.bukkit.Core;
+import minecraft.core.bukkit.animation.EntryAnimationManager;
+import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.database.exception.ProfileLoadException;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.enums.PrivateMessages;
@@ -9,33 +11,25 @@ import minecraft.core.core.player.enums.ProtectionLobby;
 import minecraft.core.core.player.fake.FakeManager;
 import minecraft.core.core.player.hotbar.HotbarButton;
 import minecraft.core.core.player.role.Rank;
-import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.FieldAccessor;
 import minecraft.core.core.titles.TitleManager;
-
 import minecraft.core.core.utils.StringUtils;
-import minecraft.core.core.utils.enums.EnumSound;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Bat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.spigotmc.WatchdogThread;
 
@@ -99,7 +93,15 @@ public class Listeners implements Listener {
 
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerJoin(PlayerJoinEvent evt) {
-    // Evento de join do jogador - mensagem laranja já é enviada automaticamente
+    Player player = evt.getPlayer();
+    Profile profile = Profile.getProfile(player.getName());
+    
+    if (profile != null) {
+      // Executa a animação de chegada após 1 segundo
+      Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+        EntryAnimationManager.playEntryAnimation(player, profile);
+      }, 20L);
+    }
   }
   
 

@@ -45,7 +45,7 @@ public final class Language {
     public static final String chat$format$lobby = "{player}{color}: {message}";
     
     // Configurações do lobby
-    public static final String lobby$broadcast = "{player} §6entrou no lobby!";
+    public static final String lobby$broadcast = "{player} " + "%Core_entrymessage%";
     public static final boolean lobby$tab$enabled = true;
     public static final String lobby$tab$header = " \n§b§lHYPE MC\n  §fwww.hypemc.com\n ";
     public static final String lobby$tab$footer =

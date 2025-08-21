@@ -12,10 +12,10 @@ import java.util.Map;
 
 @DataTableInfo(
     name = "account",
-    create = "CREATE TABLE IF NOT EXISTS `account` (`name` VARCHAR(32), `cash` LONG, `rank` TEXT, `preferences` TEXT, `titles` TEXT, `achievements` TEXT, `selected` TEXT, `created` LONG, `clan` TEXT, `lastlogin` LONG, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
+    create = "CREATE TABLE IF NOT EXISTS `account` (`name` VARCHAR(32), `cash` LONG, `rank` TEXT, `preferences` TEXT, `titles` TEXT, `achievements` TEXT, `selected` TEXT, `created` LONG, `clan` TEXT, `lastlogin` LONG, `entryanimation` TEXT, `entrymessage` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
     select = "SELECT * FROM `account` WHERE LOWER(`name`) = ?",
-    insert = "INSERT INTO `account` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          update = "UPDATE `account` SET `cash` = ?, `rank` = ?, `preferences` = ?, `titles` = ?, `achievements` = ?, `selected` = ?, `created` = ?, `clan` = ?, `lastlogin` = ? WHERE LOWER(`name`) = ?"
+    insert = "INSERT INTO `account` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          update = "UPDATE `account` SET `cash` = ?, `rank` = ?, `preferences` = ?, `titles` = ?, `achievements` = ?, `selected` = ?, `created` = ?, `clan` = ?, `lastlogin` = ?, `entryanimation` = ?, `entrymessage` = ? WHERE LOWER(`name`) = ?"
 )
 public class CoreTable extends DataTable {
   
@@ -25,9 +25,21 @@ public class CoreTable extends DataTable {
       if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'cash'") == null) {
                   ((MySQLDatabase) database).execute("ALTER TABLE `account` ADD `cash` LONG AFTER `name`");
       }
+      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'entryanimation'") == null) {
+                  ((MySQLDatabase) database).execute("ALTER TABLE `account` ADD `entryanimation` TEXT AFTER `lastlogin`");
+      }
+      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'entrymessage'") == null) {
+                  ((MySQLDatabase) database).execute("ALTER TABLE `account` ADD `entrymessage` TEXT AFTER `entryanimation`");
+      }
     } else if (database instanceof HikariDatabase) {
               if (((HikariDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'cash'") == null) {
                   ((HikariDatabase) database).execute("ALTER TABLE `account` ADD `cash` LONG AFTER `name`");
+      }
+      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'entryanimation'") == null) {
+                  ((HikariDatabase) database).execute("ALTER TABLE `account` ADD `entryanimation` TEXT AFTER `lastlogin`");
+      }
+      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `account` LIKE 'entrymessage'") == null) {
+                  ((HikariDatabase) database).execute("ALTER TABLE `account` ADD `entrymessage` TEXT AFTER `entryanimation`");
       }
     }
   }
@@ -43,6 +55,8 @@ public class CoreTable extends DataTable {
     defaultValues.put("created", new DataContainer(System.currentTimeMillis()));
     defaultValues.put("clan", new DataContainer(""));
     defaultValues.put("lastlogin", new DataContainer(System.currentTimeMillis()));
+    defaultValues.put("entryanimation", new DataContainer("[]"));
+    defaultValues.put("entrymessage", new DataContainer("1"));
     return defaultValues;
   }
 }

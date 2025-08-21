@@ -34,6 +34,7 @@ public class MenuProfile extends PlayerMenu {
   private static final int MENU_ROWS = 4;
   
   // Slots dos itens
+  private static final int SLOT_AREAPREMIUM = 16;
   private static final int SLOT_INFORMACOES = 10;
   private static final int SLOT_ESTATISTICAS = 19;
   private static final int SLOT_PREFERENCIAS = 13;
@@ -59,6 +60,7 @@ public class MenuProfile extends PlayerMenu {
    * @param profile Perfil do jogador
    */
   private void setupItems(Profile profile) {
+    setItem(SLOT_AREAPREMIUM, createAreaPremiumItem());
     setItem(SLOT_INFORMACOES, createInformacoesItem(profile));
     setItem(SLOT_ESTATISTICAS, createEstatisticasItem());
     setItem(SLOT_PREFERENCIAS, createPreferenciasItem());
@@ -72,6 +74,15 @@ public class MenuProfile extends PlayerMenu {
    * @param profile Perfil do jogador
    * @return ItemStack do item
    */
+  private ItemStack createAreaPremiumItem() {
+      return BukkitUtils.deserializeItemStack(
+              "BEACON : 1 : esconder>tudo : nome>&aSetor Premium : desc>&7Desfrute dos benefícios Premium\n" +
+                      "\n" +
+                      "&cDisponível apenas para VIPS.\n" +
+                      " \n" +
+                      "&eClique para acessar!");
+  }
+
   private ItemStack createInformacoesItem(Profile profile) {
             String rankName = Rank.getRankByName(profile.getDataContainer("account", "rank").getAsString()).getName();
     String cash = StringUtils.formatNumber(profile.getStats("account", "cash"));
@@ -193,6 +204,10 @@ public class MenuProfile extends PlayerMenu {
    */
   private void handleItemClick(int slot, Profile profile) {
     switch (slot) {
+      case SLOT_AREAPREMIUM:
+        EnumSound.CLICK.play(player, 0.5F, 2.0F);
+        new AreaPremium(profile);
+
       case SLOT_INFORMACOES:
         EnumSound.ITEM_PICKUP.play(player, 0.5F, 2.0F);
         break;
