@@ -35,7 +35,7 @@ public class Servers {
             31,
             "BOOKSHELF : 1 : nome>&aLobby Principal : desc>&7Clique para conectar!",
             50,
-            Arrays.asList("127.0.0.1:25565 ; lobby")
+            Arrays.asList("127.0.0.1:25566 ; lobby")
         ));
         
         // Servidor Sky Wars
@@ -43,7 +43,7 @@ public class Servers {
             11,
             "EYE_OF_ENDER : 1 : nome>&aSky Wars : desc>&7{players} conectados.",
             50,
-            Arrays.asList("127.0.0.1:25566 ; skywars")
+            Arrays.asList("127.0.0.1:25568 ; skywars")
         ));
         
         // Servidor Bed Wars
@@ -51,7 +51,7 @@ public class Servers {
             12,
             "BED : 1 : nome>&aBed Wars : desc>&7{players} conectados.",
             50,
-            Arrays.asList("127.0.0.1:25569 ; bedwars")
+            Arrays.asList("127.0.0.1:25567 ; bedwars")
         ));
     }
     

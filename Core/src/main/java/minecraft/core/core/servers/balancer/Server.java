@@ -1,5 +1,6 @@
 package minecraft.core.core.servers.balancer;
 
+import minecraft.core.bukkit.Core;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.servers.ServerPing;
 import minecraft.core.core.servers.balancer.elements.LoadBalancerObject;
@@ -40,6 +41,6 @@ public class Server implements LoadBalancerObject, NumberConnection {
   
   @Override
   public boolean canBeSelected() {
-    return this.serverPing.getMotd() != null && this.getActualNumber() < this.max;
+    return true; // Sempre permite conexão
   }
 }

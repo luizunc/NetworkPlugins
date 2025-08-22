@@ -1,0 +1,7 @@
+# Informações do plugin
+author: LuizOtimizador
+name: Core
+version: 0.1
+
+# Classe principal do plugin
+main: minecraft.core.bungee.Bungee

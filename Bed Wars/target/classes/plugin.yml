@@ -1,0 +1,6 @@
+author: EsinaKiwi
+name: BedWars
+version: 0.1
+depend: [ Core ]
+
+main: minecraft.bedwars.Main

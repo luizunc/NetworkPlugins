@@ -329,6 +329,8 @@ public class Core extends KPlugin {
   
 
   
+
+  
   /**
    * Salva os perfis dos jogadores online.
    */

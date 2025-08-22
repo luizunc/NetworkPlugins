@@ -62,7 +62,8 @@ public class ServerItem {
                   String ipPort = parts[0].trim();
                   String name = parts[1].trim();
                   int max = CONFIG.getInt("items." + serverKey + ".max-players", 100);
-                  balancer.add(name, new Server(ipPort, name, max));
+                                Server server = new Server(ipPort, name, max);
+              balancer.add(name, server);
                 }
               }
               
@@ -99,12 +100,12 @@ public class ServerItem {
   }
   
   public void connect(Profile profile) {
-    Server server = balancer.next();
-    if (server != null) {
+    // Sistema simples: conecta diretamente ao primeiro servidor disponível
+    for (Server server : balancer.getList()) {
       Core.sendServer(profile, server.getName());
-    } else {
-      profile.getPlayer().sendMessage("§cNão foi possível se conectar a esse servidor no momento!");
+      return;
     }
+    profile.getPlayer().sendMessage("§cNão foi possível se conectar a esse servidor no momento!");
   }
   
   public String getKey() {
