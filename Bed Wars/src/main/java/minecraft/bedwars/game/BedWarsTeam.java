@@ -80,21 +80,21 @@ public class BedWarsTeam extends GameTeam {
     // Equipment Color.
     int color = this.index;
     if (color == 0) {
-      this.color = "255:85:85";
+      this.color = "255:85:85"; // Vermelho
     } else if (color == 1) {
-      this.color = "255:85:255";
+      this.color = "85:85:255"; // Azul
     } else if (color == 2) {
-      this.color = "85:255:255";
+      this.color = "85:255:85"; // Verde
     } else if (color == 3) {
-      this.color = "85:85:255";
+      this.color = "255:255:85"; // Amarelo
     } else if (color == 4) {
-      this.color = "255:255:255";
+      this.color = "85:255:255"; // Ciano
     } else if (color == 5) {
-      this.color = "255:170:0";
+      this.color = "255:170:0"; // Laranja
     } else if (color == 6) {
-      this.color = "170:0:170";
+      this.color = "255:85:255"; // Rosa
     } else {
-      this.color = "85:255:85";
+      this.color = "170:170:170"; // Cinza
     }
   }
   
@@ -361,6 +361,6 @@ public class BedWarsTeam extends GameTeam {
   }
   
   public static final String[] names =
-      {"§cVermelho", "§dRosa", "§bCiano", "§9Azul", "§fBranco", "§6Laranja", "§5Roxo", "§2Verde"};
-  public static final String[] ids = {"14", "6", "9", "11", "0", "1", "10", "13"};
+      {"§cVermelho", "§9Azul", "§2Verde", "§eAmarelo", "§bCiano", "§6Laranja", "§dRosa", "§7Cinza"};
+  public static final String[] ids = {"14", "11", "13", "4", "9", "1", "6", "7"};
 }

@@ -94,7 +94,7 @@ public class BWCoreHook {
           if (game != null) {
             if (game.getState() == GameState.EMJOGO || game.getState() == GameState.ENCERRADO) {
               int i = 0;
-              for (String team : new String[]{"red", "pink", "aqua", "blue", "white", "orange", "purple", "green"}) {
+              for (String team : new String[]{"red", "blue", "green", "yellow", "cyan", "orange", "pink", "gray"}) {
                 if (line.contains("{" + team + "}")) {
                   BedWarsTeam bt = game.listTeams().size() > i ? game.listTeams().get(i) : null;
                   if (bt == null) {
