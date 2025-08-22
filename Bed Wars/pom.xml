@@ -9,10 +9,8 @@
     <artifactId>BedWars</artifactId>
     <version>0.1</version>
 
-    <!-- Propriedades -->
     <properties>
         <main>minecraft.bedwars.Main</main>
-
         <lib.dir>C:\Users\Luiz\Desktop\fabrica\LIBS</lib.dir>
 
         <protocollib.version>4.5.0</protocollib.version>
@@ -24,7 +22,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <!-- Repositórios -->
     <repositories>
         <repository>
             <id>nms-repo</id>
@@ -36,12 +33,12 @@
         </repository>
         <repository>
             <id>placeholderapi</id>
-            <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
     </repositories>
 
-    <!-- Dependências -->
     <dependencies>
+        <!-- Core -->
         <dependency>
             <groupId>minecraft.core</groupId>
             <artifactId>Core</artifactId>
@@ -50,12 +47,14 @@
             <systemPath>${lib.dir}/Core.jar</systemPath>
         </dependency>
 
+        <!-- Spigot -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
         </dependency>
 
+        <!-- ProtocolLib -->
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
@@ -64,6 +63,7 @@
             <systemPath>${lib.dir}/ProtocolLib.jar</systemPath>
         </dependency>
 
+        <!-- PlaceholderAPI -->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
@@ -73,40 +73,27 @@
         </dependency>
     </dependencies>
 
-    <!-- Build -->
     <build>
         <finalName>BedWars</finalName>
         <defaultGoal>clean install</defaultGoal>
 
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>config.yml</include>
-                    <include>plugin.yml</include>
-                    <include>shop.yml</include>
-                    <include>upgrades.yml</include>
-                    <include>balloons.yml</include>
-                    <include>bedeffects.yml</include>
-                    <include>cages.yml</include>
-                    <include>deathcries.yml</include>
-                    <include>deathmessages.yml</include>
-                    <include>falleffects.yml</include>
-                    <include>killeffects.yml</include>
-                    <include>shopkeeperskins.yml</include>
-                    <include>winanimations.yml</include>
-                    <include>woodtypes.yml</include>
-                </includes>
-            </resource>
-        </resources>
-
         <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
             <!-- Shade plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
