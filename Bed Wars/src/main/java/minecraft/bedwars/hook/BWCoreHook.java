@@ -11,6 +11,7 @@ import minecraft.bedwars.game.BedWarsTeam;
 import minecraft.bedwars.game.improvements.Upgrades;
 import minecraft.bedwars.game.improvements.traps.Trap;
 import minecraft.bedwars.game.shop.Shop;
+import minecraft.bedwars.config.HotbarConfig;
 import minecraft.bedwars.hook.hotbar.BWHotbarActionType;
 import minecraft.bedwars.hook.protocollib.HologramAdapter;
 import minecraft.core.core.game.GameState;
@@ -21,17 +22,15 @@ import minecraft.core.core.player.hotbar.HotbarActionType;
 import minecraft.core.core.player.hotbar.HotbarButton;
 import minecraft.core.core.player.scoreboard.KScoreboard;
 import minecraft.core.core.player.scoreboard.scroller.ScoreboardScroller;
-import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.StringUtils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
+import java.util.Map;
 
 public class BWCoreHook {
   
@@ -146,21 +145,25 @@ public class BWCoreHook {
   private static void setupHotbars() {
     HotbarActionType.addActionType("bedwars", new BWHotbarActionType());
     
-    KConfig config = Main.getInstance().getConfig("hotbar");
-    for (String id : new String[]{"lobby", "waiting", "spectator"}) {
-      Hotbar hotbar = new Hotbar(id);
+    // Carregar hotbars do sistema interno
+    for (String hotbarType : HotbarConfig.getHotbarTypes()) {
+      Hotbar hotbar = new Hotbar(hotbarType);
       
-      ConfigurationSection hb = config.getSection(id);
-      for (String button : hb.getKeys(false)) {
-        try {
-          hotbar.getButtons().add(new HotbarButton(hb.getInt(button + ".slot"), new HotbarAction(hb.getString(button + ".execute")), hb.getString(button + ".icon")));
-        } catch (Exception ex) {
-          Main.getInstance().getLogger().log(Level.WARNING, "Falha ao carregar o botao \"" + button + "\" da hotbar \"" + id + "\": ", ex);
+      Map<String, HotbarConfig.HotbarItem> items = HotbarConfig.getHotbarItems(hotbarType);
+      if (items != null) {
+        for (HotbarConfig.HotbarItem item : items.values()) {
+          try {
+            hotbar.getButtons().add(new HotbarButton(item.getSlot(), new HotbarAction(item.getExecute()), item.getIcon()));
+          } catch (Exception ex) {
+            Main.getInstance().getLogger().warning("Falha ao carregar o botão da hotbar \"" + hotbarType + "\": " + ex.getMessage());
+          }
         }
       }
       
       Hotbar.addHotbar(hotbar);
     }
+    
+    Main.getInstance().getLogger().info("Sistema de hotbar interno carregado com sucesso.");
   }
   
   public void hotbarGame() {

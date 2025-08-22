@@ -1,37 +1,26 @@
 package minecraft.bedwars;
 
-import minecraft.core.bukkit.plugin.config.KConfig;
-import minecraft.core.bukkit.plugin.config.KWriter;
-import minecraft.core.bukkit.plugin.logger.KLogger;
 import minecraft.core.core.utils.StringUtils;
-import org.bukkit.Bukkit;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 
 @SuppressWarnings("rawtypes")
 public class Language {
   
-  public static final KLogger LOGGER = ((KLogger) Main.getInstance().getLogger())
-      .getModule("LANGUAGE");
-  private static final KConfig CONFIG = Main.getInstance().getConfig("language");
+  public static final String LOGGER_PREFIX = "[LANGUAGE]";
   
+  // Configurações de moedas e recompensas
   public static int options$coins$wins = 50;
   public static int options$coins$beds = 25;
   public static int options$coins$kills = 5;
   public static int options$start$waiting = 45;
   public static int options$start$full = 10;
   
-  @KWriter.YamlEntryInfo(annotation = "Se você não definir o evento FIM a partida não terá fim por tempo.\nEventos disponíveis:\nFIM:tempo_em_segundos\nBEDDESTROY:tempo_em_segundos\nEMERALD:tempo_em_segundos\nDIAMOND:tempo_em_segundos")
+  // Eventos do jogo
   public static List<String> options$events$all$timings = Arrays
       .asList("DIAMOND:280", "EMERALD:480", "DIAMOND:680", "EMERALD:880", "BEDDESTROY:1240", "FIM:16840");
-  @KWriter.YamlEntryInfo(annotation = "Quantos blocos serão regenerados por tick no BlockRegen")
   public static int options$regen$block_regen$per_tick = 20000;
-  @KWriter.YamlEntryInfo(annotation = "Existem dois tipos de Regeneração de Arena: WorldReload e BlockRegen.\nÉ recomendável que teste os dois e veja qual se sai melhor.")
   public static boolean options$regen$world_reload = true;
   
   public static String options$events$diamond = "Diamante {tier}";
@@ -39,6 +28,7 @@ public class Language {
   public static String options$events$beddestroy = "Destruição de Camas";
   public static String options$events$end = "Fim de Jogo";
   
+  // Geradores
   public static int options$generator$diamond$countdown_tier_1 = 30;
   public static int options$generator$diamond$countdown_tier_2 = 23;
   public static int options$generator$diamond$countdown_tier_3 = 15;
@@ -49,6 +39,7 @@ public class Language {
   public static double options$team_generator$gold$countdown = 3.0;
   public static double options$team_generator$iron$countdown = 1.0;
   
+  // Scoreboards
   public static long scoreboards$scroller$every_tick = 1;
   public static List<String> scoreboards$scroller$titles = Arrays
       .asList("§a§lBED WARS", "§6§lB§a§lED WARS", "§f§lB§6§lE§a§lD WARS", "§f§lBE§6§lD §a§lWARS",
@@ -77,6 +68,7 @@ public class Language {
       .asList("", " Próximo Evento:", " §a{next_event}", "", " {red}", " {pink}", " {aqua}",
           " {blue}", " {white}", " {orange}", " {purple}", " {green}", "", " §7www.redeslick.com", " ");
   
+  // Chat
   public static String chat$delay = "§cAguarde mais {time}s para falar novamente.";
   public static String chat$color$default = "§7";
   public static String chat$color$custom = "§f";
@@ -85,8 +77,9 @@ public class Language {
   public static String chat$format$lobby = "{player}{color}: {message}";
   public static String chat$format$spectator = "§8[Espectador] {player}{color}: {message}";
   
+  // Lobby
   public static String lobby$achievement = " \n§aVocê completou o desafio §f{name}\n ";
-  public static String lobby$broadcast = "{player} §6entrou no lobby!";
+  public static String lobby$broadcast = "{player} " + "%Core_entrymessage%";
   public static boolean lobby$tab$enabled = true;
   public static String lobby$tab$header = " \n§b§lREDE SLICK\n  §fredeslick.com\n ";
   public static String lobby$tab$footer =
@@ -126,7 +119,6 @@ public class Language {
       "§fLimite Diário: §7{limit}\n \n§7Jogadores que possuem o grupo §aVIP §7ou\n§7superior, podem escolher o mapa sem\n§7limite algum.\n \n&7www.redeslick.com/loja";
   public static String lobby$npc$play$menu$info$desc_not_limit = "§7Você não possui limite diário de seleções.";
   
-
   public static List<String> lobby$npc$stats$hologram = Arrays
       .asList("§6Estatísticas", "Total de Eliminações: §7%Core_BedWars_kills%",
           "Total de Vitórias: §7%Core_BedWars_wins%", "§e§lCLIQUE DIREITO");
@@ -150,6 +142,7 @@ public class Language {
   public static String lobby$npc$play$quarteto$skin$signature =
       "i7k5tYkZ0CJ1hnGrGELLVXjIi0hfVVtg+c4a/iXP4wOwvAPj6tQtExFWgGaZYnYhN6ldcjJKUw13a/TRwHi4er4OceOlxBgqSvc0zzT7U4iZsEUuCwv7r9t6a+3MELqSQe3/bbX6WP6pDA9TRSVWaCTGpBtZfAYyrszk+VTowMjKrDB7r/kzrhE+h2rSozVcv4fUMGOd4m8xbTPlcvBatZ9OcHfZEpuoTpECUq3tWH3GIJi+Uxz3rTVl5rKJdKLOeUVXLpiLSgQ0jybMy705WlB0NWFbWFkY0mEQU7yca6keopEsGaQ+36yEtcE4hKYhibqW2sFhne/wIZh5arwyXVv/04twL/dpdiBwg4nqGEO60i+tQoF9RVWeCmIwJizEn3+WO6H2QogfCy+W1vNO65/HoHlhVbC6Y6nkUUQ8r0jtqz/sBQVAEBhFDjOQcdFucyjnO4LXrZPajdzJtBhkottBZDQZQlbFoZxC47WpQ+sktc51SWT2f3BzMowRKg08R8xpZxMTf+bB5OldilMuDPggXF/wVQU4+N9OFo1qYNxRPtM/7DCP8dtS7pwfhJkRhnQOfBVu7/mkNX1EM3mlMRzhEiUmqXfhL3SSyzTzqdTB76JgrRF92zuW+ouUlnXHe4hWiaWvRQ1XHB4fc+HOQ6/1RMYb4NItJFte1tjcQQs=";
  
+  // Cosméticos
   public static String cosmetics$color$locked = "§a";
   public static String cosmetics$color$canbuy = "§e";
   public static String cosmetics$color$unlocked = "§a";
@@ -239,6 +232,7 @@ public class Language {
   public static String cosmetics$win_animation$icon$buy_desc$start = "\n \n§fRaridade: {rarity}\n§fCusto: §6{coins} Coins §7ou §b{cash} Cash\n \n{buy_desc_status}";
   public static String cosmetics$win_animation$icon$has_desc$start = "\n \n§fRaridade: {rarity}\n \n{has_desc_status}";
  
+  // In-game
   public static List<String> ingame$generators$hologram = Arrays
       .asList("§eNível §c{tier}", "{type}", "§eGera em §c{time} §esegundo{s}");
   public static List<String> ingame$npc$shop$item$hologram = Arrays
@@ -277,73 +271,47 @@ public class Language {
   public static String ingame$messages$coins$beds = "\n       §a+{coins} §fpor destruir §c{beds} §fcama{s}";
   public static String ingame$messages$coins$kills = "\n       §a+{coins} §fpor realizar §c{kills} §fabate{s}";
   
+  /**
+   * Inicializa o sistema de linguagem interno
+   * Agora todas as mensagens são carregadas diretamente das constantes da classe
+   */
   public static void setupLanguage() {
-    boolean save = false;
-    KWriter writer = Main.getInstance().getWriter(CONFIG.getFile(),
-        "bedwars - Criado por Kiwizin\nVersão da configuração: " + Main.getInstance()
-            .getDescription().getVersion());
-    for (Field field : Language.class.getDeclaredFields()) {
-      if (field.getName().contains("$") && !Modifier.isFinal(field.getModifiers())) {
-        String nativeName = field.getName().replace("$", ".").replace("_", "-");
-        
-        try {
-          Object value;
-          KWriter.YamlEntryInfo entryInfo = field.getAnnotation(KWriter.YamlEntryInfo.class);
+    // Aplicar formatação de cores em todas as strings
+    applyColorFormatting();
+    
+    Main.getInstance().getLogger().info("Sistema de linguagem interno carregado com sucesso.");
+  }
+  
+  /**
+   * Aplica formatação de cores em todas as strings da classe
+   */
+  private static void applyColorFormatting() {
+    try {
+      java.lang.reflect.Field[] fields = Language.class.getDeclaredFields();
+      for (java.lang.reflect.Field field : fields) {
+        if (field.getName().contains("$") && !java.lang.reflect.Modifier.isFinal(field.getModifiers())) {
+          field.setAccessible(true);
+          Object value = field.get(null);
           
-          if (CONFIG.contains(nativeName)) {
-            value = CONFIG.get(nativeName);
-            if (value instanceof String) {
-              value = StringUtils.formatColors((String) value).replace("\\n", "\n");
-            } else if (value instanceof List) {
-              List l = (List) value;
-              List<Object> list = new ArrayList<>(l.size());
-              for (Object v : l) {
-                if (v instanceof String) {
-                  list.add(StringUtils.formatColors((String) v).replace("\\n", "\n"));
-                } else {
-                  list.add(v);
-                }
+          if (value instanceof String) {
+            String stringValue = (String) value;
+            field.set(null, StringUtils.formatColors(stringValue).replace("\\n", "\n"));
+          } else if (value instanceof List) {
+            List<?> list = (List<?>) value;
+            List<Object> newList = new java.util.ArrayList<>(list.size());
+            for (Object item : list) {
+              if (item instanceof String) {
+                newList.add(StringUtils.formatColors((String) item).replace("\\n", "\n"));
+              } else {
+                newList.add(item);
               }
-              
-              value = list;
             }
-            
-            field.set(null, value);
-            writer.set(nativeName, new KWriter.YamlEntry(
-                new Object[]{entryInfo == null ? "" : entryInfo.annotation(),
-                    CONFIG.get(nativeName)}));
-          } else {
-            value = field.get(null);
-            if (value instanceof String) {
-              value = StringUtils.deformatColors((String) value).replace("\n", "\\n");
-            } else if (value instanceof List) {
-              List l = (List) value;
-              List<Object> list = new ArrayList<>(l.size());
-              for (Object v : l) {
-                if (v instanceof String) {
-                  list.add(StringUtils.deformatColors((String) v).replace("\n", "\\n"));
-                } else {
-                  list.add(v);
-                }
-              }
-              
-              value = list;
-            }
-            
-            save = true;
-            writer.set(nativeName, new KWriter.YamlEntry(new Object[]{entryInfo == null ? "" : entryInfo.annotation(), value}));
+            field.set(null, newList);
           }
-        } catch (ReflectiveOperationException e) {
-          LOGGER.log(Level.WARNING, "Unexpected error on settings file: ", e);
         }
       }
-    }
-    
-    if (save) {
-      writer.write();
-      CONFIG.reload();
-      Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(),
-          () -> LOGGER.info("A config §6language.yml §afoi modificada ou criada."));
+    } catch (Exception e) {
+      Main.getInstance().getLogger().warning("Erro ao aplicar formatação de cores: " + e.getMessage());
     }
   }
 }

@@ -70,10 +70,6 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
       players.hidePlayer(player);
     }
     
-    if (Main.kCosmetics) {
-      //CosmeticsAPI.disable(player);
-    }
-    
     this.cart = NMS.createAttachedCart(this.player.getName(), LOCATIONS[2]);
     this.player.teleport(LOCATIONS[2]);
     
@@ -153,9 +149,6 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
       this.player.setAllowFlight(this.player.hasPermission("core.fly"));
       profile.setGame(null);
       profile.setHotbar(Hotbar.getHotbarById("lobby"));
-      if (Main.kCosmetics) {
-        //   CosmeticsAPI.enable(player);
-      }
       profile.refreshPlayers();
       this.player.teleport(this.oldLocation);
       new MenuCosmetics<>(profile, "Efeitos de Abate", KillEffect.class);

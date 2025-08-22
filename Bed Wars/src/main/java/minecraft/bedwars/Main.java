@@ -18,7 +18,6 @@ import java.io.FileInputStream;
 
 public class Main extends KPlugin {
   
-  public static boolean kCosmetics;
   public static String currentServerName;
   private static Main instance;
   private static boolean validInit;
@@ -48,7 +47,6 @@ public class Main extends KPlugin {
     if (getConfig().getString("spawn") != null) {
       Core.setLobby(BukkitUtils.deserializeLocation(getConfig().getString("spawn")));
     }
-    kCosmetics = Bukkit.getPluginManager().getPlugin("kCosmetics") != null;
     
     BedWars.setupGames();
     Language.setupLanguage();

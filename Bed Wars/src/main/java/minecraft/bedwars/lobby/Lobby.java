@@ -1,7 +1,7 @@
 package minecraft.bedwars.lobby;
 
 import minecraft.bedwars.Main;
-import minecraft.core.bukkit.plugin.config.KConfig;
+import minecraft.bedwars.config.LobbiesConfig;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.servers.ServerPing;
 import org.bukkit.Bukkit;
@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Lobby {
   
-  public static final KConfig CONFIG = Main.getInstance().getConfig("lobbies");
   public static final List<String> WARNINGS = new ArrayList<>();
   private static final List<Lobby> LOBBIES = new ArrayList<>();
   
@@ -33,16 +32,23 @@ public class Lobby {
   }
   
   public static void setupLobbies() {
-    for (String key : CONFIG.getSection("items").getKeys(false)) {
-      String servername = CONFIG.getString("items." + key + ".servername");
-      if (servername.split(" ; ").length < 2) {
-        WARNINGS.add(" - (" + key + ") " + servername);
-        continue;
+    // Carregar lobbies do sistema interno
+    for (String serverName : LobbiesConfig.getServerNames()) {
+      LobbiesConfig.LobbyItem item = LobbiesConfig.getLobby(serverName);
+      if (item != null) {
+        String[] serverInfo = item.getServerName().split(" ; ");
+        if (serverInfo.length >= 2) {
+          LOBBIES.add(new Lobby(
+              item.getSlot(),
+              item.getIcon(),
+              item.getMaxPlayers(),
+              serverInfo[0],
+              serverInfo[1]
+          ));
+        } else {
+          WARNINGS.add(" - (" + serverName + ") " + item.getServerName());
+        }
       }
-      
-      LOBBIES.add(
-          new Lobby(CONFIG.getInt("items." + key + ".slot"), CONFIG.getString("items." + key + ".icon"), CONFIG.getInt("items." + key + ".max-players"), servername.split(" ; ")[0],
-              servername.split(" ; ")[1]));
     }
     
     List<Lobby> query = new ArrayList<>();
@@ -60,6 +66,8 @@ public class Lobby {
         }
       }.runTaskTimerAsynchronously(Main.getInstance(), 0, 40);
     }
+    
+    Main.getInstance().getLogger().info("Sistema de lobbies interno carregado com sucesso.");
   }
   
   public static Collection<Lobby> listLobbies() {

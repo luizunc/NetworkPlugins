@@ -41,9 +41,6 @@ public class CagePreview extends AbstractPreview<Cage> implements Listener {
     for (Player players : Bukkit.getOnlinePlayers()) {
       players.hidePlayer(player);
     }
-    if (Main.kCosmetics) {
-      // CosmeticsAPI.disable(player);
-    }
     
     this.cart = NMS.createAttachedCart(this.player.getName(), LOCATIONS[1]);
     this.player.teleport(LOCATIONS[1]);
@@ -99,9 +96,6 @@ public class CagePreview extends AbstractPreview<Cage> implements Listener {
       profile.setHotbar(Hotbar.getHotbarById("lobby"));
       profile.refreshPlayers();
       this.player.teleport(this.oldLocation);
-      if (Main.kCosmetics) {
-        //  CosmeticsAPI.enable(player);
-      }
       
       new MenuCosmetics<>(profile, "Jaulas", Cage.class);
     }

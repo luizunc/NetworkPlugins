@@ -87,8 +87,6 @@
                     <include>plugin.yml</include>
                     <include>shop.yml</include>
                     <include>upgrades.yml</include>
-                    <include>lobbies.yml</include>
-                    <include>hotbar.yml</include>
                     <include>balloons.yml</include>
                     <include>bedeffects.yml</include>
                     <include>cages.yml</include>
