@@ -6,7 +6,9 @@ import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.hook.BWCoreHook;
 import minecraft.bedwars.listeners.Listeners;
-import minecraft.bedwars.lobby.*;
+import minecraft.bedwars.lobby.Lobby;
+import minecraft.bedwars.lobby.Leaderboard;
+import minecraft.bedwars.lobby.PlayNPC;
 import minecraft.bedwars.utils.tagger.TagUtils;
 import minecraft.core.core.libraries.MinecraftVersion;
 import minecraft.core.bukkit.plugin.KPlugin;
@@ -57,7 +59,6 @@ public class Main extends KPlugin {
     PlayNPC.setupNPCs();
     Commands.setupCommands();
     
-    StatsNPC.setupNPCs();
     Lobby.setupLobbies();
     Leaderboard.setupLeaderboards();
     

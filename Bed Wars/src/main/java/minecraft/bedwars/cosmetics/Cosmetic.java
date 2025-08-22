@@ -44,8 +44,8 @@ public abstract class Cosmetic {
     ShopkeeperSkin.setupShopkeeperSkins();
     DeathCry.setupDeathCries();
     WoodTypes.setupTypes();
-    FallEffect.setupFallEffects();
-    Balloon.setupBalloons();
+
+
     DeathMessage.setupDeathMessages();
     BreakEffect.setupBreakEffects();
     WinAnimation.setupAnimations();

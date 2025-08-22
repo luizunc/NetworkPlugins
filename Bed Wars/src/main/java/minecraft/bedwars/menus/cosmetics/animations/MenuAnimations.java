@@ -3,9 +3,8 @@ package minecraft.bedwars.menus.cosmetics.animations;
 import minecraft.bedwars.Main;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.types.BreakEffect;
-import minecraft.bedwars.cosmetics.types.FallEffect;
 import minecraft.bedwars.cosmetics.types.KillEffect;
-import minecraft.bedwars.menus.MenuShop;
+import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
 import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
@@ -35,14 +34,7 @@ public class MenuAnimations extends PlayerMenu {
     this.setItem(11, BukkitUtils.deserializeItemStack(
         "BONE : 1 : nome>&aAnimações de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
 
-    List<FallEffect> falleffects = Cosmetic.listByType(FallEffect.class);
-    max = falleffects.size();
-    owned = falleffects.stream().filter(projectileEffect -> projectileEffect.has(profile)).count();
-    percentage = max == 0 ? 100 : (owned * 100) / max;
-    color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
-    falleffects.clear();
-    this.setItem(12, BukkitUtils.deserializeItemStack(
-        "DIAMOND_BOOTS : 1 : nome>&aAnimações de Queda : desc>&7Quando você levar dano de queda\n&7irá aparecer partículas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+
     
     List<BreakEffect> breakEffects = Cosmetic.listByType(BreakEffect.class);
     max = breakEffects.size();
@@ -53,7 +45,7 @@ public class MenuAnimations extends PlayerMenu {
     this.setItem(10, BukkitUtils.deserializeItemStack(
         "BED : 1 : nome>&aEfeitos de Quebra de Cama : desc>&7Deixa a sua marca quando quebrar\n&7uma cama do time oponente.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
     
-    this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar : desc>&7Para a loja."));
+    this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar : desc>&7Para Cosméticos da Partida."));
     
     this.register(Main.getInstance());
     this.open();
@@ -76,16 +68,14 @@ public class MenuAnimations extends PlayerMenu {
           if (item != null && item.getType() != Material.AIR) {
             if (evt.getSlot() == 31) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuShop(profile);
+              new MenuCosmeticsPage(profile);
             } else if (evt.getSlot() == 11) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Animações de Abate", KillEffect.class);
             } else if (evt.getSlot() == 10) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Quebra de Cama", BreakEffect.class);
-            } else if (evt.getSlot() == 12) {
-              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuCosmetics<>(profile, "Animações de Queda", FallEffect.class);
+
             } else if (evt.getSlot() == 13) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               //       new MenuCosmetics<>(profile, "Animações de Projétil", ProjectileEffect.class);

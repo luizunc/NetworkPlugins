@@ -31,7 +31,7 @@ public class BedWarsConfig {
   private CubeID cubeId;
   private int minPlayers;
   private List<String> spawns;
-  private List<String> balloons;
+
   private List<String> generators;
   
   public BedWarsConfig(BedWars game) {
@@ -46,10 +46,7 @@ public class BedWarsConfig {
     this.mode = BedWarsMode.fromName(this.config.getString("mode"));
     this.cubeId = new CubeID(config.getString("cubeId"));
     this.minPlayers = config.getInt("minPlayers");
-    if (!this.config.contains("balloons")) {
-      this.config.set("balloons", new ArrayList<>());
-    }
-    this.balloons = this.config.getStringList("balloons");
+
     this.spawns.addAll(this.config.getStringList("spawns"));
     this.generators.addAll(this.config.getStringList("generators"));
     
@@ -61,10 +58,7 @@ public class BedWarsConfig {
         this.game, spawn, this.mode.getSize())));
   }
   
-  public void addBalloon(String balloon) {
-    this.balloons.add(balloon);
-    this.config.set("balloons", this.balloons);
-  }
+
   
   public void destroy() {
     if ((this.world = Bukkit.getWorld(this.yaml)) != null) {
@@ -162,9 +156,7 @@ public class BedWarsConfig {
     return this.spawns;
   }
   
-  public String getBalloonLocation(int teamIndex) {
-    return teamIndex >= this.balloons.size() ? null : this.balloons.get(teamIndex);
-  }
+
   
   public List<String> listGenerators() {
     return this.generators;

@@ -6,8 +6,7 @@ import com.google.gson.JsonParser;
 import minecraft.bedwars.Language;
 import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.bedwars.cosmetics.CosmeticType;
-import minecraft.bedwars.cosmetics.object.IslandBalloon;
-import minecraft.bedwars.cosmetics.types.Balloon;
+
 import minecraft.bedwars.cosmetics.types.Cage;
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.bedwars.game.improvements.UpgradeType;
@@ -57,7 +56,7 @@ public class BedWarsTeam extends GameTeam {
   
   public CubeID cubeId;
   protected String color;
-  protected IslandBalloon islandBalloon;
+
   protected boolean bedBreaked = false;
   
   protected List<Trap> traps = new ArrayList<>();
@@ -211,21 +210,7 @@ public class BedWarsTeam extends GameTeam {
         player.teleport(this.getLocation());
       }
     });
-    String location = ((BedWars) getGame()).getConfig().getBalloonLocation(this.index);
-    if (location != null) {
-      Balloon balloon = null;
-      List<Profile> profiles = this.listPlayers().stream().map(player -> Profile.getProfile(player.getName()))
-          .filter(profile -> profile.getAbstractContainer("bedwars", "selected", SelectedContainer.class).getSelected(CosmeticType.BALLOON, Balloon.class) != null)
-          .collect(Collectors.toList());
-      if (profiles.size() > 0) {
-        balloon = profiles.get(ThreadLocalRandom.current().nextInt(profiles.size())).getAbstractContainer("bedwars", "selected", SelectedContainer.class)
-            .getSelected(CosmeticType.BALLOON, Balloon.class);
-      }
-      
-      if (balloon != null) {
-        this.islandBalloon = new IslandBalloon(BukkitUtils.deserializeLocation(location), balloon);
-      }
-    }
+
     this.itemShop = new ShopkeeperNPC("items", BukkitUtils.deserializeLocation(objectTeam.get("shop").getAsString()), this);
     this.upgradeShop = new ShopkeeperNPC("upgrades", BukkitUtils.deserializeLocation(objectTeam.get("upgrades").getAsString()), this);
     if (!isAlive()) {
@@ -237,10 +222,7 @@ public class BedWarsTeam extends GameTeam {
   @Override
   public void reset() {
     super.reset();
-    if (this.islandBalloon != null) {
-      this.islandBalloon.despawn();
-      this.islandBalloon = null;
-    }
+
     this.bedBreaked = false;
     this.equipments.clear();
     this.traps.clear();

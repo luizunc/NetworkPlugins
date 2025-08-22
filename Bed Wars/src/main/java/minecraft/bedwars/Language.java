@@ -223,10 +223,7 @@ public class Language {
   public static String cosmetics$cage$icon$has_desc$start =
       "§7Altere sua jaula para {name}.\n \n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n \n{has_desc_status}";
 
-  public static String cosmetics$balloon$icon$perm_desc$start = "§7Altera o balão decorativo da ilha\n§7para {name}.\n \n§fRaridade: {rarity}\n \n{perm_desc_status}";
-  public static String cosmetics$balloon$icon$buy_desc$start =
-      "§7Altera o balão decorativo da ilha\n§7para {name}.\n \n§fRaridade: {rarity}\n§fCusto: §6{coins} Coins §7ou §b{cash} Cash\n \n{buy_desc_status}";
-  public static String cosmetics$balloon$icon$has_desc$start = "§7Altera o balão decorativo da ilha\n§7para {name}.\n \n§fRaridade: {rarity}\n \n{has_desc_status}";
+
  
   public static String cosmetics$win_animation$icon$perm_desc$start = "\n \n§fRaridade: {rarity}\n \n{perm_desc_status}";
   public static String cosmetics$win_animation$icon$buy_desc$start = "\n \n§fRaridade: {rarity}\n§fCusto: §6{coins} Coins §7ou §b{cash} Cash\n \n{buy_desc_status}";

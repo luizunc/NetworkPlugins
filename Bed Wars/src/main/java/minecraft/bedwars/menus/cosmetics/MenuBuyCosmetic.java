@@ -1,6 +1,7 @@
 package minecraft.bedwars.menus.cosmetics;
 
 import minecraft.bedwars.Main;
+import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
@@ -62,10 +63,10 @@ public class MenuBuyCosmetic<T extends Cosmetic> extends PlayerMenu {
               profile.removeCoins("bedwars", this.cosmetic.getCoins());
               this.cosmetic.give(profile);
               this.player.sendMessage("§aVocê comprou '" + this.cosmetic.getName() + "'");
-              new MenuCosmetics<>(profile, this.name, this.cosmeticClass);
+              new MenuCosmeticsPage(profile);
             } else if (evt.getSlot() == 15) {
               EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-              new MenuCosmetics<>(profile, this.name, this.cosmeticClass);
+              new MenuCosmeticsPage(profile);
             }
           }
         }

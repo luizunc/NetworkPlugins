@@ -1,6 +1,7 @@
 package minecraft.bedwars.menus.cosmetics;
 
 import minecraft.bedwars.Main;
+import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.core.core.cash.CashException;
 import minecraft.core.core.cash.CashManager;
@@ -67,7 +68,7 @@ public class MenuBuyCashCosmetic<T extends Cosmetic> extends PlayerMenu {
               profile.removeCoins("bedwars", this.cosmetic.getCoins());
               this.cosmetic.give(profile);
               this.player.sendMessage("§aVocê comprou '" + this.cosmetic.getName() + "'");
-              new MenuCosmetics<>(profile, this.name, this.cosmeticClass);
+              new MenuCosmeticsPage(profile);
             } else if (evt.getSlot() == 13) {
               if (profile.getStats("account", "cash") < this.cosmetic.getCash()) {
                 EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
@@ -82,10 +83,10 @@ public class MenuBuyCashCosmetic<T extends Cosmetic> extends PlayerMenu {
                 EnumSound.LEVEL_UP.play(this.player, 0.5F, 2.0F);
               } catch (CashException ignore) {
               }
-              new MenuCosmetics<>(profile, this.name, this.cosmeticClass);
+              new MenuCosmeticsPage(profile);
             } else if (evt.getSlot() == 15) {
               EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-              new MenuCosmetics<>(profile, this.name, this.cosmeticClass);
+              new MenuCosmeticsPage(profile);
             }
           }
         }

@@ -4,7 +4,7 @@ import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.BedWarsTeam;
 import minecraft.bedwars.nms.entity.*;
 import minecraft.bedwars.nms.entity.*;
-import minecraft.bedwars.nms.interfaces.BalloonEntity;
+
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.FieldAccessor;
 import minecraft.core.core.utils.Utils;
@@ -38,19 +38,19 @@ public class NMS {
     CLASS_TO_ID.get(null).put(EntityCart.class, 51);
     CLASS_TO_ID.get(null).put(EntityTeamIronGolem.class, 99);
     CLASS_TO_ID.get(null).put(EntityFirework.class, 22);
-    CLASS_TO_ID.get(null).put(BalloonEntityBat.class, 65);
+
     CLASS_TO_ID.get(null).put(EntityTeamSilverfish.class, 60);
-    CLASS_TO_ID.get(null).put(BalloonEntityLeash.class, 8);
-    CLASS_TO_ID.get(null).put(BalloonEntityGiant.class, 53);
+
+
     CLASS_TO_ID.get(null).put(MountableEnderDragon.class, 63);
     
     CLASS_TO_NAME.get(null).put(EntityTeamIronGolem.class, "kEntityGolem");
     CLASS_TO_NAME.get(null).put(EntityCart.class, "kCart");
     CLASS_TO_NAME.get(null).put(EntityFirework.class, "kFirework");
-    CLASS_TO_NAME.get(null).put(BalloonEntityBat.class, "kBat");
-    CLASS_TO_NAME.get(null).put(BalloonEntityLeash.class, "kLeash");
+
+
     CLASS_TO_NAME.get(null).put(EntityTeamSilverfish.class, "kEntitySilverfish");
-    CLASS_TO_NAME.get(null).put(BalloonEntityGiant.class, "kGiant");
+
     CLASS_TO_NAME.get(null).put(MountableEnderDragon.class, "kEnderDragon");
   }
   
@@ -105,33 +105,7 @@ public class NMS {
     ep.playerConnection.sendPacket(new PacketPlayOutCamera(entity == null ? ep : ((CraftEntity) entity).getHandle()));
   }
   
-  public static BalloonEntity createBalloonLeash(Location location) {
-    BalloonEntityLeash entity = new BalloonEntityLeash(location);
-    if (entity.world.addEntity(entity, CreatureSpawnEvent.SpawnReason.CUSTOM)) {
-      return entity;
-    }
-    
-    return null;
-  }
-  
-  public static BalloonEntity createBalloonBat(Location location, BalloonEntity leash) {
-    BalloonEntityBat entity = new BalloonEntityBat(location, (BalloonEntityLeash) leash);
-    if (entity.world.addEntity(entity, CreatureSpawnEvent.SpawnReason.CUSTOM)) {
-      return entity;
-    }
-    
-    return null;
-  }
-  
-  
-  public static BalloonEntity createBalloonGiant(Location location, List<String> frames) {
-    BalloonEntityGiant entity = new BalloonEntityGiant(location, frames);
-    if (entity.world.addEntity(entity, CreatureSpawnEvent.SpawnReason.CUSTOM)) {
-      return entity;
-    }
-    
-    return null;
-  }
+
   
   public static void look(Object entity, float yaw, float pitch) {
     if (entity instanceof Entity) {

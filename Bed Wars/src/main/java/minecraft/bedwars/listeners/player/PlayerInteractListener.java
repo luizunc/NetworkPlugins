@@ -6,7 +6,7 @@ import minecraft.bedwars.cmd.pl.*;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.bedwars.menus.MenuPlay;
-import minecraft.bedwars.menus.MenuStatsNPC;
+
 import minecraft.bedwars.menus.game.MenuItemShop;
 import minecraft.bedwars.menus.game.MenuTrackerShop;
 import minecraft.bedwars.menus.game.MenuUpgradeShop;
@@ -36,7 +36,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashSet;
 
-import static minecraft.bedwars.cmd.pl.BalloonsCommand.BALLOONS;
+
 import static minecraft.bedwars.cmd.pl.CreateCommand.CREATING;
 import static minecraft.bedwars.cmd.pl.GeneratorCommand.GENERATOR;
 import static minecraft.bedwars.cmd.pl.SpawnCommand.SPAWN;
@@ -56,8 +56,6 @@ public class PlayerInteractListener implements Listener {
         if (mode != null) {
           new MenuPlay(profile, mode);
         }
-      } else if (npc.data().has("stats-npc")) {
-        new MenuStatsNPC(profile);
       } else if (game != null && !game.isSpectator(player)) {
         if (npc.data().has("shopkeeper-type")) {
           String type = npc.data().get("shopkeeper-type");
@@ -84,11 +82,7 @@ public class PlayerInteractListener implements Listener {
         if (item != null && item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
           CreateCommand.handleClick(profile, item.getItemMeta().getDisplayName(), evt);
         }
-      } else if (BALLOONS.containsKey(player) && BALLOONS.get(player)[0].equals(player.getWorld())) {
-        ItemStack item = player.getItemInHand();
-        if (item != null && item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
-          BalloonsCommand.handleClick(profile, item.getItemMeta().getDisplayName(), evt);
-        }
+
       } else if (SPAWN.containsKey(player) && ((BedWars) SPAWN.get(player)[0]).getWorld().equals(player.getWorld())) {
         ItemStack item = player.getItemInHand();
         if (item != null && item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {

@@ -11,8 +11,8 @@ import minecraft.bedwars.cosmetics.types.Cage;
 import minecraft.bedwars.cosmetics.types.DeathCry;
 import minecraft.bedwars.cosmetics.types.DeathMessage;
 import minecraft.bedwars.cosmetics.types.KillEffect;
-import minecraft.bedwars.menus.MenuShop;
-import minecraft.bedwars.menus.cosmetics.animations.MenuAnimations;
+import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
+
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.libraries.menu.PagedPlayerMenu;
 import minecraft.core.core.player.Profile;
@@ -41,10 +41,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
     this.nextPage = (this.rows * 9) - 1;
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34);
     
-    String desc = "§7Para a Loja.";
-    if (Objects.requireNonNull(Cosmetic.listByType(cosmeticClass).stream().findFirst().orElse(null)).getType().toString().contains("EFFECT")) {
-      desc = "§7Para Animações.";
-    }
+    String desc = "§7Para Cosméticos da Partida.";
     this.removeSlotsWith(BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar : desc>" + desc), (this.rows * 9) - 5);
     
     List<ItemStack> items = new ArrayList<>();
@@ -92,11 +89,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
               this.openNext();
             } else if (evt.getSlot() == (this.rows * 9) - 5) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              if (Objects.requireNonNull(Cosmetic.listByType(cosmeticClass).stream().findFirst().orElse(null)).getType().toString().contains("EFFECT")) {
-                new MenuAnimations(profile);
-                return;
-              }
-              new MenuShop(profile);
+              new MenuCosmeticsPage(profile);
             } else {
               T cosmetic = this.cosmetics.get(item);
               if (cosmetic != null) {
