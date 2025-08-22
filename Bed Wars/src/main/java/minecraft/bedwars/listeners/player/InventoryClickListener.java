@@ -1,6 +1,6 @@
 package minecraft.bedwars.listeners.player;
 
-import minecraft.bedwars.cmd.bw.BuildCommand;
+import minecraft.bedwars.cmd.pl.BuildCommand;
 import minecraft.bedwars.game.BedWars;
 import minecraft.core.core.game.GameState;
 import minecraft.core.core.player.Profile;

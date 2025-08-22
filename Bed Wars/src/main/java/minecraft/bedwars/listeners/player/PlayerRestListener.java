@@ -1,7 +1,7 @@
 package minecraft.bedwars.listeners.player;
 
 import minecraft.bedwars.Main;
-import minecraft.bedwars.cmd.bw.BuildCommand;
+import minecraft.bedwars.cmd.pl.BuildCommand;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.BedWarsTeam;
 import minecraft.bedwars.utils.PlayerUtils;

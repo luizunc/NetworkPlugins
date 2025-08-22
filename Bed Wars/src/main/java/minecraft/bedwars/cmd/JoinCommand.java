@@ -24,7 +24,7 @@ public class JoinCommand extends Commands {
       }
       
       if (args.length == 0) {
-        player.sendMessage("§cUtilize /entrar [nome]");
+        player.sendMessage("§cUso: /entrar [nome]");
         return;
       }
       

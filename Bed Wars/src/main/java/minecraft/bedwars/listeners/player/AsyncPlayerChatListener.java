@@ -43,7 +43,7 @@ public class AsyncPlayerChatListener implements Listener {
           if (game != null && !game.isSpectator(player)) {
             evt.setCancelled(true);
             if (args.length == 1) {
-              player.sendMessage("§cUtilize /g [mensagem]");
+              player.sendMessage("§cUso: /g [mensagem]");
               return;
             }
             
@@ -95,7 +95,7 @@ public class AsyncPlayerChatListener implements Listener {
         BedWars game = profile.getGame(BedWars.class);
         if (game != null && !game.isSpectator(player)) {
           evt.setCancelled(true);
-          player.sendMessage("§cUtilize /g [mensagem]");
+          player.sendMessage("§cUso: /g [mensagem]");
         }
       }
     }

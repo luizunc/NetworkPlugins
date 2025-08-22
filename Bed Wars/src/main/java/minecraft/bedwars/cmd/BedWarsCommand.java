@@ -1,8 +1,7 @@
 package minecraft.bedwars.cmd;
 
 import minecraft.bedwars.Main;
-import minecraft.bedwars.cmd.bw.*;
-import minecraft.bedwars.cmd.bw.*;
+import minecraft.bedwars.cmd.pl.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -14,9 +13,9 @@ public class BedWarsCommand extends Commands {
   private final List<SubCommand> commands = new ArrayList<>();
   
   public BedWarsCommand() {
-    super("bw", "bedwars");
+    super("pl", "bedwars");
     
-    this.commands.add(new UpdateCommand());
+
     this.commands.add(new BuildCommand());
     this.commands.add(new SetSpawnCommand());
     this.commands.add(new CageCommand());
@@ -83,7 +82,7 @@ public class BedWarsCommand extends Commands {
         pages.put(currentPage, new StringBuilder(" \n§eAjuda - " + currentPage + "/" + pagesCount + "\n \n"));
       }
       
-      pages.get(currentPage).append("§6/bw ").append(commands.get(index).getUsage()).append(" §f- §7").append(commands.get(index).getDescription()).append("\n");
+      pages.get(currentPage).append("§6/pl ").append(commands.get(index).getUsage()).append(" §f- §7").append(commands.get(index).getDescription()).append("\n");
     }
     
     StringBuilder sb = pages.get(page);

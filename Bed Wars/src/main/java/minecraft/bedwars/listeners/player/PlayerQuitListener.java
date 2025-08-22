@@ -1,6 +1,6 @@
 package minecraft.bedwars.listeners.player;
 
-import minecraft.bedwars.cmd.bw.BuildCommand;
+import minecraft.bedwars.cmd.pl.BuildCommand;
 import minecraft.bedwars.utils.tagger.TagUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

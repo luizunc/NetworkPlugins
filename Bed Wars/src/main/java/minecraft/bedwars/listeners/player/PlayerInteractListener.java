@@ -2,8 +2,7 @@ package minecraft.bedwars.listeners.player;
 
 import minecraft.core.bukkit.Core;
 import minecraft.bedwars.Main;
-import minecraft.bedwars.cmd.bw.*;
-import minecraft.bedwars.cmd.bw.*;
+import minecraft.bedwars.cmd.pl.*;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.bedwars.menus.MenuPlay;
@@ -37,10 +36,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashSet;
 
-import static minecraft.bedwars.cmd.bw.BalloonsCommand.BALLOONS;
-import static minecraft.bedwars.cmd.bw.CreateCommand.CREATING;
-import static minecraft.bedwars.cmd.bw.GeneratorCommand.GENERATOR;
-import static minecraft.bedwars.cmd.bw.SpawnCommand.SPAWN;
+import static minecraft.bedwars.cmd.pl.BalloonsCommand.BALLOONS;
+import static minecraft.bedwars.cmd.pl.CreateCommand.CREATING;
+import static minecraft.bedwars.cmd.pl.GeneratorCommand.GENERATOR;
+import static minecraft.bedwars.cmd.pl.SpawnCommand.SPAWN;
 
 public class PlayerInteractListener implements Listener {
   

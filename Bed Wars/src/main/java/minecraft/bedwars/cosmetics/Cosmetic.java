@@ -100,7 +100,7 @@ public abstract class Cosmetic {
   }
   
   public String getLootChestsID() {
-    return "bw" + this.type.ordinal() + "-" + this.id;
+    return "pl" + this.type.ordinal() + "-" + this.id;
   }
   
   public long getIndex() {

@@ -108,7 +108,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
                     if (!AbstractPreview.canDoKillEffect()) {
                       if (player.hasPermission("bedwars.cmd.bedwars")) {
                         EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
-                        player.sendMessage("§cSete as localizações da previsualização utilizando /bw preview killeffect");
+                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview killeffect");
                       }
                       return;
                     }
@@ -129,7 +129,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
                     if (!AbstractPreview.canDoCage()) {
                       if (player.hasPermission("bedwars.cmd.bedwars")) {
                         EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
-                        player.sendMessage("§cSete as localizações da previsualização utilizando /bw preview cage");
+                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview cage");
                       }
                       return;
                     }

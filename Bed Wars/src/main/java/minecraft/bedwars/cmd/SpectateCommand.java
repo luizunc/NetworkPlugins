@@ -25,7 +25,7 @@ public class SpectateCommand extends Commands {
         }
         
         if (args.length == 0) {
-          player.sendMessage("§cUtilize /assistir [jogador]");
+          player.sendMessage("§cUso: /assistir [jogador]");
           return;
         }
         
