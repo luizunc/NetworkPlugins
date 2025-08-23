@@ -254,7 +254,6 @@ public abstract class Leaderboard {
         if (this.getType().equals("modos")) {
           ModosLeaderboard modosBoard = (ModosLeaderboard) this;
           modosBoard.nextGameMode();
-          touch.sendMessage("§aAlterado para " + modosBoard.getCurrentGameModeName());
         } else {
           // Para outras leaderboards, usar lógica normal
           // Clique com Shift para próxima página
@@ -266,15 +265,12 @@ public abstract class Leaderboard {
             if (filterMode == 0) {
               // Semanal -> Mensal
               filterMode = 1;
-              touch.sendMessage("§aAlterado para Mensal");
             } else if (filterMode == 1) {
               // Mensal -> Total
               filterMode = 2;
-              touch.sendMessage("§aAlterado para Total");
             } else {
               // Total -> Semanal
               filterMode = 0;
-              touch.sendMessage("§aAlterado para Semanal");
             }
             // Resetar para primeira página quando alternar modo
             abstractBoard.clearCache(); // Limpar cache para recarregar dados
@@ -287,7 +283,6 @@ public abstract class Leaderboard {
           // Para leaderboard de modos antiga
           ModosLeaderboard modosBoard = (ModosLeaderboard) this;
           modosBoard.nextGameMode();
-          touch.sendMessage("§aAlterado para " + modosBoard.getCurrentGameModeName());
         } else {
           this.monthly = !monthly;
         }

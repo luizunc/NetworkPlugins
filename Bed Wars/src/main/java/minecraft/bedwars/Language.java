@@ -95,7 +95,7 @@ public class Language {
           "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
           "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
           "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
-          "§e§lVITÓRIAS GERAL", "§b§lTOP 100 §8({page_info})");
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8({page_info})");
   public static List<String> lobby$leaderboard$kills$hologram = Arrays
       .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
           "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
