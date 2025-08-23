@@ -4,6 +4,8 @@ import minecraft.bedwars.Main;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.types.*;
 import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
+import minecraft.bedwars.game.BedWars;
+import minecraft.bedwars.game.BedWarsTeam;
 
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
@@ -162,8 +164,10 @@ public class MenuShop extends PlayerMenu {
       percentage = max == 0 ? 100 : (owned * 100) / max;
       color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
       types.clear();
-      this.setItem(25, BukkitUtils.deserializeItemStack(
+      this.setItem(23, BukkitUtils.deserializeItemStack(
           "WOOD : 1 : nome>&aTipos de Madeira : desc>&7Modifique o tipo da madeira que\n&7você irá receber dos vendedores!\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+      
+      updatePreferredColorIcon(profile);
       
       this.setItem(40, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
     
@@ -208,9 +212,14 @@ public class MenuShop extends PlayerMenu {
             } else if (evt.getSlot() == 21) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Efeito de Abate", KillEffect.class);
-            } else if (evt.getSlot() == 25) {
+            } else if (evt.getSlot() == 23) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Tipos de Madeira", WoodTypes.class);
+            } else if (evt.getSlot() == 25) {
+              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+              new MenuPreferredColor(profile);
+              // Atualizar o ícone após retornar do menu de cor preferida
+              updatePreferredColorIcon(profile);
               } else if (evt.getSlot() == 40) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuShop(profile);
@@ -238,5 +247,80 @@ public class MenuShop extends PlayerMenu {
         this.cancel();
       }
     }
+    
+    private void updatePreferredColorIcon(Profile profile) {
+      // Determinar a cor da lã baseada na cor preferida ou cor atual do time
+      String woolColor = "0"; // Branco por padrão
+      String woolName = "&aCor Preferida";
+      boolean hasGlow = false;
+      
+      // Verificar se o jogador está em uma partida
+      BedWars game = profile.getGame(BedWars.class);
+      if (game != null) {
+        BedWarsTeam team = game.getTeam(this.player);
+        if (team != null) {
+          // Usar a cor do time atual
+          woolColor = BedWarsTeam.ids[team.getIndex()];
+          woolName = "&aCor Preferida &7(" + team.getName() + "&7)";
+        }
+      } else {
+        // Se não está em partida, verificar cor preferida
+        String corPreferida = profile.getDataContainer("bedwars", "preferred_color").getAsString();
+        if (corPreferida != null && !corPreferida.isEmpty() && !corPreferida.equals("0")) {
+          hasGlow = true; // Tem glow quando tem cor preferida
+          // Mapeamento direto dos IDs
+          switch (corPreferida) {
+            case "1": // Vermelho
+              woolColor = "14";
+              woolName = "&aCor Preferida &7(§cVermelho&7)";
+              break;
+            case "2": // Azul
+              woolColor = "11";
+              woolName = "&aCor Preferida &7(§9Azul&7)";
+              break;
+            case "3": // Verde Lima
+              woolColor = "5";
+              woolName = "&aCor Preferida &7(§aVerde&7)";
+              break;
+            case "4": // Amarelo
+              woolColor = "4";
+              woolName = "&aCor Preferida &7(§eAmarelo&7)";
+              break;
+            case "5": // Ciano
+              woolColor = "9";
+              woolName = "&aCor Preferida &7(§bCiano&7)";
+              break;
+            case "6": // Branco
+              woolColor = "0";
+              woolName = "&aCor Preferida &7(§fBranco&7)";
+              break;
+            case "7": // Rosa
+              woolColor = "6";
+              woolName = "&aCor Preferida &7(§dRosa&7)";
+              break;
+            case "8": // Cinza
+              woolColor = "7";
+              woolName = "&aCor Preferida &7(§7Cinza&7)";
+              break;
+            default:
+              woolColor = "0"; // Branco
+              woolName = "&aCor Preferida";
+              hasGlow = false;
+              break;
+          }
+        } else {
+          // Se não tem cor preferida (ou é "0"), mostrar lã branca
+          woolColor = "0"; // Branco
+          woolName = "&aCor Preferida";
+          hasGlow = false;
+        }
+      }
+      
+      String itemString = "WOOL:" + woolColor + " : 1 : nome>" + woolName + " : desc>&7Escolha sua cor preferida de time\n&7para ter prioridade ao entrar em\n&7partidas.\n \n&7Exclusivo para &fIRON\n \n&eClique para selecionar!";
+      
+      this.setItem(25, BukkitUtils.deserializeItemStack(itemString));
+    }
   }
 }
+
+

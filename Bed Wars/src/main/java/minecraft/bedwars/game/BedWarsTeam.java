@@ -90,7 +90,7 @@ public class BedWarsTeam extends GameTeam {
     } else if (color == 4) {
       this.color = "85:255:255"; // Ciano
     } else if (color == 5) {
-      this.color = "255:170:0"; // Laranja
+      this.color = "255:255:255"; // Branco
     } else if (color == 6) {
       this.color = "255:85:255"; // Rosa
     } else {
@@ -361,6 +361,6 @@ public class BedWarsTeam extends GameTeam {
   }
   
   public static final String[] names =
-      {"§cVermelho", "§9Azul", "§2Verde", "§eAmarelo", "§bCiano", "§6Laranja", "§dRosa", "§7Cinza"};
-  public static final String[] ids = {"14", "11", "13", "4", "9", "1", "6", "7"};
+      {"§cVermelho", "§9Azul", "§2Verde", "§eAmarelo", "§bCiano", "§fBranco", "§dRosa", "§7Cinza"};
+  public static final String[] ids = {"14", "11", "13", "4", "9", "0", "6", "7"};
 }

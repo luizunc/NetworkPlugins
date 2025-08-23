@@ -65,8 +65,8 @@ public class Language {
       Arrays.asList("", "  Mapa: §a{map}", "  Jogadores: §a{players}/{max_players}",
           "", "  {time}", "", "  §7www.redeslick.com", "");
   public static List<String> scoreboards$ingame = Arrays
-      .asList("", " Próximo Evento:", " §a{next_event}", "", " {red}", " {pink}", " {aqua}",
-          " {blue}", " {white}", " {orange}", " {purple}", " {green}", "", " §7www.redeslick.com", " ");
+      .asList("", " Próximo Evento:", " §a{next_event}", "", " {red}", " {blue}", " {green}", " {yellow}",
+          " {cyan}", " {white}", " {pink}", " {gray}", "", " §7www.redeslick.com", " ");
   
   // Chat
   public static String chat$delay = "§cAguarde mais {time}s para falar novamente.";

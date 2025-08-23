@@ -15,10 +15,10 @@ import java.util.Map;
     create = "CREATE TABLE IF NOT EXISTS `bedwars` (`name` VARCHAR(32), `" +
         "solokills` LONG, `solodeaths` LONG, `sologames` LONG, `solobedsdestroyeds` LONG, `solobedslosteds` LONG, `solofinalkills` LONG, `solofinaldeaths` LONG, `solowins` LONG, `duokills` LONG, `duodeaths` LONG, `duogames` LONG, `duobedsdestroyeds` LONG, `duobedslosteds` LONG, `duofinalkills` LONG, `duofinaldeaths` LONG, `duowins` LONG, `4v4kills` LONG," +
         " `4v4deaths` LONG, `4v4games` LONG, `4v4bedsdestroyeds` LONG, `4v4bedslosteds` LONG, `4v4finalkills` LONG, `4v4finaldeaths` LONG, `4v4wins` LONG, `monthlykills` LONG, `monthlydeaths` LONG, `monthlyassists` LONG, `monthlybeds` LONG, `monthlywins` LONG, `monthlygames` LONG, `month` TEXT, `coins` DOUBLE," +
-        " `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, `favorites` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
+        " `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, `favorites` TEXT, `preferred_color` LONG, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
     select = "SELECT * FROM `bedwars` WHERE LOWER(`name`) = ?",
-    insert = "INSERT INTO `bedwars` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    update = "UPDATE `bedwars` SET `solokills` = ?, `solodeaths` = ?, `sologames` = ?, `solobedsdestroyeds` = ?, `solobedslosteds` = ?, `solofinalkills` = ?, `solofinaldeaths` = ?, `solowins` = ?, `duokills` = ?, `duodeaths` = ?, `duogames` = ?, `duobedsdestroyeds` = ?, `duobedslosteds` = ?, `duofinalkills` = ?, `duofinaldeaths` = ?, `duowins` = ?, `4v4kills` = ?, `4v4deaths` = ?, `4v4games` = ?, `4v4bedsdestroyeds` = ?, `4v4bedslosteds` = ?, `4v4finalkills` = ?, `4v4finaldeaths` = ?, `monthlykills` = ?, `monthlydeaths` = ?, `monthlyassists` = ?, `monthlybeds` = ?, `monthlywins` = ?, `monthlygames` = ?, `month` = ?, `4v4wins` = ?, `coins` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ?, `favorites` = ? WHERE LOWER(`name`) = ?")
+    insert = "INSERT INTO `bedwars` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    update = "UPDATE `bedwars` SET `solokills` = ?, `solodeaths` = ?, `sologames` = ?, `solobedsdestroyeds` = ?, `solobedslosteds` = ?, `solofinalkills` = ?, `solofinaldeaths` = ?, `solowins` = ?, `duokills` = ?, `duodeaths` = ?, `duogames` = ?, `duobedsdestroyeds` = ?, `duobedslosteds` = ?, `duofinalkills` = ?, `duofinaldeaths` = ?, `duowins` = ?, `4v4kills` = ?, `4v4deaths` = ?, `4v4games` = ?, `4v4bedsdestroyeds` = ?, `4v4bedslosteds` = ?, `4v4finalkills` = ?, `4v4finaldeaths` = ?, `monthlykills` = ?, `monthlydeaths` = ?, `monthlyassists` = ?, `monthlybeds` = ?, `monthlywins` = ?, `monthlygames` = ?, `month` = ?, `4v4wins` = ?, `coins` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ?, `favorites` = ?, `preferred_color` = ? WHERE LOWER(`name`) = ?")
 public class BedWarsTable extends DataTable {
   
   @Override
@@ -28,10 +28,18 @@ public class BedWarsTable extends DataTable {
                   ((MySQLDatabase) database).execute(
               "ALTER TABLE `bedwars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`, ADD `favorites` TEXT AFTER `selected`");
       }
+      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `bedwars` LIKE 'preferred_color'") == null) {
+                  ((MySQLDatabase) database).execute(
+              "ALTER TABLE `bedwars` ADD `preferred_color` LONG DEFAULT 0 AFTER `favorites`");
+      }
     } else if (database instanceof HikariDatabase) {
               if (((HikariDatabase) database).query("SHOW COLUMNS FROM `bedwars` LIKE 'lastmap'") == null) {
                   ((HikariDatabase) database).execute(
               "ALTER TABLE `bedwars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`, ADD `favorites` TEXT AFTER `selected`");
+      }
+      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `bedwars` LIKE 'preferred_color'") == null) {
+                  ((HikariDatabase) database).execute(
+              "ALTER TABLE `bedwars` ADD `preferred_color` LONG DEFAULT 0 AFTER `favorites`");
       }
     }
   }
@@ -59,6 +67,7 @@ public class BedWarsTable extends DataTable {
     defaultValues.put("cosmetics", new DataContainer("{}"));
     defaultValues.put("selected", new DataContainer("{}"));
     defaultValues.put("favorites", new DataContainer("{}"));
+    defaultValues.put("preferred_color", new DataContainer(0L));
     return defaultValues;
   }
 }
