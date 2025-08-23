@@ -157,7 +157,7 @@ public class MenuShop extends PlayerMenu {
       killeffects.clear();
       this.setItem(21, BukkitUtils.deserializeItemStack(
           "BONE : 1 : nome>&aEfeito de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
-      
+  
       List<WoodTypes> types = Cosmetic.listByType(WoodTypes.class);
       max = types.size();
       owned = types.stream().filter(killEffect -> killEffect.has(profile)).count();
@@ -166,7 +166,7 @@ public class MenuShop extends PlayerMenu {
       types.clear();
       this.setItem(23, BukkitUtils.deserializeItemStack(
           "WOOD : 1 : nome>&aTipos de Madeira : desc>&7Modifique o tipo da madeira que\n&7você irá receber dos vendedores!\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
-      
+  
       updatePreferredColorIcon(profile);
       
       this.setItem(40, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
@@ -196,10 +196,10 @@ public class MenuShop extends PlayerMenu {
               new MenuCosmetics<>(profile, "Skins do Vendedor", ShopkeeperSkin.class);
 
             } else if (evt.getSlot() == 12) {
-              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Mensagens de Abate", DeathMessage.class);
 
-            } else if (evt.getSlot() == 14) {
+              } else if (evt.getSlot() == 14) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Comemorações", WinAnimation.class);
             } else if (evt.getSlot() == 16) {
@@ -213,8 +213,8 @@ public class MenuShop extends PlayerMenu {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetics<>(profile, "Efeito de Abate", KillEffect.class);
             } else if (evt.getSlot() == 23) {
-              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuCosmetics<>(profile, "Tipos de Madeira", WoodTypes.class);
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                new MenuCosmetics<>(profile, "Tipos de Madeira", WoodTypes.class);
             } else if (evt.getSlot() == 25) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuPreferredColor(profile);
@@ -262,7 +262,7 @@ public class MenuShop extends PlayerMenu {
           // Usar a cor do time atual
           woolColor = BedWarsTeam.ids[team.getIndex()];
           woolName = "&aCor Preferida &7(" + team.getName() + "&7)";
-        }
+  }
       } else {
         // Se não está em partida, verificar cor preferida
         String corPreferida = profile.getDataContainer("bedwars", "preferred_color").getAsString();

@@ -2,38 +2,57 @@ package minecraft.bedwars.lobby.leaderboards;
 
 import minecraft.bedwars.Language;
 import minecraft.bedwars.lobby.Leaderboard;
-import minecraft.core.core.database.Database;
-import minecraft.core.core.database.data.DataContainer;
-import minecraft.core.core.database.exception.ProfileLoadException;
-import minecraft.core.core.utils.StringUtils;
+import minecraft.bedwars.lobby.GlobalGameMode;
 import org.bukkit.Location;
 
-import java.util.*;
+import java.util.List;
 
-public class WinsLeaderboard extends Leaderboard {
+public class WinsLeaderboard extends AbstractLeaderboard {
   
   public WinsLeaderboard(Location location, String id) {
     super(location, id);
   }
   
   @Override
-  public List<String> getHologramLines() {
-    return Language.lobby$leaderboard$wins$hologram;
+  public String getType() {
+    return "vitorias";
   }
   
   @Override
   public List<String[]> getSplitted() {
-    List<String[]> list = Database.getInstance().getLeaderBoard("bedwars", (this.canSeeMonthly() ?
-        Collections.singletonList("monthlywins") : Arrays.asList("1v1wins", "2v2wins", "4v4wins")).toArray(new String[0]));
-    while (list.size() < 10) {
-      list.add(new String[]{Language.lobby$leaderboard$empty, "0"});
+    // Obter estatísticas baseadas no modo global atual
+    String[] weeklyStats = {"weeklywins"};
+    String[] monthlyStats = {"monthlywins"};
+    String[] totalStats;
+    
+    int currentMode = GlobalGameMode.getCurrentMode();
+    switch (currentMode) {
+      case GlobalGameMode.MODE_GERAL:
+        // Modo Geral: combina todos os modos
+        totalStats = new String[]{"solowins", "duowins", "quadwins"};
+        break;
+      case GlobalGameMode.MODE_SOLO:
+        // Modo Solo: apenas vitórias solo
+        totalStats = new String[]{"solowins"};
+        break;
+      case GlobalGameMode.MODE_DUPLAS:
+        // Modo Duplas: apenas vitórias duplas
+        totalStats = new String[]{"duowins"};
+        break;
+      case GlobalGameMode.MODE_QUARTETOS:
+        // Modo Quartetos: apenas vitórias quartetos
+        totalStats = new String[]{"quadwins"};
+        break;
+      default:
+        totalStats = new String[]{"solowins", "duowins", "quadwins"};
+        break;
     }
-    return list;
+    
+    return getLeaderboardData(weeklyStats, monthlyStats, totalStats);
   }
   
-  
   @Override
-  public String getType() {
-    return "vitorias";
+  public List<String> getHologramLines() {
+    return Language.lobby$leaderboard$wins$hologram;
   }
 }

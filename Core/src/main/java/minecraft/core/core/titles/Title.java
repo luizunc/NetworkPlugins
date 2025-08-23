@@ -70,10 +70,10 @@ public class Title {
             long skywarsWins = profile.getStats("skywars", "solowins", "duowins", "rankedwins");
             processedTitle = processedTitle.replace("%Core_SkyWars_wins%", StringUtils.formatNumber(skywarsWins));
         } else if (this.id.equals("killbw")) {
-            long bedwarsKills = profile.getStats("bedwars", "solokills", "duokills", "4v4kills");
+            long bedwarsKills = profile.getStats("bedwars", "solokills", "duokills", "quadkills");
             processedTitle = processedTitle.replace("%Core_BedWars_kills%", StringUtils.formatNumber(bedwarsKills));
         } else if (this.id.equals("winsbw")) {
-            long bedwarsWins = profile.getStats("bedwars", "solowins", "duowins", "4v4wins");
+            long bedwarsWins = profile.getStats("bedwars", "solowins", "duowins", "quadwins");
             processedTitle = processedTitle.replace("%Core_BedWars_wins%", StringUtils.formatNumber(bedwarsWins));
         }
 
@@ -182,16 +182,16 @@ public class Title {
             long skywarsWinStreak = profile.getStats("skywars", "solowinstreak", "duowinstreak", "rankedwinstreak");
             processedIcon = processedIcon.replace("%skywars_winstreak%", StringUtils.formatNumber(skywarsWinStreak));
         } else if (this.id.equals("killbw")) {
-            long bedwarsKills = profile.getStats("bedwars", "solokills", "duokills", "4v4kills");
+            long bedwarsKills = profile.getStats("bedwars", "solokills", "duokills", "quadkills");
             processedIcon = processedIcon.replace("%bedwars_kills%", StringUtils.formatNumber(bedwarsKills));
         } else if (this.id.equals("winsbw")) {
-            long bedwarsWins = profile.getStats("bedwars", "solowins", "duowins", "4v4wins");
+            long bedwarsWins = profile.getStats("bedwars", "solowins", "duowins", "quadwins");
             processedIcon = processedIcon.replace("%bedwars_wins%", StringUtils.formatNumber(bedwarsWins));
         } else if (this.id.equals("kstreakbw")) {
-            long bedwarsKillStreak = profile.getStats("bedwars", "solokillstreak", "duokillstreak", "4v4killstreak");
+            long bedwarsKillStreak = profile.getStats("bedwars", "solokillstreak", "duokillstreak", "quadkillstreak");
             processedIcon = processedIcon.replace("%bedwars_killstreak%", StringUtils.formatNumber(bedwarsKillStreak));
         } else if (this.id.equals("wstreakbw")) {
-            long bedwarsWinStreak = profile.getStats("bedwars", "solowinstreak", "duowinstreak", "4v4winstreak");
+            long bedwarsWinStreak = profile.getStats("bedwars", "solowinstreak", "duowinstreak", "quadwinstreak");
             processedIcon = processedIcon.replace("%bedwars_winstreak%", StringUtils.formatNumber(bedwarsWinStreak));
         }
 

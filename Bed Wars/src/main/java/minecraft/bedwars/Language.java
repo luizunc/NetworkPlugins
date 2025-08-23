@@ -86,32 +86,42 @@ public class Language {
       " \n \n§aForúm: §fredeslick.com/forum\n§aTwitter: §f@RedeSlick\n§aDiscord: §fredeslick.com/discord\n \n                                          §bAdquira VIP acessando: §floja.redeslick.com                                          \n ";
   
   public static long lobby$leaderboard$minutes = 30;
-  public static String lobby$leaderboard$empty = "§7Ninguém";
+  public static String lobby$leaderboard$empty = "§7...";
   
   public static List<String> lobby$leaderboard$wins$hologram = Arrays
-      .asList("{monthly_color}Mensal {total_color}Total", "§6§lClique para alternar!", "§a10. {name_10} §7- §a{stats_10}", "§a9. {name_9} §7- §a{stats_9}",
-          "§a8. {name_8} §7- §a{stats_8}", "§a7. {name_7} §7- §a{stats_7}",
-          "§a6. {name_6} §7- §a{stats_6}",
-          "§a5. {name_5} §7- §a{stats_5}", "§a4. {name_4} §7- §a{stats_4}",
-          "§a3. {name_3} §7- §a{stats_3}", "§a2. {name_2} §7- §a{stats_2}",
-          "§a1. {name_1} §7- §a{stats_1}", "",
-          "§7Ranking de Vitórias", "§f§lTodos os Modos");
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lVITÓRIAS GERAL", "§b§lTOP 100 §8({page_info})");
   public static List<String> lobby$leaderboard$kills$hologram = Arrays
-      .asList("{monthly_color}Mensal {total_color}Total", "§6§lClique para alternar!", "§a10. {name_10} §7- §a{stats_10}", "§a9. {name_9} §7- §a{stats_9}",
-          "§a8. {name_8} §7- §a{stats_8}", "§a7. {name_7} §7- §a{stats_7}",
-          "§a6. {name_6} §7- §a{stats_6}",
-          "§a5. {name_5} §7- §a{stats_5}", "§a4. {name_4} §7- §a{stats_4}",
-          "§a3. {name_3} §7- §a{stats_3}", "§a2. {name_2} §7- §a{stats_2}",
-          "§a1. {name_1} §7- §a{stats_1}", "",
-          "§7Ranking de Abates Finais", "§f§lTodos os Modos");
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8({page_info})");
   public static List<String> lobby$leaderboard$beds$hologram = Arrays
-      .asList("{monthly_color}Mensal {total_color}Total", "§6§lClique para alternar!", "§a10. {name_10} §7- §a{stats_10}", "§a9. {name_9} §7- §a{stats_9}",
-          "§a8. {name_8} §7- §a{stats_8}", "§a7. {name_7} §7- §a{stats_7}",
-          "§a6. {name_6} §7- §a{stats_6}",
-          "§a5. {name_5} §7- §a{stats_5}", "§a4. {name_4} §7- §a{stats_4}",
-          "§a3. {name_3} §7- §a{stats_3}", "§a2. {name_2} §7- §a{stats_2}",
-          "§a1. {name_1} §7- §a{stats_1}", "",
-          "§7Ranking de Camas Destruídas", "§f§lTodos os Modos");
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8({page_info})");
+  
+  public static List<String> lobby$leaderboard$modos$hologram = Arrays
+      .asList("§eClique para alterar!",
+          "",
+          "{quartetos_color}Quartetos",
+          "{duplas_color}Duplas",
+          "{solo_color}Solo",
+          "{geral_color}Geral",
+          "",
+          "§b§lSELECIONAR MODO");
   
   public static String lobby$npc$play$connect = "§aConectando...";
   public static String lobby$npc$play$menu$info$item = "PAPER : 1 : nome>§aInformações : desc>{desc}";

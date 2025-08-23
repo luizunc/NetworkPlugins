@@ -124,7 +124,7 @@ public class MenuStatistics extends PlayerMenu {
                 " &8▪ &fAbates Finais: &7%Core_BedWars_finalkills%\n" +
                 " &8▪ &fMortes Finais: &7%Core_BedWars_finaldeaths%\n" +
                 " &8▪ &fVitórias: &7%Core_BedWars_wins%\n" +
-                " &8▪ &fCamas destruídas: &7%Core_BedWars_bedsdestroyeds%\n" +
+                " &8▪ &fCamas destruídas: &7%Core_BedWars_beds%\n" +
                 " &8▪ &fCamas perdidas: &7%Core_BedWars_bedslosteds%\n" +
                 " \n" +
                 "&fCoins: &6%Core_BedWars_coins%";

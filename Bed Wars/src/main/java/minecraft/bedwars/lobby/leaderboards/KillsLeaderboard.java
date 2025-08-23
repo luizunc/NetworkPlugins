@@ -2,15 +2,12 @@ package minecraft.bedwars.lobby.leaderboards;
 
 import minecraft.bedwars.Language;
 import minecraft.bedwars.lobby.Leaderboard;
-import minecraft.core.core.database.Database;
-import minecraft.core.core.database.data.DataContainer;
-import minecraft.core.core.database.exception.ProfileLoadException;
-import minecraft.core.core.utils.StringUtils;
+import minecraft.bedwars.lobby.GlobalGameMode;
 import org.bukkit.Location;
 
-import java.util.*;
+import java.util.List;
 
-public class KillsLeaderboard extends Leaderboard {
+public class KillsLeaderboard extends AbstractLeaderboard {
   
   public KillsLeaderboard(Location location, String id) {
     super(location, id);
@@ -23,13 +20,35 @@ public class KillsLeaderboard extends Leaderboard {
   
   @Override
   public List<String[]> getSplitted() {
-    List<String[]> list = Database.getInstance().getLeaderBoard("bedwars", (this.canSeeMonthly() ?
-        Collections.singletonList("monthlykills") : Arrays.asList("1v1finalkills", "2v2finalkills", "4v4finalkills")).toArray(new String[0]));
+    // Obter estatísticas baseadas no modo global atual
+    String[] weeklyStats = {"weeklykills"};
+    String[] monthlyStats = {"monthlykills"};
+    String[] totalStats;
     
-    while (list.size() < 10) {
-      list.add(new String[]{Language.lobby$leaderboard$empty, "0"});
+    int currentMode = GlobalGameMode.getCurrentMode();
+    switch (currentMode) {
+      case GlobalGameMode.MODE_GERAL:
+        // Modo Geral: combina todos os modos
+        totalStats = new String[]{"solokills", "duokills", "quadkills"};
+        break;
+      case GlobalGameMode.MODE_SOLO:
+        // Modo Solo: apenas abates solo
+        totalStats = new String[]{"solokills"};
+        break;
+      case GlobalGameMode.MODE_DUPLAS:
+        // Modo Duplas: apenas abates duplas
+        totalStats = new String[]{"duokills"};
+        break;
+      case GlobalGameMode.MODE_QUARTETOS:
+        // Modo Quartetos: apenas abates quartetos
+        totalStats = new String[]{"quadkills"};
+        break;
+      default:
+        totalStats = new String[]{"solokills", "duokills", "quadkills"};
+        break;
     }
-    return list;
+    
+    return getLeaderboardData(weeklyStats, monthlyStats, totalStats);
   }
   
   @Override

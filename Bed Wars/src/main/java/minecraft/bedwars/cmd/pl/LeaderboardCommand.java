@@ -21,7 +21,7 @@ public class LeaderboardCommand extends SubCommand {
     String action = args[0];
     if (action.equalsIgnoreCase("adicionar")) {
       if (args.length <= 2) {
-        player.sendMessage("§cUso: /pl leaderboard adicionar [id] [vitorias/camas/abates]");
+        player.sendMessage("§cUso: /pl leaderboard adicionar [id] [vitorias/camas/abates/modos]");
         return;
       }
       
@@ -32,8 +32,8 @@ public class LeaderboardCommand extends SubCommand {
       }
       
       String type = args[2];
-      if (!type.equalsIgnoreCase("vitorias") && !type.equalsIgnoreCase("camas") && !type.equalsIgnoreCase("abates")) {
-        player.sendMessage("§cUso: /pl leaderboard adicionar [id] [vitorias/camas/abates]");
+      if (!type.equalsIgnoreCase("vitorias") && !type.equalsIgnoreCase("camas") && !type.equalsIgnoreCase("abates") && !type.equalsIgnoreCase("modos")) {
+        player.sendMessage("§cUso: /pl leaderboard adicionar [id] [vitorias/camas/abates/modos]");
         return;
       }
       

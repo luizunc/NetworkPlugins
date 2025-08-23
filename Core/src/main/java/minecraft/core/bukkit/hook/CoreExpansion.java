@@ -181,29 +181,29 @@ public class CoreExpansion extends PlaceholderExpansion {
     
     // Estatísticas gerais
     if (value.equals("kills") || value.equals("deaths") || value.equals("bedslosteds") || 
-        value.equals("finalkills") || value.equals("finaldeaths") || value.equals("bedsdestroyeds") || 
+        value.equals("finalkills") || value.equals("finaldeaths") || value.equals("beds") || 
         value.equals("games") || value.equals("wins")) {
-      return StringUtils.formatNumber(profile.getStats(table, "solo" + value, "duo" + value, "4v4" + value));
+      return StringUtils.formatNumber(profile.getStats(table, "solo" + value, "duo" + value, "quad" + value));
     }
     
     // Estatísticas duo
     if (value.equals("duokills") || value.equals("duodeaths") || value.equals("duo") || 
         value.equals("duogames") || value.equals("duofinalkills") || value.equals("duofinaldeaths") || 
-        value.equals("duobedsdestroyeds") || value.equals("duobedslosteds") || value.equals("duowins")) {
+        value.equals("duobeds") || value.equals("duobedslosteds") || value.equals("duowins")) {
       return StringUtils.formatNumber(profile.getStats("bedwars", value));
     }
     
     // Estatísticas solo
     if (value.equals("solokills") || value.equals("solodeaths") || value.equals("solo") || 
         value.equals("sologames") || value.equals("solofinalkills") || value.equals("solofinaldeaths") || 
-        value.equals("solobedsdestroyeds") || value.equals("solobedslosteds") || value.equals("solowins")) {
+        value.equals("solobeds") || value.equals("solobedslosteds") || value.equals("solowins")) {
       return StringUtils.formatNumber(profile.getStats("bedwars", value));
     }
     
-    // Estatísticas 4v4
-    if (value.equals("4v4kills") || value.equals("4v4deaths") || value.equals("4v4") || 
-        value.equals("4v4games") || value.equals("4v4finalkills") || value.equals("4v4finaldeaths") || 
-        value.equals("4v4bedsdestroyeds") || value.equals("4v4bedslosteds") || value.equals("4v4wins")) {
+    // Estatísticas quad
+    if (value.equals("quadkills") || value.equals("quaddeaths") || value.equals("quad") || 
+        value.equals("quadgames") || value.equals("quadfinalkills") || value.equals("quadfinaldeaths") || 
+        value.equals("quadbeds") || value.equals("quadbedslosteds") || value.equals("quadwins")) {
       return StringUtils.formatNumber(profile.getStats(table, value));
     }
     
