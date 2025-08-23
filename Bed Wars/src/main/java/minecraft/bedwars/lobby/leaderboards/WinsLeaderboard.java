@@ -53,6 +53,25 @@ public class WinsLeaderboard extends AbstractLeaderboard {
   
   @Override
   public List<String> getHologramLines() {
-    return Language.lobby$leaderboard$wins$hologram;
+    // Obter a página atual
+    int currentPage = 0;
+    if (this instanceof AbstractLeaderboard) {
+      currentPage = ((AbstractLeaderboard) this).getCurrentPage();
+    }
+    
+    // Retornar a página específica baseada na página atual
+    switch (currentPage) {
+      case 0: return Language.lobby$leaderboard$wins$page1;
+      case 1: return Language.lobby$leaderboard$wins$page2;
+      case 2: return Language.lobby$leaderboard$wins$page3;
+      case 3: return Language.lobby$leaderboard$wins$page4;
+      case 4: return Language.lobby$leaderboard$wins$page5;
+      case 5: return Language.lobby$leaderboard$wins$page6;
+      case 6: return Language.lobby$leaderboard$wins$page7;
+      case 7: return Language.lobby$leaderboard$wins$page8;
+      case 8: return Language.lobby$leaderboard$wins$page9;
+      case 9: return Language.lobby$leaderboard$wins$page10;
+      default: return Language.lobby$leaderboard$wins$page1;
+    }
   }
 }

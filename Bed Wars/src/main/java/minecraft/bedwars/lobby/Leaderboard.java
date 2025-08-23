@@ -116,23 +116,7 @@ public abstract class Leaderboard {
     try {
     List<String> lines = new ArrayList<>();
     
-    List<String[]> list = this.getSplitted();
     for (String line : this.getHologramLines()) {
-      // Se for leaderboard de modos, não processar placeholders de nomes/stats
-      if (!this.getType().equals("modos")) {
-        // Substituir placeholders para os 10 primeiros lugares
-        for (int i = 0; i < 10; i++) {
-          String name = i < list.size() ? list.get(i)[0] : Language.lobby$leaderboard$empty;
-          String stats = i < list.size() ? list.get(i)[1] : "";
-          
-          // Se não há estatísticas, mostrar apenas o nome sem "- stats"
-          if (stats.isEmpty()) {
-            line = line.replace("{name_" + (i + 1) + "} §7- §e{stats_" + (i + 1) + "}", name);
-          } else {
-            line = line.replace("{name_" + (i + 1) + "}", name).replace("{stats_" + (i + 1) + "}", stats);
-          }
-        }
-      }
       lines.add(line);
     }
   
@@ -145,6 +129,37 @@ public abstract class Leaderboard {
     
       int index = 1;
       for (String line : lines) {
+            // Processar placeholders de nomes e stats se não for leaderboard de modos
+            if (!this.getType().equals("modos")) {
+              // Obter dados da página atual
+              List<String[]> list = this.getSplitted();
+              
+              // Obter a página atual para calcular os placeholders corretos
+              int currentPage = 0;
+              if (this instanceof AbstractLeaderboard) {
+                currentPage = ((AbstractLeaderboard) this).getCurrentPage();
+              }
+
+              // Substituir placeholders para os 10 jogadores da página atual
+              for (int i = 0; i < 10; i++) {
+                String name = i < list.size() ? list.get(i)[0] : Language.lobby$leaderboard$empty;
+                String stats = i < list.size() ? list.get(i)[1] : "";
+                
+                // Calcular o número do placeholder baseado na página atual
+                int placeholderNumber = currentPage * 10 + i + 1;
+                
+                // Debug: verificar substituição
+                String originalLine = line;
+                
+                // Se não há estatísticas, mostrar apenas o nome sem "- stats"
+                if (stats.isEmpty()) {
+                  line = line.replace("{name_" + placeholderNumber + "} §7- §e{stats_" + placeholderNumber + "}", name);
+                } else {
+                  line = line.replace("{name_" + placeholderNumber + "}", name).replace("{stats_" + placeholderNumber + "}", stats);
+                }
+              }
+            }
+            
             // Processar informações da página se for uma leaderboard paginada
             if (this instanceof AbstractLeaderboard) {
               AbstractLeaderboard abstractBoard = (AbstractLeaderboard) this;
@@ -255,13 +270,11 @@ public abstract class Leaderboard {
           ModosLeaderboard modosBoard = (ModosLeaderboard) this;
           modosBoard.nextGameMode();
         } else {
-          // Para outras leaderboards, usar lógica normal
           // Clique com Shift para próxima página
           if (touch.isSneaking()) {
             abstractBoard.nextPage();
-            touch.sendMessage("§aPágina " + (abstractBoard.getCurrentPage() + 1) + "/" + abstractBoard.getTotalPages());
           } else {
-            // Para leaderboards normais
+            // Clique normal para alternar entre modos
             if (filterMode == 0) {
               // Semanal -> Mensal
               filterMode = 1;

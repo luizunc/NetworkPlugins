@@ -98,7 +98,7 @@ public abstract class AbstractLeaderboard extends Leaderboard {
     
     List<String[]> pageData = new ArrayList<>(cachedData.subList(startIndex, endIndex));
     
-    // Garantir que sempre temos 10 entradas na página
+    // Garantir que sempre temos exatamente 10 entradas na página
     while (pageData.size() < ENTRIES_PER_PAGE) {
       pageData.add(new String[]{Language.lobby$leaderboard$empty, ""});
     }

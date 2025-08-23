@@ -59,7 +59,7 @@ public class Language {
   public static String scoreboards$time$starting = "Iniciando em §a{time}s";
   public static List<String> scoreboards$lobby = Arrays
       .asList("", " §eGeral", "  Vitorias: §a%Core_BedWars_wins%", "  Abates Finais: §a%Core_BedWars_finalkills%",
-          "  Abates Gerais: §a%Core_BedWars_kills%", "", "  Camas Destr.: §a%Core_BedWars_bedsdestroyeds%", "  Partidas: §a%Core_BedWars_games%", "",
+          "  Abates Gerais: §a%Core_BedWars_kills%", "", "  Camas Destr.: §a%Core_BedWars_beds%", "  Partidas: §a%Core_BedWars_games%", "",
           " Coins: §6%Core_BedWars_coins%", " Cash: §b%Core_cash%", "", " §7www.redeslick.com", " ");
   public static List<String> scoreboards$waiting =
       Arrays.asList("", "  Mapa: §a{map}", "  Jogadores: §a{players}/{max_players}",
@@ -96,6 +96,97 @@ public class Language {
           "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
           "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
           "§e§lVITÓRIAS", "§b§lTOP 100 §8({page_info})");
+  
+  // Páginas separadas para vitórias
+  public static List<String> lobby$leaderboard$wins$page1 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(1/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page2 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e20. {name_20} §7- §e{stats_20}", "§e19. {name_19} §7- §e{stats_19}",
+          "§e18. {name_18} §7- §e{stats_18}", "§e17. {name_17} §7- §e{stats_17}",
+          "§e16. {name_16} §7- §e{stats_16}", "§e15. {name_15} §7- §e{stats_15}",
+          "§e14. {name_14} §7- §e{stats_14}", "§e13. {name_13} §7- §e{stats_13}",
+          "§e12. {name_12} §7- §e{stats_12}", "§e11. {name_11} §7- §e{stats_11}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(2/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page3 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e30. {name_30} §7- §e{stats_30}", "§e29. {name_29} §7- §e{stats_29}",
+          "§e28. {name_28} §7- §e{stats_28}", "§e27. {name_27} §7- §e{stats_27}",
+          "§e26. {name_26} §7- §e{stats_26}", "§e25. {name_25} §7- §e{stats_25}",
+          "§e24. {name_24} §7- §e{stats_24}", "§e23. {name_23} §7- §e{stats_23}",
+          "§e22. {name_22} §7- §e{stats_22}", "§e21. {name_21} §7- §e{stats_21}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(3/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page4 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e40. {name_40} §7- §e{stats_40}", "§e39. {name_39} §7- §e{stats_39}",
+          "§e38. {name_38} §7- §e{stats_38}", "§e37. {name_37} §7- §e{stats_37}",
+          "§e36. {name_36} §7- §e{stats_36}", "§e35. {name_35} §7- §e{stats_35}",
+          "§e34. {name_34} §7- §e{stats_34}", "§e33. {name_33} §7- §e{stats_33}",
+          "§e32. {name_32} §7- §e{stats_32}", "§e31. {name_31} §7- §e{stats_31}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(4/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page5 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e50. {name_50} §7- §e{stats_50}", "§e49. {name_49} §7- §e{stats_49}",
+          "§e48. {name_48} §7- §e{stats_48}", "§e47. {name_47} §7- §e{stats_47}",
+          "§e46. {name_46} §7- §e{stats_46}", "§e45. {name_45} §7- §e{stats_45}",
+          "§e44. {name_44} §7- §e{stats_44}", "§e43. {name_43} §7- §e{stats_43}",
+          "§e42. {name_42} §7- §e{stats_42}", "§e41. {name_41} §7- §e{stats_41}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(5/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page6 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e60. {name_60} §7- §e{stats_60}", "§e59. {name_59} §7- §e{stats_59}",
+          "§e58. {name_58} §7- §e{stats_58}", "§e57. {name_57} §7- §e{stats_57}",
+          "§e56. {name_56} §7- §e{stats_56}", "§e55. {name_55} §7- §e{stats_55}",
+          "§e54. {name_54} §7- §e{stats_54}", "§e53. {name_53} §7- §e{stats_53}",
+          "§e52. {name_52} §7- §e{stats_52}", "§e51. {name_51} §7- §e{stats_51}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(6/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page7 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e70. {name_70} §7- §e{stats_70}", "§e69. {name_69} §7- §e{stats_69}",
+          "§e68. {name_68} §7- §e{stats_68}", "§e67. {name_67} §7- §e{stats_67}",
+          "§e66. {name_66} §7- §e{stats_66}", "§e65. {name_65} §7- §e{stats_65}",
+          "§e64. {name_64} §7- §e{stats_64}", "§e63. {name_63} §7- §e{stats_63}",
+          "§e62. {name_62} §7- §e{stats_62}", "§e61. {name_61} §7- §e{stats_61}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(7/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page8 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e80. {name_80} §7- §e{stats_80}", "§e79. {name_79} §7- §e{stats_79}",
+          "§e78. {name_78} §7- §e{stats_78}", "§e77. {name_77} §7- §e{stats_77}",
+          "§e76. {name_76} §7- §e{stats_76}", "§e75. {name_75} §7- §e{stats_75}",
+          "§e74. {name_74} §7- §e{stats_74}", "§e73. {name_73} §7- §e{stats_73}",
+          "§e72. {name_72} §7- §e{stats_72}", "§e71. {name_71} §7- §e{stats_71}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(8/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page9 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e90. {name_90} §7- §e{stats_90}", "§e89. {name_89} §7- §e{stats_89}",
+          "§e88. {name_88} §7- §e{stats_88}", "§e87. {name_87} §7- §e{stats_87}",
+          "§e86. {name_86} §7- §e{stats_86}", "§e85. {name_85} §7- §e{stats_85}",
+          "§e84. {name_84} §7- §e{stats_84}", "§e83. {name_83} §7- §e{stats_83}",
+          "§e82. {name_82} §7- §e{stats_82}", "§e81. {name_81} §7- §e{stats_81}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(9/10)");
+  
+  public static List<String> lobby$leaderboard$wins$page10 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e100. {name_100} §7- §e{stats_100}", "§e99. {name_99} §7- §e{stats_99}",
+          "§e98. {name_98} §7- §e{stats_98}", "§e97. {name_97} §7- §e{stats_97}",
+          "§e96. {name_96} §7- §e{stats_96}", "§e95. {name_95} §7- §e{stats_95}",
+          "§e94. {name_94} §7- §e{stats_94}", "§e93. {name_93} §7- §e{stats_93}",
+          "§e92. {name_92} §7- §e{stats_92}", "§e91. {name_91} §7- §e{stats_91}", "",
+          "§e§lVITÓRIAS", "§b§lTOP 100 §8(10/10)");
   public static List<String> lobby$leaderboard$kills$hologram = Arrays
       .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
           "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
@@ -104,6 +195,97 @@ public class Language {
           "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
           "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
           "§e§lABATES FINAIS", "§b§lTOP 100 §8({page_info})");
+  
+  // Páginas separadas para abates
+  public static List<String> lobby$leaderboard$kills$page1 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(1/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page2 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e20. {name_20} §7- §e{stats_20}", "§e19. {name_19} §7- §e{stats_19}",
+          "§e18. {name_18} §7- §e{stats_18}", "§e17. {name_17} §7- §e{stats_17}",
+          "§e16. {name_16} §7- §e{stats_16}", "§e15. {name_15} §7- §e{stats_15}",
+          "§e14. {name_14} §7- §e{stats_14}", "§e13. {name_13} §7- §e{stats_13}",
+          "§e12. {name_12} §7- §e{stats_12}", "§e11. {name_11} §7- §e{stats_11}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(2/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page3 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e30. {name_30} §7- §e{stats_30}", "§e29. {name_29} §7- §e{stats_29}",
+          "§e28. {name_28} §7- §e{stats_28}", "§e27. {name_27} §7- §e{stats_27}",
+          "§e26. {name_26} §7- §e{stats_26}", "§e25. {name_25} §7- §e{stats_25}",
+          "§e24. {name_24} §7- §e{stats_24}", "§e23. {name_23} §7- §e{stats_23}",
+          "§e22. {name_22} §7- §e{stats_22}", "§e21. {name_21} §7- §e{stats_21}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(3/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page4 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e40. {name_40} §7- §e{stats_40}", "§e39. {name_39} §7- §e{stats_39}",
+          "§e38. {name_38} §7- §e{stats_38}", "§e37. {name_37} §7- §e{stats_37}",
+          "§e36. {name_36} §7- §e{stats_36}", "§e35. {name_35} §7- §e{stats_35}",
+          "§e34. {name_34} §7- §e{stats_34}", "§e33. {name_33} §7- §e{stats_33}",
+          "§e32. {name_32} §7- §e{stats_32}", "§e31. {name_31} §7- §e{stats_31}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(4/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page5 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e50. {name_50} §7- §e{stats_50}", "§e49. {name_49} §7- §e{stats_49}",
+          "§e48. {name_48} §7- §e{stats_48}", "§e47. {name_47} §7- §e{stats_47}",
+          "§e46. {name_46} §7- §e{stats_46}", "§e45. {name_45} §7- §e{stats_45}",
+          "§e44. {name_44} §7- §e{stats_44}", "§e43. {name_43} §7- §e{stats_43}",
+          "§e42. {name_42} §7- §e{stats_42}", "§e41. {name_41} §7- §e{stats_41}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(5/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page6 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e60. {name_60} §7- §e{stats_60}", "§e59. {name_59} §7- §e{stats_59}",
+          "§e58. {name_58} §7- §e{stats_58}", "§e57. {name_57} §7- §e{stats_57}",
+          "§e56. {name_56} §7- §e{stats_56}", "§e55. {name_55} §7- §e{stats_55}",
+          "§e54. {name_54} §7- §e{stats_54}", "§e53. {name_53} §7- §e{stats_53}",
+          "§e52. {name_52} §7- §e{stats_52}", "§e51. {name_51} §7- §e{stats_51}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(6/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page7 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e70. {name_70} §7- §e{stats_70}", "§e69. {name_69} §7- §e{stats_69}",
+          "§e68. {name_68} §7- §e{stats_68}", "§e67. {name_67} §7- §e{stats_67}",
+          "§e66. {name_66} §7- §e{stats_66}", "§e65. {name_65} §7- §e{stats_65}",
+          "§e64. {name_64} §7- §e{stats_64}", "§e63. {name_63} §7- §e{stats_63}",
+          "§e62. {name_62} §7- §e{stats_62}", "§e61. {name_61} §7- §e{stats_61}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(7/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page8 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e80. {name_80} §7- §e{stats_80}", "§e79. {name_79} §7- §e{stats_79}",
+          "§e78. {name_78} §7- §e{stats_78}", "§e77. {name_77} §7- §e{stats_77}",
+          "§e76. {name_76} §7- §e{stats_76}", "§e75. {name_75} §7- §e{stats_75}",
+          "§e74. {name_74} §7- §e{stats_74}", "§e73. {name_73} §7- §e{stats_73}",
+          "§e72. {name_72} §7- §e{stats_72}", "§e71. {name_71} §7- §e{stats_71}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(8/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page9 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e90. {name_90} §7- §e{stats_90}", "§e89. {name_89} §7- §e{stats_89}",
+          "§e88. {name_88} §7- §e{stats_88}", "§e87. {name_87} §7- §e{stats_87}",
+          "§e86. {name_86} §7- §e{stats_86}", "§e85. {name_85} §7- §e{stats_85}",
+          "§e84. {name_84} §7- §e{stats_84}", "§e83. {name_83} §7- §e{stats_83}",
+          "§e82. {name_82} §7- §e{stats_82}", "§e81. {name_81} §7- §e{stats_81}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(9/10)");
+  
+  public static List<String> lobby$leaderboard$kills$page10 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e100. {name_100} §7- §e{stats_100}", "§e99. {name_99} §7- §e{stats_99}",
+          "§e98. {name_98} §7- §e{stats_98}", "§e97. {name_97} §7- §e{stats_97}",
+          "§e96. {name_96} §7- §e{stats_96}", "§e95. {name_95} §7- §e{stats_95}",
+          "§e94. {name_94} §7- §e{stats_94}", "§e93. {name_93} §7- §e{stats_93}",
+          "§e92. {name_92} §7- §e{stats_92}", "§e91. {name_91} §7- §e{stats_91}", "",
+          "§e§lABATES FINAIS", "§b§lTOP 100 §8(10/10)");
   public static List<String> lobby$leaderboard$beds$hologram = Arrays
       .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
           "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
@@ -113,6 +295,96 @@ public class Language {
           "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
           "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8({page_info})");
   
+  // Páginas separadas para camas
+  public static List<String> lobby$leaderboard$beds$page1 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e10. {name_10} §7- §e{stats_10}", "§e9. {name_9} §7- §e{stats_9}",
+          "§e8. {name_8} §7- §e{stats_8}", "§e7. {name_7} §7- §e{stats_7}",
+          "§e6. {name_6} §7- §e{stats_6}", "§e5. {name_5} §7- §e{stats_5}",
+          "§e4. {name_4} §7- §e{stats_4}", "§e3. {name_3} §7- §e{stats_3}",
+          "§e2. {name_2} §7- §e{stats_2}", "§e1. {name_1} §7- §e{stats_1}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(1/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page2 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e20. {name_20} §7- §e{stats_20}", "§e19. {name_19} §7- §e{stats_19}",
+          "§e18. {name_18} §7- §e{stats_18}", "§e17. {name_17} §7- §e{stats_17}",
+          "§e16. {name_16} §7- §e{stats_16}", "§e15. {name_15} §7- §e{stats_15}",
+          "§e14. {name_14} §7- §e{stats_14}", "§e13. {name_13} §7- §e{stats_13}",
+          "§e12. {name_12} §7- §e{stats_12}", "§e11. {name_11} §7- §e{stats_11}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(2/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page3 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e30. {name_30} §7- §e{stats_30}", "§e29. {name_29} §7- §e{stats_29}",
+          "§e28. {name_28} §7- §e{stats_28}", "§e27. {name_27} §7- §e{stats_27}",
+          "§e26. {name_26} §7- §e{stats_26}", "§e25. {name_25} §7- §e{stats_25}",
+          "§e24. {name_24} §7- §e{stats_24}", "§e23. {name_23} §7- §e{stats_23}",
+          "§e22. {name_22} §7- §e{stats_22}", "§e21. {name_21} §7- §e{stats_21}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(3/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page4 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e40. {name_40} §7- §e{stats_40}", "§e39. {name_39} §7- §e{stats_39}",
+          "§e38. {name_38} §7- §e{stats_38}", "§e37. {name_37} §7- §e{stats_37}",
+          "§e36. {name_36} §7- §e{stats_36}", "§e35. {name_35} §7- §e{stats_35}",
+          "§e34. {name_34} §7- §e{stats_34}", "§e33. {name_33} §7- §e{stats_33}",
+          "§e32. {name_32} §7- §e{stats_32}", "§e31. {name_31} §7- §e{stats_31}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(4/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page5 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e50. {name_50} §7- §e{stats_50}", "§e49. {name_49} §7- §e{stats_49}",
+          "§e48. {name_48} §7- §e{stats_48}", "§e47. {name_47} §7- §e{stats_47}",
+          "§e46. {name_46} §7- §e{stats_46}", "§e45. {name_45} §7- §e{stats_45}",
+          "§e44. {name_44} §7- §e{stats_44}", "§e43. {name_43} §7- §e{stats_43}",
+          "§e42. {name_42} §7- §e{stats_42}", "§e41. {name_41} §7- §e{stats_41}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(5/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page6 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e60. {name_60} §7- §e{stats_60}", "§e59. {name_59} §7- §e{stats_59}",
+          "§e58. {name_58} §7- §e{stats_58}", "§e57. {name_57} §7- §e{stats_57}",
+          "§e56. {name_56} §7- §e{stats_56}", "§e55. {name_55} §7- §e{stats_55}",
+          "§e54. {name_54} §7- §e{stats_54}", "§e53. {name_53} §7- §e{stats_53}",
+          "§e52. {name_52} §7- §e{stats_52}", "§e51. {name_51} §7- §e{stats_51}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(6/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page7 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e70. {name_70} §7- §e{stats_70}", "§e69. {name_69} §7- §e{stats_69}",
+          "§e68. {name_68} §7- §e{stats_68}", "§e67. {name_67} §7- §e{stats_67}",
+          "§e66. {name_66} §7- §e{stats_66}", "§e65. {name_65} §7- §e{stats_65}",
+          "§e64. {name_64} §7- §e{stats_64}", "§e63. {name_63} §7- §e{stats_63}",
+          "§e62. {name_62} §7- §e{stats_62}", "§e61. {name_61} §7- §e{stats_61}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(7/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page8 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e80. {name_80} §7- §e{stats_80}", "§e79. {name_79} §7- §e{stats_79}",
+          "§e78. {name_78} §7- §e{stats_78}", "§e77. {name_77} §7- §e{stats_77}",
+          "§e76. {name_76} §7- §e{stats_76}", "§e75. {name_75} §7- §e{stats_75}",
+          "§e74. {name_74} §7- §e{stats_74}", "§e73. {name_73} §7- §e{stats_73}",
+          "§e72. {name_72} §7- §e{stats_72}", "§e71. {name_71} §7- §e{stats_71}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(8/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page9 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e90. {name_90} §7- §e{stats_90}", "§e89. {name_89} §7- §e{stats_89}",
+          "§e88. {name_88} §7- §e{stats_88}", "§e87. {name_87} §7- §e{stats_87}",
+          "§e86. {name_86} §7- §e{stats_86}", "§e85. {name_85} §7- §e{stats_85}",
+          "§e84. {name_84} §7- §e{stats_84}", "§e83. {name_83} §7- §e{stats_83}",
+          "§e82. {name_82} §7- §e{stats_82}", "§e81. {name_81} §7- §e{stats_81}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(9/10)");
+  
+  public static List<String> lobby$leaderboard$beds$page10 = Arrays
+      .asList("{weekly_color}Semanal {monthly_color}Mensal {total_color}Total", "§6§lClique para trocar!",
+          "§e100. {name_100} §7- §e{stats_100}", "§e99. {name_99} §7- §e{stats_99}",
+          "§e98. {name_98} §7- §e{stats_98}", "§e97. {name_97} §7- §e{stats_97}",
+          "§e96. {name_96} §7- §e{stats_96}", "§e95. {name_95} §7- §e{stats_95}",
+          "§e94. {name_94} §7- §e{stats_94}", "§e93. {name_93} §7- §e{stats_93}",
+          "§e92. {name_92} §7- §e{stats_92}", "§e91. {name_91} §7- §e{stats_91}", "",
+          "§e§lCAMAS DESTRUÍDAS", "§b§lTOP 100 §8(10/10)");
   public static List<String> lobby$leaderboard$modos$hologram = Arrays
       .asList("§eClique para alterar!",
           "",
@@ -120,7 +392,6 @@ public class Language {
           "{duplas_color}Duplas",
           "{solo_color}Solo",
           "{geral_color}Geral",
-          "",
           "§b§lSELECIONAR MODO");
   
   public static String lobby$npc$play$connect = "§aConectando...";

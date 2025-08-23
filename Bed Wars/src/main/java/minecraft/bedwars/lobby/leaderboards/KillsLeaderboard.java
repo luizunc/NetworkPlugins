@@ -53,6 +53,25 @@ public class KillsLeaderboard extends AbstractLeaderboard {
   
   @Override
   public List<String> getHologramLines() {
-    return Language.lobby$leaderboard$kills$hologram;
+    // Obter a página atual
+    int currentPage = 0;
+    if (this instanceof AbstractLeaderboard) {
+      currentPage = ((AbstractLeaderboard) this).getCurrentPage();
+    }
+    
+    // Retornar a página específica baseada na página atual
+    switch (currentPage) {
+      case 0: return Language.lobby$leaderboard$kills$page1;
+      case 1: return Language.lobby$leaderboard$kills$page2;
+      case 2: return Language.lobby$leaderboard$kills$page3;
+      case 3: return Language.lobby$leaderboard$kills$page4;
+      case 4: return Language.lobby$leaderboard$kills$page5;
+      case 5: return Language.lobby$leaderboard$kills$page6;
+      case 6: return Language.lobby$leaderboard$kills$page7;
+      case 7: return Language.lobby$leaderboard$kills$page8;
+      case 8: return Language.lobby$leaderboard$kills$page9;
+      case 9: return Language.lobby$leaderboard$kills$page10;
+      default: return Language.lobby$leaderboard$kills$page1;
+    }
   }
 }
