@@ -18,12 +18,13 @@ public final class HotbarConfig {
     private static final int SLOT_LOBBIES = 9;
     
     // Slots da hotbar - Waiting
+    private static final int SLOT_COSMETICOS = 1;
     private static final int SLOT_SAIR_WAITING = 9;
     
     // Slots da hotbar - Spectator
-    private static final int SLOT_COMPASS = 2;
-    private static final int SLOT_JOGAR = 3;
-    private static final int SLOT_SAIR_SPECTATOR = 8;
+    private static final int SLOT_COMPASS = 5;
+    private static final int SLOT_JOGAR = 1;
+    private static final int SLOT_SAIR_SPECTATOR = 9;
     
     // Chaves dos itens - Lobby
     private static final String KEY_BUSSOLA = "bussola";
@@ -33,6 +34,7 @@ public final class HotbarConfig {
     private static final String KEY_LOBBIES = "lobbies";
     
     // Chaves dos itens - Waiting
+    private static final String KEY_COSMETICOS = "loja";
     private static final String KEY_SAIR_WAITING = "sair";
     
     // Chaves dos itens - Spectator
@@ -58,6 +60,7 @@ public final class HotbarConfig {
     private static final String ICON_LOBBIES = "WATCH : 1 : nome>&aLobbies";
     
     // Ícones dos itens - Waiting
+    private static final String ICON_COSMETICOS = "EMERALD : 1 : nome>&aCosméticos";
     private static final String ICON_SAIR_WAITING = "BED : 1 : nome>&cVoltar ao Lobby";
     
     // Ícones dos itens - Spectator
@@ -85,6 +88,7 @@ public final class HotbarConfig {
         
         // Hotbar do Waiting
         Map<String, HotbarItem> waitingItems = new HashMap<>();
+        waitingItems.put(KEY_LOJA, new HotbarItem(SLOT_COSMETICOS, CMD_LOJA, ICON_COSMETICOS));
         waitingItems.put(KEY_SAIR_WAITING, new HotbarItem(SLOT_SAIR_WAITING, CMD_SAIR, ICON_SAIR_WAITING));
         hotbars.put("waiting", Collections.unmodifiableMap(waitingItems));
         

@@ -29,20 +29,17 @@ public abstract class AbstractLeaderboard extends Leaderboard {
    */
   protected List<String[]> getLeaderboardData(String[] weeklyStats, String[] monthlyStats, String[] totalStats) {
     try {
-      // Se não temos dados em cache, recarregar
-      if (cachedData.isEmpty()) {
-        String[] statsToQuery;
-        if (canSeeWeekly()) {
-          statsToQuery = weeklyStats;
-        } else if (canSeeMonthly()) {
-          statsToQuery = monthlyStats;
-        } else {
-          statsToQuery = totalStats;
-        }
-        
-        List<String[]> allData = Database.getInstance().getLeaderBoard("bedwars", statsToQuery);
-        cachedData = normalizeLeaderboardData(allData);
+      String[] statsToQuery;
+      if (canSeeWeekly()) {
+        statsToQuery = weeklyStats;
+      } else if (canSeeMonthly()) {
+        statsToQuery = monthlyStats;
+      } else {
+        statsToQuery = totalStats;
       }
+      
+      List<String[]> allData = Database.getInstance().getLeaderBoard("bedwars", statsToQuery);
+      cachedData = normalizeLeaderboardData(allData);
       
       // Retornar apenas a página atual (10 entradas)
       return getCurrentPageData();
@@ -57,14 +54,6 @@ public abstract class AbstractLeaderboard extends Leaderboard {
    */
   protected List<String[]> getLeaderboardData(String[] monthlyStats, String[] totalStats) {
     return getLeaderboardData(monthlyStats, monthlyStats, totalStats);
-  }
-  
-  /**
-   * Verifica se deve recarregar o cache
-   */
-  private boolean shouldReloadCache() {
-    // Recarregar se o cache está vazio
-    return cachedData.isEmpty();
   }
   
   /**

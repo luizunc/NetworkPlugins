@@ -235,12 +235,16 @@ public class BedWars implements Game<BedWarsTeam> {
       return;
     }
     
-            breaker.addStats("bedwars", this.getMode().getStats() + "bedsdestroyeds");
+            breaker.addStats("bedwars", this.getMode().getStats() + "beds");
         breaker.addCoins("bedwars", Language.options$coins$beds);
-    
+
     this.beds.put(breaker.getName(), (this.beds.get(breaker.getName()) == null ? 0 : this.beds.get(breaker.getName())) + 1);
-    
+
+    // Mensal
     breaker.addStats("bedwars", "monthlybeds");
+    
+    // Semanal
+    breaker.addStats("bedwars", "weeklybeds");
     
     BreakEffect dc = breaker.getAbstractContainer("bedwars", "selected", SelectedContainer.class).getSelected(CosmeticType.BREAK_EFFECT, BreakEffect.class);
     if (dc != null) {
@@ -319,9 +323,29 @@ public class BedWars implements Game<BedWarsTeam> {
       }
     }
     
-    team = team == null ? getAvailableTeam(fullSize ? this.getMode().getSize() : 1) : team;
+    team = team == null ? getAvailableTeamWithPreferredColor(profile, fullSize ? this.getMode().getSize() : 1) : team;
     if (team == null) {
       return;
+    }
+    
+    // Verificar se o jogador foi colocado no time da sua cor preferida
+    String corPreferida = profile.getDataContainer("bedwars", "preferred_color").getAsString();
+    if (corPreferida != null && !corPreferida.isEmpty() && !corPreferida.equals("0")) {
+      int preferredIndex = -1;
+             switch (corPreferida) {
+         case "1": preferredIndex = 0; break; // Vermelho
+         case "2": preferredIndex = 1; break; // Azul
+         case "3": preferredIndex = 2; break; // Verde Lima
+         case "4": preferredIndex = 3; break; // Amarelo
+         case "5": preferredIndex = 4; break; // Ciano
+         case "6": preferredIndex = 5; break; // Branco
+         case "7": preferredIndex = 6; break; // Rosa
+         case "8": preferredIndex = 7; break; // Cinza
+       }
+      
+      if (preferredIndex >= 0 && preferredIndex < this.listTeams().size() && team.getIndex() == preferredIndex) {
+        player.sendMessage("§aVocê foi colocado no time da sua cor preferida: " + team.getName() + "§a!");
+      }
     }
     
     team.addMember(player);
@@ -585,7 +609,12 @@ public class BedWars implements Game<BedWarsTeam> {
       
       killer.addStats("bedwars", this.getMode().getStats() + "finalkills");
       killer.addCoins("bedwars", Language.options$coins$kills);
+      
+      // Mensal
       killer.addStats("bedwars", "monthlykills");
+      
+      // Semanal
+      killer.addStats("bedwars", "weeklykills");
       
       String suffix = this.addKills(pk);
       
@@ -599,6 +628,7 @@ public class BedWars implements Game<BedWarsTeam> {
     
     profile.addStats("bedwars", this.getMode().getStats() + "finaldeaths");
     
+    // Mensal
     profile.addStats("bedwars", "monthlydeaths");
     
     team.removeMember(player);
@@ -743,10 +773,17 @@ public class BedWars implements Game<BedWarsTeam> {
       
       killer.addStats("bedwars", this.getMode().getStats() + "finalkills");
       killer.addCoins("bedwars", Language.options$coins$kills);
+      
+      // Mensal
       killer.addStats("bedwars", "monthlykills");
+      
+      // Semanal
+      killer.addStats("bedwars", "weeklykills");
     }
     
     profile.addStats("bedwars", this.getMode().getStats() + "finaldeaths");
+    
+    // Mensal
     profile.addStats("bedwars", "monthlydeaths");
     
     player.getEnderChest().clear();
@@ -770,11 +807,15 @@ public class BedWars implements Game<BedWarsTeam> {
     
     this.listPlayers(false).forEach(player -> {
       Profile profile = Profile.getProfile(player.getName());
-      player.setNoDamageTicks(80);
-      player.getEnderChest().clear();
-      player.setGameMode(GameMode.SURVIVAL);
-      profile.addStats("bedwars", this.getMode().getStats() + "games");
-      profile.addStats("bedwars", "monthlygames");
+      if (profile != null) {
+        player.setNoDamageTicks(80);
+        player.getEnderChest().clear();
+        player.setGameMode(GameMode.SURVIVAL);
+        profile.addStats("bedwars", this.getMode().getStats() + "games");
+        
+        // Mensal
+        profile.addStats("bedwars", "monthlygames");
+      }
     });
     
     this.updateTags();
@@ -832,6 +873,9 @@ public class BedWars implements Game<BedWarsTeam> {
         
         // Mensal
         profile.addStats("bedwars", "monthlywins");
+        
+        // Semanal
+        profile.addStats("bedwars", "weeklywins");
         
         NMS.sendTitle(player, Language.ingame$titles$win$header, Language.ingame$titles$win$footer, 10, 80, 10);
       } else {
@@ -1006,7 +1050,7 @@ public class BedWars implements Game<BedWarsTeam> {
           if (team == null) {
             team = scoreboard.registerNewTeam(gt.getName());
             String[] colors =
-                {"§c", "§d", "§b", "§9", "§f", "§6", "§5", "§2"};
+                {"§c§l[V] §c", "§9§l[A] §9", "§a§l[V] §a", "§e§l[A] §e", "§b§l[C] §b", "§f§l[B] §f", "§d§l[R] §d", "§7§l[C] §7"};
             team.setPrefix(colors[gt.getIndex()]);
           }
           
@@ -1091,6 +1135,56 @@ public class BedWars implements Game<BedWarsTeam> {
     return this.listTeams().stream().filter(team -> team.canJoin(teamSize)).findAny().orElse(null);
   }
   
+  public BedWarsTeam getAvailableTeamWithPreferredColor(Profile profile, int teamSize) {
+    // Obter cor preferida do jogador
+    String corPreferida = profile.getDataContainer("bedwars", "preferred_color").getAsString();
+    
+    // Se não tem cor preferida ou é "0" (nenhum), usar seleção normal
+    if (corPreferida == null || corPreferida.isEmpty() || corPreferida.equals("0")) {
+      return getAvailableTeam(teamSize);
+    }
+    
+         // Mapear cor preferida para índice do time
+     int preferredIndex = -1;
+     switch (corPreferida) {
+       case "1": // Vermelho
+         preferredIndex = 0;
+         break;
+       case "2": // Azul
+         preferredIndex = 1;
+         break;
+       case "3": // Verde Lima (mapeia para o time verde)
+         preferredIndex = 2;
+         break;
+       case "4": // Amarelo
+         preferredIndex = 3;
+         break;
+       case "5": // Ciano
+         preferredIndex = 4;
+         break;
+       case "6": // Branco
+         preferredIndex = 5;
+         break;
+       case "7": // Rosa
+         preferredIndex = 6;
+         break;
+       case "8": // Cinza
+         preferredIndex = 7;
+         break;
+     }
+    
+    // Se o índice é válido e o time existe, tentar usar o time da cor preferida
+    if (preferredIndex >= 0 && preferredIndex < this.listTeams().size()) {
+      BedWarsTeam preferredTeam = this.listTeams().get(preferredIndex);
+      if (preferredTeam.canJoin(teamSize)) {
+        return preferredTeam;
+      }
+    }
+    
+    // Se não conseguir usar a cor preferida, usar seleção normal
+    return getAvailableTeam(teamSize);
+  }
+
   @Override
   public BedWarsTeam getTeam(Player player) {
     return this.listTeams().stream().filter(team -> team.hasMember(player)).findAny().orElse(null);

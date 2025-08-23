@@ -72,7 +72,7 @@ public class Language {
   public static String chat$delay = "§cAguarde mais {time}s para falar novamente.";
   public static String chat$color$default = "§7";
   public static String chat$color$custom = "§f";
-  public static String chat$format$ingame$team = "§7[TIME] {player}{color}: {message}";
+  public static String chat$format$ingame$team = "{team} {player}{color}: {message}";
   public static String chat$format$ingame$global = "§6[GLOBAL] {team} {player}{color}: {message}";
   public static String chat$format$lobby = "{player}{color}: {message}";
   public static String chat$format$spectator = "§8[Espectador] {player}{color}: {message}";

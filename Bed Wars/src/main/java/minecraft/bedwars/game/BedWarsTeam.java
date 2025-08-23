@@ -361,6 +361,6 @@ public class BedWarsTeam extends GameTeam {
   }
   
   public static final String[] names =
-      {"§cVermelho", "§9Azul", "§2Verde", "§eAmarelo", "§bCiano", "§fBranco", "§dRosa", "§7Cinza"};
+      {"§cVermelho", "§9Azul", "§aVerde", "§eAmarelo", "§bCiano", "§fBranco", "§dRosa", "§7Cinza"};
   public static final String[] ids = {"14", "11", "13", "4", "9", "0", "6", "7"};
 }

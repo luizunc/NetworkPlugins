@@ -1,9 +1,9 @@
 package minecraft.bedwars.game.enums;
 
 public enum BedWarsMode {
-  SOLO("Solo", "1v1", 1, 1),
-  DUPLA("Duplas", "2v2", 2, 1),
-  QUARTETO("Quartetos", "4v4", 4, 1);
+  SOLO("Solo", "solo", 1, 1),
+  DUPLA("Duplas", "duo", 2, 1),
+  QUARTETO("Quartetos", "quad", 4, 1);
   
   private int size;
   private String stats;

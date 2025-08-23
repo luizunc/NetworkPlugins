@@ -261,7 +261,7 @@ public class MenuShop extends PlayerMenu {
         if (team != null) {
           // Usar a cor do time atual
           woolColor = BedWarsTeam.ids[team.getIndex()];
-          woolName = "&aCor Preferida &7(" + team.getName() + "&7)";
+          woolName = "&aCor Preferida";
   }
       } else {
         // Se não está em partida, verificar cor preferida
@@ -272,35 +272,35 @@ public class MenuShop extends PlayerMenu {
           switch (corPreferida) {
             case "1": // Vermelho
               woolColor = "14";
-              woolName = "&aCor Preferida &7(§cVermelho&7)";
+              woolName = "&aCor Preferida";
               break;
             case "2": // Azul
               woolColor = "11";
-              woolName = "&aCor Preferida &7(§9Azul&7)";
+              woolName = "&aCor Preferida";
               break;
             case "3": // Verde Lima
               woolColor = "5";
-              woolName = "&aCor Preferida &7(§aVerde&7)";
+              woolName = "&aCor Preferida";
               break;
             case "4": // Amarelo
               woolColor = "4";
-              woolName = "&aCor Preferida &7(§eAmarelo&7)";
+              woolName = "&aCor Preferida";
               break;
             case "5": // Ciano
               woolColor = "9";
-              woolName = "&aCor Preferida &7(§bCiano&7)";
+              woolName = "&aCor Preferida";
               break;
             case "6": // Branco
               woolColor = "0";
-              woolName = "&aCor Preferida &7(§fBranco&7)";
+              woolName = "&aCor Preferida";
               break;
             case "7": // Rosa
               woolColor = "6";
-              woolName = "&aCor Preferida &7(§dRosa&7)";
+              woolName = "&aCor Preferida";
               break;
             case "8": // Cinza
               woolColor = "7";
-              woolName = "&aCor Preferida &7(§7Cinza&7)";
+              woolName = "&aCor Preferida";
               break;
             default:
               woolColor = "0"; // Branco

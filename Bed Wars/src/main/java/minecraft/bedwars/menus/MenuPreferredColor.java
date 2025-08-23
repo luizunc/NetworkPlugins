@@ -186,7 +186,7 @@ public class MenuPreferredColor extends PlayerMenu {
               this.player.sendMessage("§aCor preferida definida como §9Azul§a!");
               new MenuPreferredColor(profile);
             } else if (evt.getSlot() == 14) {
-              // Verde
+              // Verde Lima
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               profile.getDataContainer("bedwars", "preferred_color").set("3");
               this.player.sendMessage("§aCor preferida definida como §aVerde§a!");
