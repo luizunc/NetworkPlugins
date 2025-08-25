@@ -47,8 +47,40 @@ portal_3d:
   permission: 'role.vip'
   name: 'Portal 3D'
   icon: 'ENDER_PORTAL : 1 : desc>&7Abre um portal tridimensional\n&7que distorce a realidade.'
-spider_web_3d:
+zombie_fatality_3d:
   id: 7
+  coins: 18000.0
+  cash: 180
+  rarity: LENDÁRIO
+  permission: 'role.vip'
+  name: 'Zombie Fatality 3D'
+  icon: 'ROTTEN_FLESH : 1 : desc>&7Zombie emerge e executa\n&7um fatality brutal.'
+skeleton_archer_3d:
+  id: 8
+  coins: 16000.0
+  cash: 160
+  rarity: LENDÁRIO
+  permission: 'role.vip'
+  name: 'Skeleton Archer 3D'
+  icon: 'BOW : 1 : desc>&7Skeleton atirador com\n&7múltiplas flechas mágicas.'
+creeper_explosion_3d:
+  id: 9
+  coins: 22000.0
+  cash: 220
+  rarity: DIVINO
+  permission: 'role.vip'
+  name: 'Creeper Explosion 3D'
+  icon: 'TNT : 1 : desc>&7Creeper com explosão\n&7nuclear devastadora.'
+enderman_teleport_3d:
+  id: 10
+  coins: 20000.0
+  cash: 200
+  rarity: DIVINO
+  permission: 'role.vip'
+  name: 'Enderman Teleport 3D'
+  icon: 'ENDER_PEARL : 1 : desc>&7Enderman com teleportes\n&7múltiplos e distorção.'
+spider_web_3d:
+  id: 11
   coins: 14000.0
   cash: 140
   rarity: LENDÁRIO

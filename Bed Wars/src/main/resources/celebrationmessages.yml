@@ -1,0 +1,184 @@
+# Mensagens de Comemoração - Padrão de 14 itens
+# Este arquivo contém mensagens de comemoração que aparecem quando um jogador faz algo especial
+
+padrao_1:
+  id: 1
+  name: 'Comemoração Clássica'
+  rarity: COMUM
+  permission: ''
+  icon: 'CAKE : 1 : desc>&7Comemorações clássicas e simples'
+  coins: 3000.0
+  cash: 15
+  messages:
+    - '&a{player} &7está comemorando sua vitória!'
+    - '&a{player} &7celebrou com sucesso!'
+    - '&a{player} &7está muito feliz!'
+
+padrao_2:
+  id: 2
+  name: 'Festa Explosiva'
+  rarity: RARO
+  permission: ''
+  icon: 'FIREWORK : 1 : desc>&7Comemorações com fogos de artifício'
+  coins: 5000.0
+  cash: 30
+  messages:
+    - '&a{player} &7disparou fogos de artifício!'
+    - '&a{player} &7está fazendo uma festa explosiva!'
+    - '&a{player} &7iluminou o céu com comemoração!'
+
+padrao_3:
+  id: 3
+  name: 'Dança da Vitória'
+  rarity: EPICO
+  permission: ''
+  icon: 'DIAMOND : 1 : desc>&7Comemorações com dança'
+  coins: 8000.0
+  cash: 50
+  messages:
+    - '&a{player} &7está dançando a dança da vitória!'
+    - '&a{player} &7dançou para celebrar!'
+    - '&a{player} &7mostrou seus passos de dança!'
+
+padrao_4:
+  id: 4
+  name: 'Grito de Vitória'
+  rarity: DIVINO
+  permission: 'role.mvpplus'
+  icon: 'BOOK : 1 : desc>&7Comemorações com gritos épicos'
+  coins: 12000.0
+  cash: 75
+  messages:
+    - '&a{player} &7solto um grito épico de vitória!'
+    - '&a{player} &7rugiu de felicidade!'
+    - '&a{player} &7fez o mundo tremer com sua comemoração!'
+
+padrao_5:
+  id: 5
+  name: 'Pose de Herói'
+  rarity: RARO
+  permission: ''
+  icon: 'IRON_CHESTPLATE : 1 : desc>&7Comemorações com poses heroicas'
+  coins: 6000.0
+  cash: 40
+  messages:
+    - '&a{player} &7fez uma pose de herói!'
+    - '&a{player} &7mostrou sua força com uma pose épica!'
+    - '&a{player} &7está posando como um verdadeiro campeão!'
+
+padrao_6:
+  id: 6
+  name: 'Salto de Alegria'
+  rarity: COMUM
+  permission: ''
+  icon: 'RABBIT_FOOT : 1 : desc>&7Comemorações com pulos'
+  coins: 4000.0
+  cash: 25
+  messages:
+    - '&a{player} &7deu um salto de alegria!'
+    - '&a{player} &7está pulando de felicidade!'
+    - '&a{player} &7saltou para celebrar!'
+
+padrao_7:
+  id: 7
+  name: 'Abraço Coletivo'
+  rarity: EPICO
+  permission: ''
+  icon: 'LEATHER : 1 : desc>&7Comemorações com abraços'
+  coins: 9000.0
+  cash: 55
+  messages:
+    - '&a{player} &7distribuiu abraços de comemoração!'
+    - '&a{player} &7abraçou todos em celebração!'
+    - '&a{player} &7espalhou amor e alegria!'
+
+padrao_8:
+  id: 8
+  name: 'Chuva de Confete'
+  rarity: RARO
+  permission: ''
+  icon: 'PAPER : 1 : desc>&7Comemorações com confete'
+  coins: 7000.0
+  cash: 45
+  messages:
+    - '&a{player} &7espalhou confete por toda parte!'
+    - '&a{player} &7fez chover confete de comemoração!'
+    - '&a{player} &7coloriu o mundo com confete!'
+
+padrao_9:
+  id: 9
+  name: 'Coro de Comemoração'
+  rarity: EPICO
+  permission: ''
+  icon: 'NOTE_BLOCK : 1 : desc>&7Comemorações musicais'
+  coins: 10000.0
+  cash: 60
+  messages:
+    - '&a{player} &7iniciou um coro de comemoração!'
+    - '&a{player} &7cantou uma música de vitória!'
+    - '&a{player} &7fez todos cantarem junto!'
+
+padrao_10:
+  id: 10
+  name: 'Luz da Vitória'
+  rarity: DIVINO
+  permission: 'role.mvp'
+  icon: 'GLOWSTONE : 1 : desc>&7Comemorações luminosas'
+  coins: 15000.0
+  cash: 90
+  messages:
+    - '&a{player} &7iluminou o mundo com sua vitória!'
+    - '&a{player} &7brilhou como uma estrela!'
+    - '&a{player} &7espalhou luz de comemoração!'
+
+padrao_11:
+  id: 11
+  name: 'Tremor de Alegria'
+  rarity: RARO
+  permission: ''
+  icon: 'STONE : 1 : desc>&7Comemorações que fazem tremer'
+  coins: 6500.0
+  cash: 35
+  messages:
+    - '&a{player} &7fez a terra tremer de alegria!'
+    - '&a{player} &7causou um tremor de comemoração!'
+    - '&a{player} &7abalou o mundo com sua felicidade!'
+
+padrao_12:
+  id: 12
+  name: 'Vento da Vitória'
+  rarity: EPICO
+  permission: ''
+  icon: 'FEATHER : 1 : desc>&7Comemorações com vento'
+  coins: 11000.0
+  cash: 70
+  messages:
+    - '&a{player} &7criou uma brisa de comemoração!'
+    - '&a{player} &7espalhou alegria com o vento!'
+    - '&a{player} &7fez o vento cantar de felicidade!'
+
+padrao_13:
+  id: 13
+  name: 'Fogo da Comemoração'
+  rarity: RARO
+  permission: ''
+  icon: 'BLAZE_POWDER : 1 : desc>&7Comemorações com fogo'
+  coins: 7500.0
+  cash: 50
+  messages:
+    - '&a{player} &7acendeu o fogo da comemoração!'
+    - '&a{player} &7queimou de felicidade!'
+    - '&a{player} &7iluminou a noite com fogo de alegria!'
+
+padrao_14:
+  id: 14
+  name: 'Aurora da Vitória'
+  rarity: DIVINO
+  permission: 'role.mvpplus'
+  icon: 'ENDER_PEARL : 1 : desc>&7Comemorações cósmicas'
+  coins: 18000.0
+  cash: 120
+  messages:
+    - '&a{player} &7criou uma aurora de vitória!'
+    - '&a{player} &7pintou o céu com cores de comemoração!'
+    - '&a{player} &7fez o universo celebrar junto!' 
