@@ -21,29 +21,39 @@ public class BedsLeaderboard extends AbstractLeaderboard {
   @Override
   public List<String[]> getSplitted() {
     // Obter estatísticas baseadas no modo global atual
-    String[] weeklyStats = {"weeklybeds"};
-    String[] monthlyStats = {"monthlybeds"};
+    String[] weeklyStats;
+    String[] monthlyStats;
     String[] totalStats;
     
     int currentMode = GlobalGameMode.getCurrentMode();
     switch (currentMode) {
       case GlobalGameMode.MODE_GERAL:
         // Modo Geral: combina todos os modos
+        weeklyStats = new String[]{"weeklybeds"};
+        monthlyStats = new String[]{"monthlybeds"};
         totalStats = new String[]{"solobeds", "duobeds", "quadbeds"};
         break;
       case GlobalGameMode.MODE_SOLO:
         // Modo Solo: apenas camas solo
+        weeklyStats = new String[]{"solobeds"};
+        monthlyStats = new String[]{"solobeds"};
         totalStats = new String[]{"solobeds"};
         break;
       case GlobalGameMode.MODE_DUPLAS:
         // Modo Duplas: apenas camas duplas
+        weeklyStats = new String[]{"duobeds"};
+        monthlyStats = new String[]{"duobeds"};
         totalStats = new String[]{"duobeds"};
         break;
       case GlobalGameMode.MODE_QUARTETOS:
         // Modo Quartetos: apenas camas quartetos
+        weeklyStats = new String[]{"quadbeds"};
+        monthlyStats = new String[]{"quadbeds"};
         totalStats = new String[]{"quadbeds"};
         break;
       default:
+        weeklyStats = new String[]{"weeklybeds"};
+        monthlyStats = new String[]{"monthlybeds"};
         totalStats = new String[]{"solobeds", "duobeds", "quadbeds"};
         break;
     }

@@ -21,29 +21,39 @@ public class WinsLeaderboard extends AbstractLeaderboard {
   @Override
   public List<String[]> getSplitted() {
     // Obter estatísticas baseadas no modo global atual
-    String[] weeklyStats = {"weeklywins"};
-    String[] monthlyStats = {"monthlywins"};
+    String[] weeklyStats;
+    String[] monthlyStats;
     String[] totalStats;
     
     int currentMode = GlobalGameMode.getCurrentMode();
     switch (currentMode) {
       case GlobalGameMode.MODE_GERAL:
         // Modo Geral: combina todos os modos
+        weeklyStats = new String[]{"weeklywins"};
+        monthlyStats = new String[]{"monthlywins"};
         totalStats = new String[]{"solowins", "duowins", "quadwins"};
         break;
       case GlobalGameMode.MODE_SOLO:
         // Modo Solo: apenas vitórias solo
+        weeklyStats = new String[]{"solowins"};
+        monthlyStats = new String[]{"solowins"};
         totalStats = new String[]{"solowins"};
         break;
       case GlobalGameMode.MODE_DUPLAS:
         // Modo Duplas: apenas vitórias duplas
+        weeklyStats = new String[]{"duowins"};
+        monthlyStats = new String[]{"duowins"};
         totalStats = new String[]{"duowins"};
         break;
       case GlobalGameMode.MODE_QUARTETOS:
         // Modo Quartetos: apenas vitórias quartetos
+        weeklyStats = new String[]{"quadwins"};
+        monthlyStats = new String[]{"quadwins"};
         totalStats = new String[]{"quadwins"};
         break;
       default:
+        weeklyStats = new String[]{"weeklywins"};
+        monthlyStats = new String[]{"monthlywins"};
         totalStats = new String[]{"solowins", "duowins", "quadwins"};
         break;
     }

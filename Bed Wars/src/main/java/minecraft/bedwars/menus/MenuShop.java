@@ -32,14 +32,14 @@ public class MenuShop extends PlayerMenu {
     long percentage = 100;
     String color = "&a";
     this.setItem(11, BukkitUtils.deserializeItemStack(
-        "EXP_BOTTLE : 1 : nome>&aHabilidades : desc>&7Tenha vantagens únicas para\n&7auxiliar você nas partidas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou evoluir!"));
-    
-    // Ícone do baú para Cosméticos da Partida
-    this.setItem(13, BukkitUtils.deserializeItemStack(
         "CHEST : 1 : nome>&aCosméticos da Partida : desc>&7Acesse todos os cosméticos\n&7disponíveis para personalizar\n&7sua experiência no jogo.\n \n&eClique para acessar!"));
     
+    // Ícone do frasco de experiência para Habilidades
+    this.setItem(13, BukkitUtils.deserializeItemStack(
+        "EXP_BOTTLE : 1 : nome>&aHabilidades : desc>&7Tenha vantagens únicas para\n&7auxiliar você nas partidas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou evoluir!"));
+    
     this.setItem(15, BukkitUtils.deserializeItemStack(
-        "EMERALD : 1 : nome>&aOutros Itens : desc>&7Acesse outros itens e\n&7funcionalidades da loja.\n \n&eClique para acessar!"));
+        "ANVIL : 1 : nome>&aExperiencia de Jogo : desc>&7Acesse outros itens e\n&7funcionalidades da loja.\n \n&eClique para acessar!"));
     
     this.register(Main.getInstance());
     this.open();
@@ -62,11 +62,11 @@ public class MenuShop extends PlayerMenu {
           
           if (item != null && item.getType() != Material.AIR) {
             if (evt.getSlot() == 11) {
-              EnumSound.ENDERMAN_TELEPORT.play(this.player, 1.0f, 1.0f);
-              player.sendMessage("§cEm breve.");
-            } else if (evt.getSlot() == 13) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmeticsPage(profile);
+            } else if (evt.getSlot() == 13) {
+              EnumSound.ENDERMAN_TELEPORT.play(this.player, 1.0f, 1.0f);
+              player.sendMessage("§cEm breve.");
             } else if (evt.getSlot() == 15) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               player.sendMessage("§cEm breve.");

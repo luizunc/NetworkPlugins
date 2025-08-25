@@ -60,13 +60,13 @@ public class Language {
   public static List<String> scoreboards$lobby = Arrays
       .asList("", " §eGeral", "  Vitorias: §a%Core_BedWars_wins%", "  Abates Finais: §a%Core_BedWars_finalkills%",
           "  Abates Gerais: §a%Core_BedWars_kills%", "", "  Camas Destr.: §a%Core_BedWars_beds%", "  Partidas: §a%Core_BedWars_games%", "",
-          " Coins: §6%Core_BedWars_coins%", " Cash: §b%Core_cash%", "", " §7www.redeslick.com", " ");
+          " Coins: §6%Core_BedWars_coins%", " Cash: §b%Core_cash%", "", " §7www.hypemc.com", " ");
   public static List<String> scoreboards$waiting =
       Arrays.asList("", "  Mapa: §a{map}", "  Jogadores: §a{players}/{max_players}",
-          "", "  {time}", "", "  §7www.redeslick.com", "");
+          "", "  {time}", "", "  §7www.hypemc.com", "");
   public static List<String> scoreboards$ingame = Arrays
       .asList("", " Próximo Evento:", " §a{next_event}", "", " {red}", " {blue}", " {green}", " {yellow}",
-          " {cyan}", " {white}", " {pink}", " {gray}", "", " §7www.redeslick.com", " ");
+          " {cyan}", " {white}", " {pink}", " {gray}", "", " §7www.hypemc.com", " ");
   
   // Chat
   public static String chat$delay = "§cAguarde mais {time}s para falar novamente.";
@@ -81,9 +81,9 @@ public class Language {
   public static String lobby$achievement = " \n§aVocê completou o desafio §f{name}\n ";
   public static String lobby$broadcast = "{player} " + "%Core_entrymessage%";
   public static boolean lobby$tab$enabled = true;
-  public static String lobby$tab$header = " \n§b§lREDE SLICK\n  §fredeslick.com\n ";
+  public static String lobby$tab$header = " \n§b§lHYPE MC\n  §fhypemc.com\n ";
   public static String lobby$tab$footer =
-      " \n \n§aForúm: §fredeslick.com/forum\n§aTwitter: §f@RedeSlick\n§aDiscord: §fredeslick.com/discord\n \n                                          §bAdquira VIP acessando: §floja.redeslick.com                                          \n ";
+      " \n \n§aForúm: §fhypemc.com/forum\n§aTwitter: §f@HypeMC\n§aDiscord: §fhypemc.com/discord\n \n                                          §bAdquira VIP acessando: §floja.hypemc.com                                          \n ";
   
   public static long lobby$leaderboard$minutes = 30;
   public static String lobby$leaderboard$empty = "§7...";
@@ -397,7 +397,7 @@ public class Language {
   public static String lobby$npc$play$connect = "§aConectando...";
   public static String lobby$npc$play$menu$info$item = "PAPER : 1 : nome>§aInformações : desc>{desc}";
   public static String lobby$npc$play$menu$info$desc_limit =
-      "§fLimite Diário: §7{limit}\n \n§7Jogadores que possuem o grupo §aVIP §7ou\n§7superior, podem escolher o mapa sem\n§7limite algum.\n \n&7www.redeslick.com/loja";
+      "§fLimite Diário: §7{limit}\n \n§7Jogadores que possuem o grupo §aVIP §7ou\n§7superior, podem escolher o mapa sem\n§7limite algum.\n \n&7www.hypemc.com/loja";
   public static String lobby$npc$play$menu$info$desc_not_limit = "§7Você não possui limite diário de seleções.";
   
   public static List<String> lobby$npc$stats$hologram = Arrays

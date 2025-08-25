@@ -575,6 +575,12 @@ public class BedWars implements Game<BedWarsTeam> {
         killer.addCoins("bedwars", Language.options$coins$kills);
         killer.addStats("bedwars", this.getMode().getStats() + "kills");
         
+        // Mensal
+        killer.addStats("bedwars", "monthlykills");
+        
+        // Semanal
+        killer.addStats("bedwars", "weeklykills");
+        
         DeathMessage dm = killer.getAbstractContainer("bedwars", "selected", SelectedContainer.class).getSelected(CosmeticType.DEATH_MESSAGE, DeathMessage.class);
         if (dm != null) {
           this.broadcastMessage(dm.getRandomMessage().replace("{name}", team.getColored(player)).replace("{killer}", killerTeam.getColored(pk)) + suffix);

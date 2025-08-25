@@ -36,7 +36,7 @@ public class ModosLeaderboard extends Leaderboard {
    * Obtém o modo de jogo atual
    */
   public int getCurrentGameMode() {
-    return currentGameMode;
+    return GlobalGameMode.getCurrentMode();
   }
   
   /**
@@ -53,6 +53,8 @@ public class ModosLeaderboard extends Leaderboard {
           if (board instanceof AbstractLeaderboard) {
             ((AbstractLeaderboard) board).clearCache();
           }
+          // Forçar atualização da leaderboard
+          board.update();
         });
   }
   
@@ -60,17 +62,6 @@ public class ModosLeaderboard extends Leaderboard {
    * Obtém o nome do modo atual
    */
   public String getCurrentGameModeName() {
-    switch (currentGameMode) {
-      case 0:
-        return "Geral";
-      case 1:
-        return "Solo";
-      case 2:
-        return "Duplas";
-      case 3:
-        return "Quartetos";
-      default:
-        return "Geral";
-    }
+    return GlobalGameMode.getCurrentModeName();
   }
 } 

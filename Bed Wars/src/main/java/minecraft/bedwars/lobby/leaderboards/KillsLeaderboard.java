@@ -21,29 +21,39 @@ public class KillsLeaderboard extends AbstractLeaderboard {
   @Override
   public List<String[]> getSplitted() {
     // Obter estatísticas baseadas no modo global atual
-    String[] weeklyStats = {"weeklykills"};
-    String[] monthlyStats = {"monthlykills"};
+    String[] weeklyStats;
+    String[] monthlyStats;
     String[] totalStats;
     
     int currentMode = GlobalGameMode.getCurrentMode();
     switch (currentMode) {
       case GlobalGameMode.MODE_GERAL:
         // Modo Geral: combina todos os modos
+        weeklyStats = new String[]{"weeklykills"};
+        monthlyStats = new String[]{"monthlykills"};
         totalStats = new String[]{"solokills", "duokills", "quadkills"};
         break;
       case GlobalGameMode.MODE_SOLO:
         // Modo Solo: apenas abates solo
+        weeklyStats = new String[]{"solokills"};
+        monthlyStats = new String[]{"solokills"};
         totalStats = new String[]{"solokills"};
         break;
       case GlobalGameMode.MODE_DUPLAS:
         // Modo Duplas: apenas abates duplas
+        weeklyStats = new String[]{"duokills"};
+        monthlyStats = new String[]{"duokills"};
         totalStats = new String[]{"duokills"};
         break;
       case GlobalGameMode.MODE_QUARTETOS:
         // Modo Quartetos: apenas abates quartetos
+        weeklyStats = new String[]{"quadkills"};
+        monthlyStats = new String[]{"quadkills"};
         totalStats = new String[]{"quadkills"};
         break;
       default:
+        weeklyStats = new String[]{"weeklykills"};
+        monthlyStats = new String[]{"monthlykills"};
         totalStats = new String[]{"solokills", "duokills", "quadkills"};
         break;
     }
