@@ -3,24 +3,29 @@ package minecraft.bedwars.menus;
 import minecraft.bedwars.Main;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.types.*;
-import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.BedWarsTeam;
-
+import minecraft.bedwars.game.shop.Shop;
+import minecraft.bedwars.game.shop.ShopCategory;
+import minecraft.bedwars.game.shop.ShopItem;
+import minecraft.bedwars.hook.container.FavoritesContainer;
+import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.enums.EnumSound;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MenuShop extends PlayerMenu {
   
@@ -69,7 +74,7 @@ public class MenuShop extends PlayerMenu {
               player.sendMessage("§cEm breve.");
             } else if (evt.getSlot() == 15) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              player.sendMessage("§cEm breve.");
+              new MenuExperienciaJogo(profile);
             }
           }
         }
@@ -321,6 +326,341 @@ public class MenuShop extends PlayerMenu {
       this.setItem(25, BukkitUtils.deserializeItemStack(itemString));
     }
   }
+  
+  public static class MenuExperienciaJogo extends PlayerMenu {
+    
+    public MenuExperienciaJogo(Profile profile) {
+      super(profile.getPlayer(), "Experiência de Jogo", 4);
+      
+      // Ícone de anvil no slot 11 para Editor de Inventário
+      this.setItem(11, BukkitUtils.deserializeItemStack(
+          "ANVIL : 1 : nome>&aEditor de Inventário : desc>&7Gerencie seus itens favoritos\n&7da loja do Bed Wars.\n \n&eClique para acessar!"));
+      
+      // Botão de voltar centralizado na row 4 (slot 31)
+      this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+      
+      this.register(Main.getInstance());
+      this.open();
+    }
+    
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent evt) {
+      if (evt.getInventory().equals(this.getInventory())) {
+        evt.setCancelled(true);
+        
+        if (evt.getWhoClicked().equals(this.player)) {
+          Profile profile = Profile.getProfile(this.player.getName());
+          if (profile == null) {
+            this.player.closeInventory();
+            return;
+          }
+          
+          if (evt.getClickedInventory() != null && evt.getClickedInventory().equals(this.getInventory())) {
+            ItemStack item = evt.getCurrentItem();
+            
+            if (item != null && item.getType() != Material.AIR) {
+              if (evt.getSlot() == 11) {
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                new MenuEditorInventario(profile, null);
+              } else if (evt.getSlot() == 31) {
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                new MenuShop(profile);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    public void cancel() {
+      HandlerList.unregisterAll(this);
+    }
+    
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent evt) {
+      if (evt.getPlayer().equals(this.player)) {
+        this.cancel();
+      }
+    }
+    
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent evt) {
+      if (evt.getPlayer().equals(this.player) && evt.getInventory().equals(this.getInventory())) {
+        this.cancel();
+      }
+    }
+  }
+  
+  public static class MenuEditorInventario extends PlayerMenu {
+    
+    private static final List<Integer> SLOTS = Arrays.asList(19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43);
+    private ShopCategory category;
+    private Map<ItemStack, ShopItem> items = new HashMap<>();
+    private Map<Integer, ShopCategory> categories = new HashMap<>();
+    
+    public MenuEditorInventario(Profile profile, ShopCategory category) {
+      super(profile.getPlayer(), "Editor de Inventário" + (category == null ? "" : " - " + category.getName()), 6);
+      this.category = category;
+      
+      int id = 1;
+      this.setItem(0, BukkitUtils.putProfileOnSkull(player, BukkitUtils.deserializeItemStack("SKULL_ITEM:3 : 1 : nome>&bEditor de Inventário : desc>&7Para adicionar um item aos favoritos,\n&7clique no item com Shift+Clique.\n \n&eClique para ver!")));
+      for (ShopCategory sc : Shop.listCategories()) {
+        this.setItem(id, sc.getIcon());
+        this.categories.put(id++, sc);
+      }
+      
+      int categoryId = Shop.getCategoryId(category);
+      for (int i = 0; i < 9; i++) {
+        this.setItem(9 + i, BukkitUtils.deserializeItemStack("STAINED_GLASS_PANE:" +
+            (i == categoryId ? "13" : "7") + " : 1 : nome>&8↑ &7Categorias : desc>&8↓ &7Itens"));
+      }
+      
+      FavoritesContainer preferences = profile.getAbstractContainer("bedwars", "favorites", FavoritesContainer.class);
+      List<ShopItem> items = category == null ? null : category.listItems();
+      if (category == null) {
+        SLOTS.forEach(slot -> {
+          if (!preferences.hasQuickBuy(slot)) {
+            this.setItem(slot, BukkitUtils.deserializeItemStack(
+                "STAINED_GLASS_PANE:14 : 1 : nome>&cSlot vazio! : desc>&7Esse é um slot de Compra Fácil!\n&bShift Clique &7em qualquer item na\n&7loja para adicioná-lo aqui."));
+            return;
+          }
+          
+          String fav = preferences.getQuickBuy(slot);
+          ShopCategory favCategory = Shop.getCategoryById(Integer.parseInt(fav.split(":")[0]));
+          if (favCategory != null) {
+            ShopItem item = favCategory.getItem(fav.split(":")[1]);
+            if (item != null) {
+              ItemStack icon = BukkitUtils.deserializeItemStack(item.getIcon().replace("{color}", "&a").replace("{price}", "0").replace("{tier}", "I"));
+              ItemMeta meta = icon.getItemMeta();
+              List<String> lore = meta.getLore();
+              if (lore != null) {
+                lore.add("");
+                lore.add("§bShift clique para remover");
+                lore.add("§bdos favoritos!");
+                meta.setLore(lore);
+                icon.setItemMeta(meta);
+              }
+              this.setItem(slot, icon);
+              this.items.put(icon, item);
+              return;
+            }
+          }
+          
+          preferences.setQuickBuy(slot, null);
+        });
+      } else {
+        for (int index = 0; index < SLOTS.size(); index++) {
+          if (items.size() == index) {
+            break;
+          }
+          
+          ShopItem item = items.get(index);
+          ItemStack icon = BukkitUtils.deserializeItemStack(item.getIcon().replace("{color}", "&a").replace("{price}", "0").replace("{tier}", "I"));
+          ItemMeta meta = icon.getItemMeta();
+          List<String> lore = meta.getLore();
+          
+          lore.add("");
+          if (preferences.hasQuickBuy(categoryId + ":" + item.getName())) {
+            lore.add("§bShift clique para remover");
+          } else {
+            lore.add("§bShift clique para adicionar");
+          }
+          lore.add("§baos favoritos!");
+          meta.setLore(lore);
+          icon.setItemMeta(meta);
+          this.setItem(SLOTS.get(index), icon);
+          this.items.put(icon, item);
+        }
+      }
+      
+      // Botão para voltar centralizado na row 6 (slot 49)
+      this.setItem(49, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+      
+      this.open();
+      this.register(Main.getInstance());
+    }
+    
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent evt) {
+      if (evt.getInventory().equals(this.getInventory())) {
+        evt.setCancelled(true);
+        
+        if (evt.getWhoClicked().equals(this.player)) {
+          Profile profile = Profile.getProfile(this.player.getName());
+          if (profile == null) {
+            this.player.closeInventory();
+            return;
+          }
+          
+          if (evt.getClickedInventory() != null && evt.getClickedInventory().equals(this.getInventory()) && evt.getCurrentItem() != null && evt.getCurrentItem().getType() != Material.AIR) {
+            ItemStack item = evt.getCurrentItem();
+            ShopItem si;
+            
+            if (evt.getSlot() == 0) {
+              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+              new MenuEditorInventario(profile, null);
+              return;
+            }
+            
+            if (evt.getSlot() == 49) {
+              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+              new MenuExperienciaJogo(profile);
+              return;
+            }
+            
+            ShopCategory category = categories.get(evt.getSlot());
+            if (category != null) {
+              if (category != this.category) {
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                new MenuEditorInventario(profile, category);
+              }
+            } else if ((si = items.get(item)) != null) {
+              if (evt.getClick().name().contains("SHIFT")) {
+                FavoritesContainer preferences = profile.getAbstractContainer("bedwars", "favorites", FavoritesContainer.class);
+                if (this.category == null && preferences.hasQuickBuy(evt.getSlot())) {
+                  preferences.setQuickBuy(evt.getSlot(), null);
+                  player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1.0F, 1.0F);
+                  player.sendMessage("§aItem removido dos favoritos!");
+                  new MenuEditorInventario(profile, this.category);
+                } else if (this.category != null) {
+                  int categoryId = Shop.getCategoryId(this.category);
+                  if (preferences.hasQuickBuy(categoryId + ":" + si.getName())) {
+                    preferences.setQuickBuy(preferences.getQuickBuy(categoryId + ":" + si.getName()), null);
+                    player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1.0F, 1.0F);
+                    player.sendMessage("§aItem removido dos favoritos!");
+                    new MenuEditorInventario(profile, this.category);
+                  } else {
+                    new MenuEditorInventarioSelect(profile, si, item);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    public void cancel() {
+      category = null;
+      items.clear();
+      items = null;
+      categories.clear();
+      categories = null;
+      HandlerList.unregisterAll(this);
+    }
+    
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent evt) {
+      if (evt.getPlayer().equals(this.player)) {
+        this.cancel();
+      }
+    }
+    
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent evt) {
+      if (evt.getPlayer().equals(this.player) && evt.getInventory().equals(this.getInventory())) {
+        this.cancel();
+      }
+    }
+  }
+  
+  public static class MenuEditorInventarioSelect extends PlayerMenu {
+    
+    private static final List<Integer> SLOTS = Arrays.asList(
+        19, 20, 21, 22, 23, 24,
+        25, 28, 29, 30, 31, 32,
+        33, 34, 37, 38, 39,
+        40, 41, 42, 43);
+    private ShopItem item;
+    
+    public MenuEditorInventarioSelect(Profile profile, ShopItem item, ItemStack stack) {
+      super(profile.getPlayer(), "Selecione um slot...", 6);
+      this.item = item;
+      
+      this.setItem(4, stack);
+      
+      for (int i = 0; i < 9; i++) {
+        this.setItem(9 + i, BukkitUtils.deserializeItemStack("STAINED_GLASS_PANE:7 : 1 : nome>&8↑ &7Item : desc>&8↓ &7Slots"));
+      }
+      
+      FavoritesContainer preferences = profile.getAbstractContainer("bedwars", "favorites", FavoritesContainer.class);
+      for (int slot : SLOTS) {
+        if (preferences.hasQuickBuy(slot)) {
+          String fav = preferences.getQuickBuy(slot);
+          ShopItem favItem = Objects.requireNonNull(Shop.getCategoryById(
+              Integer.parseInt(fav.split(":")[0]))).getItem(fav.split(":")[1]);
+          ItemStack icon = BukkitUtils.deserializeItemStack(favItem.getIcon().replace("{color}", "§a").replace("{price}", "0").replace("{tier}", "I"));
+          ItemMeta meta = icon.getItemMeta();
+          List<String> lore = meta.getLore();
+          lore.clear();
+          lore.add("§7Este slot já está sendo");
+          lore.add("§7utilizado por algum item!");
+          lore.add("");
+          lore.add("§7Tente clicar apenas no");
+          lore.add("§7slots em §2verde§7.");
+          meta.setLore(lore);
+          icon.setItemMeta(meta);
+          this.setItem(slot, icon);
+        } else {
+          this.setItem(slot, BukkitUtils.deserializeItemStack(
+              "STAINED_GLASS_PANE:13 : 1 : nome>&aUtilizar este slot : desc>§7Ao clicar neste vidro você\n§7irá colocar o item neste slot.\n \n§eClique para utilizar este slot!"));
+        }
+      }
+      
+      this.open();
+      this.register(Main.getInstance());
+    }
+    
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent evt) {
+      if (evt.getInventory().equals(this.getInventory())) {
+        evt.setCancelled(true);
+        
+        if (evt.getWhoClicked() instanceof Player && evt.getWhoClicked().equals(player)) {
+          ItemStack item = evt.getCurrentItem();
+          Profile profile = Profile.getProfile(this.player.getName());
+          
+          if (profile == null) {
+            player.closeInventory();
+            return;
+          }
+          
+          if (evt.getClickedInventory() != null && evt.getClickedInventory().equals(this.getInventory())
+              && item != null && item.getType() != Material.AIR) {
+            if (SLOTS.contains(evt.getSlot())) {
+              if (item.getDurability() == 13) {
+                EnumSound.ORB_PICKUP.play(this.player, 1.0f, 1.0f);
+                FavoritesContainer preferences = profile.getAbstractContainer("bedwars", "favorites",
+                    FavoritesContainer.class);
+                
+                preferences.setQuickBuy(evt.getSlot(), Shop.getCategoryId(this.item.getCategory()) +
+                    ":" + this.item.getName());
+                player.sendMessage("§aItem adicionado aos favoritos!");
+                new MenuEditorInventario(profile, null);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    public void cancel() {
+      this.item = null;
+      HandlerList.unregisterAll(this);
+    }
+    
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent evt) {
+      if (evt.getPlayer().equals(this.player)) {
+        this.cancel();
+      }
+    }
+    
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent evt) {
+      if (evt.getPlayer().equals(this.player) && evt.getInventory().equals(this.getInventory())) {
+        this.cancel();
+      }
+    }
+  }
 }
-
-

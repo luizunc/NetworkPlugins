@@ -82,7 +82,7 @@ public class BedWarsConfig {
   }
   
   public void reload(final Runnable async) {
-    File file = new File("plugins/bedwars/mundos/" + this.yaml);
+    File file = new File("plugins/BedWars/mundos/" + this.yaml);
     if (Bukkit.getWorld(file.getName()) != null) {
       Bukkit.unloadWorld(file.getName(), false);
     }

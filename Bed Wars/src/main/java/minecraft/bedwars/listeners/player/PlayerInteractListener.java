@@ -35,6 +35,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashSet;
+import java.util.List;
 
 
 import static minecraft.bedwars.cmd.pl.CreateCommand.CREATING;
@@ -127,10 +128,19 @@ public class PlayerInteractListener implements Listener {
               }
             } else if (item != null) {
               if (item.getType().name().contains("FIREBALL")) {
-                Location newLocation = player.getLineOfSight((HashSet<Byte>) null, 2).get(1).getLocation().setDirection(player.getLocation().getDirection());
-                Fireball fireball = player.getWorld().spawn(newLocation, Fireball.class);
-                PlayerUtils.removeItem(player.getInventory(), item.getType(), 1);
-                evt.setCancelled(true);
+                List<Block> lineOfSight = player.getLineOfSight((HashSet<Byte>) null, 2);
+                if (lineOfSight.size() >= 2) {
+                  Location newLocation = lineOfSight.get(1).getLocation().setDirection(player.getLocation().getDirection());
+                  Fireball fireball = player.getWorld().spawn(newLocation, Fireball.class);
+                  PlayerUtils.removeItem(player.getInventory(), item.getType(), 1);
+                  evt.setCancelled(true);
+                } else {
+                  // Se não há blocos suficientes na linha de visão, spawna na frente do jogador
+                  Location newLocation = player.getLocation().add(player.getLocation().getDirection().multiply(2));
+                  Fireball fireball = player.getWorld().spawn(newLocation, Fireball.class);
+                  PlayerUtils.removeItem(player.getInventory(), item.getType(), 1);
+                  evt.setCancelled(true);
+                }
               } else if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
                 if (item.getItemMeta().getDisplayName().equals("§aLocalizador")) {
                   new MenuTrackerShop(profile);

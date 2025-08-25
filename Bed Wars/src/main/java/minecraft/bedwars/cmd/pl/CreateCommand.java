@@ -80,7 +80,7 @@ public class CreateCommand extends SubCommand {
         
         player.sendMessage("§aCriando backup do mapa...");
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
-          Main.getInstance().getFileUtils().copyFiles(new File(world.getName()), new File("plugins/bedwars/mundos/" + world.getName()), "playerdata", "stats", "uid.dat");
+          Main.getInstance().getFileUtils().copyFiles(new File(world.getName()), new File("plugins/BedWars/mundos/" + world.getName()), "playerdata", "stats", "uid.dat");
           
           profile.setHotbar(Hotbar.getHotbarById("lobby"));
           profile.refresh();

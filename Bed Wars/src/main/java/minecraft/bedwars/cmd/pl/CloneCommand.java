@@ -53,7 +53,7 @@ public class CloneCommand extends SubCommand {
       config.set(key, value);
     }
     
-    Main.getInstance().getFileUtils().copyFiles(new File("plugins/bedwars/mundos", args[0]), new File("plugins/bedwars/mundos", newWorld));
+    Main.getInstance().getFileUtils().copyFiles(new File("plugins/BedWars/mundos", args[0]), new File("plugins/BedWars/mundos", newWorld));
     BedWars.load(config.getFile(), () -> sender.sendMessage("§aA sala foi clonada."));
   }
 }

@@ -74,7 +74,7 @@ public class Main extends KPlugin {
       Leaderboard.listLeaderboards().forEach(Leaderboard::destroy);
     }
     
-    File update = new File("plugins/bedwars/update", "bedwars.jar");
+    File update = new File("plugins/BedWars/update", "bedwars.jar");
     if (update.exists()) {
       try {
         this.getFileUtils().deleteFile(new File("plugins/" + update.getName()));

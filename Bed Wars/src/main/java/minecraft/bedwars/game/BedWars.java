@@ -14,6 +14,7 @@ import minecraft.bedwars.game.object.BedWarsTask;
 import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.bedwars.utils.PlayerUtils;
 import minecraft.bedwars.utils.tagger.TagUtils;
+import minecraft.bedwars.listeners.player.ChestHitListener;
 import minecraft.core.Manager;
 import minecraft.core.bukkit.BukkitParty;
 import minecraft.core.bukkit.BukkitPartyManager;
@@ -125,8 +126,8 @@ public class BedWars implements Game<BedWarsTeam> {
     BedWarsEvent.setupEvents();
     new ArenaRollbackerTask().runTaskTimer(Main.getInstance(), 0, Language.options$regen$world_reload ? 100 : 1);
     
-    File ymlFolder = new File("plugins/bedwars/arenas");
-    File mapFolder = new File("plugins/bedwars/mundos");
+    File ymlFolder = new File("plugins/BedWars/arenas");
+    File mapFolder = new File("plugins/BedWars/mundos");
     
     if (!ymlFolder.exists() || !mapFolder.exists()) {
       if (!ymlFolder.exists()) {
@@ -148,7 +149,7 @@ public class BedWars implements Game<BedWarsTeam> {
     String arenaName = yamlFile.getName().split("\\.")[0];
     
     try {
-      File backup = new File("plugins/bedwars/mundos", arenaName);
+      File backup = new File("plugins/BedWars/mundos", arenaName);
       if (!backup.exists() || !backup.isDirectory()) {
         throw new IllegalArgumentException("Backup do mapa nao encontrado para a arena \"" + yamlFile.getName() + "\"");
       }
@@ -465,6 +466,9 @@ public class BedWars implements Game<BedWarsTeam> {
     reloadScoreboard(profile);
     profile.setHotbar(Hotbar.getHotbarById("lobby"));
     profile.refresh();
+    
+    // Limpar item guardado do jogador
+    ChestHitListener.clearPlayerHitItem(player.getUniqueId());
     if (this.state == GameState.AGUARDANDO) {
       this.broadcastMessage(Language.ingame$broadcast$leave.replace("{player}", Rank.getColored(player.getName())).replace("{players}", String.valueOf(this.getOnline()))
           .replace("{max_players}", String.valueOf(this.getMaxPlayers())));
@@ -794,6 +798,9 @@ public class BedWars implements Game<BedWarsTeam> {
     
     player.getEnderChest().clear();
     
+    // Limpar item guardado do jogador quando morrer
+    ChestHitListener.clearPlayerHitItem(player.getUniqueId());
+    
     DeathCry dc = profile.getAbstractContainer("bedwars", "selected", SelectedContainer.class).getSelected(CosmeticType.DEATH_CRY, DeathCry.class);
     if (dc != null) {
       dc.getSound().play(player.getWorld(), player.getLocation(), dc.getVolume(), dc.getSpeed());
@@ -823,6 +830,9 @@ public class BedWars implements Game<BedWarsTeam> {
         profile.addStats("bedwars", "monthlygames");
       }
     });
+    
+    // Carregar hologramas de chests automaticamente
+    ChestHitListener.loadChestHolograms(this);
     
     this.updateTags();
     this.check();
@@ -922,6 +932,9 @@ public class BedWars implements Game<BedWarsTeam> {
     this.placedBlocks.clear();
     this.placedBlocks = null;
     this.generators.clear();
+    
+    // Limpar hologramas de chests
+    ChestHitListener.clearAllHolograms();
   }
   
   @Override

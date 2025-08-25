@@ -518,11 +518,11 @@ public class Language {
   public static List<String> ingame$npc$shop$upgrade$hologram = Arrays
       .asList("§e§lLOJA DE", "§e§lMELHORIAS", "§b§lCLIQUE DIREITO");
   
-  public static String ingame$broadcast$join = "{player} §eentrou na partida! §a({players}/{max_players})";
-  public static String ingame$broadcast$leave = "{player} §csaiu da partida! §a({players}/{max_players})";
+  public static String ingame$broadcast$join = "{player} §eentrou na partida §a[{players}/{max_players}]";
+  public static String ingame$broadcast$leave = "{player} §csaiu da partida §a[{players}/{max_players}]";
   public static String ingame$broadcast$starting = "§aO jogo começa em §f{time} §asegundo{s}.";
-  public static String ingame$broadcast$suicide = "{name} §amorreu sozinho.";
-  public static String ingame$broadcast$killed = "{name} §afoi abatido por {killer}";
+  public static String ingame$broadcast$suicide = "{name} §cmorreu sozinho.";
+  public static String ingame$broadcast$killed = "{name} §7foi abatido por {killer}";
   public static String ingame$broadcast$generator_upgrade$diamond = "§eOs geradores de §b§lDiamante §eforam aprimorados para o nivel §b§l{tier}§e!";
   public static String ingame$broadcast$generator_upgrade$emerald = "§eOs geradores de §2§lEsmeralda §eforam aprimorados para o nivel §b§l{tier}§e!";
   public static String ingame$broadcast$team_eliminated = "\n §f§lTIME ELIMINADO > §cO time {team} §cfoi eliminado!\n ";
