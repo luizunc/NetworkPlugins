@@ -39,7 +39,7 @@ public class MenuMapSelector extends UpdatablePlayerPagedMenu {
     this.nextPage = 26;
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34);
     
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"), 49);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar"), 49);
     
     this.update();
     this.register(Main.getInstance(), 20);

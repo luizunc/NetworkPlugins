@@ -42,7 +42,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34);
     
     String desc = "§7Para Cosméticos da Partida.";
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar : desc>" + desc), (this.rows * 9) - 5);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar : desc>" + desc), (this.rows * 9) - 5);
     
     List<ItemStack> items = new ArrayList<>();
     List<T> cosmetics = Cosmetic.listByType(cosmeticClass);

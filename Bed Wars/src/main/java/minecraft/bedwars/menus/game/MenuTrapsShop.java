@@ -55,7 +55,7 @@ public class MenuTrapsShop extends PlayerMenu {
       this.TRAPS.put(slot++, trap);
     }
     
-    this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+    this.setItem(31, BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar"));
     
     this.open();
     this.register(Core.getInstance());

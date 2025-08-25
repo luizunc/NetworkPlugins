@@ -18,6 +18,13 @@ public class MenuPreferredColor extends PlayerMenu {
     public MenuPreferredColor(Profile profile) {
     super(profile.getPlayer(), "Cor Preferida", 5);
 
+    // Verificar se o jogador tem o rank iron
+    if (!this.player.hasPermission("role.iron")) {
+      this.player.closeInventory();
+      this.player.sendMessage("§cNecessário possuir o rank §fIRON");
+      return;
+    }
+
     // Obter cor preferida atual do banco de dados
     String corAtual = profile.getDataContainer("bedwars", "preferred_color").getAsString();
     if (corAtual == null || corAtual.isEmpty()) {

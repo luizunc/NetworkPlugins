@@ -32,7 +32,7 @@ public class MenuAnimations extends PlayerMenu {
     String color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
     killeffects.clear();
     this.setItem(11, BukkitUtils.deserializeItemStack(
-        "BONE : 1 : nome>&aAnimações de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+        "SKULL_ITEM:0 : 1 : nome>&aAnimações de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
 
 
     
@@ -45,7 +45,7 @@ public class MenuAnimations extends PlayerMenu {
     this.setItem(10, BukkitUtils.deserializeItemStack(
         "BED : 1 : nome>&aEfeitos de Quebra de Cama : desc>&7Deixa a sua marca quando quebrar\n&7uma cama do time oponente.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
     
-    this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar : desc>&7Para Cosméticos da Partida."));
+    this.setItem(31, BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar : desc>&7Para Cosméticos da Partida."));
     
     this.register(Main.getInstance());
     this.open();

@@ -12,6 +12,7 @@ import minecraft.bedwars.hook.container.FavoritesContainer;
 import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
+import minecraft.core.core.player.role.Rank;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.enums.EnumSound;
 import org.bukkit.Material;
@@ -44,7 +45,7 @@ public class MenuShop extends PlayerMenu {
         "EXP_BOTTLE : 1 : nome>&aHabilidades : desc>&7Tenha vantagens únicas para\n&7auxiliar você nas partidas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou evoluir!"));
     
     this.setItem(15, BukkitUtils.deserializeItemStack(
-        "ANVIL : 1 : nome>&aExperiencia de Jogo : desc>&7Acesse outros itens e\n&7funcionalidades da loja.\n \n&eClique para acessar!"));
+        "NETHER_STAR : 1 : nome>&aExperiência de Jogo : desc>&7Acesse outros itens e\n&7funcionalidades da loja.\n \n&eClique para acessar!"));
     
     this.register(Main.getInstance());
     this.open();
@@ -123,7 +124,7 @@ public class MenuShop extends PlayerMenu {
       color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
       messages.clear();
       this.setItem(12, BukkitUtils.deserializeItemStack(
-          "BOOK_AND_QUILL : 1 : nome>&aMensagens de Abate : desc>&7Anuncie o abate do seu inimigo de\n&7uma forma estilosa com mensagens de morte.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+          "PAPER : 1 : nome>&aMensagens de Abate : desc>&7Anuncie o abate do seu inimigo de\n&7uma forma estilosa com mensagens de morte.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
       
 
   
@@ -134,7 +135,7 @@ public class MenuShop extends PlayerMenu {
       color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
       animations.clear();
       this.setItem(14, BukkitUtils.deserializeItemStack(
-          "DRAGON_EGG : 1 : nome>&aComemorações : desc>&7Esbanje estilo nas suas vitórias\n&7com comemorações exclusivas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+          "CAKE : 1 : nome>&aComemorações : desc>&7Esbanje estilo nas suas vitórias\n&7com comemorações exclusivas.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
   
       List<DeathCry> deathcries = Cosmetic.listByType(DeathCry.class);
       max = deathcries.size();
@@ -143,7 +144,7 @@ public class MenuShop extends PlayerMenu {
       color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
       deathcries.clear();
       this.setItem(16, BukkitUtils.deserializeItemStack(
-          "GHAST_TEAR : 1 : nome>&aGritos de Morte : desc>&7Gritos de mortes são sons que\n&7irão ser reproduzidos toda vez\n&7que você morrer.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+          "NOTE_BLOCK : 1 : nome>&aGritos de Morte : desc>&7Gritos de mortes são sons que\n&7irão ser reproduzidos toda vez\n&7que você morrer.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
       
       List<BreakEffect> breakEffects = Cosmetic.listByType(BreakEffect.class);
       max = breakEffects.size();
@@ -161,7 +162,7 @@ public class MenuShop extends PlayerMenu {
       color = (owned == max) ? "&a" : (owned > max / 2) ? "&7" : "&c";
       killeffects.clear();
       this.setItem(21, BukkitUtils.deserializeItemStack(
-          "BONE : 1 : nome>&aEfeito de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
+          "SKULL_ITEM:0 : 1 : nome>&aEfeito de Abate : desc>&7Deixa a sua marca quando abater\n&7os seus oponentes.\n \n&fDesbloqueados: " + color + owned + "/" + max + " &8(" + percentage + "%)\n \n&eClique para comprar ou selecionar!"));
   
       List<WoodTypes> types = Cosmetic.listByType(WoodTypes.class);
       max = types.size();
@@ -174,7 +175,7 @@ public class MenuShop extends PlayerMenu {
   
       updatePreferredColorIcon(profile);
       
-      this.setItem(40, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+      this.setItem(40, BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar"));
     
       this.register(Main.getInstance());
       this.open();
@@ -221,6 +222,13 @@ public class MenuShop extends PlayerMenu {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuCosmetics<>(profile, "Tipos de Madeira", WoodTypes.class);
             } else if (evt.getSlot() == 25) {
+              // Verificar se o jogador tem o rank iron
+              if (!this.player.hasPermission("role.iron")) {
+                EnumSound.NOTE_BASS.play(this.player, 0.5F, 0.5F);
+                this.player.sendMessage("§cVocê precisa ter o rank IRON para acessar o menu de cor preferida!");
+                return;
+              }
+              
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuPreferredColor(profile);
               // Atualizar o ícone após retornar do menu de cor preferida
@@ -254,10 +262,20 @@ public class MenuShop extends PlayerMenu {
     }
     
     private void updatePreferredColorIcon(Profile profile) {
+      // Verificar se o jogador tem o rank iron
+      boolean hasIronRank = this.player.hasPermission("role.iron");
+      
       // Determinar a cor da lã baseada na cor preferida ou cor atual do time
       String woolColor = "0"; // Branco por padrão
       String woolName = "&aCor Preferida";
       boolean hasGlow = false;
+      
+      // Se não tem rank iron, mostrar item bloqueado
+      if (!hasIronRank) {
+        String itemString = "WOOL:7 : 1 : nome>&cCor Preferida : desc>&7Escolha sua cor preferida de time\n&7para ter prioridade ao entrar em\n&7partidas.\n \n&cExclusivo para &fIRON\n \n&cVocê não possui o rank necessário!";
+        this.setItem(25, BukkitUtils.deserializeItemStack(itemString));
+        return;
+      }
       
       // Verificar se o jogador está em uma partida
       BedWars game = profile.getGame(BedWars.class);
@@ -336,8 +354,12 @@ public class MenuShop extends PlayerMenu {
       this.setItem(11, BukkitUtils.deserializeItemStack(
           "ANVIL : 1 : nome>&aEditor de Inventário : desc>&7Gerencie seus itens favoritos\n&7da loja do Bed Wars.\n \n&eClique para acessar!"));
       
+      // Ícone de enderchest no slot 13 para Personalizar Baús
+      this.setItem(13, BukkitUtils.deserializeItemStack(
+          "ENDER_CHEST : 1 : nome>&aPersonalizar Baús : desc>&7Quando ativado, permite que você\n&7clique no baú para depositar itens.\n \n&7Opções:\n&aExibir Hologramas\n&eEsconder Hologramas\n \n&eClique para alterar!"));
+      
       // Botão de voltar centralizado na row 4 (slot 31)
-      this.setItem(31, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+      this.setItem(31, BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar"));
       
       this.register(Main.getInstance());
       this.open();
@@ -362,6 +384,10 @@ public class MenuShop extends PlayerMenu {
               if (evt.getSlot() == 11) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuEditorInventario(profile, null);
+              } else if (evt.getSlot() == 13) {
+                EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+                // TODO: Implementar funcionalidade de personalizar baús
+                this.player.sendMessage("§aFuncionalidade de Personalizar Baús será implementada em breve!");
               } else if (evt.getSlot() == 31) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuShop(profile);
@@ -474,7 +500,7 @@ public class MenuShop extends PlayerMenu {
       }
       
       // Botão para voltar centralizado na row 6 (slot 49)
-      this.setItem(49, BukkitUtils.deserializeItemStack("INK_SACK:1 : 1 : nome>&cVoltar"));
+      this.setItem(49, BukkitUtils.deserializeItemStack("ARROW : 1 : nome>&cVoltar"));
       
       this.open();
       this.register(Main.getInstance());
