@@ -4,15 +4,15 @@ explosive_sphere_3d:
   cash: 150
   rarity: LENDÁRIO
   permission: 'role.vip'
-  name: 'Esfera Explosiva 3D'
-  icon: 'FIRE_CHARGE : 1 : desc>&7Cria uma esfera 3D que\n&7explode em ondas de choque.'
+  name: 'Esfera Explosiva'
+  icon: 'FIRE_CHARGE : 1 : desc>&7Cria uma esfera que\n&7explode em ondas de choque.'
 temporal_pyramid_3d:
   id: 3
   coins: 18000.0
   cash: 180
   rarity: DIVINO
   permission: 'role.vip'
-  name: 'Pirâmide Temporal 3D'
+  name: 'Pirâmide Temporal'
   icon: 'WATCH : 1 : desc>&7Distorce o tempo com uma\n&7pirâmide tridimensional.'
 tornado_3d:
   id: 4
@@ -20,7 +20,7 @@ tornado_3d:
   cash: 100
   rarity: ÉPICO
   permission: ''
-  name: 'Tornado 3D'
+  name: 'Tornado'
   icon: 'ICE : 1 : desc>&7Invoca um tornado\n&7tridimensional devastador.'
 crystal_3d:
   id: 5
@@ -28,8 +28,8 @@ crystal_3d:
   cash: 80
   rarity: ÉPICO
   permission: ''
-  name: 'Cristal 3D'
-  icon: 'DIAMOND : 1 : desc>&7Forma um cristal 3D\n&7que explode em fragmentos.'
+  name: 'Cristal'
+  icon: 'DIAMOND : 1 : desc>&7Forma um cristal \n&7que explode em fragmentos.'
 portal_3d:
   id: 6
   coins: 14000.0

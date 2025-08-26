@@ -51,35 +51,55 @@ public class WinAnimationPreview extends AbstractPreview<WinAnimation> implement
     // Teleportar jogador para a área de preview
     this.player.teleport(LOCATIONS[0]);
     
-    // Enviar mensagem informativa
-    this.player.sendMessage("§aVocê entrou no preview da comemoração!");
-    this.player.sendMessage("§7A comemoração será executada em 3 segundos.");
-    
-    // Executar a animação após 3 segundos
-    this.animationStartTask = Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
-      if (this.player != null && this.player.isOnline() && !this.animationStarted) {
-        this.animationStarted = true;
-        this.player.sendMessage("§aExecutando comemoração...");
-        this.executor = cosmetic.execute(this.player);
-        // Executar o tick da animação a cada segundo
-        this.taskId = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
-          if (this.executor != null) {
-            this.executor.tick();
-          }
-        }, 20L, 20L).getTaskId(); // A cada segundo
-        
-        // Iniciar timer de 10 segundos para voltar automaticamente após iniciar a comemoração
-        this.autoReturnTask = Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
-          if (this.player != null && this.player.isOnline()) {
-            this.player.sendMessage("§cTempo do preview expirado! Retornando ao lobby...");
-            this.returnToMenu();
-            this.stop();
-          }
-        }, 200L); // 10 segundos = 200 ticks
-      }
-    }, 60L); // 3 segundos = 60 ticks
+    // Iniciar contagem regressiva na tela
+    startCountdown();
     
     Bukkit.getPluginManager().registerEvents(this, Main.getInstance());
+  }
+  
+  private void startCountdown() {
+    // Mostrar "3" no chat
+    this.player.sendMessage("§a§l3");
+    this.player.playSound(this.player.getLocation(), org.bukkit.Sound.NOTE_PLING, 1.0f, 1.0f);
+    
+    // Após 1 segundo, mostrar "2" no chat
+    Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+      if (this.player != null && this.player.isOnline()) {
+        this.player.sendMessage("§a§l2");
+        this.player.playSound(this.player.getLocation(), org.bukkit.Sound.NOTE_PLING, 1.0f, 1.2f);
+        
+        // Após mais 1 segundo, mostrar "1" no chat
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+          if (this.player != null && this.player.isOnline()) {
+            this.player.sendMessage("§a§l1");
+            this.player.playSound(this.player.getLocation(), org.bukkit.Sound.NOTE_PLING, 1.0f, 1.5f);
+            
+            // Após mais 1 segundo, executar a animação
+            Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+              if (this.player != null && this.player.isOnline() && !this.animationStarted) {
+                this.animationStarted = true;
+                
+                this.executor = cosmetic.execute(this.player);
+                // Executar o tick da animação a cada segundo
+                this.taskId = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
+                  if (this.executor != null) {
+                    this.executor.tick();
+                  }
+                }, 20L, 20L).getTaskId(); // A cada segundo
+                
+                // Iniciar timer de 10 segundos para voltar automaticamente após iniciar a comemoração
+                this.autoReturnTask = Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+                  if (this.player != null && this.player.isOnline()) {
+                    this.returnToMenu();
+                    this.stop();
+                  }
+                }, 200L); // 10 segundos = 200 ticks
+              }
+            }, 20L); // 1 segundo = 20 ticks
+          }
+        }, 20L); // 1 segundo = 20 ticks
+      }
+    }, 20L); // 1 segundo = 20 ticks
   }
   
   public static void createLocations() {

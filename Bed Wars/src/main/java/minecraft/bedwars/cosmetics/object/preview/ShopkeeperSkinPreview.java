@@ -46,14 +46,11 @@ public class ShopkeeperSkinPreview extends AbstractPreview<ShopkeeperSkin> imple
     this.oldLocation = this.player.getLocation();
     profile.setGame(FakeGame.FAKE_GAME);
     
-    // Limpar o inventário do jogador para remover itens da hotbar anterior
+    // Limpar o inventário do jogador completamente
     this.player.getInventory().clear();
     
-    // Configurar hotbar personalizada com apenas uma cama no slot 9
-    profile.setHotbar(Hotbar.getHotbarById("preview_vendedor"));
-    
-    // Aplicar a nova hotbar imediatamente
-    profile.refresh();
+    // Deixar a hotbar totalmente limpa (sem hotbar personalizada)
+    profile.setHotbar(null);
     
     for (Player players : Bukkit.getOnlinePlayers()) {
       players.hidePlayer(player);
@@ -63,18 +60,15 @@ public class ShopkeeperSkinPreview extends AbstractPreview<ShopkeeperSkin> imple
     this.player.teleport(LOCATIONS[1]);
     
     // Enviar mensagem informativa
-    this.player.sendMessage("§aVocê entrou no preview da skin do vendedor!");
-    this.player.sendMessage("§7Você será retornado automaticamente em 30 segundos.");
-    this.player.sendMessage("§7Use a cama na sua hotbar para voltar manualmente.");
+    this.player.sendMessage("§8Você será retornado automaticamente em 15 segundos.");
     
-    // Iniciar timer de 30 segundos para voltar automaticamente
+    // Iniciar timer de 15 segundos para voltar automaticamente
     this.autoReturnTask = Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
       if (this.player != null && this.player.isOnline()) {
-        this.player.sendMessage("§cTempo do preview expirado! Retornando ao lobby...");
         this.returnToMenu();
         this.stop();
       }
-    }, 600L); // 30 segundos = 600 ticks
+    }, 300L); // 15 segundos = 300 ticks
     
     Bukkit.getPluginManager().registerEvents(this, Main.getInstance());
   }

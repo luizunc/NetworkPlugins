@@ -4,7 +4,6 @@ import minecraft.bedwars.Main;
 import minecraft.bedwars.cosmetics.object.AbstractPreview;
 import minecraft.bedwars.cosmetics.types.KillEffect;
 import minecraft.bedwars.lobby.trait.NPCSkinTrait;
-import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.core.core.game.FakeGame;
 import minecraft.core.core.libraries.npclib.NPCLibrary;
 import minecraft.core.core.libraries.npclib.api.npc.NPC;
@@ -79,11 +78,7 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
     
     // Teleportar jogador para a área de preview
     this.player.teleport(LOCATIONS[1]);
-    
-    // Enviar mensagem informativa
-    this.player.sendMessage("§aVocê entrou no preview do efeito de abate!");
-    this.player.sendMessage("§7Use a espada de ferro para atacar o NPC alvo.");
-    
+
     Bukkit.getPluginManager().registerEvents(this, Main.getInstance());
   }
   
@@ -109,9 +104,7 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
   public void onEntityDamageByEntity(EntityDamageByEntityEvent evt) {
     // Verificar se o jogador está atacando o NPC alvo
     if (evt.getDamager().equals(this.player) && evt.getEntity().equals(this.target.getEntity())) {
-      // Debug: enviar mensagem para o jogador
-      this.player.sendMessage("§aVocê atingiu o NPC alvo! Executando efeito de abate...");
-      
+
       // Cancelar o evento original e aplicar nosso próprio dano
       evt.setCancelled(true);
       
@@ -145,14 +138,11 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
     
     // Determinar o tempo máximo da animação baseado no tipo de efeito
     int maxAnimationTicks = getMaxAnimationTicks();
-    
-    this.player.sendMessage("§7Aguardando o fim da animação... (máximo " + (maxAnimationTicks / 20) + " segundos)");
-    
+
     // Aguardar exatamente o tempo da animação
     Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
       if (!this.animationFinished) {
         this.animationFinished = true;
-        this.player.sendMessage("§aAnimação do efeito finalizada! Retornando ao lobby...");
         this.returnToLobby();
         this.stop();
       }
@@ -214,8 +204,6 @@ public class KillEffectPreview extends AbstractPreview<KillEffect> implements Li
       profile.refreshPlayers();
       this.player.teleport(this.oldLocation);
       
-      // Enviar mensagem de confirmação
-      this.player.sendMessage("§aPreview finalizado! Você foi retornado ao lobby.");
     }
   }
   
