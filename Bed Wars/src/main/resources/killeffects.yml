@@ -1,12 +1,3 @@
-energy_cube_3d:
-  # ID único, não utilize IDs repetidos.
-  id: 1
-  coins: 12000.0
-  cash: 120
-  rarity: LENDÁRIO
-  permission: 'role.vip'
-  name: 'Cubo de Energia 3D'
-  icon: 'BLAZE_ROD : 1 : desc>&7Invoca um cubo de energia\n&7tridimensional rotativo.'
 explosive_sphere_3d:
   id: 2
   coins: 15000.0
@@ -47,11 +38,3 @@ portal_3d:
   permission: 'role.vip'
   name: 'Portal 3D'
   icon: 'ENDER_PORTAL : 1 : desc>&7Abre um portal tridimensional\n&7que distorce a realidade.'
-spider_web_3d:
-  id: 7
-  coins: 14000.0
-  cash: 140
-  rarity: LENDÁRIO
-  permission: 'role.vip'
-  name: 'Spider Web 3D'
-  icon: 'WEB : 1 : desc>&7Spider tece teia e\n&7lança veneno mortal.'
