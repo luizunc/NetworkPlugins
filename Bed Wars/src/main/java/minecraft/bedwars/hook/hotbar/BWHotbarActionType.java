@@ -8,6 +8,7 @@ import minecraft.bedwars.menus.MenuShop;
 import minecraft.bedwars.menus.MenuSpectator;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.hotbar.HotbarActionType;
+import minecraft.core.core.player.hotbar.Hotbar;
 
 public class BWHotbarActionType extends HotbarActionType {
   
@@ -26,6 +27,12 @@ public class BWHotbarActionType extends HotbarActionType {
       new MenuPlay(profile, profile.getGame(BedWars.class) == null ? BedWarsMode.SOLO : profile.getGame(BedWars.class).getMode());
     } else if (action.equalsIgnoreCase("sair")) {
       profile.getGame(BedWars.class).leave(profile, null);
+    } else if (action.equalsIgnoreCase("sair_preview")) {
+      // Retornar ao lobby do BedWars
+      profile.setGame(null);
+      profile.setHotbar(Hotbar.getHotbarById("lobby"));
+      profile.refresh();
+      profile.refreshPlayers();
     }
   }
 }

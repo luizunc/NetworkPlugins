@@ -7,10 +7,16 @@ import minecraft.bedwars.cosmetics.CosmeticType;
 import minecraft.bedwars.cosmetics.object.AbstractPreview;
 import minecraft.bedwars.cosmetics.object.preview.CagePreview;
 import minecraft.bedwars.cosmetics.object.preview.KillEffectPreview;
+import minecraft.bedwars.cosmetics.object.preview.ShopkeeperSkinPreview;
+import minecraft.bedwars.cosmetics.object.preview.WinAnimationPreview;
+import minecraft.bedwars.cosmetics.object.preview.BreakEffectPreview;
 import minecraft.bedwars.cosmetics.types.Cage;
 import minecraft.bedwars.cosmetics.types.DeathCry;
 import minecraft.bedwars.cosmetics.types.DeathMessage;
 import minecraft.bedwars.cosmetics.types.KillEffect;
+import minecraft.bedwars.cosmetics.types.ShopkeeperSkin;
+import minecraft.bedwars.cosmetics.types.WinAnimation;
+import minecraft.bedwars.cosmetics.types.BreakEffect;
 import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
 
 import minecraft.core.core.cash.CashManager;
@@ -128,6 +134,42 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
                     }
                     
                     new CagePreview(profile, (Cage) cosmetic);
+                    player.closeInventory();
+                    return;
+                  } else if (cosmetic.getType() == CosmeticType.SHOPKEEPERSKIN) {
+                    if (!AbstractPreview.canDoShopkeeperSkin()) {
+                      if (player.hasPermission("bedwars.cmd.bedwars")) {
+                        EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
+                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview vendedor");
+                      }
+                      return;
+                    }
+                    
+                    new ShopkeeperSkinPreview(profile, (ShopkeeperSkin) cosmetic);
+                    player.closeInventory();
+                    return;
+                  } else if (cosmetic.getType() == CosmeticType.WIN_ANIMATION) {
+                    if (!AbstractPreview.canDoWinAnimation()) {
+                      if (player.hasPermission("bedwars.cmd.bedwars")) {
+                        EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
+                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview comemoracoes");
+                      }
+                      return;
+                    }
+                    
+                    new WinAnimationPreview(profile, (WinAnimation) cosmetic);
+                    player.closeInventory();
+                    return;
+                  } else if (cosmetic.getType() == CosmeticType.BREAK_EFFECT) {
+                    if (!AbstractPreview.canDoBreakEffect()) {
+                      if (player.hasPermission("bedwars.cmd.bedwars")) {
+                        EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
+                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview cama");
+                      }
+                      return;
+                    }
+                    
+                    new BreakEffectPreview(profile, (BreakEffect) cosmetic);
                     player.closeInventory();
                     return;
                   }

@@ -26,6 +26,9 @@ public final class HotbarConfig {
     private static final int SLOT_JOGAR = 1;
     private static final int SLOT_SAIR_SPECTATOR = 9;
     
+    // Slots da hotbar - Preview Vendedor
+    private static final int SLOT_SAIR_PREVIEW = 9;
+    
     // Chaves dos itens - Lobby
     private static final String KEY_BUSSOLA = "bussola";
     private static final String KEY_PERFIL = "perfil";
@@ -42,6 +45,9 @@ public final class HotbarConfig {
     private static final String KEY_JOGAR = "jogar";
     private static final String KEY_SAIR_SPECTATOR = "sair";
     
+    // Chaves dos itens - Preview Vendedor
+    private static final String KEY_SAIR_PREVIEW = "sair_preview";
+    
     // Comandos de execução
     private static final String CMD_JOGOS = "CORE>jogos";
     private static final String CMD_PERFIL = "CORE>perfil";
@@ -51,6 +57,7 @@ public final class HotbarConfig {
     private static final String CMD_SAIR = "BEDWARS>sair";
     private static final String CMD_ESPECTAR = "BEDWARS>espectar";
     private static final String CMD_JOGAR = "BEDWARS>jogar";
+    private static final String CMD_SAIR_PREVIEW = "BEDWARS>sair_preview";
     
     // Ícones dos itens - Lobby
     private static final String ICON_BUSSOLA = "COMPASS : 1 : nome>&aServidores";
@@ -68,15 +75,18 @@ public final class HotbarConfig {
     private static final String ICON_JOGAR = "PAPER : 1 : nome>&bJogar Novamente";
     private static final String ICON_SAIR_SPECTATOR = "BED : 1 : nome>&cVoltar ao Lobby";
     
+    // Ícones dos itens - Preview Vendedor
+    private static final String ICON_SAIR_PREVIEW = "BED : 1 : nome>&cVoltar ao Lobby";
+
     private static final Map<String, Map<String, HotbarItem>> HOTBAR_ITEMS = createHotbarItems();
-    
+
     /**
      * Cria o mapa de itens da hotbar para todos os tipos.
      * @return mapa com os itens configurados
      */
     private static Map<String, Map<String, HotbarItem>> createHotbarItems() {
         Map<String, Map<String, HotbarItem>> hotbars = new HashMap<>();
-        
+
         // Hotbar do Lobby
         Map<String, HotbarItem> lobbyItems = new HashMap<>();
         lobbyItems.put(KEY_BUSSOLA, new HotbarItem(SLOT_BUSSOLA, CMD_JOGOS, ICON_BUSSOLA));
@@ -85,19 +95,24 @@ public final class HotbarConfig {
         lobbyItems.put(KEY_JOGADORES, new HotbarItem(SLOT_JOGADORES, CMD_JOGADORES, ICON_JOGADORES));
         lobbyItems.put(KEY_LOBBIES, new HotbarItem(SLOT_LOBBIES, CMD_LOBBIES, ICON_LOBBIES));
         hotbars.put("lobby", Collections.unmodifiableMap(lobbyItems));
-        
+
         // Hotbar do Waiting
         Map<String, HotbarItem> waitingItems = new HashMap<>();
         waitingItems.put(KEY_LOJA, new HotbarItem(SLOT_COSMETICOS, CMD_LOJA, ICON_COSMETICOS));
         waitingItems.put(KEY_SAIR_WAITING, new HotbarItem(SLOT_SAIR_WAITING, CMD_SAIR, ICON_SAIR_WAITING));
         hotbars.put("waiting", Collections.unmodifiableMap(waitingItems));
-        
+
         // Hotbar do Spectator
         Map<String, HotbarItem> spectatorItems = new HashMap<>();
         spectatorItems.put(KEY_COMPASS, new HotbarItem(SLOT_COMPASS, CMD_ESPECTAR, ICON_COMPASS));
         spectatorItems.put(KEY_JOGAR, new HotbarItem(SLOT_JOGAR, CMD_JOGAR, ICON_JOGAR));
         spectatorItems.put(KEY_SAIR_SPECTATOR, new HotbarItem(SLOT_SAIR_SPECTATOR, CMD_SAIR, ICON_SAIR_SPECTATOR));
         hotbars.put("spectator", Collections.unmodifiableMap(spectatorItems));
+
+        // Hotbar do Preview Vendedor
+        Map<String, HotbarItem> previewVendedorItems = new HashMap<>();
+        previewVendedorItems.put(KEY_SAIR_PREVIEW, new HotbarItem(SLOT_SAIR_PREVIEW, CMD_SAIR_PREVIEW, ICON_SAIR_PREVIEW));
+        hotbars.put("preview_vendedor", Collections.unmodifiableMap(previewVendedorItems));
         
         return Collections.unmodifiableMap(hotbars);
     }
