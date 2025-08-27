@@ -2,6 +2,7 @@ package minecraft.bedwars.listeners.player;
 
 import minecraft.bedwars.Main;
 import minecraft.bedwars.cmd.pl.BuildCommand;
+import minecraft.bedwars.cosmetics.object.preview.BreakEffectPreview;
 import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.BedWarsTeam;
 import minecraft.bedwars.utils.PlayerUtils;
@@ -84,7 +85,8 @@ public class PlayerRestListener implements Listener {
     if (profile != null) {
       BedWars game = profile.getGame(BedWars.class);
       if (game == null) {
-        evt.setCancelled(!BuildCommand.hasBuilder(player));
+        // Permitir quebra se for builder ou se estiver em preview de quebra de cama
+        evt.setCancelled(!BuildCommand.hasBuilder(player) && !BreakEffectPreview.isPlayerInPreview(player));
       } else {
         if (game.getState() != GameState.EMJOGO || game.isSpectator(player)) {
           evt.setCancelled(true);
@@ -133,7 +135,8 @@ public class PlayerRestListener implements Listener {
     if (profile != null) {
       BedWars game = profile.getGame(BedWars.class);
       if (game == null) {
-        evt.setCancelled(!BuildCommand.hasBuilder(evt.getPlayer()));
+        // Permitir colocação se for builder ou se estiver em preview de quebra de cama
+        evt.setCancelled(!BuildCommand.hasBuilder(evt.getPlayer()) && !BreakEffectPreview.isPlayerInPreview(evt.getPlayer()));
       } else {
         if (game.getState() != GameState.EMJOGO || game.isSpectator(evt.getPlayer())) {
           evt.setCancelled(true);

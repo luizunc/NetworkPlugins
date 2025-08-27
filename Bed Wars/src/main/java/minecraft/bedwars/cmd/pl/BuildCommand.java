@@ -19,6 +19,12 @@ public class BuildCommand extends SubCommand {
     BUILDERS.remove(player.getName());
   }
   
+  public static void addBuilder(Player player) {
+    if (!BUILDERS.contains(player.getName())) {
+      BUILDERS.add(player.getName());
+    }
+  }
+  
   public static boolean hasBuilder(Player player) {
     return BUILDERS.contains(player.getName());
   }

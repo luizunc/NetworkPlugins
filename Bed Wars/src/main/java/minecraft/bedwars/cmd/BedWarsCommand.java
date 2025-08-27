@@ -30,8 +30,6 @@ public class BedWarsCommand extends Commands {
     this.commands.add(new PreviewCommand());
     this.commands.add(new LeaderboardCommand());
     this.commands.add(new NPCPlayCommand());
-    this.commands.add(new HitItemSubCommand());
-
   }
   
   @Override
