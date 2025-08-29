@@ -11,7 +11,7 @@ import minecraft.core.core.game.GameTeam;
 import minecraft.core.bukkit.hook.FriendsHook;
 import minecraft.core.core.player.enums.PlayerVisibility;
 import minecraft.core.core.player.hotbar.Hotbar;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.player.scoreboard.KScoreboard;
 import minecraft.core.core.titles.TitleManager;
 import minecraft.core.core.utils.BukkitUtils;
@@ -19,7 +19,6 @@ import minecraft.core.core.utils.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -229,8 +228,11 @@ public class Profile {
     player.teleport(Core.getLobby());
           player.setAllowFlight(player.hasPermission("core.fly"));
     
-            Rank playerRank = Rank.getPlayerRank(player, true);
+            Rank playerRank = Rank.getRank(player, true);
         this.getDataContainer("account", "rank").set(StringUtils.stripColors(playerRank.getName()));
+        
+        // Aplicar a tag selecionada no tab list
+        minecraft.core.core.utils.TagUtils.setTag(player);
   }
   
   /**
@@ -313,7 +315,7 @@ public class Profile {
   private void updatePlayerVisibility(Player viewer, Player target, Profile viewerProfile, Profile targetProfile, 
                                      boolean isFriend, boolean isBlacklisted) {
     boolean shouldShow = (viewerProfile.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS ||
-                         Rank.getPlayerRank(target).isAlwaysVisible() || isFriend) && !isBlacklisted;
+                         Rank.getRank(target).isAlwaysVisible() || isFriend) && !isBlacklisted;
     
     if (shouldShow) {
       if (!viewer.canSee(target)) {
@@ -596,6 +598,11 @@ public class Profile {
   public minecraft.core.core.database.data.container.SelectedContainer getSelectedContainer() {
     return this.getAbstractContainer("account", "selected", 
         minecraft.core.core.database.data.container.SelectedContainer.class);
+  }
+  
+  public minecraft.core.core.database.data.container.SkinsContainer getSkinsContainer() {
+    return this.getAbstractContainer("account", "skins", 
+        minecraft.core.core.database.data.container.SkinsContainer.class);
   }
   
   public DataContainer getDataContainer(String table, String key) {

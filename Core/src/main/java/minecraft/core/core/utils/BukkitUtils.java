@@ -398,4 +398,48 @@ public class BukkitUtils {
     deserialized.setPitch(parseFloat(divPoints[5]));
     return deserialized;
   }
+
+
+    
+
+  public static ItemStack createItem(Material material, String name, String... lore) {
+    ItemStack item = new ItemStack(material);
+    ItemMeta meta = item.getItemMeta();
+    
+    if (name != null) {
+      meta.setDisplayName(StringUtils.formatColors(name));
+    }
+    
+    if (lore != null && lore.length > 0) {
+      List<String> loreList = new ArrayList<>();
+      for (String line : lore) {
+        loreList.add(StringUtils.formatColors(line));
+      }
+      meta.setLore(loreList);
+    }
+    
+    item.setItemMeta(meta);
+    return item;
+  }
+  
+  public static ItemStack createItem(Material material, byte data, String name, String... lore) {
+    ItemStack item = new ItemStack(material, 1, data);
+    ItemMeta meta = item.getItemMeta();
+    
+    if (name != null) {
+      meta.setDisplayName(StringUtils.formatColors(name));
+    }
+    
+    if (lore != null && lore.length > 0) {
+      List<String> loreList = new ArrayList<>();
+      for (String line : lore) {
+        loreList.add(StringUtils.formatColors(line));
+      }
+      meta.setLore(loreList);
+    }
+    
+    item.setItemMeta(meta);
+    return item;
+  }
+  
 }

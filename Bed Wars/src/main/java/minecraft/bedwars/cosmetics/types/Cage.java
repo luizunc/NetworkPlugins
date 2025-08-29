@@ -6,7 +6,7 @@ import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.CosmeticType;
 import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.core.bukkit.plugin.config.KConfig;
-import minecraft.core.bukkit.plugin.logger.KLogger;
+// KLogger removido - funcionalidade de cage desabilitada
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.role.Rank;
@@ -28,7 +28,7 @@ import java.util.logging.Level;
 @SuppressWarnings({"unchecked", "deprecated"})
 public class Cage extends Cosmetic {
   
-  public static final KLogger LOGGER = ((KLogger) Main.getInstance().getLogger()).getModule("CAGE");
+  // LOGGER removido - funcionalidade de cage desabilitada
   private static final KConfig CONFIG = Main.getInstance().getConfig("cosmetics", "cages");
   
   private String name;
@@ -63,7 +63,7 @@ public class Cage extends Cosmetic {
       try {
         blocks = (JSONArray) new JSONParser().parse(CONFIG.getString(key + ".blocks"));
       } catch (ParseException ex) {
-        LOGGER.log(Level.WARNING, "Cage \"" + key + "\" invalida: ", ex);
+        // Log removido - funcionalidade de cage desabilitada
         continue;
       }
       
@@ -73,7 +73,7 @@ public class Cage extends Cosmetic {
           blocksS = (JSONArray) new JSONParser().parse(CONFIG.getString(key + ".blocksS"));
         }
       } catch (ParseException ex) {
-        LOGGER.log(Level.WARNING, "Cage (Solo) \"" + key + "\" invalida: ", ex);
+        // Log removido - funcionalidade de cage desabilitada
         continue;
       }
       
@@ -195,7 +195,7 @@ public class Cage extends Cosmetic {
       }
     } else {
       if (this.soloBlocks == null) {
-        LOGGER.warning("Blocos do Modo Solo nao foram encontrados para a jaula " + this.name);
+        // Log removido - funcionalidade de cage desabilitada
         return;
       }
       

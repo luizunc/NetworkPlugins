@@ -10,7 +10,7 @@ import minecraft.core.core.player.enums.PrivateMessages;
 import minecraft.core.core.player.enums.ProtectionLobby;
 import minecraft.core.core.player.fake.FakeManager;
 import minecraft.core.core.player.hotbar.HotbarButton;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.FieldAccessor;
 import minecraft.core.core.titles.TitleManager;
@@ -88,8 +88,39 @@ public class Listeners implements Listener {
       return;
     }
     
+    // Aplicar a skin salva
+    minecraft.core.core.database.data.container.SkinsContainer container = profile.getSkinsContainer();
+    String skinValue = container.getValue();
+    String skinSignature = container.getSignature();
+    String skinName = container.getSkin();
+    
+    // Se tem uma skin personalizada salva, aplicar
+    if (skinName != null && skinValue != null && skinSignature != null && !skinName.isEmpty() && !skinName.equals("none")) {
+      try {
+        // Aplicar a skin usando reflection
+        Object gameProfile = evt.getPlayer().getClass().getMethod("getProfile").invoke(evt.getPlayer());
+        Object properties = gameProfile.getClass().getMethod("getProperties").invoke(gameProfile);
+        
+        // Limpar propriedades existentes
+        properties.getClass().getMethod("clear").invoke(properties);
+        
+        // Adicionar nova skin
+        Object property = Class.forName("com.mojang.authlib.properties.Property").getConstructor(String.class, String.class, String.class)
+            .newInstance("textures", skinValue, skinSignature);
+        properties.getClass().getMethod("put", Object.class, Object.class).invoke(properties, "textures", property);
+        
+        Core.getInstance().getLogger().info("Skin aplicada para " + evt.getPlayer().getName() + ": " + skinName);
+      } catch (Exception e) {
+        Core.getInstance().getLogger().warning("Erro ao aplicar skin para " + evt.getPlayer().getName() + ": " + e.getMessage());
+      }
+    } else {
+      Core.getInstance().getLogger().info("Nenhuma skin personalizada encontrada para " + evt.getPlayer().getName());
+    }
+    
     profile.setPlayer(evt.getPlayer());
   }
+
+
 
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerJoin(PlayerJoinEvent evt) {
@@ -97,6 +128,9 @@ public class Listeners implements Listener {
     Profile profile = Profile.getProfile(player.getName());
     
     if (profile != null) {
+      // Aplicar a tag selecionada no tab
+      minecraft.core.core.utils.TagUtils.setTag(player);
+      
       // Executa a animação de chegada após 1 segundo
       Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
         EntryAnimationManager.playEntryAnimation(player, profile);
@@ -201,7 +235,7 @@ public class Listeners implements Listener {
     String format = String.format(evt.getFormat(), player.getName(), evt.getMessage());
     
     String currentName = Manager.getCurrent(player.getName());
-            Rank rank = Rank.getPlayerRank(player);
+            Rank rank = Rank.getSelectedTag(player);
     
             TextComponent component = createChatComponent(format, currentName, rank);
     

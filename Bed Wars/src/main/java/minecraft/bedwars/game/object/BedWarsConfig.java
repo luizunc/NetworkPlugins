@@ -6,7 +6,9 @@ import minecraft.bedwars.game.BedWarsTeam;
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.CubeID;
+import minecraft.core.core.utils.BukkitUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Entity;
@@ -31,8 +33,8 @@ public class BedWarsConfig {
   private CubeID cubeId;
   private int minPlayers;
   private List<String> spawns;
-
   private List<String> generators;
+  private Location waitingLocation;
   
   public BedWarsConfig(BedWars game) {
     this.game = game;
@@ -49,6 +51,11 @@ public class BedWarsConfig {
 
     this.spawns.addAll(this.config.getStringList("spawns"));
     this.generators.addAll(this.config.getStringList("generators"));
+    
+    // Carregar localização de espera
+    if (this.config.contains("waitingLocation")) {
+      this.waitingLocation = BukkitUtils.deserializeLocation(this.config.getString("waitingLocation"));
+    }
     
     this.reload(null);
   }
@@ -79,6 +86,7 @@ public class BedWarsConfig {
     this.cubeId = null;
     this.world = null;
     this.config = null;
+    this.waitingLocation = null;
   }
   
   public void reload(final Runnable async) {
@@ -156,7 +164,9 @@ public class BedWarsConfig {
     return this.spawns;
   }
   
-
+  public Location getWaitingLocation() {
+    return this.waitingLocation;
+  }
   
   public List<String> listGenerators() {
     return this.generators;

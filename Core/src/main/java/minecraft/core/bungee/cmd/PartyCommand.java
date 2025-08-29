@@ -3,7 +3,7 @@ package minecraft.core.bungee.cmd;
 import minecraft.core.Manager;
 import minecraft.core.bungee.party.BungeeParty;
 import minecraft.core.bungee.party.BungeePartyManager;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;

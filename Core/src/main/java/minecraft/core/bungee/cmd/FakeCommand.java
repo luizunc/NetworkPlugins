@@ -2,17 +2,9 @@ package minecraft.core.bungee.cmd;
 
 import minecraft.core.Manager;
 import minecraft.core.bungee.Bungee;
-import minecraft.core.core.player.role.Rank;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-
-import static minecraft.core.bungee.Bungee.ALEX;
-import static minecraft.core.bungee.Bungee.STEVE;
 
 /**
  * Comando para aplicar fake no BungeeCord.

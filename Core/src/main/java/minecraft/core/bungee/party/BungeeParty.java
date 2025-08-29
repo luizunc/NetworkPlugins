@@ -5,7 +5,7 @@ import com.google.common.io.ByteStreams;
 import minecraft.core.Manager;
 import minecraft.core.core.party.Party;
 import minecraft.core.core.party.PartyPlayer;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;

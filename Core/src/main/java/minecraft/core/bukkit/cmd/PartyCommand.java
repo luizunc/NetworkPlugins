@@ -4,7 +4,7 @@ import minecraft.core.Manager;
 import minecraft.core.bukkit.BukkitParty;
 import minecraft.core.bukkit.BukkitPartyManager;
 import minecraft.core.core.party.PartyRole;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;

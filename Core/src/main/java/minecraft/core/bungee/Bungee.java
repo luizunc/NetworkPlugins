@@ -5,8 +5,7 @@ import com.google.common.io.ByteStreams;
 import minecraft.core.bungee.cmd.Commands;
 import minecraft.core.bungee.listener.Listeners;
 import minecraft.core.core.database.Database;
-import minecraft.core.core.player.role.Rank;
-import minecraft.core.core.utils.StringUtils;
+import minecraft.core.core.player.rank.Rank;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -69,7 +68,7 @@ public class Bungee extends Plugin {
   }
 
   /**
-   * Envia role para um jogador
+   * Envia rank para um jogador
    * 
    * @param player Jogador alvo
    * @param sound Som a ser reproduzido (opcional)
@@ -88,7 +87,7 @@ public class Bungee extends Plugin {
       }
       player.getServer().sendData(CORE_CHANNEL, out.toByteArray());
     } catch (Exception e) {
-      getInstance().getLogger().log(Level.WARNING, "Erro ao enviar role para " + player.getName(), e);
+      getInstance().getLogger().log(Level.WARNING, "Erro ao enviar rank para " + player.getName(), e);
     }
   }
 
@@ -96,7 +95,7 @@ public class Bungee extends Plugin {
    * Envia skin para um jogador
    * 
    * @param player Jogador alvo
-   * @param roleName Nome do role
+   * @param roleName Nome do rank
    * @param sound Som a ser reproduzido (opcional)
    */
   public static void sendSkin(ProxiedPlayer player, String roleName, String sound) {
@@ -194,16 +193,16 @@ public class Bungee extends Plugin {
   }
   
   /**
-   * Obtém o role fake de um jogador
+   * Obtém o rank fake de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Role fake ou role padrão
+   * @return Role fake ou rank padrão
    */
       public static Rank getRank(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
-              return Rank.getLastRank();
+              return Rank.getLastRole();
     }
-            return fakeRanks.getOrDefault(playerName, Rank.getLastRank());
+                          return fakeRanks.getOrDefault(playerName, Rank.getLastRole());
   }
   
   /**
@@ -312,9 +311,9 @@ public class Bungee extends Plugin {
   }
   
   /**
-   * Verifica se um role é válido para fake
+   * Verifica se um rank é válido para fake
    * 
-   * @param roleName Nome do role
+   * @param roleName Nome do rank
    * @return true se é válido
    */
   public static boolean isFakeRole(String roleName) {
@@ -448,11 +447,8 @@ public class Bungee extends Plugin {
       return;
     }
     
-    // Criar role padrão se não houver nenhum
-    if (Rank.listRanks().isEmpty()) {
-      // Define broadcast = false para o rank Membro (padrão)
-      Rank.listRanks().add(new Rank("&7Membro", "&7", "", false, false));
-    }
+    // Carregar ranks usando o método do aCore
+    Rank.loadRanks();
   }
   
   /**

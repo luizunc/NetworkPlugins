@@ -1,6 +1,7 @@
 package minecraft.core.bukkit.cmd;
 
 import minecraft.core.bukkit.Core;
+import minecraft.core.bukkit.cmd.MedalsCommand;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.fake.FakeManager;
 import org.bukkit.Bukkit;
@@ -87,6 +88,9 @@ public abstract class Commands extends Command {
         new CoreCommand();
         new CoinsCommand();
         new StatsCommand();
+        new TagCommand();
+        new MedalsCommand();
+        new SkinCommand();
     }
 
     /**

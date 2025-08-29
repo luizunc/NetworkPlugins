@@ -22,7 +22,7 @@ import minecraft.core.core.libraries.npclib.NPCLibrary;
 import minecraft.core.core.nms.NMS;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.fake.FakeManager;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.titles.Title;
 import minecraft.core.core.titles.TitleManager;
@@ -394,44 +394,7 @@ public class Core extends KPlugin {
    * Configura os ranks padrão do sistema.
    */
   private void setupRanks() {
-    if (Rank.listRanks().isEmpty()) {
-      try {
-        // Carregar ranks da configuração interna na ordem correta (do mais alto para o mais baixo)
-        String[] rankOrder = {"admin", "mod", "trial", "staff", "builder", "creator", "emerald", "gold", "iron", "membro"};
-        
-        for (String key : rankOrder) {
-          minecraft.core.bukkit.config.Rank.rankConfig rankConfig = minecraft.core.bukkit.config.Rank.getrank(key);
-          if (rankConfig != null) {
-            // Define broadcast = true apenas para ranks a partir do Iron
-            boolean shouldBroadcast = key.equals("iron") || 
-                                     key.equals("gold") || 
-                                     key.equals("emerald") || 
-                                     key.equals("creator") || 
-                                     key.equals("builder") || 
-                                     key.equals("staff") || 
-                                     key.equals("trial") || 
-                                     key.equals("mod") || 
-                                     key.equals("admin");
-            
-            Rank.listRanks().add(
-              new Rank(
-                rankConfig.getName(),
-                rankConfig.getPrefix(), 
-                rankConfig.getPermission(),
-                rankConfig.isAlwaysVisible(),
-                shouldBroadcast
-              )
-            );
-          }
-        }
-        
-        this.getLogger().info("Ranks carregados da configuração interna: " + 
-          Rank.listRanks().size() + " ranks configurados.");
-      } catch (Exception e) {
-        this.getLogger().log(Level.WARNING, "Erro ao carregar ranks da configuração, usando padrão", e);
-        // Fallback para rank básico
-        Rank.listRanks().add(new Rank("&7Membro", "&7", "", false, false));
-      }
-    }
+    Rank.loadRanks();
+    this.getLogger().info("Ranks carregados: " + Rank.listRoles().size() + " ranks configurados.");
   }
 }

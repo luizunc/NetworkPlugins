@@ -17,7 +17,6 @@ public class BedWarsCommand extends Commands {
     
     this.commands.add(new BuildCommand());
     this.commands.add(new SetSpawnCommand());
-    this.commands.add(new CageCommand());
     this.commands.add(new StartCommand());
     this.commands.add(new CreateCommand());
     this.commands.add(new GeneratorCommand());
@@ -30,6 +29,7 @@ public class BedWarsCommand extends Commands {
     this.commands.add(new PreviewCommand());
     this.commands.add(new LeaderboardCommand());
     this.commands.add(new NPCPlayCommand());
+    this.commands.add(new TestWaitingLocationCommand());
   }
   
   @Override

@@ -357,11 +357,14 @@ public class BedWars implements Game<BedWarsTeam> {
     this.players.add(player.getUniqueId());
     profile.setGame(this);
     
-    if (team.listPlayers().size() == 1) {
-      team.buildCage(profile.getAbstractContainer("bedwars", "selected", SelectedContainer.class).getSelected(CosmeticType.CAGE, Cage.class));
-    }
+    // Cage removida - não constrói mais gaiola
     
-    player.teleport(team.getLocation());
+    // Teleportar para a localização de espera se configurada, senão para o time
+    if (this.config.getWaitingLocation() != null) {
+      player.teleport(this.config.getWaitingLocation());
+    } else {
+      player.teleport(team.getLocation());
+    }
     reloadScoreboard(profile);
     
     profile.setHotbar(Hotbar.getHotbarById("waiting"));
@@ -424,9 +427,7 @@ public class BedWars implements Game<BedWarsTeam> {
       
       if (team != null) {
         team.removeMember(player);
-        if (this.state == GameState.AGUARDANDO && !team.isAlive()) {
-          team.breakCage();
-        }
+        // Cage removida - não quebra mais gaiola
       }
       if (Profile.isOnline(player.getName())) {
         profile.setGame(null);
@@ -457,9 +458,7 @@ public class BedWars implements Game<BedWarsTeam> {
     
     if (team != null) {
       team.removeMember(player);
-      if (this.state == GameState.AGUARDANDO && !team.isAlive()) {
-        team.breakCage();
-      }
+      // Cage removida - não quebra mais gaiola
     }
     profile.setGame(null);
     TagUtils.setTag(player);
@@ -828,6 +827,12 @@ public class BedWars implements Game<BedWarsTeam> {
         
         // Mensal
         profile.addStats("bedwars", "monthlygames");
+        
+        // Redirecionar jogador para sua ilha quando o jogo começar
+        BedWarsTeam team = this.getTeam(player);
+        if (team != null) {
+          player.teleport(team.getLocation());
+        }
       }
     });
     

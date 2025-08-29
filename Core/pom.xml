@@ -14,7 +14,7 @@
         <main-bungee>minecraft.core.bungee.Bungee</main-bungee>
 
         <!-- Libraries Directories -->
-        <lib.dir>C:\Users\Luiz\Desktop\fabrica\LIBS</lib.dir>
+        <lib.dir>C:\Users\luiz\Desktop\fabrica\LIBS</lib.dir>
 
         <!-- Dependencies versions -->
         <protocollib.version>4.5.0</protocollib.version>

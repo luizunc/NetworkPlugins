@@ -3,7 +3,7 @@ package minecraft.core;
 import minecraft.core.bungee.Bungee;
 import minecraft.core.core.libraries.profile.Mojang;
 import minecraft.core.core.player.fake.FakeManager;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.MethodAccessor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -281,6 +281,16 @@ public class Manager {
       LOGGER.log(Level.WARNING, "Erro ao obter rank fake do jogador " + playerName, e);
       return null;
     }
+  }
+  
+  /**
+   * Obtém o rank fake de um jogador (alias para getFakeRank)
+   * 
+   * @param playerName Nome do jogador
+   * @return Rank fake ou null se não houver
+   */
+  public static Rank getFakeRole(String playerName) {
+    return getFakeRank(playerName);
   }
   
   /**

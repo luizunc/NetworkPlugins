@@ -43,6 +43,13 @@ public class AreaPremium extends PlayerMenu {
     public AreaPremium(Profile profile) {
         super(profile.getPlayer(), MENU_TITLE, MENU_ROWS);
 
+        // Verificação adicional de segurança
+        if (!hasIronOrHigherRank(profile)) {
+            profile.getPlayer().sendMessage("§cVocê não tem permissão para acessar o Setor Premium!");
+            profile.getPlayer().closeInventory();
+            return;
+        }
+
         setupItems(profile);
         register(Core.getInstance());
         open();
@@ -154,6 +161,51 @@ public class AreaPremium extends PlayerMenu {
         }
     }
 
+    /**
+     * Verifica se o jogador tem rank Iron ou superior.
+     *
+     * @param profile Perfil do jogador
+     * @return true se tem rank Iron ou superior
+     */
+    private boolean hasIronOrHigherRank(Profile profile) {
+        if (profile.getPlayer() == null) {
+            return false;
+        }
+        
+        // Ranks em ordem (do mais baixo para o mais alto) conforme Rank.java
+        String[] rankOrder = {"membro", "apoiador", "iron", "gold", "emerald", "partner", "partner+", "beta", "builder", "helper", "mod", "mod+", "admin"};
+        
+        // Obtém o rank atual do jogador
+        minecraft.core.core.player.rank.Rank currentRank = minecraft.core.core.player.rank.Rank.getRank(profile.getPlayer(), true);
+        String currentRankName = minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName()).toLowerCase();
+        
+        // Encontra a posição do rank atual
+        int currentRankIndex = -1;
+        for (int i = 0; i < rankOrder.length; i++) {
+            if (rankOrder[i].equals(currentRankName)) {
+                currentRankIndex = i;
+                break;
+            }
+        }
+        
+        // Se não encontrou o rank, assume que é membro (mais baixo)
+        if (currentRankIndex == -1) {
+            currentRankIndex = 0; // membro
+        }
+        
+        // Encontra a posição do rank Iron
+        int ironRankIndex = -1;
+        for (int i = 0; i < rankOrder.length; i++) {
+            if (rankOrder[i].equals("iron")) {
+                ironRankIndex = i;
+                break;
+            }
+        }
+        
+        // Retorna true se o rank atual é igual ou superior ao Iron
+        return currentRankIndex >= ironRankIndex;
+    }
+    
     /**
      * Cancela o registro de eventos.
      */

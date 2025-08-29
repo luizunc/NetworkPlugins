@@ -139,6 +139,14 @@ public abstract class Database {
   public abstract String getRankAndName(String player);
   
   /**
+   * Obtém a tag e nome de um jogador.
+   * 
+   * @param player Nome do jogador
+   * @return String contendo tag e nome
+   */
+  public abstract String getTagAndName(String player);
+  
+  /**
    * Obtém uma preferência de um jogador.
    * 
    * @param player Nome do jogador

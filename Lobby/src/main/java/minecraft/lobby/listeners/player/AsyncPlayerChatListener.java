@@ -3,7 +3,7 @@ package minecraft.lobby.listeners.player;
 import minecraft.core.core.game.Game;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.lobby.Language;
 import org.bukkit.Bukkit;

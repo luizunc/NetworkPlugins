@@ -2,14 +2,12 @@ package minecraft.core.core.player.fake;
 
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedSignedProperty;
-import minecraft.core.bukkit.Core;
 import minecraft.core.bukkit.plugin.config.UtilsConfig;
 import minecraft.core.core.database.Database;
 import minecraft.core.core.libraries.profile.Mojang;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.BukkitUtils;
-import minecraft.core.core.utils.StringUtils;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -70,13 +68,13 @@ public class FakeManager {
     }
     TextComponent STEVE = new TextComponent("\n §0▪ §7Steve");
     STEVE.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Você irá obter a aparência de Steve.")));
-    STEVE.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {role} steve"));
+    STEVE.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {rank} steve"));
     TextComponent ALEX = new TextComponent("\n §0▪ §7Alex");
     ALEX.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Você irá obter a aparência da Alex.")));
-    ALEX.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {role} alex"));
+    ALEX.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {rank} alex"));
     TextComponent YOU = new TextComponent("\n §0▪ §7Você");
     YOU.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Você irá obter a sua aparência.")));
-    YOU.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {role} you"));
+    YOU.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {rank} you"));
     FAKE_SKINS.addExtra(STEVE);
     FAKE_SKINS.addExtra(YOU);
     FAKE_SKINS.addExtra(ALEX);
@@ -98,7 +96,7 @@ public class FakeManager {
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
     book.setItemMeta(meta);
-    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));
+    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{rank}", role)));
     BukkitUtils.openBook(player, book);
   }
   
@@ -129,7 +127,11 @@ public class FakeManager {
   }
   
       public static Rank getRank(String playerName) {
-            return fakeRanks.getOrDefault(playerName, Rank.getLastRank());
+            return fakeRanks.getOrDefault(playerName, Rank.getLastRole());
+  }
+  
+  public static Rank getRole(String playerName) {
+    return getRank(playerName);
   }
   
   public static String getSkin(String playerName) {

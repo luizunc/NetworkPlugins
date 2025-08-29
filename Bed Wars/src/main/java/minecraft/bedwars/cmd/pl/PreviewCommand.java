@@ -1,7 +1,7 @@
 package minecraft.bedwars.cmd.pl;
 
 import minecraft.bedwars.cmd.SubCommand;
-import minecraft.bedwars.cosmetics.object.preview.CagePreview;
+// CagePreview removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.object.preview.KillEffectPreview;
 import minecraft.bedwars.cosmetics.object.preview.ShopkeeperSkinPreview;
 import minecraft.bedwars.cosmetics.object.preview.WinAnimationPreview;
@@ -20,33 +20,12 @@ public class PreviewCommand extends SubCommand {
   public void perform(Player player, String[] args) {
     if (args.length == 0) {
       player.sendMessage(
-          " \n§eAjuda - Preview\n \n§6/pl preview cage [jaula/espectador] §f- §7Setar localizações de preview da Jaula.\n§6/pl preview killeffect [alvo/espectador] §f- §7Setar localizações de preview do Efeito de Abate.\n§6/pl preview vendedor [npc/area] §f- §7Setar localizações de preview da Skin do Vendedor.\n§6/pl preview comemoracoes §f- §7Setar localização de preview das Comemorações.\n§6/pl preview cama §f- §7Setar localização de preview da Quebra de Cama.\n ");
+          " \n§eAjuda - Preview\n \n§6/pl preview killeffect [alvo/espectador] §f- §7Setar localizações de preview do Efeito de Abate.\n§6/pl preview vendedor [npc/area] §f- §7Setar localizações de preview da Skin do Vendedor.\n§6/pl preview comemoracoes §f- §7Setar localização de preview das Comemorações.\n§6/pl preview cama §f- §7Setar localização de preview da Quebra de Cama.\n ");
       return;
     }
     
     String action = args[0];
-    if (action.equalsIgnoreCase("cage")) {
-      if (args.length < 2) {
-        player.sendMessage("§cUso: /pl preview cage [jaula/espectador]");
-        return;
-      }
-      
-      String type = args[1];
-      Location location = player.getLocation().getBlock().getLocation().add(0.5, 0, 0.5);
-      location.setYaw(player.getLocation().getYaw());
-      location.setPitch(player.getLocation().getPitch());
-      if (type.equalsIgnoreCase("jaula")) {
-        CagePreview.CONFIG.set("cage.1", BukkitUtils.serializeLocation(location));
-        CagePreview.createLocations();
-        player.sendMessage("§aLocalização da jaula setada!");
-      } else if (type.equalsIgnoreCase("espectador")) {
-        CagePreview.CONFIG.set("cage.2", BukkitUtils.serializeLocation(location));
-        CagePreview.createLocations();
-        player.sendMessage("§aLocalização do espectador setada!");
-      } else {
-        player.sendMessage("§cUso: /pl preview cage [jaula/espectador]");
-      }
-    } else if (action.equalsIgnoreCase("killeffect")) {
+ if (action.equalsIgnoreCase("killeffect")) {
       if (args.length < 2) {
         player.sendMessage("§cUso: /pl preview killeffect [alvo/espectador]");
         return;
@@ -104,7 +83,7 @@ public class PreviewCommand extends SubCommand {
       player.sendMessage("§aLocalização da área de quebra de cama setada!");
           } else {
         player.sendMessage(
-            " \n§eAjuda - Preview\n \n§6/pl preview cage [jaula/espectador] §f- §7Setar localizações de preview da Jaula.\n§6/pl preview killeffect [alvo/espectador] §f- §7Setar localizações de preview do Efeito de Abate.\n§6/pl preview vendedor [npc/area] §f- §7Setar localizações de preview da Skin do Vendedor.\n§6/pl preview comemoracoes §f- §7Setar localização de preview das Comemorações.\n§6/pl preview cama §f- §7Setar localização de preview da Quebra de Cama.\n ");
+            " \n§eAjuda - Preview\n \n§6/pl preview killeffect [alvo/espectador] §f- §7Setar localizações de preview do Efeito de Abate.\n§6/pl preview vendedor [npc/area] §f- §7Setar localizações de preview da Skin do Vendedor.\n§6/pl preview comemoracoes §f- §7Setar localização de preview das Comemorações.\n§6/pl preview cama §f- §7Setar localização de preview da Quebra de Cama.\n ");
       }
   }
 }

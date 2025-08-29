@@ -47,6 +47,15 @@ public class CreateCommand extends SubCommand {
         }
         break;
       }
+      case "§aLocalização de Espera": {
+        evt.setCancelled(true);
+        Location location = player.getLocation().getBlock().getLocation().clone().add(0.5, 0.0, 0.5);
+        location.setYaw(player.getLocation().getYaw());
+        location.setPitch(player.getLocation().getPitch());
+        CREATING.get(player)[5] = BukkitUtils.serializeLocation(location);
+        player.sendMessage("§aLocalização de espera setada.");
+        break;
+      }
       case "§aConfirmar": {
         evt.setCancelled(true);
         if (CREATING.get(player)[3] == null) {
@@ -56,6 +65,11 @@ public class CreateCommand extends SubCommand {
         
         if (CREATING.get(player)[4] == null) {
           player.sendMessage("§cBorda da Arena 2 não setada.");
+          return;
+        }
+        
+        if (CREATING.get(player)[5] == null) {
+          player.sendMessage("§cLocalização de espera não setada.");
           return;
         }
         
@@ -74,6 +88,7 @@ public class CreateCommand extends SubCommand {
         config.set("mode", array[2]);
         config.set("minPlayers", 4);
         config.set("cubeId", cube.toString());
+        config.set("waitingLocation", array[5]);
         config.set("spawns", new ArrayList<>());
         config.set("generators", new ArrayList<>());
         world.save();
@@ -110,7 +125,7 @@ public class CreateCommand extends SubCommand {
     }
     
     String name = StringUtils.join(args, 1, " ");
-    Object[] array = new Object[5];
+    Object[] array = new Object[6];
     array[0] = player.getWorld();
     array[1] = name;
     array[2] = mode.name();
@@ -120,7 +135,8 @@ public class CreateCommand extends SubCommand {
     player.getInventory().setArmorContents(null);
     
     player.getInventory().setItem(0, BukkitUtils.deserializeItemStack("BLAZE_ROD : 1 : nome>&aCuboID da Arena"));
-    player.getInventory().setItem(1, BukkitUtils.deserializeItemStack("STAINED_CLAY:13 : 1 : nome>&aConfirmar"));
+    player.getInventory().setItem(1, BukkitUtils.deserializeItemStack("EMERALD : 1 : nome>&aLocalização de Espera"));
+    player.getInventory().setItem(2, BukkitUtils.deserializeItemStack("STAINED_CLAY:13 : 1 : nome>&aConfirmar"));
     
     player.updateInventory();
     

@@ -2,7 +2,7 @@ package minecraft.lobby.utils.tagger;
 
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;

@@ -215,11 +215,11 @@ public class MenuTitles extends UpdatablePlayerMenu {
       return false;
     }
     
-    // Ranks em ordem (do mais baixo para o mais alto)
-    String[] rankOrder = {"membro", "iron", "gold", "emerald", "creator", "builder", "staff", "trial", "mod", "admin"};
+    // Ranks em ordem (do mais baixo para o mais alto) conforme Rank.java
+    String[] rankOrder = {"membro", "apoiador", "iron", "gold", "emerald", "partner", "partner+", "beta", "builder", "helper", "mod", "mod+", "admin"};
     
     // Obtém o rank atual do jogador
-    minecraft.core.core.player.role.Rank currentRank = minecraft.core.core.player.role.Rank.getPlayerRank(profile.getPlayer(), true);
+            minecraft.core.core.player.rank.Rank currentRank = minecraft.core.core.player.rank.Rank.getRank(profile.getPlayer(), true);
     String currentRankName = minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName()).toLowerCase();
     
     // Encontra a posição do rank atual

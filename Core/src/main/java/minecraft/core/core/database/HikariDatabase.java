@@ -2,13 +2,11 @@ package minecraft.core.core.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import minecraft.core.bukkit.Core;
-import minecraft.core.Manager;
 import minecraft.core.core.database.cache.RankCache;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.database.data.DataTable;
 import minecraft.core.core.database.exception.ProfileLoadException;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -69,6 +67,19 @@ public class HikariDatabase extends Database {
                 String result = rs.getString("rank") + " : " + rs.getString("name");
                 RankCache.setCache(player, rs.getString("rank"), rs.getString("name"));
                 return result;
+      }
+    } catch (SQLException ignored) {
+    }
+    return null;
+  }
+  
+  @Override
+  public String getTagAndName(String player) {
+    try (CachedRowSet rs = query("SELECT `name`, `tag` FROM `account` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
+      if (rs != null) {
+        String result = rs.getString("tag") + " : " + rs.getString("name");
+        minecraft.core.core.database.cache.TagCache.setCache(player, rs.getString("tag"), rs.getString("name"));
+        return result;
       }
     } catch (SQLException ignored) {
     }

@@ -4,7 +4,7 @@ import minecraft.core.bukkit.Core;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.bukkit.menus.profile.*;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumSound;
@@ -60,7 +60,7 @@ public class MenuProfile extends PlayerMenu {
    * @param profile Perfil do jogador
    */
   private void setupItems(Profile profile) {
-    setItem(SLOT_AREAPREMIUM, createAreaPremiumItem());
+    setItem(SLOT_AREAPREMIUM, createAreaPremiumItem(profile));
     setItem(SLOT_INFORMACOES, createInformacoesItem(profile));
     setItem(SLOT_ESTATISTICAS, createEstatisticasItem());
     setItem(SLOT_PREFERENCIAS, createPreferenciasItem());
@@ -74,17 +74,17 @@ public class MenuProfile extends PlayerMenu {
    * @param profile Perfil do jogador
    * @return ItemStack do item
    */
-  private ItemStack createAreaPremiumItem() {
+  private ItemStack createAreaPremiumItem(Profile profile) {
       return BukkitUtils.deserializeItemStack(
               "BEACON : 1 : esconder>tudo : nome>&aSetor Premium : desc>&7Desfrute dos benefícios Premium\n" +
                       "\n" +
-                      "&cDisponível apenas para VIPS.\n" +
+                      "&cDisponível para &fIron+\n" +
                       " \n" +
-                      "&eClique para acessar!");
+                      "&aClique para acessar!");
   }
 
   private ItemStack createInformacoesItem(Profile profile) {
-            String rankName = Rank.getRankByName(profile.getDataContainer("account", "rank").getAsString()).getName();
+            String rankName = Rank.getRoleByName(profile.getDataContainer("account", "rank").getAsString()).getName();
     String cash = StringUtils.formatNumber(profile.getStats("account", "cash"));
     String created = SDF.format(profile.getDataContainer("account", "created").getAsLong());
     String lastLogin = SDF.format(profile.getDataContainer("account", "lastlogin").getAsLong());
@@ -206,7 +206,13 @@ public class MenuProfile extends PlayerMenu {
     switch (slot) {
       case SLOT_AREAPREMIUM:
         EnumSound.CLICK.play(player, 0.5F, 2.0F);
-        new AreaPremium(profile);
+        if (hasIronOrHigherRank(profile)) {
+            new AreaPremium(profile);
+        } else {
+            player.sendMessage("§cVocê precisa do VIP para acessar o Setor Premium!");
+            EnumSound.VILLAGER_NO.play(player, 0.5F, 1.0F);
+        }
+        break;
 
       case SLOT_INFORMACOES:
         EnumSound.ITEM_PICKUP.play(player, 0.5F, 2.0F);
@@ -232,6 +238,66 @@ public class MenuProfile extends PlayerMenu {
         new MenuAchievements(profile);
         break;
     }
+  }
+  
+  /**
+   * Verifica se o jogador tem rank Iron ou superior.
+   * 
+   * @param profile Perfil do jogador
+   * @return true se tem rank Iron ou superior
+   */
+  private boolean hasIronOrHigherRank(Profile profile) {
+    if (profile.getPlayer() == null) {
+      return false;
+    }
+    
+    // Ranks em ordem (do mais baixo para o mais alto) conforme Rank.java
+    String[] rankOrder = {"membro", "apoiador", "iron", "gold", "emerald", "partner", "partner+", "beta", "builder", "helper", "mod", "mod+", "admin"};
+    
+    // Obtém o rank atual do jogador
+    minecraft.core.core.player.rank.Rank currentRank = minecraft.core.core.player.rank.Rank.getRank(profile.getPlayer(), true);
+    String currentRankName = minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName()).toLowerCase();
+    
+    // Encontra a posição do rank atual
+    int currentRankIndex = -1;
+    for (int i = 0; i < rankOrder.length; i++) {
+      if (rankOrder[i].equals(currentRankName)) {
+        currentRankIndex = i;
+        break;
+      }
+    }
+    
+    // Se não encontrou o rank, assume que é membro (mais baixo)
+    if (currentRankIndex == -1) {
+      currentRankIndex = 0; // membro
+    }
+    
+    // Encontra a posição do rank Iron
+    int ironRankIndex = -1;
+    for (int i = 0; i < rankOrder.length; i++) {
+      if (rankOrder[i].equals("iron")) {
+        ironRankIndex = i;
+        break;
+      }
+    }
+    
+    // Retorna true se o rank atual é igual ou superior ao Iron
+    return currentRankIndex >= ironRankIndex;
+  }
+  
+  /**
+   * Obtém o nome do rank atual do jogador.
+   * 
+   * @param profile Perfil do jogador
+   * @return Nome do rank atual
+   */
+  private String getCurrentRankName(Profile profile) {
+    if (profile.getPlayer() == null) {
+      return "Desconhecido";
+    }
+    
+    minecraft.core.core.player.rank.Rank currentRank = minecraft.core.core.player.rank.Rank.getRank(profile.getPlayer(), true);
+    return minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName());
   }
   
   /**

@@ -5,12 +5,12 @@ import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.CosmeticType;
 import minecraft.bedwars.cosmetics.object.AbstractPreview;
-import minecraft.bedwars.cosmetics.object.preview.CagePreview;
+// CagePreview removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.object.preview.KillEffectPreview;
 import minecraft.bedwars.cosmetics.object.preview.ShopkeeperSkinPreview;
 import minecraft.bedwars.cosmetics.object.preview.WinAnimationPreview;
 import minecraft.bedwars.cosmetics.object.preview.BreakEffectPreview;
-import minecraft.bedwars.cosmetics.types.Cage;
+// Cage removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.types.DeathCry;
 import minecraft.bedwars.cosmetics.types.DeathMessage;
 import minecraft.bedwars.cosmetics.types.KillEffect;
@@ -125,16 +125,7 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
                     
                     return;
                   } else if (cosmetic.getType() == CosmeticType.CAGE) {
-                    if (!AbstractPreview.canDoCage()) {
-                      if (player.hasPermission("bedwars.cmd.bedwars")) {
-                        EnumSound.VILLAGER_NO.play(player, 1.0F, 1.0F);
-                        player.sendMessage("§cSete as localizações da previsualização utilizando /pl preview cage");
-                      }
-                      return;
-                    }
-                    
-                    new CagePreview(profile, (Cage) cosmetic);
-                    player.closeInventory();
+                    player.sendMessage("§cA funcionalidade de Cage foi removida do sistema.");
                     return;
                   } else if (cosmetic.getType() == CosmeticType.SHOPKEEPERSKIN) {
                     if (!AbstractPreview.canDoShopkeeperSkin()) {

@@ -5,7 +5,7 @@ import minecraft.core.bukkit.Core;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.enums.PlayerVisibility;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.entity.Player;
@@ -55,7 +55,7 @@ public class CoreExpansion extends PlaceholderExpansion {
     // Placeholders de jogador
     switch (params) {
       case "rank":
-        return Rank.getPlayerRank(player).getName();
+        return Rank.getRank(player).getName();
         
       case "cash":
         return StringUtils.formatNumber(CashManager.getCash(player));
