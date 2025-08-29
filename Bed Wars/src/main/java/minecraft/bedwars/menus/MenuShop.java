@@ -12,7 +12,7 @@ import minecraft.bedwars.hook.container.FavoritesContainer;
 import minecraft.bedwars.menus.cosmetics.MenuCosmetics;
 import minecraft.core.core.libraries.menu.PlayerMenu;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.enums.EnumSound;
 import org.bukkit.Material;

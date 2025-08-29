@@ -4,7 +4,7 @@ import minecraft.core.bukkit.Core;
 import minecraft.core.core.nms.NMS;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.hotbar.Hotbar;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.titles.TitleManager;
 import minecraft.bedwars.Language;
 import minecraft.bedwars.Main;

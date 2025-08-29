@@ -5,7 +5,7 @@ import minecraft.bedwars.game.BedWars;
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

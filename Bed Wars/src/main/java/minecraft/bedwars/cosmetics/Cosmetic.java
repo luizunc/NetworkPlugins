@@ -39,7 +39,6 @@ public abstract class Cosmetic {
   }
   
   public static void setupCosmetics() {
-    Cage.setupCages();
     KillEffect.setupEffects();
     ShopkeeperSkin.setupShopkeeperSkins();
     DeathCry.setupDeathCries();

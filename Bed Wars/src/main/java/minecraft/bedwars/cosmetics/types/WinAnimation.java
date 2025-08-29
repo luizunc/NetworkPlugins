@@ -10,7 +10,7 @@ import minecraft.bedwars.cosmetics.object.AbstractExecutor;
 import minecraft.bedwars.cosmetics.types.winanimations.*;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
@@ -141,7 +141,7 @@ public abstract class WinAnimation extends Cosmetic {
       isSelected = false;
       profile.getAbstractContainer("bedwars", "selected", SelectedContainer.class).setSelected(getType(), 0);
     }
-    Rank rank = Rank.getRankByPermission(this.getPermission());
+    Rank rank = Rank.getRoleByPermission(this.getPermission());
     String color = has ? (isSelected ? Language.cosmetics$color$selected : Language.cosmetics$color$unlocked)
         : (coins >= this.getCoins() || (CashManager.CASH && cash >= this.getCash())) && canBuy ? Language.cosmetics$color$canbuy : Language.cosmetics$color$locked;
     String desc = (has && canBuy ?

@@ -5,12 +5,10 @@ import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.bedwars.cosmetics.Cosmetic;
 import minecraft.bedwars.cosmetics.CosmeticType;
 import minecraft.bedwars.cosmetics.object.AbstractPreview;
-// CagePreview removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.object.preview.KillEffectPreview;
 import minecraft.bedwars.cosmetics.object.preview.ShopkeeperSkinPreview;
 import minecraft.bedwars.cosmetics.object.preview.WinAnimationPreview;
 import minecraft.bedwars.cosmetics.object.preview.BreakEffectPreview;
-// Cage removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.types.DeathCry;
 import minecraft.bedwars.cosmetics.types.DeathMessage;
 import minecraft.bedwars.cosmetics.types.KillEffect;
@@ -22,7 +20,7 @@ import minecraft.bedwars.menus.MenuShop.MenuCosmeticsPage;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.libraries.menu.PagedPlayerMenu;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumSound;
@@ -123,9 +121,6 @@ public class MenuCosmetics<T extends Cosmetic> extends PagedPlayerMenu {
                     message.append("\n \n");
                     player.sendMessage(message.toString());
                     
-                    return;
-                  } else if (cosmetic.getType() == CosmeticType.CAGE) {
-                    player.sendMessage("§cA funcionalidade de Cage foi removida do sistema.");
                     return;
                   } else if (cosmetic.getType() == CosmeticType.SHOPKEEPERSKIN) {
                     if (!AbstractPreview.canDoShopkeeperSkin()) {

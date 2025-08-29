@@ -9,7 +9,7 @@ import minecraft.core.core.game.GameState;
 import minecraft.core.core.libraries.npclib.NPCLibrary;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.enums.BloodAndGore;
-import minecraft.core.core.player.role.Rank;
+import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;

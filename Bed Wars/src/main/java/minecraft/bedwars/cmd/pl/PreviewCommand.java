@@ -1,7 +1,6 @@
 package minecraft.bedwars.cmd.pl;
 
 import minecraft.bedwars.cmd.SubCommand;
-// CagePreview removido - funcionalidade desabilitada
 import minecraft.bedwars.cosmetics.object.preview.KillEffectPreview;
 import minecraft.bedwars.cosmetics.object.preview.ShopkeeperSkinPreview;
 import minecraft.bedwars.cosmetics.object.preview.WinAnimationPreview;

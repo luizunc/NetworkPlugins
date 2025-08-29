@@ -7,7 +7,7 @@ import minecraft.bedwars.Language;
 import minecraft.bedwars.hook.container.SelectedContainer;
 import minecraft.bedwars.cosmetics.CosmeticType;
 
-// Cage removida - import não mais necessário
+
 import minecraft.bedwars.game.enums.BedWarsMode;
 import minecraft.bedwars.game.improvements.UpgradeType;
 import minecraft.bedwars.game.improvements.traps.Trap;
@@ -216,7 +216,6 @@ public class BedWarsTeam extends GameTeam {
     if (!isAlive()) {
       this.breakBed();
     }
-    this.breakCage();
   }
   
   @Override
@@ -301,13 +300,7 @@ public class BedWarsTeam extends GameTeam {
         || this.upgradeShop.getLocation().getBlock().getLocation().distance(block.getLocation()) < 3;
   }
   
-  public void buildCage(Object cage) {
-    // Cage removida - não faz mais nada
-  }
-  
-  public void breakCage() {
-    // Cage removida - não faz mais nada
-  }
+
   
   public int getTier(UpgradeType type) {
     return this.upgrades.getOrDefault(type, 0);

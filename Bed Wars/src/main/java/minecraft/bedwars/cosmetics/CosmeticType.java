@@ -3,7 +3,6 @@ package minecraft.bedwars.cosmetics;
 
 public enum CosmeticType {
   KILL_EFFECT("Efeitos de Abate"),
-  CAGE("Jaulas"),
   DEATH_CRY("Gritos de Morte"),
   //  PROJECTILE_EFFECT("Efeitos de Projétil"),
   FALL_EFFECT("Efeitos de Queda"),

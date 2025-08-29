@@ -496,12 +496,7 @@ public class Language {
   public static String cosmetics$death_message$icon$has_desc$start =
       "\n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n \n{has_desc_status}";
  
-  public static String cosmetics$cage$icon$perm_desc$start =
-      "§7Altere sua jaula para {name}.\n \n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n \n{perm_desc_status}";
-  public static String cosmetics$cage$icon$buy_desc$start =
-      "§7Altere sua jaula para {name}.\n \n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n§fCusto: §6{coins} Coins\n \n{buy_desc_status}";
-  public static String cosmetics$cage$icon$has_desc$start =
-      "§7Altere sua jaula para {name}.\n \n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n \n{has_desc_status}";
+
 
 
  

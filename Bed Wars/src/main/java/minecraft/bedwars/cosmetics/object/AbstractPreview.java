@@ -22,9 +22,7 @@ public abstract class AbstractPreview<T extends Cosmetic> extends BukkitRunnable
     return CONFIG.getSection("killeffect") != null && CONFIG.getSection("killeffect").getKeys(false).size() > 1;
   }
   
-  public static boolean canDoCage() {
-    return CONFIG.getSection("cage") != null && CONFIG.getSection("cage").getKeys(false).size() > 1;
-  }
+
   
   public static boolean canDoShopkeeperSkin() {
     return CONFIG.getSection("vendedor") != null && CONFIG.getSection("vendedor").getKeys(false).size() > 1;
