@@ -4,6 +4,7 @@ sharpnedswords:
   icon: 'DIAMOND_SWORD : 1 : esconder>tudo : nome>{color}Espadas Afiadas : desc>&7Seus aliados ganham Afiação I\n&7permanentemente em espadas e machados.\n \n&7Nível I: Afiação I, &b4 Diamantes'
   tiers:
     I: 'DIAMOND : 4'
+
 reinforcedarmor:
   slot: 11
   type: REINFORCED_ARMOR
@@ -13,6 +14,7 @@ reinforcedarmor:
     II: 'DIAMOND : 4'
     III: 'DIAMOND : 8'
     IV: 'DIAMOND : 16'
+
 maniacminer:
   slot: 12
   type: MANIAC_MINER
@@ -20,6 +22,7 @@ maniacminer:
   tiers:
     I: 'DIAMOND : 2'
     II: 'DIAMOND : 4'
+
 ironforge:
   slot: 13
   type: IRON_FORGE
@@ -29,12 +32,14 @@ ironforge:
     II: 'DIAMOND : 4'
     III: 'DIAMOND : 6'
     IV: 'DIAMOND : 8'
+
 heal:
   slot: 14
   type: REGENERATION
   icon: 'BEACON : 1 : nome>{color}Campo de regeneração : desc>&7Cria um campo de regeneração\n&7para aliados em sua ilha\n \n&7Nível I: Regeneração I, &b2 Diamantes'
   tiers:
     I: 'DIAMOND : 2'
+
 life_points:
   slot: 15
   type: LIFE_POINTS
@@ -42,6 +47,7 @@ life_points:
   tiers:
     I: 'DIAMOND : 2'
     II: 'DIAMOND : 4'
+
 trap:
   slot: 16
   icon: 'LEATHER : 1 : nome>&aComprar Armadilhas : desc>&7Armadilhas compradas serão colocadas\n&7na fila abaixo.\n \n&eClique para comprar!'

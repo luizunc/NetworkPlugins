@@ -8,6 +8,7 @@ chamas:
   name: 'Chamas'
   icon: 'BLAZE_POWDER : 1'
   particle: FLAME
+
 villager:
   id: 2
   coins: 15000.0

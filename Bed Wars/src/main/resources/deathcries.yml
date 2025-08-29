@@ -10,6 +10,7 @@ anvil:
   sound: ANVIL_BREAK
   volume: 1.0
   speed: 1.0
+
 enderman:
   id: 2
   coins: 3000.0
@@ -21,6 +22,7 @@ enderman:
   sound: ENDERMAN_DEATH
   volume: 1.0
   speed: 1.0
+
 aranha:
   id: 3
   coins: 3000.0
@@ -32,6 +34,7 @@ aranha:
   sound: SPIDER_DEATH
   volume: 1.0
   speed: 1.0
+
 pigman:
   id: 4
   coins: 3000.0
@@ -43,6 +46,7 @@ pigman:
   sound: ZOMBIE_PIG_DEATH
   volume: 1.0
   speed: 1.0
+
 uivo_de_lobo:
   id: 5
   coins: 5000.0
@@ -54,6 +58,7 @@ uivo_de_lobo:
   sound: WOLF_HOWL
   volume: 1.0
   speed: 1.0
+
 morcego:
   id: 7
   coins: 2500.0
@@ -65,6 +70,7 @@ morcego:
   sound: BAT_DEATH
   volume: 1.0
   speed: 1.0
+
 villager:
   id: 8
   coins: 4000.0
@@ -76,6 +82,7 @@ villager:
   sound: VILLAGER_DEATH
   volume: 1.0
   speed: 1.0
+
 fogos_de_artificio:
   id: 9
   coins: 1500.0
@@ -87,6 +94,7 @@ fogos_de_artificio:
   sound: FIREWORK_LAUNCH
   volume: 1.0
   speed: 1.0
+
 porco:
   id: 10
   coins: 4000.0
@@ -98,6 +106,7 @@ porco:
   sound: PIG_DEATH
   volume: 1.0
   speed: 1.0
+
 ossos_caindo:
   id: 11
   coins: 5000.0
@@ -109,6 +118,7 @@ ossos_caindo:
   sound: SKELETON_DEATH
   volume: 1.0
   speed: 1.0
+
 rage:
   id: 12
   coins: 4000.0
@@ -120,6 +130,7 @@ rage:
   sound: HORSE_DEATH
   volume: 1.0
   speed: 0.5
+
 portal:
   id: 13
   coins: 5000.0
@@ -131,6 +142,7 @@ portal:
   sound: PORTAL_TRAVEL
   volume: 1.0
   speed: 1.2
+
 mugido:
   id: 14
   coins: 4000.0
@@ -142,6 +154,7 @@ mugido:
   sound: COW_IDLE
   volume: 1.0
   speed: 1.0
+
 creeper:
   id: 15
   coins: 3000.0
@@ -153,6 +166,7 @@ creeper:
   sound: CREEPER_DEATH
   volume: 1.0
   speed: 1.0
+
 slime:
   id: 16
   coins: 3000.0
@@ -164,6 +178,7 @@ slime:
   sound: SLIME_ATTACK
   volume: 1.0
   speed: 1.0
+
 cave:
   id: 17
   coins: 4000.0
@@ -175,6 +190,7 @@ cave:
   sound: AMBIENCE_CAVE
   volume: 1.0
   speed: 1.0
+
 monkey:
   id: 18
   coins: 4000.0

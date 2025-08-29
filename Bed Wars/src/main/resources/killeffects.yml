@@ -5,7 +5,8 @@ explosive_sphere_3d:
   rarity: LENDÁRIO
   permission: 'role.vip'
   name: 'Esfera Explosiva'
-  icon: 'FIRE_CHARGE : 1 : desc>&7Cria uma esfera que\n&7explode em ondas de choque.'
+  icon: 'MAGMA_CREAM : 1 : desc>&7Cria uma esfera que\n&7explode em ondas de choque.'
+
 temporal_pyramid_3d:
   id: 3
   coins: 18000.0
@@ -14,6 +15,7 @@ temporal_pyramid_3d:
   permission: 'role.vip'
   name: 'Pirâmide Temporal'
   icon: 'WATCH : 1 : desc>&7Distorce o tempo com uma\n&7pirâmide tridimensional.'
+
 tornado_3d:
   id: 4
   coins: 10000.0
@@ -22,6 +24,7 @@ tornado_3d:
   permission: ''
   name: 'Tornado'
   icon: 'ICE : 1 : desc>&7Invoca um tornado\n&7tridimensional devastador.'
+
 crystal_3d:
   id: 5
   coins: 8000.0
@@ -30,6 +33,7 @@ crystal_3d:
   permission: ''
   name: 'Cristal'
   icon: 'DIAMOND : 1 : desc>&7Forma um cristal \n&7que explode em fragmentos.'
+
 portal_3d:
   id: 6
   coins: 14000.0

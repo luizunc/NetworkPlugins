@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class Thor extends WinAnimation {
   
   public Thor(ConfigurationSection section) {
-    super(section.getLong("id"), "cowboy", section.getDouble("coins"), section.getString("permission"), section.getString("name"), section.getString("icon"));
+    super(section.getLong("id"), "thor", section.getDouble("coins"), section.getString("permission"), section.getString("name"), section.getString("icon"));
   }
   
   public AbstractExecutor execute(Player player) {

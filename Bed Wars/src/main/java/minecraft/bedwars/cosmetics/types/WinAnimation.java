@@ -15,6 +15,7 @@ import minecraft.core.bukkit.plugin.config.KConfig;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.enums.EnumRarity;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -44,31 +45,13 @@ public abstract class WinAnimation extends Cosmetic {
   public static void setupAnimations() {
     checkIfAbsent("fireworks");
     checkIfAbsent("ender_dragon");
-    checkIfAbsent("cowboy");
     checkIfAbsent("thor");
-    checkIfAbsent("cart");
-    checkIfAbsent("rainbow");
-    checkIfAbsent("victoryheat");
-    checkIfAbsent("you");
-    checkIfAbsent("anvil");
-    checkIfAbsent("cake");
     checkIfAbsent("wither");
-    checkIfAbsent("zombie");
-    checkIfAbsent("tnt");
   
     new Fireworks(CONFIG.getSection("fireworks"));
     new EnderDragon(CONFIG.getSection("ender_dragon"));
-    new Cowboy(CONFIG.getSection("cowboy"));
     new Thor(CONFIG.getSection("thor"));
-    new Cart(CONFIG.getSection("cart"));
-    new ColoredSheep(CONFIG.getSection("rainbow"));
-    new You(CONFIG.getSection("you"));
-    new Anvil(CONFIG.getSection("anvil"));
-    new VictoryHeat(CONFIG.getSection("victoryheat"));
-    new Cake(CONFIG.getSection("cake"));
     new Wither(CONFIG.getSection("wither"));
-    new Zombie(CONFIG.getSection("zombie"));
-    new Tnt(CONFIG.getSection("tnt"));
   }
   
   private static void checkIfAbsent(String key) {
@@ -76,26 +59,68 @@ public abstract class WinAnimation extends Cosmetic {
       return;
     }
     
-    FileConfiguration config = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.getInstance().getResource("winanimations.yml"), StandardCharsets.UTF_8));
-    for (String dataKey : config.getConfigurationSection(key).getKeys(false)) {
-      CONFIG.set(key + "." + dataKey, config.get(key + "." + dataKey));
+    try {
+      FileConfiguration config = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.getInstance().getResource("winanimations.yml"), StandardCharsets.UTF_8));
+      
+      // Verificar se a seção existe antes de tentar acessá-la
+      if (!config.contains(key)) {
+        return;
+      }
+      
+      ConfigurationSection section = config.getConfigurationSection(key);
+      if (section == null) {
+        return;
+      }
+      
+      for (String dataKey : section.getKeys(false)) {
+        Object value = config.get(key + "." + dataKey);
+        if (value != null) {
+          CONFIG.set(key + "." + dataKey, value);
+        }
+      }
+    } catch (Exception e) {
+      // Log do erro mas não interromper a execução
+      Main.getInstance().getLogger().warning("Erro ao carregar configuração para " + key + ": " + e.getMessage());
     }
   }
   
   protected long getCash(String key) {
-    if (!CONFIG.contains(key + ".cash")) {
-      CONFIG.set(key + ".cash", getAbsentProperty("winanimations", key + ".cash"));
+    try {
+      if (!CONFIG.contains(key + ".cash")) {
+        Object value = getAbsentProperty("winanimations", key + ".cash");
+        if (value != null) {
+          CONFIG.set(key + ".cash", value);
+        } else {
+          CONFIG.set(key + ".cash", 0);
+        }
+      }
+      
+      return (long) CONFIG.getInt(key + ".cash");
+    } catch (Exception e) {
+      return 0;
     }
-    
-    return (long) CONFIG.getInt(key + ".cash");
   }
   
   protected EnumRarity getRarity(String key) {
-    if (!CONFIG.contains(key + ".rarity")) {
-      CONFIG.set(key + ".rarity", getAbsentProperty("winanimations", key + ".rarity"));
+    try {
+      if (!CONFIG.contains(key + ".rarity")) {
+        Object value = getAbsentProperty("winanimations", key + ".rarity");
+        if (value != null) {
+          CONFIG.set(key + ".rarity", value);
+        } else {
+          CONFIG.set(key + ".rarity", "COMUM");
+        }
+      }
+      
+      String rarityStr = CONFIG.getString(key + ".rarity");
+      if (rarityStr != null) {
+        return EnumRarity.fromName(rarityStr);
+      } else {
+        return EnumRarity.COMUM;
+      }
+    } catch (Exception e) {
+      return EnumRarity.COMUM;
     }
-    
-    return EnumRarity.fromName(CONFIG.getString(key + ".rarity"));
   }
   
   public abstract AbstractExecutor execute(Player player);

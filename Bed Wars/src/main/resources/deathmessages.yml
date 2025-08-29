@@ -9,6 +9,7 @@ alien:
   cash: 25
   messages:
     - '{name} &efoi abduzido por {killer}'
+
 amongus:
   id: 2
   name: 'Among Us'
@@ -20,6 +21,7 @@ amongus:
   messages:
     - '{name} &efoi morto pelo impostor {killer}'
     - '{name} &efoi morto de surpresa pelo impostor {killer}'
+
 alex:
   id: 3
   name: 'Alex Assassino'
@@ -32,6 +34,7 @@ alex:
     - '{killer} &efez {name} &ecair no conto do alex assasino...'
     - '{killer} &eusou seus poderes alex contra {name}'
     - '{killer} &enão teve piedade para matar {name}'
+
 churrasco:
   id: 4
   name: 'Churrasco'
@@ -43,6 +46,7 @@ churrasco:
   messages:
     - '{killer} &efez churrasco de {name}'
     - '{killer} &eesquentou {name} &etanto que ele morreu!'
+
 trapaça:
   id: 5
   name: 'Trapaça'
@@ -53,6 +57,7 @@ trapaça:
   cash: 55
   messages:
     - '{killer} &ematou {name} &ecom suas traquinagens'
+
 Luta:
   id: 6
   name: 'Luta'
@@ -65,6 +70,7 @@ Luta:
     - '{killer} &evenceu a luta contra {name}'
     - '{killer} &echamou {name} &ede LIXO!'
     - '{name} &efoi solado por {killer}'
+
 feiticeiro:
   id: 7
   name: 'Feiticeiro'
@@ -77,6 +83,7 @@ feiticeiro:
     - '{killer} &efez feitiços para matar {name}'
     - '{killer} &eusou poderes para conseguir matar {name}'
     - '{name} &enão aguentou os feitiços de {killer}'
+
 counterstrike:
   id: 8
   name: 'Counter-Strike'
@@ -89,6 +96,7 @@ counterstrike:
     - '{name} &etomou um headshot de {killer}'
     - '{name} &etomou um strike {killer}'
     - '{killer} &edeu um headshot em {name} &esem piedade.'
+
 distração:
   id: 9
   name: 'Distração'
@@ -101,6 +109,7 @@ distração:
     - '{killer} &ematou {name} &edestraído'
     - '{name} &emorreu de tanto susto por {killer}'
     - '{name} &ese destraiu e {killer} &epegou ele de surpresa!'
+
 susto:
   id: 10
   name: 'Susto'
@@ -113,6 +122,7 @@ susto:
     - '{name} &etomou um susto e foi morto por {killer}'
     - '{name} &emorreu assustador por {killer}'
     - '{name} &etomou um susto de {killer} &etão grande que não aguentou...'
+
 radiação:
   id: 11
   name: 'Radiação'

@@ -11,9 +11,9 @@ public class Language {
   public static final String LOGGER_PREFIX = "[LANGUAGE]";
   
   // Configurações de moedas e recompensas
-  public static int options$coins$wins = 50;
-  public static int options$coins$beds = 25;
-  public static int options$coins$kills = 5;
+  public static int options$coins$wins = 100;
+  public static int options$coins$beds = 40;
+  public static int options$coins$kills = 20;
   public static int options$start$waiting = 45;
   public static int options$start$full = 10;
   
@@ -56,7 +56,7 @@ public class Language {
           "§a§lBED WARS", "§a§lBED WARS", "§a§lBED WARS", "§a§lBED WARS", "§a§lBED WARS",
           "§a§lBED WARS", "§a§lBED WARS", "§a§lBED WARS", "§a§lBED WARS");
   public static String scoreboards$time$waiting = "Aguardando...";
-  public static String scoreboards$time$starting = "Iniciando em §a{time}s";
+  public static String scoreboards$time$starting = "Iniciando em §b{time}s";
   public static List<String> scoreboards$lobby = Arrays
       .asList("", " §eGeral", "  Vitorias: §a%Core_BedWars_wins%", "  Abates Finais: §a%Core_BedWars_finalkills%",
           "  Abates Gerais: §a%Core_BedWars_kills%", "", "  Camas Destr.: §a%Core_BedWars_beds%", "  Partidas: §a%Core_BedWars_games%", "",
@@ -69,7 +69,7 @@ public class Language {
           " {cyan}", " {white}", " {pink}", " {gray}", "", " §7www.hypemc.com", " ");
   
   // Chat
-  public static String chat$delay = "§cAguarde mais {time}s para falar novamente.";
+  public static String chat$delay = "§cAguarde {time}s para falar novamente.";
   public static String chat$color$default = "§7";
   public static String chat$color$custom = "§f";
   public static String chat$format$ingame$team = "{team} {player}{color}: {message}";
@@ -403,11 +403,11 @@ public class Language {
       .asList("§6Estatísticas", "Total de Eliminações: §7%Core_BedWars_kills%",
           "Total de Vitórias: §7%Core_BedWars_wins%", "§e§lCLIQUE DIREITO");
   public static List<String> lobby$npc$play$dupla$hologram = Arrays
-      .asList("§2Duplas", "§6{players} Jogadores");
+      .asList("§2§lDuplas", "§6§l{players} Jogadores");
   public static List<String> lobby$npc$play$solo$hologram = Arrays
-      .asList("§2Solo", "§6{players} Jogadores");
+      .asList("§2§lSolo", "§6§l{players} Jogadores");
   public static List<String> lobby$npc$play$quarteto$hologram = Arrays
-      .asList("§2Quartetos", "§6{players} Jogadores");
+      .asList("§2§lQuartetos", "§6§l{players} Jogadores");
 
   public static String lobby$npc$play$dupla$skin$value =
       "ewogICJ0aW1lc3RhbXAiIDogMTc0MDYxOTQwMjA5MSwKICAicHJvZmlsZUlkIiA6ICIyYjQ0MDlhZWRmOTE0ZWRmODM5MDEyNDgzZjQxZTEzNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJDYXJseHNBTSIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8zYjY2ZTE0OWJlMDhiNWRiOTMzYTgwMDE1NTc1NTZkMzM2MmNmNjVjYTcwNGNkYmE4ZTU3N2U2NjA0MGIzYjQ4IgogICAgfQogIH0KfQ==";
@@ -430,10 +430,10 @@ public class Language {
   
   public static String cosmetics$icon$perm_desc$common = "§cVocê não possui permissão.";
   public static String cosmetics$icon$perm_desc$role = "§7Exclusivo para {rank} §7ou superior.";
-  public static String cosmetics$icon$buy_desc$enough = "§cVocê não possui saldo suficiente.";
-  public static String cosmetics$icon$buy_desc$click_to_buy = "§eClique para comprar!";
-  public static String cosmetics$icon$has_desc$select = "§eClique para selecionar!";
-  public static String cosmetics$icon$has_desc$selected = "§eClique para deselecionar!";
+  public static String cosmetics$icon$buy_desc$enough = "§cSaldo insuficiente.";
+  public static String cosmetics$icon$buy_desc$click_to_buy = "§eClique para comprar.";
+  public static String cosmetics$icon$has_desc$select = "§aClique para selecionar.";
+  public static String cosmetics$icon$has_desc$selected = "§cClique para remover.";
   
   public static String cosmetics$kill_effect$icon$perm_desc$start = "\n \n§6Clique direito para ver!\n \n§fRaridade: {rarity}\n \n{perm_desc_status}";
   public static String cosmetics$kill_effect$icon$buy_desc$start =
