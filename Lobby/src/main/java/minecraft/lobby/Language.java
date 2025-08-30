@@ -35,7 +35,7 @@ public final class Language {
                     "§a§lHYPE MC", "§a§lHYPE MC", "§a§lHYPE MC", "§a§lHYPE MC");
     
     public static final List<String> scoreboards$lobby = Arrays
-            .asList("", "  Grupo: §a%Core_rank%", "  Cash: §b%Core_cash%", "", "  Jogadores: §a%Core_online%",
+            .asList("", "  Rank: §a%Core_rank%", "  Cash: §2%Core_cash%", "", "  Jogadores: §a%Core_online%",
                     "", "  §7www.hypemc.com", "");
     
     // Configurações do chat

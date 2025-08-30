@@ -1,0 +1,49 @@
+carvalho:
+  name: 'Tábuas de Carvalho'
+  item: 'WOOD : 1'
+
+pinheiro:
+  # ID único, não utilize IDs repetidos.
+  id: 1
+  coins: 1000.0
+  cash: 10
+  rarity: RARO
+  permission: ''
+  name: 'Pinheiro'
+  item: 'WOOD:1 : 1'
+
+betula:
+  id: 2
+  coins: 2000.0
+  cash: 15
+  rarity: RARO
+  permission: ''
+  name: 'Bétula'
+  item: 'WOOD:2 : 1'
+
+selva:
+  id: 3
+  coins: 3000.0
+  cash: 20
+  rarity: RARO
+  permission: ''
+  name: 'Selva'
+  item: 'WOOD:3 : 1'
+
+acacia:
+  id: 4
+  coins: 4000.0
+  cash: 25
+  rarity: RARO
+  permission: ''
+  name: 'Acácia'
+  item: 'WOOD:4 : 1'
+
+carvalho_escuro:
+  id: 5
+  coins: 5000.0
+  cash: 30
+  rarity: RARO
+  permission: ''
+  name: 'Carvalho Escuro'
+  item: 'WOOD:5 : 1'
