@@ -120,19 +120,26 @@ public class TagsCommandMenu extends PagedPlayerMenu {
                                 player.playSound(player.getLocation(), Sound.NOTE_BASS, 1.0f, 1.0f);
                                 return;
                             } else {
-                                // Atualizar o cache
+                                // IMPORTANTE: Atualizar APENAS a tag visual (SEM ALTERAR COLUNA RANK)
                                 minecraft.core.core.database.cache.TagCache.setCache(player.getName(), StringUtils.stripColors(rank.getName()), player.getName());
                                 
+                                // Aplicar APENAS a tag visual usando TagUtils (sem permissões)
                                 TagUtils.setTag(player, rank);
+                                
+                                // IMPORTANTE: Salvar APENAS na coluna tag (NUNCA na coluna rank)
                                 DataContainer container = profile.getDataContainer("account", "tag");
                                 container.set(StringUtils.stripColors(rank.getName()));
                                 profile.save();
                                 
-                                profile.getPlayer().sendMessage("§aVocê selecionou a tag " + rank.getName() + "§a.");
+                                // Enviar mensagem de confirmação
+                                player.sendMessage("§aTag visual alterada para " + rank.getName() + " §acom sucesso!");
+                                player.playSound(player.getLocation(), Sound.LEVEL_UP, 1.0f, 1.0f);
+                                
+                                // Fechar o menu
+                                player.closeInventory();
                             }
-                            profile.save();
-                            player.playSound(player.getLocation(), Sound.LEVEL_UP, 1.0f, 1.0f);
-                            new TagsCommandMenu(profile);
+                            // IMPORTANTE: NÃO fazer profile.save() duplicado
+                            // O profile já foi salvo acima
                         }
                     }
                 }

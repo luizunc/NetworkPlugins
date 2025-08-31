@@ -226,13 +226,13 @@ public class Profile {
   private void setLobbyState(Player player) {
     player.setGameMode(GameMode.ADVENTURE);
     player.teleport(Core.getLobby());
-          player.setAllowFlight(player.hasPermission("core.fly"));
+    player.setAllowFlight(player.hasPermission("core.fly"));
     
-            Rank playerRank = Rank.getRank(player, true);
-        this.getDataContainer("account", "rank").set(StringUtils.stripColors(playerRank.getName()));
-        
-        // Aplicar a tag selecionada no tab list
-        minecraft.core.core.utils.TagUtils.setTag(player, "", "", 0);
+    // IMPORTANTE: NÃO alterar a coluna rank automaticamente
+    // A coluna rank deve ser preservada e nunca alterada por este método
+    
+    // Aplicar a tag selecionada no tab list
+    minecraft.core.core.utils.TagUtils.setTag(player, "", "", 0);
   }
   
   /**

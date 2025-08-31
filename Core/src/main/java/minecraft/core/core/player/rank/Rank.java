@@ -84,7 +84,8 @@ public class Rank {
 
         Object target = Manager.getPlayer(name);
         if (target != null) {
-            // Verificar cache primeiro (como no aCore)
+            // IMPORTANTE: Verificar APENAS a tag selecionada (coluna tag)
+            // NUNCA usar rank ou permissões para determinar a tag visual
             String currentTag = TagCache.isPresent(Manager.getName(target)) ? TagCache.get(Manager.getName(target)) : null;
             if (currentTag != null) {
                 Rank role = getRoleByName(currentTag.split(" : ")[0]);
@@ -98,28 +99,20 @@ public class Rank {
                     String selectedTag = profile.getDataContainer("account", "tag").getAsString();
                     if (selectedTag != null && !selectedTag.isEmpty()) {
                         Rank role = getRoleByName(selectedTag);
-                        if (role != null && role.has(target)) {
+                        if (role != null) {
+                            // IMPORTANTE: NÃO verificar permissões - tags são apenas visuais
                             prefix = role.getPrefix();
                         } else {
-                            // Se a tag selecionada não é válida, usar o rank mais alto
-                            Rank highestRank = getRank(target, removeNick);
-                            if (highestRank != null) {
-                                prefix = highestRank.getPrefix();
-                            }
+                            // Se a tag selecionada não é válida, usar rank padrão (Membro) apenas para aparência
+                            prefix = getLastRole().getPrefix();
                         }
                     } else {
-                        // Se não tem tag selecionada, usar o rank mais alto
-                        Rank highestRank = getRank(target, removeNick);
-                        if (highestRank != null) {
-                            prefix = highestRank.getPrefix();
-                        }
+                        // Se não tem tag selecionada, usar rank padrão (Membro) apenas para aparência
+                        prefix = getLastRole().getPrefix();
                     }
                 } else {
-                    // Se não tem profile, usar o rank mais alto
-                    Rank highestRank = getRank(target, removeNick);
-                    if (highestRank != null) {
-                        prefix = highestRank.getPrefix();
-                    }
+                    // Se não tem profile, usar rank padrão (Membro) apenas para aparência
+                    prefix = getLastRole().getPrefix();
                 }
             }
             
@@ -197,6 +190,30 @@ public class Rank {
     public static Rank getRank(Object player) {
         return getRank(player, false);
     }
+    /**
+     * Obtém o rank REAL do jogador baseado APENAS nas permissões.
+     * IMPORTANTE: Este método NUNCA considera tags visuais.
+     * É usado para determinar permissões reais do jogador.
+     * 
+     * @param player Jogador
+     * @return Rank real baseado nas permissões
+     */
+    public static Rank getRealRank(Object player) {
+        if (Manager.isNick(Manager.getName(player))) {
+            return Manager.getNickRole(Manager.getName(player));
+        }
+
+        // Para rank REAL, sempre retorna a tag mais alta baseada APENAS nas permissões
+        // NUNCA considera cache de tags ou tags selecionadas
+        for (Rank role : ROLES) {
+            if (role.has(player)) {
+                return role;
+            }
+        }
+
+        return getLastRole();
+    }
+
     public static Rank getRank(Object player, boolean removeNick) {
         if (!removeNick && Manager.isNick(Manager.getName(player))) {
             return Manager.getNickRole(Manager.getName(player));

@@ -58,40 +58,42 @@ public class TagUtils {
             // Se tem no cache, usar a tag do cache
             role = Rank.getRoleByName(currentTag.split(" : ")[0]);
         } else {
-            // Se não tem no cache, verificar a tag selecionada no profile
+            // IMPORTANTE: Verificar APENAS a tag selecionada (coluna tag)
+            // NUNCA usar rank ou permissões para determinar a tag visual
             if (profile != null) {
                 String selectedTag = profile.getDataContainer("account", "tag").getAsString();
                 if (selectedTag != null && !selectedTag.isEmpty()) {
                     role = Rank.getRoleByName(selectedTag);
-                    // Verificar se o jogador tem permissão para a tag
-                    if (role != null && !role.has(player)) {
-                        // Se não tem permissão, usar o rank mais alto
-                        role = Rank.getRank(player);
-                    }
+                    // IMPORTANTE: NÃO verificar permissões - tags são apenas visuais
                 } else {
-                    // Se não tem tag selecionada, usar o rank mais alto
-                    role = Rank.getRank(player);
+                    // Se não tem tag selecionada, usar rank padrão (Membro) apenas para aparência
+                    role = Rank.getLastRole();
                 }
             } else {
-                // Se não tem profile, usar o rank mais alto
-                role = Rank.getRank(player);
+                // Se não tem profile, usar rank padrão (Membro) apenas para aparência
+                role = Rank.getLastRole();
             }
         }
         
         if (role == null) {
-            role = Rank.getLastRole(); // Fallback para Membro
+            role = Rank.getLastRole(); // Fallback para Membro (apenas visual)
         }
         
+        // Aplicar APENAS a tag visual (sem afetar permissões ou coluna rank)
         setTag(player.getName(), role.getPrefix(), medalSuffix, role.getId());
     }
 
     public static void setMedal(Player player, Medal medal) {
+        // IMPORTANTE: Este método é APENAS para aparência visual
+        // NUNCA deve interferir na coluna rank ou permissões
+        
         Profile profile = Profile.getProfile(player.getName());
         String prefix = "";
         String suffix = medal.getSuffix();
 
         if (profile != null) {
-            // Pegar a tag selecionada
+            // IMPORTANTE: Pegar APENAS a tag selecionada (coluna tag)
+            // NUNCA usar rank ou permissões para determinar a tag visual
             String selectedTag = profile.getDataContainer("account", "tag").getAsString();
             if (selectedTag != null && !selectedTag.isEmpty()) {
                 Rank role = Rank.getRoleByName(selectedTag);
@@ -99,18 +101,22 @@ public class TagUtils {
                     prefix = role.getPrefix();
                 }
             } else {
-                // Se não tem tag selecionada, usar o rank mais alto
-                Rank highestRank = Rank.getRank(player);
-                if (highestRank != null) {
-                    prefix = highestRank.getPrefix();
+                // Se não tem tag selecionada, usar rank padrão (Membro) apenas para aparência
+                Rank defaultRank = Rank.getLastRole();
+                if (defaultRank != null) {
+                    prefix = defaultRank.getPrefix();
                 }
             }
         }
-
+        
+        // Aplicar APENAS a medalha visual (sem afetar permissões ou coluna rank)
         setTag(player.getName(), prefix, suffix, -1);
     }
 
     public static void setTag(Player player, Rank role) {
+        // IMPORTANTE: Este método é APENAS para aparência visual
+        // NUNCA deve interferir na coluna rank ou permissões
+        
         // Preservar a medalha selecionada
         String suffix = "";
         Profile profile = Profile.getProfile(player.getName());
@@ -123,6 +129,8 @@ public class TagUtils {
                 }
             }
         }
+        
+        // Aplicar APENAS a tag visual (sem afetar permissões ou coluna rank)
         setTag(player.getName(), role.getPrefix(), suffix, role.getId());
     }
 
@@ -267,5 +275,42 @@ public class TagUtils {
 
     private static void addPlayerToTeamPackets(NickTeam nickTeam, String player) {
         (new Wrapper(nickTeam.getName(), 3, Collections.singletonList(player))).send();
+    }
+
+    public static void setTag(Player player) {
+        // IMPORTANTE: Este método é APENAS para aparência visual
+        // NUNCA deve interferir na coluna rank ou permissões
+        
+        Profile profile = Profile.getProfile(player.getName());
+        Rank role = null;
+        String medalSuffix = "";
+
+        // Obter medalha selecionada (se houver)
+        if (profile != null) {
+            String selectedMedal = profile.getDataContainer("account", "medalha").getAsString();
+            if (selectedMedal != null && !selectedMedal.isEmpty()) {
+                Medal medal = Medal.getMedalByName(selectedMedal);
+                if (medal != null) {
+                    medalSuffix = medal.getSuffix();
+                }
+            }
+        }
+        
+        // IMPORTANTE: Verificar APENAS a tag selecionada (coluna tag)
+        // NUNCA usar rank ou permissões para determinar a tag visual
+        if (profile != null) {
+            String selectedTag = profile.getDataContainer("account", "tag").getAsString();
+            if (selectedTag != null && !selectedTag.isEmpty()) {
+                role = Rank.getRoleByName(selectedTag);
+            }
+        }
+        
+        // Se não tem tag selecionada, usar rank padrão (Membro) apenas para aparência
+        if (role == null) {
+            role = Rank.getLastRole(); // Fallback para Membro (apenas visual)
+        }
+        
+        // Aplicar APENAS a tag visual (sem afetar permissões ou coluna rank)
+        setTag(player.getName(), role.getPrefix(), medalSuffix, role.getId());
     }
 }

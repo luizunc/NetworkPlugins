@@ -1,9 +1,9 @@
 package minecraft.core.bukkit.cmd;
 
+import minecraft.core.core.database.cache.TagCache;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.player.rank.RankManager;
-import minecraft.core.core.database.cache.TagCache;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -18,9 +18,8 @@ import org.bukkit.entity.Player;
  */
 public class SetRankCommand extends Commands {
 
-    // Constantes
+    // Permissões
     private static final String PERMISSION_SETRANK = "rank.admin";
-    private static final String PERMISSION_ADMIN = "rank.admin";
     
     // Mensagens
     private static final String MSG_NO_PERMISSION = "§cVocê não tem permissão para usar este comando!";
@@ -29,7 +28,6 @@ public class SetRankCommand extends Commands {
     private static final String MSG_PLAYER_NOT_FOUND = "§cJogador não encontrado!";
     private static final String MSG_RANK_SET = "§aRank definido com sucesso!";
     private static final String MSG_RANK_REMOVED = "§aRank removido com sucesso!";
-    private static final String MSG_RANK_LIST = "§eRanks disponíveis:";
 
     public SetRankCommand() {
         super("setrank", "setarrank", "definirrank");
@@ -49,42 +47,29 @@ public class SetRankCommand extends Commands {
             return;
         }
 
-        // Comando para listar ranks disponíveis
-        if (args[0].equalsIgnoreCase("list")) {
-            listAvailableRanks(sender);
-            return;
-        }
-
-        // Verificar se tem argumentos suficientes
-        if (args.length < 2) {
-            sender.sendMessage(MSG_USAGE);
-            return;
-        }
-
-        String rankName = args[0];
-        String playerName = args[1];
-
         // Verificar se o rank existe
-        Rank rank = Rank.getRoleByName(rankName);
+        Rank rank = Rank.getRoleByName(args[0]);
         if (rank == null) {
             sender.sendMessage(MSG_RANK_NOT_FOUND);
             return;
         }
 
-        // Verificar se o jogador existe
-        Player targetPlayer = Bukkit.getPlayerExact(playerName);
-        if (targetPlayer == null) {
-            // Verificar se é um jogador offline
-            if (Bukkit.getOfflinePlayer(playerName).hasPlayedBefore()) {
-                setRankOffline(sender, playerName, rank);
-            } else {
-                sender.sendMessage(MSG_PLAYER_NOT_FOUND);
-            }
+        // Verificar se o jogador foi especificado
+        if (args.length < 2) {
+            sender.sendMessage(MSG_USAGE);
             return;
         }
 
-        // Definir rank para jogador online
-        setRankOnline(sender, targetPlayer, rank);
+        String targetPlayerName = args[1];
+        Player targetPlayer = Bukkit.getPlayer(targetPlayerName);
+
+        if (targetPlayer != null) {
+            // Jogador online
+            setRankOnline(sender, targetPlayer, rank);
+        } else {
+            // Jogador offline
+            setRankOffline(sender, targetPlayerName, rank);
+        }
     }
 
     /**
@@ -95,11 +80,15 @@ public class SetRankCommand extends Commands {
             // Obter o profile do jogador
             Profile profile = Profile.createOrLoadProfile(targetPlayer.getName());
             
-            // Definir o rank no profile
-            profile.getDataContainer("account", "tag").set(rank.getName());
+            // Definir o rank no profile (sem cores para salvar no banco)
+            String cleanRankName = StringUtils.stripColors(rank.getName());
+            profile.getDataContainer("account", "rank").set(cleanRankName);
             
             // Aplicar o rank usando o RankManager (inclui permissões)
             RankManager.applyRank(targetPlayer, rank);
+            
+            // Salvar o profile no banco de dados para persistir o rank
+            profile.save();
             
             // Enviar mensagens de confirmação
             sender.sendMessage(MSG_RANK_SET + " §7" + targetPlayer.getName() + " §7agora é " + rank.getName());
@@ -125,11 +114,15 @@ public class SetRankCommand extends Commands {
             // Obter o profile do jogador offline
             Profile profile = Profile.createOrLoadProfile(playerName);
             
-            // Definir o rank no profile
-            profile.getDataContainer("account", "tag").set(rank.getName());
+            // Definir o rank no profile (sem cores para salvar no banco)
+            String cleanRankName = StringUtils.stripColors(rank.getName());
+            profile.getDataContainer("account", "rank").set(cleanRankName);
             
             // Atualizar o cache de tags (para jogadores offline, só salvamos no profile)
-            TagCache.setCache(playerName, rank.getName(), playerName);
+            TagCache.setCache(playerName, cleanRankName, playerName);
+            
+            // Salvar o profile no banco de dados para persistir o rank
+            profile.save();
             
             // Enviar mensagem de confirmação
             sender.sendMessage(MSG_RANK_SET + " §7" + playerName + " §7agora é " + rank.getName() + " §7(offline)");
@@ -138,24 +131,5 @@ public class SetRankCommand extends Commands {
             sender.sendMessage("§cErro ao definir rank: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Lista todos os ranks disponíveis.
-     */
-    private void listAvailableRanks(CommandSender sender) {
-        sender.sendMessage(MSG_RANK_LIST);
-        
-        for (Rank rank : Rank.listRoles()) {
-            // Pular ranks especiais (tags de eventos)
-            if (rank.getPermission().startsWith("tag.")) {
-                continue;
-            }
-            
-            String rankInfo = "§7▪ " + rank.getName() + " §7(" + rank.getPermission() + ")";
-            sender.sendMessage(rankInfo);
-        }
-        
-        sender.sendMessage("§cUso: /setrank <rank> <jogador>");
     }
 } 
