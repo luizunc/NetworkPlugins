@@ -64,6 +64,7 @@ public class Listeners implements Listener {
    */
   public static void setupListeners() {
     Bukkit.getPluginManager().registerEvents(new Listeners(), Core.getInstance());
+    Bukkit.getPluginManager().registerEvents(new RankListener(), Core.getInstance());
   }
   
   // Eventos de login/logout

@@ -1,12 +1,6 @@
-# Informações do plugin
-author: LuizOtimizador
-name: ${project.artifactId}
-version: ${project.version}
-
-# Dependências obrigatórias
-depend: 
-  - ProtocolLib
-  - PlaceholderAPI
-
-# Classe principal do plugin
-main: ${main-bukkit}
+name: Core
+version: 1.0
+main: minecraft.core.bukkit.Core
+api-version: 1.8
+description: Sistema Core para servidores Minecraft
+author: Luiz
