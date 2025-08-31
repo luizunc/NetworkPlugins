@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 public class CashCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_CASH = "core.cmd.cash";
+    private static final String PERMISSION_CASH = "rank.admin";
     private static final String ACTION_SET = "set";
     private static final String ACTION_ADD = "add";
     private static final String ACTION_REMOVE = "remove";

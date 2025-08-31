@@ -15,7 +15,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 public class NickResetCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_NICK = "core.cmd.nick";
+    private static final String PERMISSION_NICK = "rank.partner";
     
     // Mensagens
     private static final String MSG_PLAYERS_ONLY = "§cApenas jogadores podem utilizar este comando.";

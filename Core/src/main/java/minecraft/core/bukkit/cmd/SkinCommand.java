@@ -22,7 +22,7 @@ public class SkinCommand extends Commands {
         }
 
         Player player = (Player) sender;
-        if (!player.hasPermission("rank.vip")) {
+        if (!player.hasPermission("rank.iron")) {
             player.sendMessage("§cVocê precisa do VIP para usar este comando.");
             return;
         }

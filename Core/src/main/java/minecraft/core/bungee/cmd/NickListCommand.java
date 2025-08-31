@@ -17,7 +17,7 @@ import java.util.List;
 public class NickListCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_MOD = "core.mod";
+    private static final String PERMISSION_MOD = "rank.mod";
     
     // Mensagens
     private static final String MSG_PLAYERS_ONLY = "§cApenas jogadores podem utilizar este comando.";

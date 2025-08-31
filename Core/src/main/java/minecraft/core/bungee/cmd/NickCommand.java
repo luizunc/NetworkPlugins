@@ -16,7 +16,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 public class NickCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_NICK = "core.cmd.nick";
+    private static final String PERMISSION_NICK = "rank.partner";
     private static final String DEFAULT_ROLE = "Membro";
     
     // Mensagens

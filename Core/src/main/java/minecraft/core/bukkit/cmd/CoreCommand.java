@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class CoreCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_ADMIN = "core.admin";
+    private static final String PERMISSION_ADMIN = "rank.admin";
     
     // Mensagens
     private static final String MSG_VERSION = "§6Core §bv%s §7Criado por §6Luiz§7.";

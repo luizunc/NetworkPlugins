@@ -18,9 +18,9 @@ import java.util.List;
 public class NickCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_NICK = "core.cmd.nick";
-    private static final String PERMISSION_NICKLIST = "core.cmd.nicklist";
-    private static final String PERMISSION_MOD = "core.mod";
+    private static final String PERMISSION_NICK = "rank.partner";
+    private static final String PERMISSION_NICKLIST = "rank.mod";
+    private static final String PERMISSION_MOD = "rank.mod";
     private static final String DEFAULT_RANK = "Membro";
     
     // Labels dos comandos
