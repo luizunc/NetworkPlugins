@@ -23,37 +23,38 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
 /**
- * Classe principal do plugin Core para BungeeCord
- * Gerencia funcionalidades de fake names, roles e skins
+ * Classe principal do BungeeCord para o sistema Core.
+ * Gerencia funcionalidades de nick names, roles e skins
+ * 
+ * @author Luiz
+ * @version 1.0
  */
 public class Bungee extends Plugin {
   
   // Constantes
-  public static final String STEVE =
-      "eyJ0aW1lc3RhbXAiOjE1ODcxNTAzMTc3MjAsInByb2ZpbGVJZCI6IjRkNzA0ODZmNTA5MjRkMzM4NmJiZmM5YzEyYmFiNGFlIiwicHJvZmlsZU5hbWUiOiJzaXJGYWJpb3pzY2hlIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xYTRhZjcxODQ1NWQ0YWFiNTI4ZTdhNjFmODZmYTI1ZTZhMzY5ZDE3NjhkY2IxM2Y3ZGYzMTlhNzEzZWI4MTBiIn19fQ==:syZ2Mt1vQeEjh/t8RGbv810mcfTrhQvnwEV7iLCd+5udVeroTa5NjoUehgswacTML3k/KxHZHaq4o6LmACHwsj/ivstW4PWc2RmVn+CcOoDKI3ytEm70LvGz0wAaTVKkrXHSw/RbEX/b7g7oQ8F67rzpiZ1+Z3TKaxbgZ9vgBQZQdwRJjVML2keI0669a9a1lWq3V/VIKFZc1rMJGzETMB2QL7JVTpQFOH/zXJGA+hJS5bRol+JG3LZTX93+DililM1e8KEjKDS496DYhMAr6AfTUfirLAN1Jv+WW70DzIpeKKXWR5ZeI+9qf48+IvjG8DhRBVFwwKP34DADbLhuebrolF/UyBIB9sABmozYdfit9uIywWW9+KYgpl2EtFXHG7CltIcNkbBbOdZy0Qzq62Tx6z/EK2acKn4oscFMqrobtioh5cA/BCRb9V4wh0fy5qx6DYHyRBdzLcQUfb6DkDx1uyNJ7R5mO44b79pSo8gdd9VvMryn/+KaJu2UvyCrMVUtOOzoIh4nCMc9wXOFW3jZ7ZTo4J6c28ouL98rVQSAImEd/P017uGvWIT+hgkdXnacVG895Y6ilXqJToyvf1JUQb4dgry0WTv6UTAjNgrm5a8mZx9OryLuI2obas97LCon1rydcNXnBtjUk0TUzdrvIa5zNstYZPchUb+FSnU=";
-  public static final String ALEX =
-      "eyJ0aW1lc3RhbXAiOjE1ODcxMzkyMDU4MzUsInByb2ZpbGVJZCI6Ijc1MTQ0NDgxOTFlNjQ1NDY4Yzk3MzlhNmUzOTU3YmViIiwicHJvZmlsZU5hbWUiOiJUaGFua3NNb2phbmciLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzNiNjBhMWY2ZDU2MmY1MmFhZWJiZjE0MzRmMWRlMTQ3OTMzYTNhZmZlMGU3NjRmYTQ5ZWEwNTc1MzY2MjNjZDMiLCJtZXRhZGF0YSI6eyJtb2RlbCI6InNsaW0ifX19fQ==:W60UUuAYlWfLFt5Ay3Lvd/CGUbKuuU8+HTtN/cZLhc0BC22XNgbY1btTite7ZtBUGiZyFOhYqQi+LxVWrdjKEAdHCSYWpCRMFhB1m0zEfu78yg4XMcFmd1v7y9ZfS45b3pLAJ463YyjDaT64kkeUkP6BUmgsTA2iIWvM33k6Tj3OAM39kypFSuH+UEpkx603XtxratD+pBjUCUvWyj2DMxwnwclP/uACyh0ZVrI7rC5xJn4jSura+5J2/j6Z/I7lMBBGLESt7+pGn/3/kArDE/1RShOvm5eYKqrTMRfK4n3yd1U1DRsMzxkU2AdlCrv1swT4o+Cq8zMI97CF/xyqk8z2L98HKlzLjtvXIE6ogljyHc9YsfU9XhHwZ7SKXRNkmHswOgYIQCSa1RdLHtlVjN9UdUyUoQIIO2AWPzdKseKJJhXwqKJ7lzfAtStErRzDjmjr7ld/5tFd3TTQZ8yiq3D6aRLRUnOMTr7kFOycPOPhOeZQlTjJ6SH3PWFsdtMMQsGzb2vSukkXvJXFVUM0TcwRZlqT5MFHyKBBPprIt0wVN6MmSKc8m5kdk7ZBU2ICDs/9Cd/fyzAIRDu3Kzm7egbAVK9zc1kXwGzowUkGGy1XvZxyRS5jF1zu6KzVgaXOGcrOLH4z/OHzxvbyW22/UwahWGN7MD4j37iJ7gjZDrk=";
+  private static final String STEVE = "eyJ0aW1lc3RhbXAiOjE1ODcxNTAzMTc3MjAsInByb2ZpbGVJZCI6IjRkNzA0ODZmNTA5MjRkMzM4NmJiZmM5YzEyYmFiNGFlIiwicHJvZmlsZU5hbWUiOiJzaXJGYWJpb3pzY2hlIiwic2lnbmF0dXJlUmVxdWlyZWRJOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xYTRhZjcxODQ1NWQ0YWFiNTI4ZTdhNjFmODZmYTI1ZTZhMzY5ZDE3NjhkY2IxM2Y3ZGYzMTlhNzEzZWI4MTBiIn19fQ==";
+  private static final String ALEX = "eyJ0aW1lc3RhbXAiOjE1ODcxMzkyMDU4MzUsInByb2ZpbGVJZCI6Ijc1MTQ0NDgxOTFlNjQ1NDY4Yzk3MzlhNmUzOTU3YmViIiwicHJvZmlsZU5hbWUiOiJUaGFua3NNb2phbmciLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzNiNjBhMWY2ZDU2MmY1MmFhZWJiZjE0MzRmMWRlMTQ3OTMzYTNhZmZlMGU3NjRmYTQ5ZWEwNTc1MzY2MjNjZDMiLCJtZXRhZGF0YSI6eyJtb2RlbCI6InNsaW0ifX19fQ==";
   
-  // Canais de plugin
+  // Subcanais para comunicação
   private static final String CORE_CHANNEL = "Core";
-  private static final String FAKE_BOOK_SUBCHANNEL = "FAKE_BOOK";
-  private static final String FAKE_BOOK2_SUBCHANNEL = "FAKE_BOOK2";
+  private static final String NICK_BOOK_SUBCHANNEL = "NICK_BOOK";
+  private static final String NICK_BOOK2_SUBCHANNEL = "NICK_BOOK2";
   
-  // Instância singleton
-  private static volatile Bungee instance;
+  // Instância única
+  private static Bungee instance;
   
-      // Maps thread-safe para fake names, ranks e skins
-    private static final Map<String, String> fakeNames = new ConcurrentHashMap<>();
-    private static final Map<String, Rank> fakeRanks = new ConcurrentHashMap<>();
-  private static final Map<String, String> fakeSkins = new ConcurrentHashMap<>();
+  // Maps thread-safe para nick names, ranks e skins
+  private static final Map<String, String> nickNames = new ConcurrentHashMap<>();
+  private static final Map<String, Rank> nickRanks = new ConcurrentHashMap<>();
+  private static final Map<String, String> nickSkins = new ConcurrentHashMap<>();
   
   // Cache de nomes aleatórios
   private static volatile List<String> randoms;
   
-  // Configurações internas
-      private static final List<String> FAKE_RANKS_LIST = Arrays.asList("Membro", "VIP", "MVP");
-  private static final String KICK_APPLY_MESSAGE = "§cVocê foi desconectado para aplicar o fake.";
-  private static final String KICK_REMOVE_MESSAGE = "§cVocê foi desconectado para remover o fake.";
+  // Configurações
+  private static final List<String> NICK_RANKS_LIST = Arrays.asList("Membro", "VIP", "MVP");
+  private static final String KICK_APPLY_MESSAGE = "§cVocê foi desconectado para aplicar o nick.";
+  private static final String KICK_REMOVE_MESSAGE = "§cVocê foi desconectado para remover o nick.";
   
   // Configurações
   private volatile Configuration config;
@@ -80,7 +81,7 @@ public class Bungee extends Plugin {
     
     try {
       ByteArrayDataOutput out = ByteStreams.newDataOutput();
-      out.writeUTF(FAKE_BOOK_SUBCHANNEL);
+      out.writeUTF(NICK_BOOK_SUBCHANNEL);
       out.writeUTF(player.getName());
       if (sound != null) {
         out.writeUTF(sound);
@@ -105,7 +106,7 @@ public class Bungee extends Plugin {
     
     try {
       ByteArrayDataOutput out = ByteStreams.newDataOutput();
-      out.writeUTF(FAKE_BOOK2_SUBCHANNEL);
+      out.writeUTF(NICK_BOOK2_SUBCHANNEL);
       out.writeUTF(player.getName());
       out.writeUTF(roleName);
       if (sound != null) {
@@ -118,117 +119,120 @@ public class Bungee extends Plugin {
   }
 
   /**
-   * Aplica fake name para um jogador
+   * Aplica nick name para um jogador
    * 
-   * @param player Jogador alvo
-   * @param fakeName Nome fake
-   * @param role Role fake
-   * @param skin Skin fake
+   * @param player Jogador que receberá o nick
+   * @param nickName Nome nick
+   * @param role Role nick
+   * @param skin Skin nick
    */
-  public static void applyFake(ProxiedPlayer player, String fakeName, String role, String skin) {
-    if (player == null || !player.isConnected()) {
-      return;
-    }
-    
+  public static void applyNick(ProxiedPlayer player, String nickName, String role, String skin) {
     try {
-      player.disconnect(TextComponent.fromLegacyText(KICK_APPLY_MESSAGE));
-      
       String playerName = player.getName();
-      fakeNames.put(playerName, fakeName);
-              fakeRanks.put(playerName, Rank.getRankByName(role));
-      fakeSkins.put(playerName, skin);
+      
+      // Aplica o nick
+      nickNames.put(playerName, nickName);
+      nickRanks.put(playerName, Rank.getRankByName(role));
+      nickSkins.put(playerName, skin);
+      
+      // Desconecta o jogador para aplicar as mudanças
+      player.disconnect(new TextComponent(KICK_APPLY_MESSAGE));
       
     } catch (Exception e) {
-      getInstance().getLogger().log(Level.WARNING, "Erro ao aplicar fake para " + player.getName(), e);
-    }
-  }
-
-  /**
-   * Remove fake name de um jogador
-   * 
-   * @param player Jogador alvo
-   */
-  public static void removeFake(ProxiedPlayer player) {
-    if (player == null || !player.isConnected()) {
-      return;
-    }
-    
-    try {
-      player.disconnect(TextComponent.fromLegacyText(KICK_REMOVE_MESSAGE));
-      
-      String playerName = player.getName();
-      fakeNames.remove(playerName);
-              fakeRanks.remove(playerName);
-      fakeSkins.remove(playerName);
-      
-    } catch (Exception e) {
-      getInstance().getLogger().log(Level.WARNING, "Erro ao remover fake de " + player.getName(), e);
+      getInstance().getLogger().log(Level.WARNING, "Erro ao aplicar nick para " + player.getName(), e);
     }
   }
   
   /**
-   * Obtém o nome atual de um jogador (real ou fake)
+   * Remove nick name de um jogador
+   * 
+   * @param player Jogador que terá o nick removido
+   */
+  public static void removeNick(ProxiedPlayer player) {
+    try {
+      String playerName = player.getName();
+      
+      // Remove o nick
+      nickNames.remove(playerName);
+      nickRanks.remove(playerName);
+      nickSkins.remove(playerName);
+      
+      // Desconecta o jogador para aplicar as mudanças
+      player.disconnect(new TextComponent(KICK_REMOVE_MESSAGE));
+      
+    } catch (Exception e) {
+      getInstance().getLogger().log(Level.WARNING, "Erro ao remover nick de " + player.getName(), e);
+    }
+  }
+  
+  /**
+   * Obtém o nome atual de um jogador (real ou nick)
    * 
    * @param playerName Nome do jogador
-   * @return Nome atual
+   * @return Nome atual do jogador
    */
   public static String getCurrent(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return null;
     }
-    return isFake(playerName) ? getFake(playerName) : playerName;
+    
+    return isNick(playerName) ? getNick(playerName) : playerName;
   }
   
   /**
-   * Obtém o nome fake de um jogador
+   * Obtém o nome nick de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Nome fake ou null
+   * @return Nome nick ou null
    */
-  public static String getFake(String playerName) {
+  public static String getNick(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return null;
     }
-    return fakeNames.get(playerName);
+    
+    return nickNames.get(playerName);
   }
   
   /**
-   * Obtém o rank fake de um jogador
+   * Obtém o rank nick de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Role fake ou rank padrão
+   * @return Role nick ou rank padrão
    */
-      public static Rank getRank(String playerName) {
+  public static Rank getRank(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
-              return Rank.getLastRole();
+      return Rank.getLastRole();
     }
-                          return fakeRanks.getOrDefault(playerName, Rank.getLastRole());
+    
+    return nickRanks.getOrDefault(playerName, Rank.getLastRole());
   }
   
   /**
-   * Obtém a skin fake de um jogador
+   * Obtém a skin nick de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Skin fake ou skin padrão
+   * @return Skin nick ou skin padrão
    */
   public static String getSkin(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return STEVE;
     }
-    return fakeSkins.getOrDefault(playerName, STEVE);
+    
+    return nickSkins.getOrDefault(playerName, STEVE);
   }
   
   /**
-   * Verifica se um jogador está usando nome fake
+   * Verifica se um jogador está usando nome nick
    * 
    * @param playerName Nome do jogador
-   * @return true se está usando nome fake
+   * @return true se está usando nome nick
    */
-  public static boolean isFake(String playerName) {
+  public static boolean isNick(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return false;
     }
-    return fakeNames.containsKey(playerName);
+    
+    return nickNames.containsKey(playerName);
   }
   
   /**
@@ -242,18 +246,14 @@ public class Bungee extends Plugin {
   }
   
   /**
-   * Verifica a disponibilidade de um nickname para fake.
+   * Verifica a disponibilidade de um nickname para nick.
    * 
    * @param name Nome a ser verificado
    * @return Mensagem de erro ou null se disponível
    */
   public static String checkNicknameAvailability(String name) {
-    if (name == null || name.trim().isEmpty()) {
-      return "§cO nickname não está disponível para uso.";
-    }
-    
-    // Verifica se já está sendo usado por outro fake
-    if (fakeNames.containsKey(name) || fakeNames.containsValue(name)) {
+    // Verifica se já está sendo usado por outro nick
+    if (nickNames.containsKey(name) || nickNames.containsValue(name)) {
       return "§cO nickname não está disponível para uso.";
     }
     
@@ -262,31 +262,20 @@ public class Bungee extends Plugin {
       return "§cO nickname não está disponível para uso.";
     }
     
-    // Verifica se está registrado no servidor
-    if (Database.getInstance().exists(name) != null) {
-      return "§cO nickname não está disponível para uso.";
-    }
-    
-    // Verifica se existe como conta real do Minecraft
-    try {
-      String uuid = minecraft.core.core.libraries.profile.Mojang.getUUID(name);
-      if (uuid != null) {
-        return "§cO nickname não está disponível para uso.";
-      }
-    } catch (Exception e) {
-      // Se erro na API, considera como não existente (permite usar)
-    }
-    
     return null; // Nickname disponível
   }
   
   /**
-   * Lista jogadores com nome fake
+   * Lista jogadores com nome nick
    * 
-   * @return Lista de nomes
+   * @return Lista de jogadores com nick
    */
   public static List<String> listNicked() {
-    return new ArrayList<>(fakeNames.keySet());
+    if (nickNames == null || nickNames.isEmpty()) {
+      return new ArrayList<>();
+    }
+    
+    return new ArrayList<>(nickNames.keySet());
   }
   
   /**
@@ -311,17 +300,17 @@ public class Bungee extends Plugin {
   }
   
   /**
-   * Verifica se um rank é válido para fake
+   * Verifica se um rank é válido para nick
    * 
    * @param roleName Nome do rank
-   * @return true se é válido
+   * @return true se o rank é válido
    */
-  public static boolean isFakeRole(String roleName) {
+  public static boolean isNickRole(String roleName) {
     if (roleName == null || roleName.trim().isEmpty()) {
       return false;
     }
     
-            return FAKE_RANKS_LIST.stream().anyMatch(rank -> rank.equalsIgnoreCase(roleName));
+    return NICK_RANKS_LIST.stream().anyMatch(rank -> rank.equalsIgnoreCase(roleName));
   }
   
   /**

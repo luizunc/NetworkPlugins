@@ -53,7 +53,7 @@ public class Listeners implements Listener {
         
         ByteArrayDataInput in = ByteStreams.newDataInput(evt.getData());
         String subChannel = in.readUTF();
-        if (subChannel.equalsIgnoreCase("FAKE_SKIN")) {
+        if (subChannel.equalsIgnoreCase("NICK_SKIN")) {
           LoginResult profile = ((InitialHandler) player.getPendingConnection()).getLoginProfile();
           if (profile != null) {
             try {
@@ -81,13 +81,13 @@ public class Listeners implements Listener {
       party.sendData(evt.getServer().getInfo());
     }
     
-    if (Bungee.isFake(player.getName())) {
+    if (Bungee.isNick(player.getName())) {
       String skin = Bungee.getSkin(player.getName());
-      // Enviar dados desse jogador que está utilizando Fake para o servidor processar.
+      // Enviar dados desse jogador que está utilizando Nick para o servidor processar.
       ByteArrayDataOutput out = ByteStreams.newDataOutput();
-      out.writeUTF("FAKE");
+      out.writeUTF("NICK");
       out.writeUTF(player.getName());
-      out.writeUTF(Bungee.getFake(player.getName()));
+      out.writeUTF(Bungee.getNick(player.getName()));
       out.writeUTF(StringUtils.stripColors(Bungee.getRank(player.getName()).getName()));
       out.writeUTF(skin);
               evt.getServer().sendData("Core", out.toByteArray());

@@ -6,10 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.fake.FakeManager;
+
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.TagUtils;
+import minecraft.core.core.player.nick.NickManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +30,7 @@ public class TagCommand extends Commands {
         Player player = (Player) sender;
         Profile profile = Profile.getProfile(player.getName());
 
-        if (FakeManager.isFake(player.getName())) {
+        if (NickManager.isNick(player.getName())) {
             player.sendMessage("§cNão é possível executar este comando com o /nick ativado.");
             player.playSound(player.getLocation(), Sound.NOTE_PIANO, 0.5f, 2.0f);
             return;

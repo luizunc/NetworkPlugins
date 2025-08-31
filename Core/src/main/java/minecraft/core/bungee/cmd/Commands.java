@@ -32,10 +32,10 @@ public abstract class Commands extends Command {
      * Registra todos os comandos disponíveis no proxy.
      */
     public static void setupCommands() {
-        // Comandos de fake
-        new FakeCommand();
-        new FakeResetCommand();
-        new FakeListCommand();
+        // Comandos de nick
+        new NickCommand();
+        new NickResetCommand();
+        new NickListCommand();
         
         // Comandos de party
         new PartyCommand();

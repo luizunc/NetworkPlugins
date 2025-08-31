@@ -8,7 +8,7 @@ import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import minecraft.core.bukkit.achievements.Achievement;
 import minecraft.core.bukkit.cmd.Commands;
 import minecraft.core.bukkit.hook.CoreExpansion;
-import minecraft.core.bukkit.hook.protocollib.FakeAdapter;
+import minecraft.core.bukkit.hook.protocollib.NickAdapter;
 import minecraft.core.bukkit.hook.protocollib.HologramAdapter;
 import minecraft.core.bukkit.hook.protocollib.NPCAdapter;
 import minecraft.core.bukkit.listeners.Listeners;
@@ -21,8 +21,9 @@ import minecraft.core.core.libraries.holograms.HologramLibrary;
 import minecraft.core.core.libraries.npclib.NPCLibrary;
 import minecraft.core.core.nms.NMS;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.fake.FakeManager;
+
 import minecraft.core.core.player.rank.Rank;
+import minecraft.core.core.player.nick.NickManager;
 import minecraft.core.core.servers.ServerItem;
 import minecraft.core.core.titles.Title;
 import minecraft.core.core.titles.TitleManager;
@@ -266,7 +267,7 @@ public class Core extends KPlugin {
    */
   private void setupSystems() {
             setupRanks();
-    FakeManager.setupFake();
+    
     Title.setupTitles();
     ServerItem.setupServers();
     Achievement.setupAchievements();
@@ -275,6 +276,9 @@ public class Core extends KPlugin {
     Bukkit.getScheduler().runTaskTimer(this, () -> {
       TitleManager.updateAllTitles();
     }, 20L, 20L); // Atualiza a cada segundo
+
+        // Configura o sistema de nick
+        NickManager.setupNick();
   }
   
   /**
@@ -295,7 +299,7 @@ public class Core extends KPlugin {
         return;
       }
       
-      ProtocolLibrary.getProtocolManager().addPacketListener(new FakeAdapter(this));
+              ProtocolLibrary.getProtocolManager().addPacketListener(new NickAdapter(this));
       ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter(this));
       ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter(this));
       

@@ -2,7 +2,7 @@ package minecraft.core;
 
 import minecraft.core.bungee.Bungee;
 import minecraft.core.core.libraries.profile.Mojang;
-import minecraft.core.core.player.fake.FakeManager;
+import minecraft.core.core.player.nick.NickManager;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.reflection.Accessors;
 import minecraft.core.core.reflection.acessors.MethodAccessor;
@@ -29,10 +29,10 @@ public class Manager {
   private static volatile MethodAccessor HAS_PERMISSION;
   private static volatile MethodAccessor SEND_MESSAGE;
   private static volatile MethodAccessor SEND_MESSAGE_COMPONENTS;
-  private static volatile MethodAccessor IS_FAKE;
+  private static volatile MethodAccessor IS_NICK;
   private static volatile MethodAccessor GET_CURRENT;
-  private static volatile MethodAccessor GET_FAKE;
-      private static volatile MethodAccessor GET_FAKE_RANK;
+  private static volatile MethodAccessor GET_NICK;
+      private static volatile MethodAccessor GET_NICK_RANK;
   
   // Logger
   private static final Logger LOGGER = Logger.getLogger(Manager.class.getName());
@@ -77,10 +77,10 @@ public class Manager {
     GET_PLAYER = Accessors.getMethod(proxyServer, "getPlayer", String.class);
     HAS_PERMISSION = Accessors.getMethod(proxiedPlayer, "hasPermission", String.class);
     SEND_MESSAGE_COMPONENTS = Accessors.getMethod(proxiedPlayer, "sendMessage", BaseComponent[].class);
-    IS_FAKE = Accessors.getMethod(bungeeMain, "isFake", String.class);
+    IS_NICK = Accessors.getMethod(bungeeMain, "isNick", String.class);
     GET_CURRENT = Accessors.getMethod(bungeeMain, "getCurrent", String.class);
-    GET_FAKE = Accessors.getMethod(bungeeMain, "getFake", String.class);
-            GET_FAKE_RANK = Accessors.getMethod(bungeeMain, "getRank", String.class);
+    GET_NICK = Accessors.getMethod(bungeeMain, "getNick", String.class);
+            GET_NICK_RANK = Accessors.getMethod(bungeeMain, "getRank", String.class);
   }
   
   /**
@@ -89,7 +89,7 @@ public class Manager {
   private static void initializeBukkitReflection() throws ClassNotFoundException {
     Class<?> player = Class.forName("org.bukkit.entity.Player");
     Class<?> spigot = Class.forName("org.bukkit.entity.Player$Spigot");
-    Class<?> fakeManager = Class.forName("minecraft.core.core.player.fake.FakeManager");
+    Class<?> nickManager = Class.forName("minecraft.core.core.player.nick.NickManager");
     Class<?> profile = Class.forName("minecraft.core.core.player.Profile");
     
     GET_NAME = Accessors.getMethod(player, "getName");
@@ -98,10 +98,10 @@ public class Manager {
     SEND_MESSAGE = Accessors.getMethod(player, "sendMessage", String.class);
     GET_SPIGOT = Accessors.getMethod(player, "spigot");
     SEND_MESSAGE_COMPONENTS = Accessors.getMethod(spigot, "sendMessage", BaseComponent[].class);
-    IS_FAKE = Accessors.getMethod(fakeManager, "isFake", String.class);
-    GET_CURRENT = Accessors.getMethod(fakeManager, "getCurrent", String.class);
-    GET_FAKE = Accessors.getMethod(fakeManager, "getFake", String.class);
-            GET_FAKE_RANK = Accessors.getMethod(fakeManager, "getRank", String.class);
+    IS_NICK = Accessors.getMethod(nickManager, "isNick", String.class);
+    GET_CURRENT = Accessors.getMethod(nickManager, "getCurrent", String.class);
+    GET_NICK = Accessors.getMethod(nickManager, "getNick", String.class);
+            GET_NICK_RANK = Accessors.getMethod(nickManager, "getRank", String.class);
   }
   
   /**
@@ -144,7 +144,7 @@ public class Manager {
    * Obtém a skin padrão baseada no ambiente
    */
   private static String getDefaultSkin() {
-    return BUNGEE ? Bungee.STEVE : FakeManager.ALEX;
+    return BUNGEE ? "eyJ0aW1lc3RhbXAiOjE1ODcxNTAzMTc3MjAsInByb2ZpbGVJZCI6IjRkNzA0ODZmNTA5MjRkMzM4NmJiZmM5YzEyYmFiNGFlIiwicHJvZmlsZU5hbWUiOiJzaXJGYWJpb3pzY2hlIiwic2lnbmF0dXJlUmVxdWlyZWRJOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xYTRhZjcxODQ1NWQ0YWFiNTI4ZTdhNjFmODZmYTI1ZTZhMzY5ZDE3NjhkY2IxM2Y3ZGYzMTlhNzEzZWI4MTBiIn19fQ==" : NickManager.ALEX;
   }
   
   /**
@@ -227,7 +227,7 @@ public class Manager {
   }
   
   /**
-   * Obtém o nome atual de um jogador (real ou fake)
+   * Obtém o nome atual de um jogador (real ou nick)
    * 
    * @param playerName Nome do jogador
    * @return Nome atual do jogador
@@ -246,51 +246,51 @@ public class Manager {
   }
   
   /**
-   * Obtém o nome fake de um jogador
+   * Obtém o nome nick de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Nome fake ou null se não houver
+   * @return Nome nick ou null se não houver
    */
-  public static String getFake(String playerName) {
+  public static String getNick(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return null;
     }
     
     try {
-      return (String) GET_FAKE.invoke(null, playerName);
+      return (String) GET_NICK.invoke(null, playerName);
     } catch (Exception e) {
-      LOGGER.log(Level.WARNING, "Erro ao obter nome fake do jogador " + playerName, e);
+      LOGGER.log(Level.WARNING, "Erro ao obter nome nick do jogador " + playerName, e);
       return null;
     }
   }
   
   /**
-   * Obtém o rank fake de um jogador
+   * Obtém o rank nick de um jogador
    * 
    * @param playerName Nome do jogador
-   * @return Rank fake ou null se não houver
+   * @return Rank nick ou null se não houver
    */
-  public static Rank getFakeRank(String playerName) {
+  public static Rank getNickRank(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return null;
     }
     
     try {
-      return (Rank) GET_FAKE_RANK.invoke(null, playerName);
+      return (Rank) GET_NICK_RANK.invoke(null, playerName);
     } catch (Exception e) {
-      LOGGER.log(Level.WARNING, "Erro ao obter rank fake do jogador " + playerName, e);
+      LOGGER.log(Level.WARNING, "Erro ao obter rank nick do jogador " + playerName, e);
       return null;
     }
   }
   
   /**
-   * Obtém o rank fake de um jogador (alias para getFakeRank)
+   * Obtém o rank nick de um jogador (alias para getNickRank)
    * 
    * @param playerName Nome do jogador
-   * @return Rank fake ou null se não houver
+   * @return Rank nick ou null se não houver
    */
-  public static Rank getFakeRole(String playerName) {
-    return getFakeRank(playerName);
+  public static Rank getNickRole(String playerName) {
+    return getNickRank(playerName);
   }
   
   /**
@@ -314,20 +314,20 @@ public class Manager {
   }
   
   /**
-   * Verifica se um jogador está usando nome fake
+   * Verifica se um jogador está usando nome nick
    * 
    * @param playerName Nome do jogador
-   * @return true se o jogador está usando nome fake
+   * @return true se o jogador está usando nome nick
    */
-  public static boolean isFake(String playerName) {
+  public static boolean isNick(String playerName) {
     if (playerName == null || playerName.trim().isEmpty()) {
       return false;
     }
     
     try {
-      return (boolean) IS_FAKE.invoke(null, playerName);
+      return (boolean) IS_NICK.invoke(null, playerName);
     } catch (Exception e) {
-      LOGGER.log(Level.WARNING, "Erro ao verificar se jogador " + playerName + " está fake", e);
+      LOGGER.log(Level.WARNING, "Erro ao verificar se jogador " + playerName + " está nick", e);
       return false;
     }
   }

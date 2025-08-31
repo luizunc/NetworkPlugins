@@ -232,7 +232,7 @@ public class Profile {
         this.getDataContainer("account", "rank").set(StringUtils.stripColors(playerRank.getName()));
         
         // Aplicar a tag selecionada no tab list
-        minecraft.core.core.utils.TagUtils.setTag(player);
+        minecraft.core.core.utils.TagUtils.setTag(player, "", "", 0);
   }
   
   /**

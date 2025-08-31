@@ -63,18 +63,18 @@ public class Rank {
     public static String getColored(String name) {
         return getColored(name, false);
     }
-    public static String getPrefixed(String name, boolean removeFake) {
-        return getTaggedName(name, false, removeFake);
+    public static String getPrefixed(String name, boolean removeNick) {
+        return getTaggedName(name, false, removeNick);
     }
-    public static String getColored(String name, boolean removeFake) {
-        return getTaggedName(name, true, removeFake);
+    public static String getColored(String name, boolean removeNick) {
+        return getTaggedName(name, true, removeNick);
     }
 
-    static String getTaggedName(String name, boolean onlyColor, boolean removeFake) {
+    static String getTaggedName(String name, boolean onlyColor, boolean removeNick) {
         String prefix = "§7";
 
-        if (!removeFake && Manager.isFake(name)) {
-            prefix = Manager.getFakeRole(name).getPrefix();
+        if (!removeNick && Manager.isNick(name)) {
+            prefix = Manager.getNickRole(name).getPrefix();
             if (onlyColor) {
                 prefix = StringUtils.getLastColor(prefix);
             }
@@ -102,21 +102,21 @@ public class Rank {
                             prefix = role.getPrefix();
                         } else {
                             // Se a tag selecionada não é válida, usar o rank mais alto
-                            Rank highestRank = getRank(target, removeFake);
+                            Rank highestRank = getRank(target, removeNick);
                             if (highestRank != null) {
                                 prefix = highestRank.getPrefix();
                             }
                         }
                     } else {
                         // Se não tem tag selecionada, usar o rank mais alto
-                        Rank highestRank = getRank(target, removeFake);
+                        Rank highestRank = getRank(target, removeNick);
                         if (highestRank != null) {
                             prefix = highestRank.getPrefix();
                         }
                     }
                 } else {
                     // Se não tem profile, usar o rank mais alto
-                    Rank highestRank = getRank(target, removeFake);
+                    Rank highestRank = getRank(target, removeNick);
                     if (highestRank != null) {
                         prefix = highestRank.getPrefix();
                     }
@@ -158,8 +158,8 @@ public class Rank {
             if (onlyColor) {
                 prefix = StringUtils.getLastColor(prefix);
             }
-            if (!removeFake && Manager.isFake(name)) {
-                name = Manager.getFake(name);
+            if (!removeNick && Manager.isNick(name)) {
+                name = Manager.getNick(name);
             }
             
             // Adicionar medalha se houver (para jogadores offline, não temos como verificar)
@@ -197,9 +197,9 @@ public class Rank {
     public static Rank getRank(Object player) {
         return getRank(player, false);
     }
-    public static Rank getRank(Object player, boolean removeFake) {
-        if (!removeFake && Manager.isFake(Manager.getName(player))) {
-            return Manager.getFakeRole(Manager.getName(player));
+    public static Rank getRank(Object player, boolean removeNick) {
+        if (!removeNick && Manager.isNick(Manager.getName(player))) {
+            return Manager.getNickRole(Manager.getName(player));
         }
 
         // Verificar cache primeiro (como no aCore)
@@ -236,8 +236,8 @@ public class Rank {
         return getRank(player, false);
     }
     
-    public static Rank getPlayerRank(Object player, boolean removeFake) {
-        return getRank(player, removeFake);
+    public static Rank getPlayerRank(Object player, boolean removeNick) {
+        return getRank(player, removeNick);
     }
     
     public static Rank getLastRank() {
@@ -252,8 +252,8 @@ public class Rank {
      * Obtém a tag selecionada pelo jogador (para chat/scoreboard)
      */
     public static Rank getSelectedTag(Object player) {
-        if (Manager.isFake(Manager.getName(player))) {
-            return Manager.getFakeRole(Manager.getName(player));
+        if (Manager.isNick(Manager.getName(player))) {
+            return Manager.getNickRole(Manager.getName(player));
         }
 
         // Verificar cache primeiro (como no aCore)

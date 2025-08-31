@@ -53,8 +53,8 @@ public final class Main {
     private static final String SETTINGS_MOTD = "&aBem-vindo ao servidor!";
     
     // Configurações de features
-    private static final boolean FEATURE_FAKE_NAMES = true;
-    private static final boolean FEATURE_FAKE_SKINS = true;
+      private static final boolean FEATURE_NICK_NAMES = true;
+  private static final boolean FEATURE_NICK_SKINS = true;
     private static final boolean FEATURE_PARTY_SYSTEM = true;
     private static final boolean FEATURE_ACHIEVEMENTS = true;
     private static final boolean FEATURE_TITLES = true;
@@ -187,13 +187,13 @@ public final class Main {
     }
     
     // Métodos para features
-    public static boolean isFeatureFakeNames() {
-        return FEATURE_FAKE_NAMES;
-    }
-    
-    public static boolean isFeatureFakeSkins() {
-        return FEATURE_FAKE_SKINS;
-    }
+      public static boolean isFeatureNickNames() {
+    return FEATURE_NICK_NAMES;
+  }
+  
+  public static boolean isFeatureNickSkins() {
+    return FEATURE_NICK_SKINS;
+  }
     
     public static boolean isFeaturePartySystem() {
         return FEATURE_PARTY_SYSTEM;
@@ -293,8 +293,8 @@ public final class Main {
         yaml.append("  motd: '").append(SETTINGS_MOTD).append("'\n");
         yaml.append("  \n");
         yaml.append("  features:\n");
-        yaml.append("    fake-names: ").append(FEATURE_FAKE_NAMES).append("\n");
-        yaml.append("    fake-skins: ").append(FEATURE_FAKE_SKINS).append("\n");
+            yaml.append("    nick-names: ").append(FEATURE_NICK_NAMES).append("\n");
+    yaml.append("    nick-skins: ").append(FEATURE_NICK_SKINS).append("\n");
         yaml.append("    party-system: ").append(FEATURE_PARTY_SYSTEM).append("\n");
         yaml.append("    achievements: ").append(FEATURE_ACHIEVEMENTS).append("\n");
         yaml.append("    titles: ").append(FEATURE_TITLES).append("\n");

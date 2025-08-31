@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Configuração interna das configurações utils
- * Contém as configurações de cash, fake e party
+ * Contém as configurações de cash, nick e party
  */
 public class UtilsConfig {
     
@@ -21,7 +21,7 @@ public class UtilsConfig {
         "  symbol: '$\'\n" +
         "  format: \"&a{amount}\"\n" +
         "  \n" +
-        "fake:\n" +
+        "nick:\n" +
         "  enabled: true\n" +
         "  rank:\n" +
         "    - \"&7Membro\"\n" +

@@ -8,7 +8,7 @@ import minecraft.core.core.database.exception.ProfileLoadException;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.enums.PrivateMessages;
 import minecraft.core.core.player.enums.ProtectionLobby;
-import minecraft.core.core.player.fake.FakeManager;
+
 import minecraft.core.core.player.hotbar.HotbarButton;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.reflection.Accessors;
@@ -36,6 +36,8 @@ import org.spigotmc.WatchdogThread;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
+
+import minecraft.core.core.player.nick.NickManager;
 
 /**
  * Classe principal de listeners do sistema Core.
@@ -109,7 +111,6 @@ public class Listeners implements Listener {
             .newInstance("textures", skinValue, skinSignature);
         properties.getClass().getMethod("put", Object.class, Object.class).invoke(properties, "textures", property);
         
-        Core.getInstance().getLogger().info("Skin aplicada para " + evt.getPlayer().getName() + ": " + skinName);
       } catch (Exception e) {
         Core.getInstance().getLogger().warning("Erro ao aplicar skin para " + evt.getPlayer().getName() + ": " + e.getMessage());
       }
@@ -129,7 +130,7 @@ public class Listeners implements Listener {
     
     if (profile != null) {
       // Aplicar a tag selecionada no tab
-      minecraft.core.core.utils.TagUtils.setTag(player);
+      minecraft.core.core.utils.TagUtils.setTag(player, "", "", 0);
       
       // Executa a animação de chegada após 1 segundo
       Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
@@ -207,11 +208,11 @@ public class Listeners implements Listener {
    */
   private void cleanupPlayerData(Player player) {
     String playerName = player.getName();
-    FakeManager.fakeNames.remove(playerName);
-    FakeManager.fakeRanks.remove(playerName);
-    FakeManager.fakeSkins.remove(playerName);
+
     DELAY_PLAYERS.remove(playerName);
     PROTECTION_LOBBY.remove(playerName.toLowerCase());
+
+
   }
   
   // Eventos de chat

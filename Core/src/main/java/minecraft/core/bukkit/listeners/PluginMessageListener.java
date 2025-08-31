@@ -7,8 +7,9 @@ import minecraft.core.bukkit.BukkitPartyManager;
 import minecraft.core.core.nms.NMS;
 import minecraft.core.core.party.PartyPlayer;
 import minecraft.core.core.player.Profile;
-import minecraft.core.core.player.fake.FakeManager;
+
 import minecraft.core.core.utils.enums.EnumSound;
+import minecraft.core.core.player.nick.NickManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
@@ -27,18 +28,19 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
       
       String subChannel = in.readUTF();
       switch (subChannel) {
-        case "FAKE": {
+        case "NICK": {
           Player player = Bukkit.getPlayerExact(in.readUTF());
           if (player != null) {
-            String fakeName = in.readUTF();
+            String nickName = in.readUTF();
             String roleName = in.readUTF();
             String skin = in.readUTF();
-            FakeManager.applyFake(player, fakeName, roleName, skin);
+            // Aplica o nick
+            NickManager.applyNick(player, nickName, roleName, skin);
             NMS.refreshPlayer(player);
           }
           break;
         }
-        case "FAKE_BOOK": {
+        case "NICK_BOOK": {
           Player player = Bukkit.getPlayerExact(in.readUTF());
           if (player != null) {
             try {
@@ -46,7 +48,8 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
               EnumSound.valueOf(sound).play(player, 1.0F, sound.contains("VILL") ? 1.0F : 2.0F);
             } catch (Exception ignore) {
             }
-            FakeManager.sendRole(player);
+            // Envia o livro de seleção de cargo
+            NickManager.sendRole(player);
           }
           break;
         }
@@ -65,16 +68,17 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
             pLeader.getGame().join(profile);
           }
         }
-        case "FAKE_BOOK2": {
+        case "NICK_BOOK2": {
           Player player = Bukkit.getPlayerExact(in.readUTF());
           if (player != null) {
             String roleName = in.readUTF();
-            String sound = in.readUTF();
-            EnumSound.valueOf(sound).play(player, 1.0F, sound.contains("VILL") ? 1.0F : 2.0F);
-            FakeManager.sendSkin(player, roleName);
-          }
-          break;
+          String sound = in.readUTF();
+          EnumSound.valueOf(sound).play(player, 1.0F, sound.contains("VILL") ? 1.0F : 2.0F);
+          // Envia o livro de seleção de skin
+          NickManager.sendSkin(player, roleName);
         }
+        break;
+      }
         case "PARTY":
           try {
             JSONObject changes = (JSONObject) new JSONParser().parse(in.readUTF());

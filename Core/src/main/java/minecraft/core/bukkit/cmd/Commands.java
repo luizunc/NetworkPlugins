@@ -3,7 +3,7 @@ package minecraft.core.bukkit.cmd;
 import minecraft.core.bukkit.Core;
 import minecraft.core.bukkit.cmd.MedalsCommand;
 import minecraft.core.core.cash.CashManager;
-import minecraft.core.core.player.fake.FakeManager;
+import minecraft.core.core.player.nick.NickManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -102,9 +102,9 @@ public abstract class Commands extends Command {
             new CashCommand();
         }
         
-        // Comandos de fake e party apenas no lado Bukkit
-        if (!FakeManager.isBungeeSide()) {
-            new FakeCommand();
+        // Comandos de nick e party apenas no lado Bukkit
+        if (!NickManager.isBungeeSide()) {
+            new NickCommand();
             new PartyCommand();
         }
     }

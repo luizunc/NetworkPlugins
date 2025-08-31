@@ -56,7 +56,7 @@ public enum Medal {
         return getMedal(player, false);
     }
 
-    public static Medal getMedal(Object player, boolean removeFake) {
+    public static Medal getMedal(Object player, boolean removeNick) {
         if (!(player instanceof Player)) {
             return getLastMedal();
         }

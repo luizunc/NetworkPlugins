@@ -1,7 +1,8 @@
 package minecraft.core.bukkit;
 
 import com.google.common.collect.ImmutableList;
-import minecraft.core.core.player.fake.FakeManager;
+
+import minecraft.core.core.player.nick.NickManager;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -21,7 +22,7 @@ public class BukkitPartyManager {
   public static BukkitParty createParty(String leader, int size) {
     BukkitParty bp = new BukkitParty(leader, size);
     BUKKIT_PARTIES.add(bp);
-    if (CLEAN_PARTIES == null && !FakeManager.isBungeeSide()) {
+    if (CLEAN_PARTIES == null && !NickManager.isBungeeSide()) {
       CLEAN_PARTIES = new BukkitRunnable() {
         @Override
         public void run() {
