@@ -89,7 +89,7 @@ public class TagCommand extends Commands {
             profile.save();
             
             // Enviar mensagem de confirmação
-            player.sendMessage("§aTag visual alterada para " + rank.getName() + " §acom sucesso!");
+            player.sendMessage("§aTag " + rank.getName() + " §aselecionada.");
             player.playSound(player.getLocation(), Sound.LEVEL_UP, 1.0f, 1.0f);
             
         } catch (ProfileLoadException e) {

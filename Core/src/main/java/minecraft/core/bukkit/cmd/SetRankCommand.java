@@ -5,6 +5,7 @@ import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.player.rank.RankManager;
 import minecraft.core.core.utils.StringUtils;
+import minecraft.core.core.utils.TagUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -87,13 +88,17 @@ public class SetRankCommand extends Commands {
             // Aplicar o rank usando o RankManager (inclui permissões)
             RankManager.applyRank(targetPlayer, rank);
             
+            // IMPORTANTE: Aplicar automaticamente a tag visual correspondente ao rank
+            // Isso simula o comando /tag <rank> sendo executado
+            applyTagVisual(targetPlayer, rank);
+            
             // Salvar o profile no banco de dados para persistir o rank
             profile.save();
             
             // Enviar mensagens de confirmação
             sender.sendMessage(MSG_RANK_SET + " §7" + targetPlayer.getName() + " §7agora é " + rank.getName());
             targetPlayer.sendMessage("§aSeu rank foi alterado para " + rank.getName() + " §apor um administrador!");
-            
+
             // Atualizar o jogador se estiver online
             if (targetPlayer.isOnline()) {
                 // Forçar atualização do scoreboard e outros sistemas
@@ -118,7 +123,11 @@ public class SetRankCommand extends Commands {
             String cleanRankName = StringUtils.stripColors(rank.getName());
             profile.getDataContainer("account", "rank").set(cleanRankName);
             
-            // Atualizar o cache de tags (para jogadores offline, só salvamos no profile)
+            // IMPORTANTE: Aplicar automaticamente a tag visual correspondente ao rank
+            // Para jogadores offline, salvamos tanto o rank quanto a tag
+            profile.getDataContainer("account", "tag").set(cleanRankName);
+            
+            // Atualizar o cache de tags (para jogadores offline, salvamos no profile)
             TagCache.setCache(playerName, cleanRankName, playerName);
             
             // Salvar o profile no banco de dados para persistir o rank
@@ -126,9 +135,38 @@ public class SetRankCommand extends Commands {
             
             // Enviar mensagem de confirmação
             sender.sendMessage(MSG_RANK_SET + " §7" + playerName + " §7agora é " + rank.getName() + " §7(offline)");
-            
+
         } catch (Exception e) {
             sender.sendMessage("§cErro ao definir rank: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Aplica automaticamente a tag visual correspondente ao rank definido.
+     * Simula o comando /tag sendo executado automaticamente.
+     */
+    private void applyTagVisual(Player player, Rank rank) {
+        try {
+            // Obter o profile do jogador
+            Profile profile = Profile.createOrLoadProfile(player.getName());
+            
+            // IMPORTANTE: Salvar APENAS na coluna tag (NUNCA na coluna rank)
+            String cleanTagName = StringUtils.stripColors(rank.getName());
+            profile.getDataContainer("account", "tag").set(cleanTagName);
+            
+            // Atualizar o cache de tags (apenas para referência visual)
+            TagCache.setCache(player.getName(), cleanTagName, player.getName());
+            
+            // Aplicar APENAS a tag visual usando TagUtils (sem permissões)
+            TagUtils.setTag(player, rank);
+            
+            // Salvar o profile para persistir a tag selecionada
+            profile.save();
+            
+        } catch (Exception e) {
+            // Log do erro mas não interromper o processo
+            System.err.println("Erro ao aplicar tag visual automaticamente: " + e.getMessage());
             e.printStackTrace();
         }
     }
