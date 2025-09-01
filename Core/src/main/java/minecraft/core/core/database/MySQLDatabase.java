@@ -222,7 +222,6 @@ public class MySQLDatabase extends Database {
           "jdbc:mariadb://" :
           "jdbc:mysql://") + host + ":" + port + "/" + dbname + "?verifyServerCertificate=false&useSSL=false&useUnicode=yes&characterEncoding=UTF-8", username, password);
       if (reconnected) {
-        LOGGER.info("Reconectado ao MySQL!");
         return;
       }
       

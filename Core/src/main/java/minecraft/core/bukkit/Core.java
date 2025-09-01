@@ -174,6 +174,10 @@ public class Core extends KPlugin {
     try {
       if (validInit) {
         saveOnlineProfiles();
+        
+        // Para o monitoramento de mudanças no banco de dados
+        Database.stopDatabaseChangeMonitoring();
+        
         Database.getInstance().close();
       }
       

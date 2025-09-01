@@ -135,7 +135,6 @@ public class Manager {
       return VALUE_TYPE.equalsIgnoreCase(type) ? parts[1] : parts[2];
       
     } catch (Exception e) {
-      LOGGER.log(Level.WARNING, "Erro ao obter skin do jogador " + player, e);
       return getDefaultSkin();
     }
   }

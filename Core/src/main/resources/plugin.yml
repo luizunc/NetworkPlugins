@@ -2,5 +2,7 @@ name: Core
 version: 1.0
 main: minecraft.core.bukkit.Core
 api-version: 1.8
-description: Sistema Core para servidores Minecraft
 author: Luiz
+depend:
+  - ProtocolLib
+  - PlaceholderAPI

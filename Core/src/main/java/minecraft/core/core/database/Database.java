@@ -21,6 +21,7 @@ public abstract class Database {
   
   protected static final Logger LOGGER;
   private static Database instance;
+  private static DatabaseChangeListener changeListener;
   
   static {
     LOGGER = Manager.BUNGEE ? Bungee.getInstance().getLogger() : Core.getInstance().getLogger();
@@ -47,8 +48,40 @@ public abstract class Database {
     instance = createDatabaseInstance(type, mysqlHost, mysqlPort, mysqlDbname, mysqlUsername, 
                                     mysqlPassword, hikari, mariadb);
     
-            // Configura limpeza automática do cache de ranks
-        scheduleRankCacheCleanup();
+    // Configura limpeza automática do cache de ranks
+    scheduleRankCacheCleanup();
+    
+    // Inicia o monitoramento de mudanças no banco de dados
+    startDatabaseChangeMonitoring();
+  }
+  
+  /**
+   * Inicia o monitoramento de mudanças no banco de dados.
+   */
+  private static void startDatabaseChangeMonitoring() {
+    if (instance != null) {
+      changeListener = new DatabaseChangeListener(instance);
+      changeListener.startMonitoring();
+      LOGGER.info("Monitoramento de mudanças no banco de dados iniciado com sucesso!");
+    }
+  }
+  
+  /**
+   * Para o monitoramento de mudanças no banco de dados.
+   */
+  public static void stopDatabaseChangeMonitoring() {
+    if (changeListener != null) {
+      changeListener.stopMonitoring();
+      changeListener = null;
+      LOGGER.info("Monitoramento de mudanças no banco de dados parado!");
+    }
+  }
+  
+  /**
+   * Verifica se o monitoramento de mudanças está ativo.
+   */
+  public static boolean isDatabaseChangeMonitoringActive() {
+    return changeListener != null && changeListener.isMonitoring();
   }
   
   /**

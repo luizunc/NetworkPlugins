@@ -132,7 +132,7 @@ public class TagsCommandMenu extends PagedPlayerMenu {
                                 profile.save();
                                 
                                 // Enviar mensagem de confirmação
-                                player.sendMessage("§aTag visual alterada para " + rank.getName() + " §acom sucesso!");
+                                player.sendMessage("§aTag " + rank.getName() + " §aselecionada.");
                                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 1.0f, 1.0f);
                                 
                                 // Fechar o menu
