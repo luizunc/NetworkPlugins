@@ -4,6 +4,7 @@ import minecraft.core.core.database.cache.TagCache;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.player.rank.RankManager;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.TagUtils;
 import org.bukkit.Bukkit;
@@ -36,8 +37,8 @@ public class SetRankCommand extends Commands {
 
     @Override
     public void perform(CommandSender sender, String label, String[] args) {
-        // Verificar permissão
-        if (!sender.hasPermission(PERMISSION_SETRANK)) {
+        // Verificar permissão de administrador ou superior
+        if (!RankPermissionUtils.hasAdminOrHigher(sender)) {
             sender.sendMessage(MSG_NO_PERMISSION);
             return;
         }
@@ -96,7 +97,7 @@ public class SetRankCommand extends Commands {
             profile.save();
             
             // Enviar mensagens de confirmação
-            sender.sendMessage(MSG_RANK_SET + " §7" + targetPlayer.getName() + " §7agora é " + rank.getName());
+            sender.sendMessage(MSG_RANK_SET + " §7" + targetPlayer.getName() + " §7agora virou " + rank.getName());
             targetPlayer.sendMessage("§aSeu rank foi alterado para " + rank.getName() + " §apor um administrador!");
 
             // Atualizar o jogador se estiver online
@@ -134,7 +135,7 @@ public class SetRankCommand extends Commands {
             profile.save();
             
             // Enviar mensagem de confirmação
-            sender.sendMessage(MSG_RANK_SET + " §7" + playerName + " §7agora é " + rank.getName() + " §7(offline)");
+            sender.sendMessage(MSG_RANK_SET + " §7" + playerName + " §7agora virou " + rank.getName() + " §7(offline)");
 
         } catch (Exception e) {
             sender.sendMessage("§cErro ao definir rank: " + e.getMessage());

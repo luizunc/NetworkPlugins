@@ -5,6 +5,7 @@ import minecraft.core.core.database.cache.TagCache;
 import minecraft.core.core.database.exception.ProfileLoadException;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.rank.Rank;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.TagUtils;
 import org.bukkit.Sound;
@@ -51,8 +52,12 @@ public class TagCommand extends Commands {
                 return;
             }
 
-            // Verificar se o jogador tem permissão para usar a tag
-            if (!rank.has(player)) {
+            // Verificar se o jogador tem permissão para usar a tag (rank específico ou superior)
+            // A tag "Membro" sempre deve estar disponível para todos
+            // Tags especiais são liberadas para Mod+ ou superior
+            if (!rank.isDefault() && 
+                !RankPermissionUtils.hasRankOrHigher(player, rank.getPermission()) && 
+                !isSpecialTagAvailable(player, rank)) {
                 player.sendMessage("§cVocê não tem permissão para usar esta tag!");
                 return;
             }
@@ -100,6 +105,24 @@ public class TagCommand extends Commands {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Verifica se uma tag especial está disponível para o jogador.
+     * Tags especiais (Férias, Halloween, Natal, Carnaval) são liberadas para Mod+ ou superior.
+     * 
+     * @param player Jogador
+     * @param rank Rank da tag
+     * @return true se a tag especial está disponível
+     */
+    private boolean isSpecialTagAvailable(Player player, Rank rank) {
+        // Verificar se é uma tag especial
+        String permission = rank.getPermission();
+        if (permission != null && permission.startsWith("tag.")) {
+            // Tags especiais são liberadas para Mod+ ou superior
+            return RankPermissionUtils.hasModOrHigher(player);
+        }
+        return false;
+    }
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
@@ -108,7 +131,7 @@ public class TagCommand extends Commands {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 return Rank.listRoles().stream()
-                    .filter(rank -> rank.has(player)) // Verificar permissão baseada no rank mais alto
+                    .filter(rank -> rank.isDefault() || rank.has(player) || isSpecialTagAvailable(player, rank)) // Tag "Membro" sempre disponível + permissão baseada no rank mais alto + tags especiais para Mod+
                     .map(rank -> StringUtils.stripColors(rank.getName()))
                     .collect(Collectors.toList());
             }

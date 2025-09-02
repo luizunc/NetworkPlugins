@@ -3,6 +3,7 @@ package minecraft.core.bukkit.cmd;
 import minecraft.core.Manager;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.nick.NickManager;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -82,9 +83,9 @@ public class NickCommand extends Commands {
      */
     private boolean hasPermission(Player player, String label) {
         if (label.equalsIgnoreCase("list")) {
-            return player.hasPermission(PERMISSION_MOD);
+            return RankPermissionUtils.hasModOrHigher(player);
         }
-        return player.hasPermission(PERMISSION_NICK);
+        return RankPermissionUtils.hasRankOrHigher(player, PERMISSION_NICK);
     }
     
     /**
@@ -97,9 +98,9 @@ public class NickCommand extends Commands {
      */
     private boolean hasSpecialPermission(Player player, String label, String[] args) {
         if (label.equalsIgnoreCase("reset") && args.length > 0 && args[0].equalsIgnoreCase("nick")) {
-            return player.hasPermission(PERMISSION_NICK);
+            return RankPermissionUtils.hasRankOrHigher(player, PERMISSION_NICK);
         } else if (label.equalsIgnoreCase("list") && args.length > 0 && args[0].equalsIgnoreCase("nicks")) {
-            return player.hasPermission(PERMISSION_MOD);
+            return RankPermissionUtils.hasModOrHigher(player);
         }
         return false;
     }

@@ -225,7 +225,6 @@ public class MySQLDatabase extends Database {
         return;
       }
       
-      LOGGER.info("Conectado ao MySQL!");
     } catch (Exception ex) {
       LOGGER.log(Level.SEVERE, "Nao foi possivel se conectar ao MySQL: ", ex);
       System.exit(0);

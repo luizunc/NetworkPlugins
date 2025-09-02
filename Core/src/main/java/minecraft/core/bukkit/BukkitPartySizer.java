@@ -2,6 +2,7 @@ package minecraft.core.bukkit;
 
 import minecraft.core.bukkit.plugin.config.UtilsConfig;
 import minecraft.core.bukkit.plugin.config.KConfig;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedHashMap;
@@ -25,7 +26,7 @@ public class BukkitPartySizer {
   
   public static int getPartySize(Player player) {
     for (Map.Entry<String, Integer> entry : SIZES.entrySet()) {
-      if (player.hasPermission(entry.getKey())) {
+      if (RankPermissionUtils.hasRankOrHigher(player, entry.getKey())) {
         return entry.getValue();
       }
     }

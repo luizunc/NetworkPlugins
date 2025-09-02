@@ -90,7 +90,6 @@ public abstract class Commands extends Command {
         new StatsCommand();
         new TagCommand();
         new MedalsCommand();
-        new SkinCommand();
         new SetRankCommand();
     }
 

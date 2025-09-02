@@ -1,6 +1,7 @@
 package minecraft.core.bukkit.cmd;
 
 import minecraft.core.bukkit.Core;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -34,8 +35,8 @@ public class CoreCommand extends Commands {
 
         Player player = (Player) sender;
         
-        // Verifica permissão de administrador
-        if (!player.hasPermission(PERMISSION_ADMIN)) {
+        // Verifica permissão de administrador ou superior
+        if (!RankPermissionUtils.hasAdminOrHigher(player)) {
             player.sendMessage(String.format(MSG_VERSION, 
                 Core.getInstance().getDescription().getVersion()));
             return;

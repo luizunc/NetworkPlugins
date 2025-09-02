@@ -322,4 +322,96 @@ public class Rank {
     public boolean isBroadcast() {
         return this.alwaysVisible;
     }
+
+    /**
+     * Verifica se um jogador tem este rank ou um rank superior.
+     * Implementa hierarquia automática de permissões.
+     * 
+     * @param player Jogador a ser verificado
+     * @return true se o jogador tem este rank ou superior
+     */
+    public boolean hasOrHigher(Object player) {
+        if (this.isDefault()) {
+            return true;
+        }
+        
+        // Verificar se o jogador tem este rank específico
+        if (this.has(player)) {
+            return true;
+        }
+        
+        // Verificar se o jogador tem um rank superior
+        return hasHigherRank(player);
+    }
+    
+    /**
+     * Verifica se um jogador tem um rank superior a este.
+     * 
+     * @param player Jogador a ser verificado
+     * @return true se o jogador tem um rank superior
+     */
+    private boolean hasHigherRank(Object player) {
+        // Ranks em ordem hierárquica (do mais baixo para o mais alto)
+        String[] rankHierarchy = {
+            "membro", "apoiador", "iron", "gold", "emerald", 
+            "partner", "partner+", "beta", "builder", "helper", 
+            "mod", "mod+", "admin"
+        };
+        
+        // Encontrar a posição deste rank na hierarquia
+        int thisRankIndex = -1;
+        String thisRankName = StringUtils.stripColors(this.name).toLowerCase();
+        for (int i = 0; i < rankHierarchy.length; i++) {
+            if (rankHierarchy[i].equals(thisRankName)) {
+                thisRankIndex = i;
+                break;
+            }
+        }
+        
+        // Se não encontrou este rank na hierarquia, retorna false
+        if (thisRankIndex == -1) {
+            return false;
+        }
+        
+        // Verificar se o jogador tem algum rank superior
+        for (Rank rank : ROLES) {
+            if (rank.has(player)) {
+                String rankName = StringUtils.stripColors(rank.getName()).toLowerCase();
+                for (int i = 0; i < rankHierarchy.length; i++) {
+                    if (rankHierarchy[i].equals(rankName) && i > thisRankIndex) {
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Verifica se um jogador tem um rank específico ou superior.
+     * Método estático para facilitar o uso nos comandos.
+     * 
+     * @param player Jogador a ser verificado
+     * @param rankPermission Permissão do rank (ex: "rank.iron")
+     * @return true se o jogador tem o rank ou superior
+     */
+    public static boolean hasRankOrHigher(Object player, String rankPermission) {
+        if (player == null || rankPermission == null) {
+            return false;
+        }
+        
+        // Se a permissão estiver vazia, significa que é um rank padrão (como Membro)
+        // que deve estar sempre disponível para todos
+        if (rankPermission.trim().isEmpty()) {
+            return true;
+        }
+        
+        Rank targetRank = getRoleByPermission(rankPermission);
+        if (targetRank == null) {
+            return false;
+        }
+        
+        return targetRank.hasOrHigher(player);
+    }
 }

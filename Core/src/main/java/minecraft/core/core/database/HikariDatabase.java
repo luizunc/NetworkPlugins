@@ -221,7 +221,6 @@ public class HikariDatabase extends Database {
     config.addDataSourceProperty("autoReconnect", "true");
     this.dataSource = new HikariDataSource(config);
     
-    LOGGER.info("Conectado ao MySQL!");
   }
   
   public void closeConnection() {

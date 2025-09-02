@@ -51,7 +51,6 @@ public class DatabaseChangeListener {
         }
 
         isRunning = true;
-        LOGGER.info("Iniciando monitoramento de mudanças no banco de dados...");
 
         EXECUTOR.scheduleWithFixedDelay(this::checkForRankChanges, 0, CHECK_INTERVAL, TimeUnit.MILLISECONDS);
     }
@@ -208,10 +207,7 @@ public class DatabaseChangeListener {
                 LOGGER.info("Estado inicial registrado para " + playerName + " - Rank: " + dbRank + ", Tag: " + (dbTag != null ? dbTag : "null"));
                 return;
             }
-            
-            // Mudança real detectada - aplicar automaticamente
-            LOGGER.info("Mudança detectada para " + playerName + " - Novo estado: Rank: " + dbRank + ", Tag: " + (dbTag != null ? dbTag : "null") + " (Estado anterior: " + previousState + ")");
-            
+
             // Verificar se o jogador está online
             Player onlinePlayer = Bukkit.getPlayerExact(playerName);
             

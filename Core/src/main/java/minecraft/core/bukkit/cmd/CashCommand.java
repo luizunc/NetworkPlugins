@@ -3,6 +3,7 @@ package minecraft.core.bukkit.cmd;
 import minecraft.core.core.cash.CashException;
 import minecraft.core.core.cash.CashManager;
 import minecraft.core.core.player.rank.Rank;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import minecraft.core.core.utils.StringUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,7 +18,7 @@ import org.bukkit.entity.Player;
 public class CashCommand extends Commands {
 
     // Constantes
-    private static final String PERMISSION_CASH = "rank.admin";
+    private static final String PERMISSION_CASH = "rank.mod+";
     private static final String ACTION_SET = "set";
     private static final String ACTION_ADD = "add";
     private static final String ACTION_REMOVE = "remove";
@@ -50,8 +51,8 @@ public class CashCommand extends Commands {
             return;
         }
 
-        // Verifica permissão para comandos administrativos
-        if (!sender.hasPermission(PERMISSION_CASH)) {
+        // Verifica permissão para comandos administrativos (Mod+ ou superior)
+        if (!RankPermissionUtils.hasRankOrHigher(sender, PERMISSION_CASH)) {
             sender.sendMessage(String.format(MSG_CASH_INFO, 
                 StringUtils.formatNumber(CashManager.getCash(sender.getName()))));
             return;

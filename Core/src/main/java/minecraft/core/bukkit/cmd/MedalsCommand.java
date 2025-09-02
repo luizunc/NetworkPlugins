@@ -1,6 +1,7 @@
 package minecraft.core.bukkit.cmd;
 
 import minecraft.core.bukkit.menu.MedalsCommandMenu;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -35,7 +36,8 @@ public class MedalsCommand extends Commands {
         List<String> medalhasDisponiveis = new ArrayList<>();
         for (Medal medal : Medal.values()) {
             String permission = medal.getPermission();
-            if (player.hasPermission(permission)) {
+            if (permission != null && !permission.isEmpty() && 
+                (player.hasPermission(permission) || RankPermissionUtils.hasRankOrHigher(player, permission))) {
                 medalhasDisponiveis.add(medal.getName());
             }
         }

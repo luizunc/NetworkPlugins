@@ -115,8 +115,6 @@ public class Listeners implements Listener {
       } catch (Exception e) {
         Core.getInstance().getLogger().warning("Erro ao aplicar skin para " + evt.getPlayer().getName() + ": " + e.getMessage());
       }
-    } else {
-      Core.getInstance().getLogger().info("Nenhuma skin personalizada encontrada para " + evt.getPlayer().getName());
     }
     
     profile.setPlayer(evt.getPlayer());

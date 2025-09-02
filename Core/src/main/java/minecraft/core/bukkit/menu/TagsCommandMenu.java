@@ -1,14 +1,16 @@
 package minecraft.core.bukkit.menu;
 
 import minecraft.core.bukkit.Core;
-import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.database.data.DataContainer;
 import minecraft.core.core.player.Profile;
+import minecraft.core.core.player.rank.Rank;
+import minecraft.core.core.player.rank.RankPermissionUtils;
 import minecraft.core.core.utils.BukkitUtils;
 import minecraft.core.core.utils.StringUtils;
 import minecraft.core.core.utils.TagUtils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -34,7 +36,12 @@ public class TagsCommandMenu extends PagedPlayerMenu {
         List<ItemStack> items = new ArrayList<>();
 
         for (Rank rank : Rank.listRoles()) {
-            boolean hasPermission = rank.has(profile.getPlayer()) || profile.getPlayer().isOp();
+            // A tag "Membro" sempre deve estar disponível para todos
+            // Tags especiais (Férias, Halloween, etc.) são liberadas para Mod+ ou superior
+            boolean hasPermission = rank.isDefault() || 
+                                  RankPermissionUtils.hasRankOrHigher(profile.getPlayer(), rank.getPermission()) || 
+                                  isSpecialTagAvailable(profile.getPlayer(), rank) ||
+                                  profile.getPlayer().isOp();
             boolean isSelected = rank.getName().equals(currentTag);
             Rank playerRank = Rank.getRoleByName(profile.getDataContainer("account", "tag").getAsString());
 
@@ -75,6 +82,24 @@ public class TagsCommandMenu extends PagedPlayerMenu {
         this.register(Core.getInstance());
         this.open();
     }
+    
+    /**
+     * Verifica se uma tag especial está disponível para o jogador.
+     * Tags especiais (Férias, Halloween, Natal, Carnaval) são liberadas para Mod+ ou superior.
+     * 
+     * @param player Jogador
+     * @param rank Rank da tag
+     * @return true se a tag especial está disponível
+     */
+    private boolean isSpecialTagAvailable(Player player, Rank rank) {
+        // Verificar se é uma tag especial
+        String permission = rank.getPermission();
+        if (permission != null && permission.startsWith("tag.")) {
+            // Tags especiais são liberadas para Mod+ ou superior
+            return RankPermissionUtils.hasModOrHigher(player);
+        }
+        return false;
+    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent evt) {
@@ -107,7 +132,12 @@ public class TagsCommandMenu extends PagedPlayerMenu {
 
                         Rank rank = this.ranks.get(item);
                         if (rank != null) {
-                            if (!rank.has(profile.getPlayer()) && !profile.getPlayer().isOp()) {
+                            // A tag "Membro" sempre deve estar disponível para todos
+                            // Tags especiais são liberadas para Mod+ ou superior
+                            if (!rank.isDefault() && 
+                                !RankPermissionUtils.hasRankOrHigher(profile.getPlayer(), rank.getPermission()) && 
+                                !isSpecialTagAvailable(profile.getPlayer(), rank) &&
+                                !profile.getPlayer().isOp()) {
                                 player.sendMessage("§cVocê não tem permissão para usar esta tag!");
                                 player.playSound(player.getLocation(), Sound.NOTE_BASS, 1.0f, 1.0f);
                                 return;

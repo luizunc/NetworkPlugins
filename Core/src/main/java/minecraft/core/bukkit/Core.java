@@ -307,7 +307,6 @@ public class Core extends KPlugin {
       ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter(this));
       ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter(this));
       
-      this.getLogger().info("ProtocolLib listeners configurados com sucesso.");
     } catch (Exception e) {
       this.getLogger().log(Level.WARNING, "Erro ao configurar ProtocolLib listeners", e);
     }
@@ -403,6 +402,5 @@ public class Core extends KPlugin {
    */
   private void setupRanks() {
     Rank.loadRanks();
-    this.getLogger().info("Ranks carregados: " + Rank.listRoles().size() + " ranks configurados.");
   }
 }

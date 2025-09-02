@@ -62,7 +62,6 @@ public abstract class Database {
     if (instance != null) {
       changeListener = new DatabaseChangeListener(instance);
       changeListener.startMonitoring();
-      LOGGER.info("Monitoramento de mudanças no banco de dados iniciado com sucesso!");
     }
   }
   
