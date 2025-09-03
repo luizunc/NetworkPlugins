@@ -76,7 +76,7 @@ public class PartyCommand extends Commands {
       player.sendMessage(TextComponent.fromLegacyText("§cVocê fechou a party para apenas convidados."));
     } else if (action.equalsIgnoreCase("entrar")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party entrar [jogador]"));
+        player.sendMessage(TextComponent.fromLegacyText("§cUso: /party entrar [jogador]"));
         return;
       }
       
@@ -113,7 +113,7 @@ public class PartyCommand extends Commands {
       player.sendMessage(TextComponent.fromLegacyText(" \n§aVocê entrou na Party de " + Rank.getPrefixed(target) + "§a!\n "));
     } else if (action.equalsIgnoreCase("aceitar")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party aceitar [jogador]"));
+        player.sendMessage(TextComponent.fromLegacyText("§cUso: /party aceitar [jogador]"));
         return;
       }
       
@@ -182,7 +182,7 @@ public class PartyCommand extends Commands {
       player.sendMessage(TextComponent.fromLegacyText("§aVocê deletou a Party."));
     } else if (action.equalsIgnoreCase("expulsar")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party expulsar [jogador]"));
+        player.sendMessage(TextComponent.fromLegacyText("§cUso: /party expulsar [jogador]"));
         return;
       }
       
@@ -219,7 +219,7 @@ public class PartyCommand extends Commands {
               .size() + "/" + party.getSlots() + "\n§6Membros: " + StringUtils.join(members, "§7, ") + "\n "));
     } else if (action.equalsIgnoreCase("negar")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party negar [jogador]"));
+        player.sendMessage(TextComponent.fromLegacyText("§cUso: /party negar [jogador]"));
         return;
       }
       
@@ -260,7 +260,7 @@ public class PartyCommand extends Commands {
       player.sendMessage(TextComponent.fromLegacyText("§aVocê saiu da Party!"));
     } else if (action.equalsIgnoreCase("transferir")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party transferir [jogador]"));
+        player.sendMessage(TextComponent.fromLegacyText("§cUso: /party transferir [jogador]"));
         return;
       }
       
@@ -287,7 +287,7 @@ public class PartyCommand extends Commands {
     } else {
       if (action.equalsIgnoreCase("convidar")) {
         if (args.length == 1) {
-          player.sendMessage(TextComponent.fromLegacyText("§cUtilize /party convidar [jogador]"));
+          player.sendMessage(TextComponent.fromLegacyText("§cUso: /party convidar [jogador]"));
           return;
         }
         

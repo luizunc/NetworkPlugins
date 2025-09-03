@@ -27,8 +27,8 @@ public class CashCommand extends Commands {
     private static final String MSG_CASH_INFO = "§eCash: §b%s";
     private static final String MSG_HELP = " \n§6/cash set [jogador] [quantia] §f- §7Setar o cash do jogador.\n§6/cash add [jogador] [quantia] §f- §7Dar cash para um jogador.\n§6/cash remove [jogador] [quantia] §f- §7Remover o cash de um jogador.\n ";
     private static final String MSG_INVALID_ACTION = " \n§6/cash set [jogador] [quantia] §f- §7Setar o cash do jogador.\n§6/cash add [jogador] [quantia] §f- §7Dar cash para um jogador.\n§6/cash remove [jogador] [quantia] §f- §7Remover o cash de um jogador.\n ";
-    private static final String MSG_USAGE = "§cUtilize /cash %s [jogador] [quantia]";
-    private static final String MSG_INVALID_NUMBER = "§cUtilize números válidos e positivos.";
+    private static final String MSG_USAGE = "§cUso: /cash %s [jogador] [quantia]";
+    private static final String MSG_INVALID_NUMBER = "§cUso: números válidos e positivos.";
     private static final String MSG_USER_OFFLINE = "§cO usuário precisa estar conectado.";
     private static final String MSG_SET_SUCCESS = "§aVocê setou o Cash do(a) %s §apara §b%s§a.";
     private static final String MSG_ADD_SUCCESS = "§aVocê adicionou §b%s §ade Cash para o(a) %s§a.";

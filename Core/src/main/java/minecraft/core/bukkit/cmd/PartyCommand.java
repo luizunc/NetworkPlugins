@@ -29,7 +29,7 @@ public class PartyCommand extends Commands {
         Player player = (Player) sender;
         if (label.equalsIgnoreCase("p")) {
             if (args.length == 0) {
-                player.sendMessage("§cUtilize /p [mensagem] para conversar com a sua Party.");
+                player.sendMessage("§cUso: /p [mensagem] para conversar com a sua Party.");
                 return;
             }
 
@@ -88,7 +88,7 @@ public class PartyCommand extends Commands {
                 player.sendMessage("§cVocê fechou a party para apenas convidados.");
             } else if (action.equalsIgnoreCase("entrar")) {
                 if (args.length == 1) {
-                    player.sendMessage("§cUtilize /party entrar [jogador]");
+                    player.sendMessage("§cUso: /party entrar [jogador]");
                     return;
                 }
 
@@ -125,7 +125,7 @@ public class PartyCommand extends Commands {
                 player.sendMessage(" \n§aVocê entrou na Party de " + Rank.getPrefixed(target) + "§a!\n ");
             } else if (action.equalsIgnoreCase("aceitar")) {
                 if (args.length == 1) {
-                    player.sendMessage("§cUtilize /party aceitar [jogador]");
+                    player.sendMessage("§cUso: /party aceitar [jogador]");
                     return;
                 }
 
@@ -180,7 +180,7 @@ public class PartyCommand extends Commands {
                 player.sendMessage("§aVocê deletou a Party.");
             } else if (action.equalsIgnoreCase("expulsar")) {
                 if (args.length == 1) {
-                    player.sendMessage("§cUtilize /party expulsar [jogador]");
+                    player.sendMessage("§cUso: /party expulsar [jogador]");
                     return;
                 }
 
@@ -218,7 +218,7 @@ public class PartyCommand extends Commands {
                                 .size() + "/" + party.getSlots() + "\n§6Membros: " + StringUtils.join(members, "§7, ") + "\n ");
             } else if (action.equalsIgnoreCase("negar")) {
                 if (args.length == 1) {
-                    player.sendMessage("§cUtilize /party negar [jogador]");
+                    player.sendMessage("§cUso: /party negar [jogador]");
                     return;
                 }
 
@@ -259,7 +259,7 @@ public class PartyCommand extends Commands {
                 player.sendMessage("§aVocê saiu da Party!");
             } else if (action.equalsIgnoreCase("transferir")) {
                 if (args.length == 1) {
-                    player.sendMessage("§cUtilize /party transferir [jogador]");
+                    player.sendMessage("§cUso: /party transferir [jogador]");
                     return;
                 }
 
@@ -286,7 +286,7 @@ public class PartyCommand extends Commands {
             } else {
                 if (action.equalsIgnoreCase("convidar")) {
                     if (args.length == 1) {
-                        player.sendMessage("§cUtilize /party convidar [jogador]");
+                        player.sendMessage("§cUso: /party convidar [jogador]");
                         return;
                     }
 

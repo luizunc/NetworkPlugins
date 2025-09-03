@@ -19,7 +19,7 @@ public class PartyChatCommand extends Commands {
 
     // Mensagens
     private static final String MSG_PLAYERS_ONLY = "§cApenas jogadores podem utilizar este comando.";
-    private static final String MSG_USAGE = "§cUtilize /p [mensagem] para conversar com a sua Party.";
+    private static final String MSG_USAGE = "§cUso: /p [mensagem] para conversar com a sua Party.";
     private static final String MSG_NO_PARTY = "§cVocê não pertence a uma Party.";
     private static final String MSG_PARTY_CHAT = "§d[Party] %s§f: %s";
 

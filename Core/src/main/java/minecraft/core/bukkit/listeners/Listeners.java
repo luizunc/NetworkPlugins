@@ -34,7 +34,9 @@ import org.bukkit.inventory.ItemStack;
 import org.spigotmc.WatchdogThread;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 
 import minecraft.core.core.player.nick.NickManager;
@@ -49,6 +51,7 @@ public class Listeners implements Listener {
   public static final KLogger LOGGER = ((KLogger) Core.getInstance().getLogger()).getModule("Listeners");
   public static final Map<String, Long> DELAY_PLAYERS = new HashMap<>();
   private static final Map<String, Long> PROTECTION_LOBBY = new HashMap<>();
+  public static final Set<String> SKINS = new HashSet<>();
   
   // Constantes para reflection
   private static final FieldAccessor<Map> COMMAND_MAP = Accessors.getField(SimpleCommandMap.class, "knownCommands", Map.class);

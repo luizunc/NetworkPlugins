@@ -226,13 +226,61 @@ public class Profile {
   private void setLobbyState(Player player) {
     player.setGameMode(GameMode.ADVENTURE);
     player.teleport(Core.getLobby());
-    player.setAllowFlight(player.hasPermission("core.fly"));
+    
+    // Verifica se o jogador tem rank apoiador ou superior para permitir fly
+    boolean canFly = hasApoiadorOrHigherRank(player);
+    player.setAllowFlight(canFly);
     
     // IMPORTANTE: NÃO alterar a coluna rank automaticamente
     // A coluna rank deve ser preservada e nunca alterada por este método
     
     // Aplicar a tag selecionada no tab list
     minecraft.core.core.utils.TagUtils.setTag(player, "", "", 0);
+  }
+  
+  /**
+   * Verifica se o jogador tem rank apoiador ou superior.
+   * 
+   * @param player Jogador a ser verificado
+   * @return true se tem rank apoiador ou superior
+   */
+  private boolean hasApoiadorOrHigherRank(Player player) {
+    // Ranks em ordem hierárquica (do mais baixo para o mais alto)
+    String[] rankHierarchy = {
+        "membro", "apoiador", "iron", "gold", "emerald", 
+        "partner", "partner+", "beta", "builder", "helper", 
+        "mod", "mod+", "admin"
+    };
+    
+    // Obtém o rank atual do jogador
+    minecraft.core.core.player.rank.Rank currentRank = minecraft.core.core.player.rank.Rank.getRank(player, true);
+    String currentRankName = minecraft.core.core.utils.StringUtils.stripColors(currentRank.getName()).toLowerCase();
+    
+    // Encontra a posição do rank atual
+    int currentRankIndex = -1;
+    for (int i = 0; i < rankHierarchy.length; i++) {
+      if (rankHierarchy[i].equals(currentRankName)) {
+        currentRankIndex = i;
+        break;
+      }
+    }
+    
+    // Se não encontrou o rank, assume que é membro (mais baixo)
+    if (currentRankIndex == -1) {
+      currentRankIndex = 0; // membro
+    }
+    
+    // Encontra a posição do rank apoiador
+    int apoiadorRankIndex = -1;
+    for (int i = 0; i < rankHierarchy.length; i++) {
+      if (rankHierarchy[i].equals("apoiador")) {
+        apoiadorRankIndex = i;
+        break;
+      }
+    }
+    
+    // Retorna true se o rank atual é igual ou superior ao apoiador
+    return currentRankIndex >= apoiadorRankIndex;
   }
   
   /**
@@ -604,6 +652,8 @@ public class Profile {
     return this.getAbstractContainer("account", "skins", 
         minecraft.core.core.database.data.container.SkinsContainer.class);
   }
+  
+
   
   public DataContainer getDataContainer(String table, String key) {
     return this.tableMap.get(table).get(key);
