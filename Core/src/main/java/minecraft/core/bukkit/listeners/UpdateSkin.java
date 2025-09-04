@@ -8,10 +8,12 @@ import com.mojang.authlib.properties.Property;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.GameMode;
 
 import java.util.HashMap;
@@ -105,14 +107,78 @@ public class UpdateSkin {
                     });
 
             entityPlayer.updateAbilities();
+            
+            // Força atualização de head items em inventários abertos
+            updatePlayerHeadItems(player);
+            
         }, 2L);
 
         container.setSkin(container.getSkin(), value, signature);
         account.save();
 
-        player.sendMessage("§aSkin atualizada com sucesso!");
+        player.sendMessage("§aSkin aplicada com sucesso!");
         lastUpdateTimestamps.put(player.getName(), currentTime);
         
         return true;
+    }
+    
+    /**
+     * Atualiza head items do jogador em inventários abertos.
+     * Este método força a atualização visual de skull items que representam o jogador.
+     * 
+     * @param player Jogador cuja skin foi alterada
+     */
+    public static void updatePlayerHeadItems(Player player) {
+        // Força atualização apenas para o jogador que mudou a skin
+        if (player.getOpenInventory() != null && player.getOpenInventory().getTitle() != null) {
+            String title = player.getOpenInventory().getTitle();
+            
+            // Se for o menu principal de skins, força fechamento e reabertura
+            if ("Skins".equals(title)) {
+                Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+                    if (player.getOpenInventory() != null && "Skins".equals(player.getOpenInventory().getTitle())) {
+                        player.closeInventory();
+                        
+                        // Reabre o menu após garantir que a skin foi aplicada
+                        Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+                            Profile profile = Profile.getProfile(player.getName());
+                            if (profile != null) {
+                                new minecraft.core.bukkit.menus.MenuSkins(player, profile);
+                            }
+                        }, 2L);
+                    }
+                }, 1L);
+            }
+        }
+    }
+    
+    /**
+     * Verifica se um inventário contém head items que possam representar o jogador.
+     * 
+     * @param inventory Inventário a ser verificado
+     * @param playerName Nome do jogador
+     * @return true se contém head items relacionados ao jogador
+     */
+    private static boolean hasPlayerHeadItems(org.bukkit.inventory.Inventory inventory, String playerName) {
+        for (ItemStack item : inventory.getContents()) {
+            if (item != null && item.getType() == Material.SKULL_ITEM) {
+                if (item.hasItemMeta() && item.getItemMeta() instanceof SkullMeta) {
+                    SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
+                    // Verifica se é uma cabeça do jogador ou se pode ser uma head item relacionada
+                    if (skullMeta.hasOwner() && playerName.equals(skullMeta.getOwner())) {
+                        return true;
+                    }
+                    // Também verifica head items que podem usar o perfil do jogador
+                    // (como em menus de skin onde aparece "Minha Skin")
+                    if (skullMeta.hasDisplayName() && 
+                        (skullMeta.getDisplayName().contains("Minha Skin") || 
+                         skullMeta.getDisplayName().contains("Skin Atual") ||
+                         skullMeta.getDisplayName().contains("Credenciais"))) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 } 

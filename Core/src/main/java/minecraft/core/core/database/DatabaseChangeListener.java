@@ -204,7 +204,6 @@ public class DatabaseChangeListener {
             
             if (previousState == null) {
                 // Primeira verificação - apenas registrar estado inicial, não aplicar
-                LOGGER.info("Estado inicial registrado para " + playerName + " - Rank: " + dbRank + ", Tag: " + (dbTag != null ? dbTag : "null"));
                 return;
             }
 

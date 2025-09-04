@@ -14,7 +14,6 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
-
 /**
  * Menu de skins do jogador.
  * Permite acessar diferentes funcionalidades relacionadas a skins.
@@ -96,6 +95,8 @@ public class MenuSkins extends PlayerMenu {
   private ItemStack createPlayerHeadItem() {
     SkinsContainer skinsContainer = profile.getSkinsContainer();
     String currentSkin = skinsContainer.getSkin();
+    String skinValue = skinsContainer.getValue();
+    String skinSignature = skinsContainer.getSignature();
     
     String desc;
     if (currentSkin != null && !currentSkin.isEmpty()) {
@@ -117,8 +118,28 @@ public class MenuSkins extends PlayerMenu {
              "&7Use &e/skin (jogador) &7para aplicar uma skin.";
     }
     
-    return BukkitUtils.putProfileOnSkull(player, BukkitUtils.deserializeItemStack(
-        "SKULL_ITEM:3 : 1 : nome>&aMinha Skin : desc>" + desc));
+    ItemStack head;
+    
+    // Se tem uma skin personalizada com valor, usa diretamente a skin value
+    if (skinValue != null && !skinValue.isEmpty() && skinSignature != null && !skinSignature.isEmpty()) {
+      head = BukkitUtils.deserializeItemStack(
+          "SKULL_ITEM:3 : 1 : skin>" + skinValue + " : nome>&aMinha Skin : desc>" + desc);
+    } else {
+      // Caso contrário, usa o perfil atual do jogador
+      head = BukkitUtils.deserializeItemStack(
+          "SKULL_ITEM:3 : 1 : nome>&aMinha Skin : desc>" + desc);
+      head = BukkitUtils.putProfileOnSkull(player, head);
+    }
+    
+    return head;
+  }
+  
+  /**
+   * Atualiza o item da cabeça do jogador no slot correspondente.
+   * Este método deve ser chamado quando a skin do jogador é alterada.
+   */
+  public void updatePlayerHeadItem() {
+    setItem(SLOT_PLAYER_HEAD, createPlayerHeadItem());
   }
   
   /**
@@ -198,8 +219,9 @@ public class MenuSkins extends PlayerMenu {
   private void handleItemClick(int slot) {
     switch (slot) {
       case SLOT_BOOKSHELF:
-        // TODO: Implementar menu de estante de skins
-        player.sendMessage("§aEstante de Skins - Em desenvolvimento!");
+        // Abre o menu da estante de skins
+        HandlerList.unregisterAll(this);
+        new MenuEstanteSkins(player, profile);
         break;
         
       case SLOT_PLAYER_HEAD:
