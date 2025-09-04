@@ -87,6 +87,12 @@ public class TitleManager {
         return;
       }
       
+      // Verifica se o jogador tem rank Iron ou superior
+      Player player = profile.getPlayer();
+      if (player == null || !minecraft.core.core.player.rank.RankPermissionUtils.hasIronOrHigher(player)) {
+        return; // Não envia mensagem para jogadores sem rank Iron ou superior
+      }
+      
       // Tenta obter a mensagem personalizada, se falhar usa a padrão
       String entryMessageId = "1"; // Mensagem padrão
       try {
@@ -112,11 +118,14 @@ public class TitleManager {
         }
       }
     } catch (Exception e) {
-      // Se houver qualquer erro, envia mensagem padrão
+      // Se houver qualquer erro, envia mensagem padrão apenas se o jogador tiver rank Iron ou superior
       try {
-        String defaultMessage = formatLobbyJoinMessage(profile, "§6entrou no lobby!");
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-          onlinePlayer.sendMessage(defaultMessage);
+        Player player = profile.getPlayer();
+        if (player != null && minecraft.core.core.player.rank.RankPermissionUtils.hasIronOrHigher(player)) {
+          String defaultMessage = formatLobbyJoinMessage(profile, "§6entrou no lobby!");
+          for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.sendMessage(defaultMessage);
+          }
         }
       } catch (Exception ex) {
         // Se até a mensagem padrão falhar, apenas ignora

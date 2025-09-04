@@ -78,7 +78,7 @@ public class MenuProfile extends PlayerMenu {
       return BukkitUtils.deserializeItemStack(
               "BEACON : 1 : esconder>tudo : nome>&aSetor Premium : desc>&7Desfrute dos benefícios Premium\n" +
                       "\n" +
-                      "&cDisponível para &fIron+\n" +
+                      "&cExclusivo para &fIron+\n" +
                       " \n" +
                       "&aClique para acessar!");
   }

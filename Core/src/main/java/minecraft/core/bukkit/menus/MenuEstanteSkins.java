@@ -186,7 +186,7 @@ public class MenuEstanteSkins extends PagedPlayerMenu {
         
         // Verifica se já é a skin atual
         if (container.getSkin() != null && container.getSkin().equals(skinNameToApply)) {
-            this.player.sendMessage("§eVocê já está utilizando essa skin!");
+            this.player.sendMessage("§cVocê já está utilizando essa skin!");
             this.player.playSound(this.player.getLocation(), Sound.NOTE_PIANO, 2.0f, 2.0f);
             return;
         }
@@ -203,8 +203,8 @@ public class MenuEstanteSkins extends PagedPlayerMenu {
             boolean success = updateSkinFromLibrary(this.player, value, signature);
             
             if (success) {
-                // Atualiza o container com os dados da skin da biblioteca
-                container.setSkin(skinNameToApply, value, signature);
+                // Atualiza o container com os dados da skin da biblioteca e adiciona ao histórico
+                container.setSkinWithHistory(skinNameToApply, value, signature);
                 
                 // Salva o perfil
                 profile.save();
@@ -247,7 +247,7 @@ public class MenuEstanteSkins extends PagedPlayerMenu {
         Property currentSkin = profile.getProperties().get("textures").stream().findFirst().orElse(null);
 
         if (currentSkin != null && currentSkin.getValue().equals(value) && currentSkin.getSignature().equals(signature)) {
-            player.sendMessage("§eVocê já está utilizando essa skin.");
+            player.sendMessage("§cVocê já está utilizando essa skin.");
             return false;
         }
 

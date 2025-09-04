@@ -25,6 +25,10 @@ public class UpdateSkin {
     private static final long COOLDOWN_TIME = 30 * 1000;
 
     public static boolean updateSkin(Player player, String value, String signature) {
+        return updateSkin(player, null, value, signature);
+    }
+    
+    public static boolean updateSkin(Player player, String skinName, String value, String signature) {
         if (value == null || signature == null) {
             return false;
         }
@@ -38,7 +42,7 @@ public class UpdateSkin {
         Property currentSkin = profile.getProperties().get("textures").stream().findFirst().orElse(null);
 
         if (currentSkin != null && currentSkin.getValue().equals(value) && currentSkin.getSignature().equals(signature)) {
-            player.sendMessage("§eVocê já está utilizando essa skin.");
+            player.sendMessage("§cVocê já está utilizando essa skin.");
             player.closeInventory();
             player.playSound(player.getLocation(), Sound.NOTE_PIANO, 2.0f, 2.0f);
             return false;
@@ -113,7 +117,13 @@ public class UpdateSkin {
             
         }, 2L);
 
-        container.setSkin(container.getSkin(), value, signature);
+        // Se foi fornecido nome da skin, adiciona ao histórico
+        if (skinName != null && !skinName.isEmpty()) {
+            container.setSkinWithHistory(skinName, value, signature);
+        } else {
+            // Apenas atualiza a skin atual sem adicionar ao histórico
+            container.setSkin(container.getSkin(), value, signature);
+        }
         account.save();
 
         player.sendMessage("§aSkin aplicada com sucesso!");

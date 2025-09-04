@@ -62,6 +62,26 @@ public class SkinsContainer extends AbstractContainer {
             selected.put("name", name);
             selected.put("value", value);
             selected.put("signature", signature);
+            selected.put("appliedAt", System.currentTimeMillis());
+            
+            this.dataContainer.set(selected.toString());
+            selected.clear();
+        }
+    }
+    
+    /**
+     * Define a skin atual e adiciona ao histórico
+     */
+    public void setSkinWithHistory(String name, String value, String signature) {
+        if (name != null && value != null && signature != null) {
+            JSONObject selected = this.dataContainer.getAsJsonObject();
+            selected.put("name", name);
+            selected.put("value", value);
+            selected.put("signature", signature);
+            selected.put("appliedAt", System.currentTimeMillis());
+            
+            // Adiciona ao histórico
+            addToHistory(name, value, signature);
             
             this.dataContainer.set(selected.toString());
             selected.clear();
@@ -209,7 +229,7 @@ public class SkinsContainer extends AbstractContainer {
         }
         
         public String toJsonString() {
-            return name + ":" + value + ":" + signature + ":" + timestamp;
+            return name + "|||" + value + "|||" + signature + "|||" + timestamp;
         }
         
         public static SkinHistoryEntry fromJsonString(String jsonString) {
@@ -218,7 +238,7 @@ public class SkinsContainer extends AbstractContainer {
                     return null;
                 }
                 
-                String[] parts = jsonString.split(":");
+                String[] parts = jsonString.split("\\|\\|\\|");
                 if (parts.length >= 4) {
                     String name = parts[0];
                     String value = parts[1];
