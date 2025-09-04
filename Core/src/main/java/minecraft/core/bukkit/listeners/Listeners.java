@@ -8,7 +8,6 @@ import minecraft.core.core.database.exception.ProfileLoadException;
 import minecraft.core.core.player.Profile;
 import minecraft.core.core.player.enums.PrivateMessages;
 import minecraft.core.core.player.enums.ProtectionLobby;
-
 import minecraft.core.core.player.hotbar.HotbarButton;
 import minecraft.core.core.player.rank.Rank;
 import minecraft.core.core.reflection.Accessors;
@@ -38,8 +37,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
-
-import minecraft.core.core.player.nick.NickManager;
 
 /**
  * Classe principal de listeners do sistema Core.
@@ -118,9 +115,73 @@ public class Listeners implements Listener {
       } catch (Exception e) {
         Core.getInstance().getLogger().warning("Erro ao aplicar skin para " + evt.getPlayer().getName() + ": " + e.getMessage());
       }
+    } else {
+      // Jogador não tem skin personalizada
+      // Verificar se é jogador pirata e aplicar skin padrão
+      applyDefaultSkinForCracked(evt.getPlayer());
     }
     
     profile.setPlayer(evt.getPlayer());
+  }
+  
+  /**
+   * Aplica skin padrão para jogadores piratas
+   */
+  private void applyDefaultSkinForCracked(Player player) {
+    try {
+      // Verificar se o jogador é original (premium) ou pirata
+      if (player.isOnline() && !isPlayerCracked(player)) {
+        // Jogador original - manter skin do Minecraft
+        return;
+      }
+      
+      // Jogador pirata - aplicar skin padrão
+      // DEFINA AQUI A SKIN PADRÃO (substitua pelos valores desejados)
+      String defaultSkinValue = "ewogICJ0aW1lc3RhbXAiIDogMTYyMDM4MzM4NjEwOCwKICAicHJvZmlsZUlkIiA6ICIzYTNmNzhkZmExZjQ0OTllYjE5NjlmYzlkOTEwZGYwYyIsCiAgInByb2ZpbGVOYW1lIiA6ICJOb19jcmVyYXIiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzJkMWI3YTE2MWQ4NDdlY2M3MmEzNTk1NzU4MTNlYTExOTJiZWQ4Yjc4ZWMzMjVkYzVhYTM0ZGFlYjg4NmE2OCIKICAgIH0KICB9Cn0=";
+      String defaultSkinSignature = "pIJBaRYN5ECaVn2h9VrU6fLgww1vFDXhakwUUKcIJ1NE8eUmz8M9+XR3IsTQkzk/Skh7qC5TeE9Ono8skZ/1fOE6qxoAG+ZQNbMZ3k1VJFA2D2wL9msvIgfxgKLhzfm9UAIx2vxh9QEx2/rFtMcTNmKWkcaig4dXF/060LbghHDd1WaUa0TdnYhuPdvEdKS1Jo5T8K0Bq3FhOcs36z4OKB7n3JF11uXzxh8GpsZf1sKHHjTLZY5woCFzHtK5zAE50aKgNgbixNEzSaAXTUktlbcWS3RSU8mGLu4rzEKEwSv//04UkuRpmNo6TvsAAGA8h+6lptOO5LtVYW5ddaqGGtQqrtVFMnti0hIiXdQsDmDA28x3bqKjoG56UYzbiw4tjuBVGHqZC2FW1Sq7Eah/sZzmEwDmsDuKWn02qSjsv6r3QDBBXAEGJzPcqmk6g9O++tmaFoDPTLVfRJgdSep/QXjG7NtAAI/7T+319ZwLyeKGVqbgsxUwcOEo6qH+w3a6EBdSxbM0gNp3w1u1e3Eb9q02VXPp5Jx0oJaQFeqRmmmY+vN0J0CAEZ0F9x0VK0kROmJndRSmJFtvlF1+pW9zMf6Um6Rfv+6BFh+caiOT8T5flh9+E/3Zyz+mb4Qjm/2gHcBHyawjG1wCjuhqQvR+HWBFmbPWG3HGyrW+tnpHwwc=";
+      
+      // Aplicar a skin padrão
+      Object gameProfile = player.getClass().getMethod("getProfile").invoke(player);
+      Object properties = gameProfile.getClass().getMethod("getProperties").invoke(gameProfile);
+      
+      // Limpar propriedades existentes
+      properties.getClass().getMethod("clear").invoke(properties);
+      
+      // Adicionar skin padrão
+      Object property = Class.forName("com.mojang.authlib.properties.Property").getConstructor(String.class, String.class, String.class)
+          .newInstance("textures", defaultSkinValue, defaultSkinSignature);
+      properties.getClass().getMethod("put", Object.class, Object.class).invoke(properties, "textures", property);
+      
+      Core.getInstance().getLogger().info("Skin padrão aplicada para jogador pirata: " + player.getName());
+      
+    } catch (Exception e) {
+      Core.getInstance().getLogger().warning("Erro ao aplicar skin padrão para " + player.getName() + ": " + e.getMessage());
+    }
+  }
+  
+  /**
+   * Verifica se o jogador é pirata (não original)
+   */
+  private boolean isPlayerCracked(Player player) {
+    try {
+      // Obtém o GameProfile do jogador
+      Object gameProfile = player.getClass().getMethod("getProfile").invoke(player);
+      Object uuid = gameProfile.getClass().getMethod("getId").invoke(gameProfile);
+      
+      // Se o UUID for null ou vazio, é jogador pirata
+      if (uuid == null) {
+        return true;
+      }
+      
+      // Verifica se o UUID é de jogador offline (pirata)
+      // UUIDs de jogadores piratas seguem um padrão específico
+      String uuidString = uuid.toString();
+      return uuidString.startsWith("00000000-0000-0000");
+      
+    } catch (Exception e) {
+      // Em caso de erro, assume que é pirata para aplicar skin padrão
+      return true;
+    }
   }
 
 
